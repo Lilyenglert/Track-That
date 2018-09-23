@@ -1,50 +1,42 @@
-# Team Contract
-
-Working together as a team is critical for your success on this project. Conflicts happen. It's best to develop a plan before conflict arises. This way your team knows exactly the ground rules for dealing with that conflict. You'll be developing a team contract that you'll follow throughout the duration of your project. The team contract is a *living* document. If it's not working, your team should revise it as often as necessary.
-
-You will need to learn to work in groups and resolve conflicts on your own. These skills will be expected of you by your employer after graduation. Use this project as an opportunity to develop these skills. Lastly, you might want to take note of the issues you encounter and how you solved them. I'm almost certain that you will be asked during an interview about a time you had and conflict and what you did to resolve it.
-
-## Contract
-
-**Your group contract/working agreement should include these elements. Feel free to add other terms, too.**
-
-1. Team name or project name. Plus full name and NetID of each of your team members.
+# Team Nebulas Contract
 
 
 
-2. To what goals do we all commit?
+| Member        | Net ID         |
+| ------------- |:-------------:| 
+| Liam Delaney     | lgd34 | 
+| Sarah Brown     | smb464    | 
+| Richi Dhanda | rd384   |  
+| Lily Croskey-Englert    | lmc327 | 
+| Stephanie Mark | srm276  |  
 
 
+1. Communication
+*  Our main line of communication will be through Slack. Members will be expected to respond within 24 hours.
+*  Be open and respectful. 
+*  There are no dumb questions
 
-3. What are our “ground rules”? (Don't make an exhaustive list—stick with just a few.)
+2. Meetings
+*  At a minimum, our team will meet at 4:15 - 5:15 pm on Mondays in Gates
+*  If a member is unable to attend a meeting, they should notify the rest of the team at least 24 hours in advance. 
+*  Minutes should be taken in bullet form and posted in the Slack after meetings 
+*  Team members can assign a task to a non-present member. If that member has concerns, they should express those on Slack/in person
 
+3. Decision Making
+*  All decisions will be polled, require a 4-person majority 
+*  Polls will be created on Slack 
 
+4. Goals
+*  Portfolio level project
+*  Grade: A-range
 
-4. By what means and how frequently will we meet or communicate?
+5. Roles
+*  Note-taker
+*  Assignment Submitter
+*  Project-specific roles to be implemented as project moves forward
 
+6. Accountability
+*  Discuss participation and progress at weekly meetings 
+*  If a member’s participation becomes especially problematic, the team reserves the right to discuss with Kyle
 
-
-5. How will we communicate and work with our client?
-
-
-
-6. What roles will we create? Include a description of exactly what each role is responsible for.
-
-
-
-7. How will we hold ourselves and one another accountable? What (exactly) will we say to a team member who appears not to be contributing equally? To a team member who fails to deliver what was promised?
-
-
-
-8. What do we do when we disagree? What approach to conflict to we all agree to uphold?
-
-
-
-9. What are our procedures for re-visiting this contract?
-
-
-
-10. What else do we want to include in this contract? (Think about a *fun* clause... not everything is always about work! Sometimes you need to celebrate your accomplishments!)
-
-
-
+Contract to be updated at each milestone as needed. 
