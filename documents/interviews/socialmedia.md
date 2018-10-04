@@ -100,7 +100,7 @@ Class – Psych 1101
  
 Observations:
  
-·      Starts off before class checking Instagram on phone until class begins
+·      Starts off before class checking Instagram on phone until class begins 
 ·      Consistently switching between taking notes and replying to iMessages on her macbook
 ·      12 minutes into class, seems to get bored of lecture and checks Facebook for a few minutes, just scrolling on news feed, not clicking on anything in particular
 o   Stops and goes back to note taking when something (seemingly) important is being said by the professor
