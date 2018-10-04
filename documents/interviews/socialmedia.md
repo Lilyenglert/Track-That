@@ -2,8 +2,8 @@
 
 ## Person 1
 
-Talia 
-20 years old
+Talia <br>
+20 years old <br>
 Female
 2020
 Computer Science & Math
