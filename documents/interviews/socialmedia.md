@@ -4,35 +4,35 @@
 
 Talia <br>
 20 years old <br>
-Female
-2020
-Computer Science & Math
-Student
+Female <br>
+2020 <br>
+Computer Science & Math <br>
+Student <br>
 
-In lecture after ~20 minutes, she went on her phone
-Checked notifications
-Browsed emails
-Responded to texts
-Only on her device for about 2-3 minutes at a time
-Checked phone about 5 times throughout the 1 hour 25 minute lecture
-Did not go on social media
-Before and after on her phone, she was listening in lecture
+In lecture after ~20 minutes, she went on her phone <br>
+Checked notifications <br>
+Browsed emails<br>
+Responded to texts<br>
+Only on her device for about 2-3 minutes at a time<br>
+Checked phone about 5 times throughout the 1 hour 25 minute lecture<br>
+Did not go on social media<br>
+Before and after on her phone, she was listening in lecture<br>
 
 
 ## Person 2
 
-Name: Edward
-Age: 23
-Gender: Male
-Major: Communication
-Profession: Journalist
-Study
-How frequently they are on social media sites 
-Always had tab open to Facebook, email, and Reddit.  Browse these daily.
-How long they are on SM for
-In 30 minutes time viewing them, they’re on these site for ~10-ish minutes
-What contexts they are using social media 
-Facebook for messaging friends, Reddit for news.  Both used for miscellaneous fun.
+Name: Edward<br>
+Age: 23<br>
+Gender: Male<br>
+Major: Communication<br>
+Profession: Journalist<br>
+Study<br>
+How frequently they are on social media sites <br>
+Always had tab open to Facebook, email, and Reddit.  Browse these daily.<br>
+How long they are on SM for<br>
+In 30 minutes time viewing them, they’re on these site for ~10-ish minutes<br>
+What contexts they are using social media <br>
+Facebook for messaging friends, Reddit for news.  Both used for miscellaneous fun.<br>
 General patterns when using social media - are they messaging? Are they browsing? Are the posting?
 Facebook spend messaging friends.  Would reply to friend within 1 minute of receiving a message (usually after they finished the note they were on).  Browsing reddit on “downtime” of other two tasks.
 Are they using social media on its own or are they multi-tasking? 
