@@ -44,7 +44,12 @@ Notes taking was more autopilot (copy slides directly, ignoring what the profess
 
 
 ## Person 3
-
+##### Hilary <br>
+21 years old <br>
+Female <br>
+2019 <br>
+Biological Engineering <br>
+Student <br>
 Context: <br>
 Doing homework at house on thursday night (9pm) with me and 2 more people. She is working on a problem set. <br>
 
