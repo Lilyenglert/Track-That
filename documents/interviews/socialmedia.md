@@ -2,7 +2,7 @@
 
 ## Person 1
 
-Talia <br>
+##### Talia <br>
 20 years old <br>
 Female <br>
 2020 <br>
@@ -21,7 +21,7 @@ Before and after on her phone, she was listening in lecture<br>
 
 ## Person 2
 
-Name: Edward<br>
+##### Name: Edward<br>
 Age: 23<br>
 Gender: Male<br>
 Major: Communication<br>
@@ -89,7 +89,7 @@ Opened facebook because frustrated with work - maybe a way to distract herself o
 
 ## Person 4
 
-Julia<br>
+##### Julia<br>
 20<br>
 Female<br>
 Senior<br>
@@ -112,8 +112,7 @@ o   Stops and goes back to note taking when something (seemingly) important is b
 <br>
 ## Person 5<br>
 
-General Questions<br>
-Name: Aubrey Akers<br>
+##### Name: Aubrey Akers<br>
 Age: 21<br>
 Gender/Sex (if desired) : Female<br>
 Year (class year if student): 2019<br>
