@@ -233,84 +233,84 @@ Have you tried any apps in the past for this purpose?
 People who want to reach strength goals
 
 ## Person 5
-*Ali Aygun 
-*Senior 
-*Biology Major 
+* Ali Aygun 
+* Senior 
+* Biology Major 
 
 Do you have any current strength goals? What are they? 
 
-*10 pull ups in 3 separate reps with a minute in between 
-*Bench 155 for 10 reps for 3 sets 
-*Get more flexible 
+* 10 pull ups in 3 separate reps with a minute in between 
+* Bench 155 for 10 reps for 3 sets 
+* Get more flexible 
 
 How frequently do you workout? 
-*Every other day but hasn’t been for the past 2 and half weeks been busy 
+* Every other day but hasn’t been for the past 2 and half weeks been busy 
 
 What do your exercise/strength training habits look like? 
-*Summer - habit of going in the morning 
-*Less people around
-*Schedule keeps changing so not set routine 
-*What type of in-gym routine 
-*4 different routines 
-*Back and biceps 
-*Chest and triceps 
-*Shoulders 
-*Leg day (kind of) 
-*Don’t repeat in last 48 hours 
+* Summer - habit of going in the morning 
+* Less people around
+* Schedule keeps changing so not set routine 
+* What type of in-gym routine 
+* 4 different routines 
+* Back and biceps 
+* Chest and triceps 
+* Shoulders 
+* Leg day (kind of) 
+* Don’t repeat in last 48 hours 
 
 How do you measure progress for strength goals? 
-*Writing everything down and could see how much weight was going up and rest time was going down 
-*Harder to record when busy - also lose motivation
+* Writing everything down and could see how much weight was going up and rest time was going down 
+* Harder to record when busy - also lose motivation
 
 Do you currently keep track of your strength exercises in any way? What do you like and dislike about this method?
-*Notes page write 
-*Exercise category and then details for each set
-*Weight & amount of reps 
-*Rest time
+* Notes page write 
+* Exercise category and then details for each set
+* Weight & amount of reps 
+* Rest time
 
 Do you ever forget to track your exercises? 
-*Yes - busy gossiping with friend 
-*Bad mood/unmotivated / really tired
-*Don’t want to have the information 
-*Doesn’t always want to track bad results 
+* Yes - busy gossiping with friend 
+* Bad mood/unmotivated / really tired
+* Don’t want to have the information 
+* Doesn’t always want to track bad results 
 
 When do you track these exercises (while at gym/after gym etc.) and how long does it take? 
-*After or before sets (during rest period) 
-*Has a timer / stopwatch ongoing 
-*Usually on phone at the gym anyway so easy to write down 
-*Nice activity to do during rest periods 
-*Writing in notebook is to bro -y 
+* After or before sets (during rest period) 
+* Has a timer / stopwatch ongoing 
+* Usually on phone at the gym anyway so easy to write down 
+* Nice activity to do during rest periods 
+* Writing in notebook is to bro -y 
 
 What variables do you need to track for strength goals? (reps, weight, etc)  What mechanism 
-*are you currently using to track this?
-*Can I see how you track your strength exercises? (take a picture?)
-*Info from above 
+* are you currently using to track this?
+* Can I see how you track your strength exercises? (take a picture?)
+* Info from above 
 
 What issues do you face with tracking your strength goals?
-*Notes app is annoying because jumps 
-*Currently just one annotated list 
-*If it was on excel it would be easier 
-*Easier to compare or graph something 
-*Would be helpful to have a graph but might not want to see negative feedback 
+* Notes app is annoying because jumps 
+* Currently just one annotated list 
+* If it was on excel it would be easier 
+* Easier to compare or graph something 
+* Would be helpful to have a graph but might not want to see negative feedback 
 
 What happens when you don’t meet your goals?
-*Hasn’t been this stringent in the past about tracking
+* Hasn’t been this stringent in the past about tracking
 
 Why do you track your strength goals?
-*Don’t need to write them down because 
+* Don’t need to write them down because 
 
 Are your strength goals more long-term or short-term?  Why?
-*Don’t have solid long term goals except continuing going to the gym
-*Short term are the ones listed above
+* Don’t have solid long term goals except continuing going to the gym
+* Short term are the ones listed above
 
 Is there anything you can think of that would help you reach your goals?
-*Being less busy 
-*Getting 
-*Having someone to go with 
-*Thinks that keeping track of exercises is helpful for goals 
+* Being less busy 
+* Getting 
+* Having someone to go with 
+* Thinks that keeping track of exercises is helpful for goals 
 
 App?
-*Have looked at the apps and was going to get them but then got intimidated by them because of advertising 
+* Have looked at the apps and was going to get them but then got intimidated by them because of advertising 
 
 
 
