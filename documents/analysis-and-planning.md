@@ -104,6 +104,7 @@ After analysis, we decided that our application will provide users:
 * Calculate how much you should be lifting
 * Incorporate diet into tracking
 
+----
 
 ### Finance Tracking – David
 * David is a senior at Cornell University who is having a crisis because he is graduating soon.
@@ -129,6 +130,7 @@ After analysis, we decided that our application will provide users:
 * David wants to be reminded of his spending
 * Wants to save for the long-term
 
+----
 
 ### Social Media Use – Nicole
 * Nicole is female sophomore at Cornell majoring in Computer Science.
