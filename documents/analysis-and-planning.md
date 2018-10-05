@@ -29,9 +29,6 @@ We affinity diagramed our data to sort and narrow down information we gathered f
 
 ### Strength Tracking
 
-**Affinity Diagram**
-![diagram](images/fitness-affdiagram.jpg)
-
 From those wanting to track strength/fitness progress, we learned:
 1. Users follow pre-made workout plans throughout their workouts and log progress during and after sessions.
 2. Users mainly use text to record data through basic apps such as Notes or Excel.
@@ -40,25 +37,39 @@ From those wanting to track strength/fitness progress, we learned:
 		- Are not customizable
 		- Lack visuals (diagrams, photos, etc).
 
-### Finance Tracking
+**Affinity Diagram**
+![diagram](images/fitness-affdiagram.jpg)
 
-![diagram](images/finance-affdiagram.jpg)
+**Notes**
+![notes](images/fitness-notes.jpg)
+![notes](images/fitness-notes2.jpg)
+
+### Finance Tracking
 
 From those wanting to track everyday finances, we learned:
 1. Users *do* want to reduce spending, but many fail to do so because tracking finances takes time and effort.
 2. To check spending, users look at their bank statements.
 3. Users' overall goal is to gain financial independence.
 
+**Affinity Diagram**
+![diagram](images/finance-affdiagram.jpg)
+
+**Notes**
+![notes](images/finance-notes.jpg)
+
 
 ### Social Media Use
-
-![diagram](images/sm-affdiagram.jpg)
 
 From watching users use social media, we learned:
 1. When studying, users keep social media and academic tabs open at the same time on their laptop browswers.
 2. If somebody near the user opened social media or checked their phone, the user would do the same.
 3. Users check social media for a few minutes at a time, many times throughout the session. 
 
+**Affinity Diagram**
+![diagram](images/sm-affdiagram.jpg)
+
+**Notes**
+![notes](images/sm-notes.jpg)
 
 
 ## Value Propositions
