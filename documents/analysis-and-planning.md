@@ -30,7 +30,7 @@ We affinity diagramed our data to sort and narrow down information we gathered f
 ### Strength Tracking
 
 **Affinity Diagram**
-![diagram](images/fitness-ad.jpg)
+![diagram](images/fitness-affdiagram.jpg)
 
 From those wanting to track strength/fitness progress, we learned:
 1. Users follow pre-made workout plans throughout their workouts and log progress during and after sessions.
@@ -42,7 +42,7 @@ From those wanting to track strength/fitness progress, we learned:
 
 ### Finance Tracking
 
-![diagram](images/finance-ad.jpg)
+![diagram](images/finance-affdiagram.jpg)
 
 From those wanting to track everyday finances, we learned:
 1. Users *do* want to reduce spending, but many fail to do so because tracking finances takes time and effort.
@@ -52,7 +52,7 @@ From those wanting to track everyday finances, we learned:
 
 ### Social Media Use
 
-![diagram](images/sm-ad.jpg)
+![diagram](images/sm-affdiagram.jpg)
 
 From watching users use social media, we learned:
 1. When studying, users keep social media and academic tabs open at the same time on their laptop browswers.
