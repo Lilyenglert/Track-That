@@ -17,7 +17,7 @@ We conducted **user interviews** with students who want to reach *strength goals
 On the other hand, we conducted **field studies** with our users who wanted to *reduce time spent on social media*. We chose this method rather than an interview because users often do not meausre and are unaware of time they spend on social media. 
 
 ### Interviews
-Our interview questions and user responses are required in the following links:
+See our [interview questions](interviews/interview-protocol.md) and user responses in the following links:
 
 * [Strength Goals Interviews](interviews/fitness.md)
 * [Finance Goals Interviews](interviews/finance.md)
