@@ -3,8 +3,11 @@
 ## Brainstorming
 
 ## Sketches
+![sketch 1](images/group-sketch1.jpg)
+![sketch 2](images/group-sketch2.jpg)
 
 ## Prototyping
+![paper prototype](images/paper-prototype-1.png)
 
 ### Low-Fidelity Prototype
 
