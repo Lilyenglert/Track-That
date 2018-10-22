@@ -166,7 +166,7 @@ While he’s working out, John inputs the reps, weight, and sets of each exercis
 ### Finance – David
 David has a job at GreenStar where he earns $11 an hour. He doesn’t work many hours (8 per week) so his paychecks aren’t very heavy. He also gets paid every two weeks which means he is often anxiously waiting for payday.
 
-During the day, David has to choose where to go out for lunch. He is used to going to his favorite places which are pricey, but he checks his Tracker app to see if he can afford it today. The app tells him that he is very close to going over his weekly budget, so he chooses a cheaper, healthier alternative instead. 
+During the day, David has to choose where to go out for lunch. He is used to going to his favorite places which are pricey, but he has been trying to be more conscious of his spending. As he is deciding where to go to lunch, he opens his Tracker app to see how much he has been spending over the week. He looks at a progress line graph under his Lunch Spending tracker and sees that he has spent more than usual on lunch over the course of the week. He decides he has been spending too much money on lunch, so he chooses a cheaper spot for lunch instead.
 
 
 ### Social Media - Nicole
