@@ -175,10 +175,17 @@ Nicole uses Google Docs in Chrome to take notes. Although she is tempted to open
 
 ## Project Themes
 To avoid feature-creep, we have decided the following most important features for our tracker:
-* Customizability - allow users to determine what kind of data is being recorded
-* Data Visualization - offer users the option to organize and display their data in a multitude of ways
-* Responsiveness - create an interface that supports user needs on both mobile and desktop
-* Progress Feedback - incorporate reminders for support and goal reaching, along with preventative warnings
+* Customizability
+  * Users are allowed to define the behavior they want to track, choose the metrics that will be used to track it.
+  * Users can group behaviors into larger categories.
+* Data Organization 
+  * The app automatically generates a graphical representation of the user entered data.
+  * Organizes data into log entries and sorts chronologically.
+  * Supports ability to upload pictures and take notes.
+* Encouraging User Experience 
+  * Friendly and encouraging dialogue to keep users engaged. 
+  * Reminds user of goals. 
+
 
 
 
