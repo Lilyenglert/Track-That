@@ -24,7 +24,22 @@ To conduct our brainstorming, we aggregated ideas and conducted market research.
    * Allows entries
    * Sticky Notes/Google Keep	
    * Sticky Note per each separate topic 
-   * Can customize each sticky note 
+   * Can customize each sticky note
+
+### Inspiration
+We drew inspiration from pre-existing mobile and desktop applications where users have to keep track of information.
+
+![Apple Health](images/apple-health.png)
+![Mint Finance](images/mint.png)
+
+Asana Dashboard (Desktop)
+![Asana Project Management](images/asana-dashboard.png)
+
+Google Drive Folders
+![Google Drive](images/google-drive.png)
+
+Instagram Collections
+![Instagram Collection](images/ig-collections.png)
 
 ## Sketches
 ![sketch 1](images/group-sketch1.jpg)
