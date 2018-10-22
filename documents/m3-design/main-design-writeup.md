@@ -5,35 +5,26 @@
 To conduct our brainstorming, we aggregated ideas and conducted market research. Some of our raw ideas and mentions included concepts like:
 
  * Daily Dashboard
- * Like blackboard announcements 
- * Show targets 
- * Topics Grids
+   * Tile format 
+   * Each tile is expandable 
+   * Like blackboard announcements
  * Way to compartmentalize different kinds of things to track when you initially download the app 
- * Variables + subvariables 
- * Arrows to increment and decrement  
- * Sticky Notes/Google Keep	
- * Sticky Note per each separate topic 
- * Can customize each sticky note 
- * Visualizations	
- * Line Charts (weight use over time) 
- * Reminder toggle
- * User sets when to receive 
-
-### Inspiration
-We drew inspiration from pre-existing mobile and desktop applications where users have to keep track of information.
-
-![Apple Health](images/apple-health.png)
-![Mint Finance](images/mint.png)
-
-Asana Dashboard (Desktop)
-![Asana Project Management](images/asana-dashboard.png)
-
-Google Drive Folders
-![Google Drive](images/google-drive.png)
-
-Instagram Collections
-![Instagram Collection](images/ig-collections.png)
- 
+   * Topics Grids
+ * Can be used to track multiple things → Accessible toggle
+   * Variables + subvariables 
+ * Is customizable yet not complicated → Not too many options, or ability to add more options/fields
+   * Reminder toggle
+   * User sets when to receive 
+ * Visualizes quantitative data
+   * Line Charts (weight use over time) 
+ * Do we let them choose the chart (Bar, circle, line)?
+    * Increment/Decrement with arrows 
+    * Show targets 
+ * Something you can take notes with
+   * Allows entries
+   * Sticky Notes/Google Keep	
+   * Sticky Note per each separate topic 
+   * Can customize each sticky note 
 
 ## Sketches
 ![sketch 1](images/group-sketch1.jpg)
