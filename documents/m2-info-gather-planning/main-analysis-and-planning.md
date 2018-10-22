@@ -73,12 +73,14 @@ From watching users use social media, we learned:
 
 
 ## Value Propositions
-After analysis, we decided that our application will provide users: 
-* A method of tracking progress passively and without much overhead
-* A method to more easily visualize / manipulate quantitative data
-* A central hub that is customizable for use in different areas (ex. can track both eating and exercise in one place)
-* A solution that is easily accessible on preferred devices 
-* Consistent reminders to help users understand their progress
+Compared to alternatives, our application: 
+* Provides a way to keep all information relevant to tracking centralized in a single application.
+  * The tradeoff for this feature is that there are less activity-specific features.
+* Draws from tools and interfaces that people are already familiar with, so it will be easy to use.
+* Is more portable than a notebook, so users can track on the go!
+* Presents information in an organized and accessible user interface that minimizes the user’s time and energy that would normally be spent sorting raw data on their own.
+* Is better than doing nothing because our app guides users to think about their goals and lets them track their journey. By taking a few moments in their day to track, the user can feel more organized and like they are actively progressing.
+
 
 
 ## Personas
