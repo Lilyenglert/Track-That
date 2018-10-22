@@ -170,9 +170,10 @@ During the day, David has to choose where to go out for lunch. He is used to goi
 
 
 ### Social Media - Nicole
-Nicole is sitting in CS 2110 lecture on her laptop. It’s October and she’s nervous because her project grades so far were not up to her standards, and she has her first prelim coming up. 
+Nicole is sitting in Olin Library on her laptop. It’s October and she’s nervous because her CS 2110 project grades so far were not up to her standards, and she has her first prelim coming up. 
 
-Nicole uses Google Docs in Chrome to take notes. Although she is tempted to open all of her favorite social media websites in tabs next to her Doc, she refrains because her Tracking app notifies her how many social media minutes she has racked up so far, and that she is in class and should not be on those websites.
+After working on her project for a while, she decides to take a 15 minute break by scrolling through Facebook. She makes a note of the time, 4:00pm, and begins going through Facebook. All of a sudden Nicole checks her clock and sees its 4:45pm! She sadly opens her tracking app, opens her Facebook Tracker, and logs 45 minutes. 
+
 
 
 ## Project Themes
