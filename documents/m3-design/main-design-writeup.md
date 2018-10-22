@@ -26,6 +26,7 @@ To conduct our brainstorming, we aggregated ideas and conducted market research.
    * Sticky Note per each separate topic 
    * Can customize each sticky note
 
+
 ### Inspiration
 We drew inspiration from pre-existing mobile and desktop applications where users have to keep track of information.
 
@@ -36,24 +37,29 @@ Asana Dashboard (Desktop)
 ![Asana Project Management](images/asana-dashboard.png)
 
 Google Drive Folders
-![Google Drive](images/google-drive.png)
+![Google Drive](images/google-drive.PNG)
 
 Instagram Collections
-![Instagram Collection](images/ig-collections.png)
+![Instagram Collection](images/ig-collections.PNG)
+
 
 ## Sketches
 ![sketch 1](images/group-sketch1.jpg)
 ![sketch 2](images/group-sketch2.jpg)
 
+
 ## Prototyping
+
+### Paper Prototype
 ![paper prototype](images/paper-prototype-1.png)
+
 
 ### Low-Fidelity Prototype
 
 We tested our paper prototype with five people from our target group. 
 After testing, we found we need to:
 1. Improve the language of our app. 
-	- Our language of "categories" and "items" were ambiguous and our users were not sure of what to input. 
+	- Our language of "categories" and "items" were ambiguous and our users were not sure what to input. 
 	- The conversational style of our application was too robotic/formal.
 2. Add more navigational buttons, like "back" and "edit" buttons.
 3. Make the flow less heavy.
@@ -66,8 +72,16 @@ We also learned that users did not care that much about creating goals. They wer
 
 ![sketch 2](images/wireframes-med.png)
 
-
 ## Rationale
 
-## Revisions
+After user research and interface iterations, we decided on a flow that both utilizes friendly human language and reduces the number of steps necessary for functionaltiy. Specifically, we:
+1. Put all primary components visible at once on a dashboard, reducing the number of clicks/taps necessary to start tracking.
+	- We came to this format by paralleling the tracking to Google Drive, where "Collections" are folders and "Trackers" are files.
+2. Created a conversation between the user and interface.
+	- Instead of generic and robotic labels that would confuse the user, we ask the user questions to create trackers and input information.
+3. Simplified the information display.
+	- We found ourselves straying away from the MVP and adding unnecessary features. To meet our value propositions, we changed the "goals" feature from a numerical calculation to a simple notification.
 
+
+## Revisions
+We will complete revisions to Milestone 2 in class on Monday 10/22.
