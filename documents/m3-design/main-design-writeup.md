@@ -77,10 +77,12 @@ We also learned that users did not care that much about creating goals. They wer
 After user research and interface iterations, we decided on a flow that both utilizes friendly human language and reduces the number of steps necessary for functionaltiy. Specifically, we:
 1. Put all primary components visible at once on a dashboard, reducing the number of clicks/taps necessary to start tracking.
 	- We came to this format by paralleling the tracking to Google Drive, where "Collections" are folders and "Trackers" are files.
+	- Initially, a user would be required to create a "category" in order to create an "item". For example, they would have to create a larger category of "Fitness" to track "weight." We de-coupled this so that user can create "Trackers" without necessarily creating a "Collection," but can add to a collection if they choose. 
 2. Created a conversation between the user and interface.
 	- Instead of generic and robotic labels that would confuse the user, we ask the user questions to create trackers and input information.
+	- We tried to ask questions in our language, like "What do you want to track?" instead of just telling the user what to do to enforce that conversational tone. 
 3. Simplified the information display.
-	- We found ourselves straying away from the MVP and adding unnecessary features. To meet our value propositions, we changed the "goals" feature from a numerical calculation to a simple notification.
+	- Throughout the planning process, we found ourselves straying away from the MVP and adding unnecessary features. We were trying to figure out how to add a "goals" feature, but when thinking back to our users, none of our users specified that they wanted to track goals. They wanted to focus on progress. To meet our value propositions, we changed the "goals" feature from a numerical calculation to a simple notification with text that they could modify themselves and look at for moral support.
 
 
 ## Revisions
