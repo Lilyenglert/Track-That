@@ -18,6 +18,21 @@ To conduct our brainstorming, we aggregated ideas and conducted market research.
  * Line Charts (weight use over time) 
  * Reminder toggle
  * User sets when to receive 
+
+### Inspiration
+We drew inspiration from pre-existing mobile and desktop applications where users have to keep track of information.
+
+![Apple Health](images/apple-health.png)
+![Mint Finance](images/mint.png)
+
+Asana Dashboard (Desktop)
+![Asana Project Management](images/asana-dashboard.png)
+
+Google Drive Folders
+![Google Drive](images/google-drive.png)
+
+Instagram Collections
+![Instagram Collection](images/ig-collections.png)
  
 
 ## Sketches
@@ -29,12 +44,16 @@ To conduct our brainstorming, we aggregated ideas and conducted market research.
 
 ### Low-Fidelity Prototype
 
-* We tested our paper prototype with five people from our target group
-* After testing our low-fi prototype, we found we need to improve the language of our app. For example, our language of "categories" and "items" were ambiguous and our users were not sure of what to input. 
-* The conversational style of our application was too robotic/formal
-* We realized we needed to add more navigational buttons, like the "back" button and "edit" button
-* Users felt like it took too many clicks to actually input something to track. They would have to create a category and then an item, and then an entry. They would rather do this in one click
-* We learned that users weren't too fixed on creating goals. They were satisfied with tracking progress and inputting data 
+We tested our paper prototype with five people from our target group. 
+After testing, we found we need to:
+1. Improve the language of our app. 
+	- Our language of "categories" and "items" were ambiguous and our users were not sure of what to input. 
+	- The conversational style of our application was too robotic/formal.
+2. Add more navigational buttons, like "back" and "edit" buttons.
+3. Make the flow less heavy.
+	- Users felt it took too many clicks to input tracking. They had to create a category, create an item, and then an entry.
+
+We also learned that users did not care that much about creating goals. They were satisfied with tracking progress and inputting data, but creating goals to meet were not as important.
 
 
 ### Wireframes
