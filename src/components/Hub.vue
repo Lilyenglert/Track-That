@@ -1,28 +1,30 @@
 <template>
 <div id="Home">
-  <keep-alive>
     <transition name="out-in">
-      <component :is='currentComponent' @changeComponent='changeComp'></component>
+      <keep-alive>
+        <component :is='currentComponent' @changeComponent='changeComp'></component>
+      </keep-alive>
     </transition>
-  </keep-alive>
 </div>
 </template>
 
 <script>
-import View1 from './View1.vue'
-import View2 from './View2.vue'
-import View3 from './View3.vue'
+import HomeScreen from './HomeScreen.vue'
+import AddTrackerScreen from './AddTrackerScreen.vue'
+import ViewTrackerScreen from './ViewTrackerScreen.vue'
+import ScreenTemplate from './ScreenTemplate.vue'
 export default {
   data () {
     return {
-      currentComponent: 'View1'
+      currentComponent: 'HomeScreen'
     }
   },
-  name: 'Home',
+  name: 'Hub',
   components: {
-    View1,
-    View2,
-    View3
+    HomeScreen,
+    AddTrackerScreen,
+    ViewTrackerScreen,
+    ScreenTemplate
   },
   methods: {
     changeComp (component) {

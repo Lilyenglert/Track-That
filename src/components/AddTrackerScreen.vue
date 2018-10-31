@@ -8,7 +8,7 @@
     <p>WIP</p>
     <p>Add tracker to collection?</p>
     <p>WIP</p>
-    <button v-on:click="emitChangeScreen('View1')">Create Tracker</button>
+    <button v-on:click="emitChangeScreen('HomeScreen')">Create Tracker</button>
   </div>
 </template>
 

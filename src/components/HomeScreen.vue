@@ -1,14 +1,19 @@
 <template>
   <div>
-    <h2>New Collection</h2>
-    <p><input></p>
-    <button v-on:click="emitChangeScreen('View1')">Create</button>
+    <h1>Hi Liam!</h1>
+    <h2>Notifications</h2>
+    <p>None yet!</p>
+    <h2>Trackers</h2>
+    <button v-on:click="emitChangeScreen('ViewTrackerScreen')">Coffee Budget</button>
+    <button v-on:click="emitChangeScreen('AddTrackerScreen')">Create New +</button>
+    <h2>Collections</h2>
+    <button v-on:click="emitChangeScreen('ScreenTemplate')">Create New +</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'View3',
+  name: 'HomeScreen',
   methods: {
     emitChangeScreen (component) {
       this.$emit('changeComponent', component)
