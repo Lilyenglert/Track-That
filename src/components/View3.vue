@@ -1,20 +1,14 @@
 <template>
   <div>
-    <p>What do you want to track?</p>
-    <p>Tracker Name: <input></p>
-    <p>What units are we tracking?</p>
-    <p>Tracker Units: <input></p>
-    <p>Do you have any goals?</p>
-    <p>WIP</p>
-    <p>Add tracker to collection?</p>
-    <p>WIP</p>
-    <button v-on:click="emitChangeScreen('View1')">Create Tracker</button>
+    <h2>New Collection</h2>
+    <p><input></p>
+    <button v-on:click="emitChangeScreen('View1')">Create</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'View2',
+  name: 'View3',
   methods: {
     emitChangeScreen (component) {
       this.$emit('changeComponent', component)
