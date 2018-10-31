@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>New Collection</h2>
+    <h2>Screen Template</h2>
     <p><input></p>
-    <button v-on:click="emitChangeScreen('HomeScreen')">Create</button>
+    <button v-on:click="emitChangeScreen('HomeScreen')">Back</button>
   </div>
 </template>
 

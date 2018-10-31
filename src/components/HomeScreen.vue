@@ -7,7 +7,7 @@
     <button v-on:click="emitChangeScreen('ViewTrackerScreen')">Coffee Budget</button>
     <button v-on:click="emitChangeScreen('AddTrackerScreen')">Create New +</button>
     <h2>Collections</h2>
-    <button v-on:click="emitChangeScreen('ScreenTemplate')">Create New +</button>
+    <button v-on:click="emitChangeScreen('ScreenTemplate')">See Template</button>
   </div>
 </template>
 
