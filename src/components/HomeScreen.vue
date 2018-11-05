@@ -4,21 +4,17 @@
     <h2>Notifications</h2>
     <p>None yet!</p>
     <h2>Trackers</h2>
-    <button v-on:click="emitChangeScreen('ViewTrackerScreen')">Coffee Budget</button>
-    <button v-on:click="emitChangeScreen('AddTrackerScreen')">Create New +</button>
+    <router-link to="/view">Coffee Budget</router-link>
+    <p></p>
+    <router-link to="/add">Create New +</router-link>
     <h2>Collections</h2>
-    <button v-on:click="emitChangeScreen('ScreenTemplate')">See Template</button>
+    <router-link to="/template">Template</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomeScreen',
-  methods: {
-    emitChangeScreen (component) {
-      this.$emit('changeComponent', component)
-    }
-  }
+  name: 'HomeScreen'
 }
 </script>
 

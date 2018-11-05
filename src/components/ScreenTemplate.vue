@@ -2,18 +2,13 @@
   <div>
     <h2>Screen Template</h2>
     <p><input></p>
-    <button v-on:click="emitChangeScreen('HomeScreen')">Back</button>
+    <router-link to="/">Back</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ScreenTemplate',
-  methods: {
-    emitChangeScreen (component) {
-      this.$emit('changeComponent', component)
-    }
-  }
+  name: 'ScreenTemplate'
 }
 </script>
 

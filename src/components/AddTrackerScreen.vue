@@ -8,13 +8,13 @@
     <p>WIP</p>
     <p>Add tracker to collection?</p>
     <p>WIP</p>
-    <button v-on:click="emitChangeScreen('HomeScreen')">Create Tracker</button>
+    <router-link to="/">Create Tracker</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'View2',
+  name: 'AddTrackerScreen',
   methods: {
     emitChangeScreen (component) {
       this.$emit('changeComponent', component)
