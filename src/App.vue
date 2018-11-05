@@ -1,28 +1,44 @@
+// single file componenet. 
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="changed"/>
+  <div>
+   <create-tracker></create-tracker>
+    <access-tracker></access-tracker>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+<script>
+  import CreateTracker from './components/CreateTracker.vue'
+  import AccessTracker from './components/AccessTracker.vue'
+
+  export default {
+    name: 'app',
+    components: {
+      CreateTracker,
+      AccessTracker
+      },
+    }
+  
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html,body {
+    /* font-family: "Avenir", Helvetica, Arial, sans-serif; */
+    font-family: 'proxima-nova', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    height:100vh;
+    padding:0;
+    overflow:hidden;
+    margin: 0;
 }
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
