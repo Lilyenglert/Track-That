@@ -1,6 +1,29 @@
 <template>
   <div>
-    <h2>Coffee Budget Tracker</h2>
+    <v-app>
+    <v-toolbar id="titlebar">
+      <v-btn id="backButton">Back</v-btn>
+      <v-toolbar-title>Coffee Spending</v-toolbar-title>
+      <v-btn id="editButton">edit</v-btn>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+      </v-toolbar-items>
+    </v-toolbar>
+
+    <h3>Goals</h3>
+    <v-card id="goals_box">
+    <h4>Spend under 10 dollars per week</h4>
+    </v-card>
+    <h3>Progress</h3>
+    <v-card id="graph_box">
+    <h4>The Graph will go here</h4>
+    </v-card>
+    <h3>Log</h3>
+    <v-card id="log_box">
+    <h4>The Graph will go here</h4>
+    </v-card>
+    </v-app>
+
     <label for="value">Test:</label>
     <input type="number" id="gValue" name="gValue" value="0"/>
     <button v-on:click="addValue()">Submit</button>
