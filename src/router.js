@@ -4,6 +4,7 @@ import HomeScreen from './components/HomeScreen.vue'
 import AddTrackerScreen from './components/AddTrackerScreen.vue'
 import ViewTrackerScreen from './components/ViewTrackerScreen.vue'
 import ScreenTemplate from './components/ScreenTemplate.vue'
+import DataDemoScreen from './components/DataDemoScreen.vue'
 
 Vue.use(Router)
 
@@ -22,7 +23,7 @@ export default new Router({
       component: AddTrackerScreen
     },
     {
-      path: '/view',
+      path: '/view/:tracker',
       name: 'ViewTrackerScreen',
       component: ViewTrackerScreen
     },
@@ -30,6 +31,11 @@ export default new Router({
       path: '/template',
       name: 'Template',
       component: ScreenTemplate
+    },
+    {
+      path: '/data',
+      name: 'DataDemoScreen',
+      component: DataDemoScreen
     }
   ]
 })

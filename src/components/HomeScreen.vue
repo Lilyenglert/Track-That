@@ -4,9 +4,11 @@
     <h2>Notifications</h2>
     <p>None yet!</p>
     <h2>Trackers</h2>
-    <router-link to="/view">Coffee Budget</router-link>
+    <router-link to="/view/Coffee">Coffee Budget</router-link>
     <p></p>
     <router-link to="/add">Create New +</router-link>
+    <p></p>
+    <router-link to="/data">Data Demo</router-link>
     <h2>Collections</h2>
     <router-link to="/template">Template</router-link>
   </div>

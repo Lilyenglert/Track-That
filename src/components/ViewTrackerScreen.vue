@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Coffee Budget Tracker</h2>
+    <h2>{{ $route.params.tracker }} Tracker</h2>
     <label for="value">Test:</label>
     <input type="number" id="gValue" name="gValue" value="0"/>
     <button v-on:click="addValue()">Submit</button>
