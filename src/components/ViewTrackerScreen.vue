@@ -1,16 +1,35 @@
 <template>
   <div>
     <h2>Coffee Budget Tracker</h2>
-      <button v-on:click="emitChangeScreen('HomeScreen')">Back</button>
+    <label for="value">Test:</label>
+    <input type="number" id="gValue" name="gValue" value="0"/>
+    <button v-on:click="addValue()">Submit</button>
+    <Chart></Chart>
+    <router-link to="/">Back</router-link>
   </div>
 </template>
 
 <script>
+import Chart from './Chart.vue'
+import Vue from 'vue'
+import Storage from 'vue-web-storage'
+import EventBus from '../eventBus.js'
+Vue.use(Storage)
 export default {
-  name: 'Coffee Budget Tracker',
+  name: 'ViewTrackerScreen',
+  components: {
+    Chart
+  },
   methods: {
-    emitChangeScreen (component) {
-      this.$emit('changeComponent', component)
+    addValue () {
+      const inputNum = parseFloat(document.getElementById('gValue').value)
+      if (Vue.$localStorage.get('gValues') == null) {
+        Vue.$localStorage.set('gValues', [])
+      }
+      var array = Vue.$localStorage.get('gValues')
+      array.push(inputNum)
+      Vue.$localStorage.set('gValues', array)
+      EventBus.$emit('refreshGraph')
     }
   }
 }

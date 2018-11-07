@@ -1,21 +1,25 @@
 <template>
   <div id="app">
-    <Hub></Hub>
+    <transition name="out-in">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
-<script>
-import Hub from './components/Hub.vue'
-
-export default {
-  name: 'app',
-  components: {
-    Hub
-  }
-}
-</script>
-
 <style>
+.out-in-enter-active {
+        transition-delay: 0.4s;
+        transition-duration: 0.4s;
+    }
+    .out-in-enter {
+        transition-delay: 0.4s;
+        transition-duration: 0.4s;
+        opacity: 0;
+    }
+    .out-in-leave-active {
+        transition: all 0.4s;
+        opacity: 0;;
+    }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
