@@ -13,6 +13,7 @@
 import Chart from './Chart.vue'
 import Vue from 'vue'
 import Storage from 'vue-web-storage'
+import EventBus from '../eventBus.js'
 Vue.use(Storage)
 export default {
   name: 'ViewTrackerScreen',
@@ -28,7 +29,7 @@ export default {
       var array = Vue.$localStorage.get('gValues')
       array.push(inputNum)
       Vue.$localStorage.set('gValues', array)
-      this.$emit('refreshGraph')
+      EventBus.$emit('refreshGraph')
     }
   }
 }

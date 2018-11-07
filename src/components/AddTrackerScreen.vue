@@ -14,12 +14,7 @@
 
 <script>
 export default {
-  name: 'AddTrackerScreen',
-  methods: {
-    emitChangeScreen (component) {
-      this.$emit('changeComponent', component)
-    }
-  }
+  name: 'AddTrackerScreen'
 }
 </script>
 
