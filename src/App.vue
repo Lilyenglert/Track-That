@@ -1,5 +1,13 @@
 <template>
   <div id="app">
+    <v-toolbar dark color="primary">
+      <v-btn icon>
+        <v-icon>arrow_back</v-icon>
+      </v-btn>
+      <v-toolbar-title class="white--text">{page title}</v-toolbar-title>
+      <!-- <router-view name="Home">Toolbar</router-view> -->
+    </v-toolbar>
+
     <transition name="out-in">
       <router-view/>
     </transition>
@@ -18,10 +26,10 @@
     }
     .out-in-leave-active {
         transition: all 0.4s;
-        opacity: 0;;
+        opacity: 0;
     }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
