@@ -10,6 +10,8 @@
     <p></p>
     <router-link to="/data">Data Demo</router-link>
     <h2>Collections</h2>
+    <router-link to="/collection">Create New +</router-link>
+    <p></p>
     <router-link to="/template">Template</router-link>
   </div>
 </template>

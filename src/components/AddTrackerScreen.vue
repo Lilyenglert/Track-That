@@ -10,7 +10,7 @@
     <p>Add tracker to collection? (Optional)</p>
     <p>
       <select v-model="NewTrackerCollection">
-        <option>Budget</option>
+        <option v-for="collection in collections" v-bind:key="collection.id">{{collection.name}}</option>
       </select>
     </p>
     <button @click="add">Add Tracker</button>
@@ -23,9 +23,14 @@ export default {
   name: 'AddTrackerScreen',
   data () {
     return {
+      collections: [{
+        name: null
+      }],
       trackers: [{
         name: null,
-        unit: []
+        unit: [],
+        goal: null,
+        collection: null
       }],
       newTrackerName: null,
       newTrackerUnit: null,
@@ -34,6 +39,13 @@ export default {
     }
   },
   mounted () {
+    if (localStorage.getItem('collections')) {
+      try {
+        this.collections = JSON.parse(localStorage.getItem('collections'))
+      } catch (e) {
+        localStorage.removeItem('collections')
+      }
+    }
     if (localStorage.getItem('trackers')) {
       try {
         this.trackers = JSON.parse(localStorage.getItem('trackers'))
