@@ -16,57 +16,54 @@
   </p>
 </div>
 </template>
- 
+
 <script>
 export default {
-  data(){
+  data () {
     return {
-        trackers: [{
-          name: null,
-          unit: []
-        }
-        ],
-        newTrackerName: null,
-        newTrackerUnit: null
+      trackers: [{
+        name: null,
+        unit: []
+      }],
+      newTrackerName: null,
+      newTrackerUnit: null
     }
   },
-  mounted() {
+  mounted () {
     if (localStorage.getItem('trackers')) {
       try {
-        this.trackers = JSON.parse(localStorage.getItem('trackers'));
-      } catch(e) {
-        localStorage.removeItem('trackers');
+        this.trackers = JSON.parse(localStorage.getItem('trackers'))
+      } catch (e) {
+        localStorage.removeItem('trackers')
       }
     }
   },
   methods: {
-    add() {
+    add () {
       // ensure they actually typed something
       if (!this.newTrackerName) {
-        return;
+        return
       }
       if (!this.newTrackerUnit) {
-        return;
+        return
       }
-      
-    var trackerEntry = {
-        "name" : this.newTrackerName,
-         "unit": this.newTrackerUnit,
-    };
-
-      //this.trackers.push(trackerEntry);
-      this.trackers.push(trackerEntry);
-      this.newTrackerName = '';
-      this.newTrackerUnit = '';
-      this.save();
+      var trackerEntry = {
+        'name': this.newTrackerName,
+        'unit': this.newTrackerUnit
+      }
+      // this.trackers.push(trackerEntry);
+      this.trackers.push(trackerEntry)
+      this.newTrackerName = ''
+      this.newTrackerUnit = ''
+      this.save()
     },
-    remove(x) {
-      this.trackers.splice(x, 1);
-      this.save();
+    remove (x) {
+      this.trackers.splice(x, 1)
+      this.save()
     },
-    save() {
-      const parsed = JSON.stringify(this.trackers);
-      localStorage.setItem('trackers', parsed);
+    save () {
+      const parsed = JSON.stringify(this.trackers)
+      localStorage.setItem('trackers', parsed)
     }
   }
 }

@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
     <v-app>
     <v-toolbar id="titlebar">
       <v-btn id="backButton">Back</v-btn>
@@ -24,6 +25,9 @@
     </v-card>
     </v-app>
 
+=======
+    <h2>{{ $route.params.tracker }} Tracker</h2>
+>>>>>>> liamScreensRouter
     <label for="value">Test:</label>
     <input type="number" id="gValue" name="gValue" value="0"/>
     <button v-on:click="addValue()">Submit</button>
