@@ -19,6 +19,7 @@ export default {
 
        entries: [
        {
+         name: null,
          date: null, 
          value:null,
          unit:null}
@@ -51,6 +52,7 @@ export default {
     }
 
     var newEntryInput = {
+      "name": this.currentTrackerName,
         "date" : new Date,
         "value": 7,
         "unit": this.currentTrackerUnits
