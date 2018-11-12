@@ -1,22 +1,26 @@
+// single file componenet. 
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <transition name="out-in">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
-</script>
-
 <style>
+.out-in-enter-active {
+        transition-delay: 0.4s;
+        transition-duration: 0.4s;
+    }
+    .out-in-enter {
+        transition-delay: 0.4s;
+        transition-duration: 0.4s;
+        opacity: 0;
+    }
+    .out-in-leave-active {
+        transition: all 0.4s;
+        opacity: 0;;
+    }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,4 +29,12 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
