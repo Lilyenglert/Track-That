@@ -7,6 +7,10 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 Vue.use(Vuetify)
 
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+
+Vue.use(Vuetify)
 Vue.config.productionTip = false
 
 new Vue({
