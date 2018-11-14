@@ -10,51 +10,52 @@
     <p><router-link to="/add">Create New +</router-link></p>
     <p><router-link to="/data">Data Demo</router-link></p>
     <h2>Collections</h2>
-    <div v-for="collection in collections" v-bind:key="collection.id">
-      <p><router-link to="/collectionView/1/Budget">{{collection.name}}</router-link></p>
-    </div>
-    <p><router-link to="/collection">Create New +</router-link></p>
-    <p><router-link to="/template">Template</router-link></p>
+    <router-link to="/collection">Create New +</router-link>
+    <p></p>
+    <router-link to="/template">Template</router-link>
+    <p></p>
+    <router-link to="/entry">Entry</router-link>
   </div>
 </template>
 
 <script>
-import Notifications from './Notifications.vue'
 export default {
-  name: 'HomeScreen',
-  components: {
-    Notifications
-  },
-  data () {
-    return {
-      collections: [{
-        name: null
-      }],
+  data(){
+    return{
       trackers: [{
+        id: null,
+        path: null, 
         name: null,
         unit: [],
         goal: null,
         collection: null
-      }]
+      }], 
+       collections: [{
+        name: null
+      }],
+    name: 'HomeScreen'
     }
   },
-  mounted () {
-    if (localStorage.getItem('collections')) {
-      try {
-        this.collections = JSON.parse(localStorage.getItem('collections'))
-      } catch (e) {
-        localStorage.removeItem('collections')
-      }
-    }
-    if (localStorage.getItem('trackers')) {
-      try {
-        this.trackers = JSON.parse(localStorage.getItem('trackers'))
-      } catch (e) {
-        localStorage.removeItem('trackers')
-      }
-    }
+   mounted() {
+    this.getLocal();
+  },
+  methods:{
+  getLocal()
+  {
+    this.trackers = JSON.parse(localStorage.getItem('trackers'));
+    this.collections = JSON.parse(localStorage.getItem('collections'));
+    console.log(this.trackers);
+    console.log(this.collections);
   }
 }
+  
+}
+
+let colors = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#df5c46'];
+let randIndex = Math.floor(Math.random() * (colors.length + 1));
+
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

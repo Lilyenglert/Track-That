@@ -22,11 +22,13 @@ export default {
   data () {
     return {
       trackers: [{
+        id: null,
         name: null,
         unit: []
       }],
       newTrackerName: null,
-      newTrackerUnit: null
+      newTrackerUnit: null, 
+      trackerID: 0
     }
   },
   mounted () {
@@ -48,13 +50,14 @@ export default {
         return
       }
       var trackerEntry = {
+        'id': this.trackerID,
         'name': this.newTrackerName,
         'unit': this.newTrackerUnit
       }
       // this.trackers.push(trackerEntry);
       this.trackers.push(trackerEntry)
-      this.newTrackerName = ''
-      this.newTrackerUnit = ''
+      cleanTrackerValues();
+      
       this.save()
     },
     remove (x) {
@@ -64,7 +67,14 @@ export default {
     save () {
       const parsed = JSON.stringify(this.trackers)
       localStorage.setItem('trackers', parsed)
+    },
+    cleanTrackerValues()
+    {
+      this.newTrackerName = ''
+      this.newTrackerUnit = ''
+      this.trackerID = trackerID++;
     }
-  }
+ 
+ }
 }
 </script>

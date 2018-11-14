@@ -1,0 +1,91 @@
+p {
+    font-size: 18px;
+}
+
+/* overriding vue container class */
+.container {
+    padding: 24px 0;
+}
+
+@media only screen and (max-width: 959px) {
+    .container {
+        padding: 16px 0;
+    }
+}
+
+/* ###### HOMESCREEN.VUE ###### */
+
+/* content section */
+.inner {
+    padding: 5%;
+    text-align: left;
+}
+
+.greeting {
+    color: #DF5C46;
+}
+
+.caption {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* 
+tracker and collection sections
+ */
+.overflow {
+    overflow: scroll;
+}
+
+.section {
+    padding: 4%;
+    border-bottom: solid lightgray .5px;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.right {
+    float: right;
+}
+
+.add-button {
+    padding: 0 10px;
+    color: #DF5C46;
+    /* filter: drop-shadow(1px 1px 3px gray); */
+}
+
+
+/* 
+stuff for boxes on home page 
+*/
+.box-container {
+    text-align: center;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.box {
+    height: 130px;
+    width: 130px;
+    display: inline-table;
+    vertical-align: middle;
+
+    margin: 20px 5%;
+    margin-left: 0;
+    background-color: black;
+    border-radius: 10px;
+    filter: drop-shadow(1px 1px 3px gray);
+}
+
+.box a {
+    color: white;
+    text-decoration: none;
+}
+
+.box-text {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+}
