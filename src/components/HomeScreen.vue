@@ -3,12 +3,14 @@
     
     <div class='section'>
       <h1 class='greeting'>Hi, Liam!</h1>
-      <p class='caption'>It's a beautiful day to achieve your goals.</p>
+      <p class='message'>It's a beautiful day to achieve your goals.</p>
     </div>
     <div class='section'>
       <div class='section-title'>
         <h1 class='inline-block'>Trackers</h1>
-        <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
+        <v-btn fab dark small color="#DF5C46">
+          <v-icon>add</v-icon>
+        </v-btn>
         <p class='inline-block right'><i>edit</i></p>
       </div>
 
@@ -31,7 +33,9 @@
     </div>
     <div class='section'>
       <h1 class='inline-block'>Collections</h1>
-      <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
+      <v-btn fab dark small color="#DF5C46">
+        <v-icon>add</v-icon>
+      </v-btn>
       <p class='inline-block right'><i>edit</i></p>
       <!-- <router-link to="/template">Template</router-link> -->
 

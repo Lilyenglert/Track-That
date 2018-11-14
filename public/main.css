@@ -25,7 +25,7 @@ p {
     color: #DF5C46;
 }
 
-.caption {
+.message {
     margin: 10px 0;
     font-size: 18px;
 }
@@ -56,6 +56,14 @@ tracker and collection sections
     /* filter: drop-shadow(1px 1px 3px gray); */
 }
 
+/* overriding vuetify button */
+.v-btn--floating.v-btn--small {
+    padding: 0;
+    margin-bottom: 18px;
+    margin-left: 10px;
+    height: 25px;
+    width: 25px;
+}
 
 /* 
 stuff for boxes on home page 
