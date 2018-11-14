@@ -1,30 +1,16 @@
 <template>
   <div>
-    <h1>Hi Liam!</h1>
-    <h2>Notifications</h2>
-    <p>None yet!</p>
-    <h2>Trackers</h2>
-    <div v-for="tracker in trackers" v-bind:key="tracker.id">
+    <h2>{{ $route.params.collection }} Collection</h2>
+    <div v-for="tracker in filterTrackers" v-bind:key="tracker.id">
       <p><router-link to="/view/1/Coffee">{{tracker.name}}</router-link></p>
     </div>
-    <p><router-link to="/add">Create New +</router-link></p>
-    <p><router-link to="/data">Data Demo</router-link></p>
-    <h2>Collections</h2>
-    <div v-for="collection in collections" v-bind:key="collection.id">
-      <p><router-link to="/collectionView/1/Budget">{{collection.name}}</router-link></p>
-    </div>
-    <p><router-link to="/collection">Create New +</router-link></p>
-    <p><router-link to="/template">Template</router-link></p>
+    <router-link to="/">Back</router-link>
   </div>
 </template>
 
 <script>
-import Notifications from './Notifications.vue'
 export default {
-  name: 'HomeScreen',
-  components: {
-    Notifications
-  },
+  name: 'ScreenTemplate',
   data () {
     return {
       collections: [{
@@ -36,6 +22,13 @@ export default {
         goal: null,
         collection: null
       }]
+    }
+  },
+  computed: {
+    filterTrackers: function () {
+      return this.trackers.filter(function (tracker) {
+        return tracker.collection === 'Budget'
+      })
     }
   },
   mounted () {
