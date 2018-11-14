@@ -36,7 +36,7 @@
 
         <div class='box-container'>
           <div class = 'box' v-for="collection in collections" v-bind:key="collection.id">
-                  <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
+                  <router-link to="/collection" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
           </div>
 
         </div>

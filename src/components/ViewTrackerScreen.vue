@@ -36,7 +36,7 @@
         <v-container>
           <h2>Goals</h2>
           <v-card flat="true">
-           <p id="goalMessage">Spend under 10 dollars per week</p>
+           <p id="goalMessage"></p>
           </v-card>
         </v-container>
         <v-container>
@@ -109,6 +109,9 @@ export default {
   components: {
     Chart
   },
+  mounted(){
+
+  }, 
   methods: {
     addValue () {
       const inputNum = parseFloat(document.getElementById('gValue').value)
