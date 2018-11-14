@@ -18,10 +18,9 @@ export default {
   name: 'AddCollectionScreen',
   data () {
     return {
-      collections: [{
-        name: null
-      }],
-      newCollectionName: null
+      collections: [],
+      newCollectionName: null,
+      newCollectionPath: null
     }
   },
   mounted () {
@@ -40,9 +39,10 @@ export default {
         return
       }
       var trackerEntry = {
-        'name': this.newCollectionName
+        'name': this.newCollectionName,
+        'path' : '/collectionView/' + this.newCollectionName + '/',
       }
-      // this.trackers.push(trackerEntry);
+      if(this.collections)
       this.collections.push(trackerEntry)
       this.newCollectionName = ''
       this.save()

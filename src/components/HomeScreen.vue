@@ -1,25 +1,55 @@
 <template>
-  <div>
-    <h1>Hi Liam!</h1>
-    <h2>Notifications</h2>
-    <p>None yet!</p>
-    <h2>Trackers</h2>
-    <div v-for="tracker in trackers" v-bind:key="tracker.id">
-      <p><router-link to="/view/1/Coffee">{{tracker.name}}</router-link></p>
+  <div class='inner'>
+    
+    <div class='section'>
+      <h1 class='greeting'>Hi, Liam!</h1>
+      <p class='caption'>It's a beautiful day to achieve your goals.</p>
+      <div v-for="tracker in trackers" v-bind:key="tracker.id">
+        <p class='caption'>{{tracker.goal}}</p>
+      </div>         
     </div>
-    <p><router-link to="/add">Create New +</router-link></p>
-    <p><router-link to="/data">Data Demo</router-link></p>
-    <h2>Collections</h2>
-    <router-link to="/collection">Create New +</router-link>
-    <p></p>
-    <router-link to="/template">Template</router-link>
-    <p></p>
-    <router-link to="/entry">Entry</router-link>
+
+    <div class='section'>
+      <div class='section-title'>
+        <h1 class='inline-block'>Trackers</h1>
+        <router-link to="/add">
+          <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
+        </router-link>
+        <p class='inline-block right'><i>edit</i></p>
+      </div>
+
+      <!-- vanilla html/css -->
+      <div class='box-container'>
+            <div class = 'box' v-for="tracker in trackers" v-bind:key="tracker.id">
+                  <router-link :to="tracker.path" class='box-text' style='border-radius:10px;background-color:#5c46df;' >{{tracker.name}}</router-link>
+            </div>
+      </div> 
+      </div>
+    
+    <div class='section'>
+      <h1 class='inline-block'>Collections</h1>
+      <router-link to="/collection">
+        <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
+      </router-link>
+      <p class='inline-block right'><i>edit</i></p>
+
+        <div class='box-container'>
+          <div class = 'box' v-for="collection in collections" v-bind:key="collection.id">
+                  <router-link :to="collection.path" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
+          </div>
+        </div>
+      <!--<button @click="showModal">Open Popup</button>
+      <CollectionPopup v-show="isPopupVisible" @close="closeModal"/>!-->
+    </div>
   </div>
 </template>
 
 <script>
+import CollectionPopup from './CollectionPopup.vue'
 export default {
+  components: {
+    CollectionPopup
+  },
   data(){
     return{
       trackers: [{
@@ -33,13 +63,20 @@ export default {
        collections: [{
         name: null
       }],
-    name: 'HomeScreen'
+    name: 'HomeScreen',
+    isPopupVisible: false
     }
   },
    mounted() {
     this.getLocal();
   },
   methods:{
+    showModal() {
+        this.isPopupVisible = true;
+      },
+      closeModal() {
+        this.isPopupVisible = false;
+      },
   getLocal()
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));

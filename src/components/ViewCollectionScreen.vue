@@ -1,8 +1,21 @@
 <template>
   <div>
     <h2>{{ $route.params.collection }} Collection</h2>
-    <div v-for="tracker in filterTrackers" v-bind:key="tracker.id">
-      <p><router-link to="/view/1/Coffee">{{tracker.name}}</router-link></p>
+    <div class='section'>
+      <div class='section-title'>
+        <h1 class='inline-block'>Trackers</h1>
+        <router-link to="/add">
+          <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
+        </router-link>
+        <p class='inline-block right'><i>edit</i></p>
+      </div>
+
+      <!-- vanilla html/css -->
+      <div class='box-container'>
+            <div class = 'box' v-for="tracker in filterTrackers($route.params.collection)" v-bind:key="tracker.id">
+                  <router-link :to="tracker.path" class='box-text' style='border-radius:10px;background-color:#5c46df;' >{{tracker.name}}</router-link>
+            </div>
+      </div> 
     </div>
     <router-link to="/">Back</router-link>
   </div>
@@ -13,6 +26,7 @@ export default {
   name: 'ScreenTemplate',
   data () {
     return {
+
       collections: [{
         name: null
       }],
@@ -21,13 +35,13 @@ export default {
         unit: [],
         goal: null,
         collection: null
-      }]
+      }],
     }
   },
-  computed: {
-    filterTrackers: function () {
+  methods: {
+    filterTrackers: function (currentCollection) {
       return this.trackers.filter(function (tracker) {
-        return tracker.collection === 'Budget'
+        return tracker.collection === currentCollection
       })
     }
   },

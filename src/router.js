@@ -31,7 +31,7 @@ export default new Router({
       component: ViewTrackerScreen
     },
     {
-      path: '/collectionView/:id/:collection',
+      path: '/collectionView/:collection',
       name: 'ViewCollectionScreen',
       component: ViewCollectionScreen
     },
