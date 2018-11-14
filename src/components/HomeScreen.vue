@@ -6,6 +6,7 @@
     <div class='content'>
       <div class='section'>
       <h2 class='greeting'>Hi, Liam!</h2>
+      <!-- STEPH HARDCODED MESSAGE -->
       <p class='message'>It's a beautiful day to achieve your goals.</p>
     </div>
     <div class='section'>
@@ -17,7 +18,7 @@
         <p class='inline-block right'><i>edit</i></p>
       </div>
 
-      <!-- vanilla html/css -->
+      <!-- STEPH HARDCODED STUFF -->
       <div class='box-container'>
           <div class='box'>
             <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#5c46df;'>Coffee Budget</router-link>
@@ -40,8 +41,8 @@
         <v-icon>add</v-icon>
       </v-btn>
       <p class='inline-block right'><i>edit</i></p>
-      <!-- <router-link to="/template">Template</router-link> -->
 
+      <!-- STEPH HARDCODED STUFF -->
       <div class='box-container'>
           <div class='box'>
             <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#df5c46'>Food Stuff</router-link>

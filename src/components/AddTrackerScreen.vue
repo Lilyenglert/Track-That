@@ -20,7 +20,7 @@
     </div>
     
     <div class='section'>
-      <h2 class='prompt'>Do you have any goals?</h2>
+      <h2 class='prompt'>Write down any goals you have.</h2>
       <p class='optional'>(Optional)</p>
       <textarea v-model="newTrackerGoal"></textarea>
     </div>
