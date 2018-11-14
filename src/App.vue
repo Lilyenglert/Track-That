@@ -1,6 +1,7 @@
-// single file componenet. 
+
 <template>
   <div id="app">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
     <transition name="out-in">
       <router-view/>
     </transition>
