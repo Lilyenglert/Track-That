@@ -1,13 +1,16 @@
 <template>
   <div class='inner'>
-    
-    <div class='section'>
-      <h1 class='greeting'>Hi, Liam!</h1>
+    <div class='top-bar section'>
+      <h1 class='page-title'>Overview</h1>
+    </div>
+    <div class='content'>
+      <div class='section'>
+      <h2 class='greeting'>Hi, Liam!</h2>
       <p class='message'>It's a beautiful day to achieve your goals.</p>
     </div>
     <div class='section'>
       <div class='section-title'>
-        <h1 class='inline-block'>Trackers</h1>
+        <h2 class='inline-block'>Trackers</h2>
         <v-btn fab dark small color="#DF5C46">
           <v-icon>add</v-icon>
         </v-btn>
@@ -32,7 +35,7 @@
       
     </div>
     <div class='section'>
-      <h1 class='inline-block'>Collections</h1>
+      <h2 class='inline-block'>Collections</h2>
       <v-btn fab dark small color="#DF5C46">
         <v-icon>add</v-icon>
       </v-btn>
@@ -51,6 +54,10 @@
           </div>    
       </div>
     </div>
+
+    </div>
+    
+    
   </div>
 </template>
 
