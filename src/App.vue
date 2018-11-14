@@ -5,7 +5,7 @@
         <v-icon>arrow_back</v-icon>
       </v-btn>
       <v-toolbar-title class="white--text">{page title}</v-toolbar-title>
-      <!-- <router-view name="Home">Toolbar</router-view> -->
+      <router-view name="Home">Toolbar</router-view>
     </v-toolbar>
 
     <transition name="out-in">

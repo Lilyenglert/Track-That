@@ -1,46 +1,49 @@
 <template>
   <div class='inner'>
+    
     <div class='section'>
-      <h1>Hi, {Liam!}</h1>
-      <p>It's a beautiful day to achieve your goals.</p>
+      <h1 class='greeting'>Hi, Liam!</h1>
+      <p class='caption'>It's a beautiful day to achieve your goals.</p>
     </div>
     <div class='section'>
       <div class='section-title'>
         <h1 class='inline-block'>Trackers</h1>
-        <p class='inline-block'>Create new +</p>
+        <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
         <p class='inline-block right'><i>edit</i></p>
       </div>
 
       <!-- vanilla html/css -->
       <div class='box-container'>
           <div class='box'>
-            <router-link to="/view" class='box-text'>Coffee Budget</router-link>
+            <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#5c46df;'>Coffee Budget</router-link>
           </div>
           <div class='box'>
-            <router-link to="/view" class='box-text'>Instagram Time</router-link>
+            <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#46df5c'>Instagram Time</router-link>
           </div>
           <div class='box'>
-            <router-link to="/view" class='box-text'>Squats</router-link>
+            <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#df467d'>Squats</router-link>
           </div>  
           <div class='box'>
-            <router-link to="/view" class='box-text'>Jumping Jacks</router-link>
+            <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#467ddf'>Jumping Jacks</router-link>
           </div>        
       </div>
       
     </div>
     <div class='section'>
-      <h1>Collections</h1>
+      <h1 class='inline-block'>Collections</h1>
+      <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
+      <p class='inline-block right'><i>edit</i></p>
       <!-- <router-link to="/template">Template</router-link> -->
 
       <div class='box-container'>
           <div class='box'>
-            <router-link to="/view" class='box-text'>Food Stuff</router-link>
+            <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#df5c46'>Food Stuff</router-link>
           </div>
           <div class='box'>
-            <router-link to="/view" class='box-text'>Social Media</router-link>
+            <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#46dfa8'>Social Media</router-link>
           </div>
           <div class='box'>
-            <router-link to="/view" class='box-text'>Fitness</router-link>
+            <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#5c46df'>Fitness</router-link>
           </div>    
       </div>
     </div>
@@ -51,8 +54,13 @@
 export default {
   name: 'HomeScreen'
 }
-</script>
 
+let colors = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#df5c46'];
+let randIndex = Math.floor(Math.random() * (colors.length + 1));
+
+
+
+</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

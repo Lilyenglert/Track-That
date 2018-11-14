@@ -13,12 +13,26 @@ p {
     }
 }
 
+/* ###### HOMESCREEN.VUE ###### */
 
+/* content section */
 .inner {
     padding: 5%;
     text-align: left;
 }
 
+.greeting {
+    color: #DF5C46;
+}
+
+.caption {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* 
+tracker and collection sections
+ */
 .overflow {
     overflow: scroll;
 }
@@ -36,11 +50,16 @@ p {
     float: right;
 }
 
-.grid-no-padding {
-    padding-left: 0;
-    padding-right: 0;
+.add-button {
+    padding: 0 10px;
+    color: #DF5C46;
+    /* filter: drop-shadow(1px 1px 3px gray); */
 }
 
+
+/* 
+stuff for boxes on home page 
+*/
 .box-container {
     text-align: center;
     overflow: auto;
@@ -48,13 +67,21 @@ p {
 }
 
 .box {
-    height: 100px;
-    width: 100px;
+    height: 130px;
+    width: 130px;
     display: inline-table;
-    border: solid;
     vertical-align: middle;
 
-    margin: 5%;
+    margin: 20px 5%;
+    margin-left: 0;
+    background-color: black;
+    border-radius: 10px;
+    filter: drop-shadow(1px 1px 3px gray);
+}
+
+.box a {
+    color: white;
+    text-decoration: none;
 }
 
 .box-text {
