@@ -1,3 +1,4 @@
+// single file componenet.
 <template>
   <div id="app">
     <v-toolbar dark color="primary">
