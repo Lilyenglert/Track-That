@@ -1,5 +1,5 @@
 <template>
-  <div class='inner'>
+  <div id='home-screen' class='inner'>
     <div class='top-bar section'>
       <h1 class='page-title'>Overview</h1>
     </div>
@@ -11,8 +11,8 @@
     <div class='section'>
       <div class='section-title'>
         <h2 class='inline-block'>Trackers</h2>
-        <v-btn fab dark small color="#DF5C46">
-          <v-icon>add</v-icon>
+        <v-btn fab dark small color="#DF5C46" class='add-thing'>
+          <router-link to="/add"><v-icon>add</v-icon></router-link>
         </v-btn>
         <p class='inline-block right'><i>edit</i></p>
       </div>
@@ -36,7 +36,7 @@
     </div>
     <div class='section'>
       <h2 class='inline-block'>Collections</h2>
-      <v-btn fab dark small color="#DF5C46">
+      <v-btn fab dark small color="#DF5C46" class='add-thing'>
         <v-icon>add</v-icon>
       </v-btn>
       <p class='inline-block right'><i>edit</i></p>

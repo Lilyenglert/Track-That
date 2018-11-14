@@ -1,6 +1,11 @@
 <template>
-  <div class='inner'>
-    <div class='section'>
+  <div id='add-tracker-screen' class='inner'>
+    <div class='top-bar section'>
+      <v-btn fab dark small color="#DF5C46">
+          
+          <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
+        </v-btn>
+        <!-- <p><router-link to="/">Back</router-link><p/> -->
       <h1 class='page-title'>Create Tracker</h1>
     </div>
     
@@ -15,12 +20,14 @@
     </div>
     
     <div class='section'>
-      <h2 class='prompt'>Do you have any goals? (Optional)</h2>
-      <p><textarea v-model="newTrackerGoal"></textarea></p>
+      <h2 class='prompt'>Do you have any goals?</h2>
+      <p class='optional'>(Optional)</p>
+      <textarea v-model="newTrackerGoal"></textarea>
     </div>
     
     <div class='section'>
-      <h2 class='prompt'>Add tracker to collection? (Optional)</h2>
+      <h2 class='prompt'>Add tracker to collection?</h2>
+      <p class='optional'>(Optional)</p>
       <p>
         <select v-model="NewTrackerCollection">
           <option v-for="collection in collections" v-bind:key="collection.id">{{collection.name}}</option>
@@ -28,8 +35,8 @@
       </p>
     </div>
     
-    <button @click="add">Add Tracker</button>
-    <p><router-link to="/">Back</router-link><p/>
+    <!-- <button @click="add">Add Tracker</button> -->
+    <v-btn block dark color="#DF5C46" @click="add" class='submit-button'>Add Tracker</v-btn>
   </div>
 </template>
 
@@ -82,6 +89,7 @@ export default {
   },
   methods: {
     add () {
+      // console.log('clicked');
       // ensure they actually typed something
       if (!this.newTrackerName) {
         return
