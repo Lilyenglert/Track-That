@@ -13,6 +13,8 @@
     <router-link to="/collection">Create New +</router-link>
     <p></p>
     <router-link to="/template">Template</router-link>
+    <p></p>
+    <router-link to="/entry">Entry</router-link>
   </div>
 </template>
 

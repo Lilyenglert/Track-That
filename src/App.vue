@@ -1,4 +1,4 @@
-// single file componenet. 
+// single file componenet.
 <template>
   <div id="app">
     <transition name="out-in">
