@@ -1,20 +1,21 @@
 <template>
   <div class='inner'>
+    
     <div class='section'>
-      <h1>Hi, {Liam!}</h1>
-      <p>It's a beautiful day to achieve your goals.</p>
+      <h1 class='greeting'>Hi, Liam!</h1>
+      <p class='caption'>It's a beautiful day to achieve your goals.</p>
     </div>
     <div class='section'>
       <div class='section-title'>
         <h1 class='inline-block'>Trackers</h1>
-        <p class='inline-block'>Create new +</p>
+        <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
         <p class='inline-block right'><i>edit</i></p>
       </div>
 
       <!-- vanilla html/css -->
       <div class='box-container'>
             <div class = 'box' v-for="tracker in trackers" v-bind:key="tracker.id">
-                  <router-link to="/view" class='box-text'>{{tracker.name}}</router-link>
+                  <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#5c46df;' >{{tracker.name}}</router-link>
                 </div>
             <div class='box'>
               <router-link to="/add" class='box-text'>Create New</router-link>
@@ -23,10 +24,13 @@
       </div>
     
     <div class='section'>
-      <h1>Collections</h1>
+      <h1 class='inline-block'>Collections</h1>
+      <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
+      <p class='inline-block right'><i>edit</i></p>
+
         <div class='box-container'>
           <div class = 'box' v-for="collection in collections" v-bind:key="collection.id">
-                  <router-link to="/view" class='box-text'>{{collection.name}}</router-link>
+                  <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
           </div>
           <div class='box'>
               <router-link to="/collection" class='box-text'>Create new</router-link>
@@ -68,8 +72,13 @@ export default {
 }
   
 }
-</script>
 
+let colors = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#df5c46'];
+let randIndex = Math.floor(Math.random() * (colors.length + 1));
+
+
+
+</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
