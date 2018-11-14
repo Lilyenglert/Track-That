@@ -20,8 +20,42 @@
 
 <script>
 export default {
-  name: 'HomeScreen'
+  data(){
+    return{
+      trackers: [{
+        id: null,
+        path: null, 
+        name: null,
+        unit: [],
+        goal: null,
+        collection: null
+      }], 
+       collections: [{
+        name: null
+      }],
+    name: 'HomeScreen'
+    }
+  },
+   mounted() {
+    this.getLocal();
+  },
+  methods:{
+  getLocal()
+  {
+    this.trackers = JSON.parse(localStorage.getItem('trackers'));
+    this.collections = JSON.parse(localStorage.getItem('collections'));
+    console.log(this.trackers);
+    console.log(this.collections);
+  }
 }
+  
+}
+
+let colors = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#df5c46'];
+let randIndex = Math.floor(Math.random() * (colors.length + 1));
+
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
