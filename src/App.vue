@@ -1,20 +1,7 @@
-<<<<<<< HEAD
 
 <template>
   <div id="app">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
-=======
-<template>
-  <div id="app">
-    <!-- <v-toolbar dark color="primary">
-      <v-btn icon>
-        <v-icon>arrow_back</v-icon>
-      </v-btn>
-      <v-toolbar-title class="white--text">{page title}</v-toolbar-title>
-      <router-view name="Home">Toolbar</router-view>
-    </v-toolbar> -->
-
->>>>>>> origin/steph2
     <transition name="out-in">
       <router-view/>
     </transition>

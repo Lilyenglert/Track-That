@@ -1,75 +1,46 @@
 <template>
   <div>
     <v-app>
+
     <v-toolbar id="titlebar">
-      <v-btn id="backButton">Back</v-btn>
-      <v-toolbar-title>Coffee Spending</v-toolbar-title>
-      <v-btn id="editButton">edit</v-btn>
+      <v-flex xs2>
+      <a id="backButton"><i>back</i></a>
+      </v-flex>
+       <v-flex xs8>
+      <v-toolbar-title class="page-title">Coffee Spending</v-toolbar-title>
+      </v-flex>
+       <v-flex xs2>
+      <a id="editButton"><i>edit</i></a>
+      </v-flex>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
       </v-toolbar-items>
     </v-toolbar>
 
     <!-- V-container for catagories -->
-    <v-container id="tracker_details">
+    <v-container class="inner" id="tracker_details">
       <v-layout>
-        <v-flex xs8>
-          <p class="text-sm-right">Create a new entry</p>  
+         <v-flex xs2>
         </v-flex>
-        <v-flex xs4>
-          <v-icon>add</v-icon>
+        <v-flex xs6>
+          <a><p class="text-sm-right">Create a new entry</p></a>
+        </v-flex>
+        <v-flex xs2>
+          <a><v-icon>add</v-icon></a>
+        </v-flex>
+        <v-flex xs2>
         </v-flex>
       </v-layout>
 
-
-      <!-- Quick Entry  -->
-        <!-- <v-container>
-          <h4>QUICK ENTRY</h4>
-          <v-card id="quickEntry">
-            <v-layout>
-              <v-flex xs10>
-              </v-flex>
-              <v-flex xs2>
-                <v-card-actions>
-                  <v-btn icon @click="show = !show">
-                    <v-icon dark="true">{{ show ? 'mdi-keyboard_arrow_down' : 'mdi-keyboard_arrow_up' }}</v-icon>
-                  </v-btn>
-                </v-card-actions> 
-              </v-flex>
-            </v-layout>
-
-  
-          <v-slide-y-transition>
-            <v-card-text v-show="show">
-
-              <v-flex xs12>
-              
-              </v-flex>
-              <v-flex xs6>
-              </v-flex>
-              <v-flex xs6>
-              </v-flex>
-              <v-flex xs12>
-              </v-flex>
-
-            </v-card-text>
-          </v-slide-y-transition>
-          </v-card>
-        </v-container> -->
-      <!-- end quick entry -->
-
-
-
-
         <v-container>
-          <h4>GOALS</h4>
-          <v-card>
+          <h2>Goals</h2>
+          <v-card flat="true">
            <p id="goalMessage">Spend under 10 dollars per week</p>
           </v-card>
         </v-container>
         <v-container>
-          <h4>PROGRESS</h4>
-            <v-card id="graph_box">
+          <h2>Progress</h2>
+            <v-card id="graph_box" flat="true">
             <!-- <Chart id="graph"></Chart> -->
             <p>Graph will go here</p>
             </v-card>
@@ -79,45 +50,47 @@
           
           
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
-          <h4>LOG</h4>
-          <v-card>
-            <v-list dense>
-              <v-list-tile>
-                <v-list-tile-avatar>10/11</v-list-tile-avatar>
-                <v-list-tile-content> 
-                  <v-list-tile-title class="align-left">10 Dollars</v-list-tile-title>
-                  <!-- <v-list-tile-title class="align-end">unit2</v-list-tile-title> -->
-                  <v-list-tile-sub-title class="align-left">Notes will be displayed here</v-list-tile-sub-title>
-                </v-list-tile-content>
-                <v-list-tile-action>arrow</v-list-tile-action>
-              </v-list-tile>
+          <h2>Log</h2>
+          <v-card class="scroll" height= "200px" flat="true">
+
+            <v-list id="example1">
 
               <v-list-tile>
                 <v-list-tile-avatar>10/11</v-list-tile-avatar>
                 <v-list-tile-content> 
                   <v-list-tile-title class="align-left">10 Dollars</v-list-tile-title>
-                  <!-- <v-list-tile-title class="align-end">unit2</v-list-tile-title> -->
                   <v-list-tile-sub-title class="align-left">Notes will be displayed here</v-list-tile-sub-title>
                 </v-list-tile-content>
-                <v-list-tile-action>arrow</v-list-tile-action>
+                <v-list-tile-action><a><v-icon>add</v-icon></a></v-list-tile-action>
               </v-list-tile>
+              </v-list>
 
+            <v-list id="example1">
+              <v-list-tile>
+                <v-list-tile-avatar>10/11</v-list-tile-avatar>
+                <v-list-tile-content> 
+                  <v-list-tile-title class="align-left">10 Dollars</v-list-tile-title>
+                  <v-list-tile-sub-title class="align-left">Notes will be displayed here</v-list-tile-sub-title>
+                </v-list-tile-content>
+                <v-list-tile-action><a><v-icon>add</v-icon></a></v-list-tile-action>
+              </v-list-tile>
+              </v-list>
 
+            <v-list id="example1">
+              <v-list-tile>
+                <v-list-tile-avatar>10/11</v-list-tile-avatar>
+                <v-list-tile-content> 
+                  <v-list-tile-title class="align-left">10 Dollars</v-list-tile-title>
+                  <v-list-tile-sub-title class="align-left">Notes will be displayed here</v-list-tile-sub-title>
+                </v-list-tile-content>
+                <v-list-tile-action><a><v-icon>add</v-icon></a></v-list-tile-action>
+              </v-list-tile>
+              </v-list>
 
-              
-            </v-list>
           </v-card>
-      
-  
-          <!-- end data iterator -->
-         
       </v-container>
 
     </v-container>
-    <!-- <label for="value">Test:</label> -->
-    <!-- <input type="number" id="gValue" name="gValue" value="0"/> -->
-    <!-- <button v-on:click="addValue()">Submit</button>  -->
-    <router-link to="/">Back</router-link>
     </v-app>
   </div>
 </template>
@@ -128,6 +101,7 @@ import Vue from 'vue'
 import Storage from 'vue-web-storage'
 import EventBus from '../eventBus.js'
 Vue.use(Storage)
+
 export default {
   name: 'ViewTrackerScreen',
   components: {
@@ -135,28 +109,20 @@ export default {
   },
 
   data: () => ({
-    show: false
-  }),
+    show: false,
+    })
+  }
 
-  // methods: {
-  //   addValue () {
-  //     const inputNum = parseFloat(document.getElementById('gValue').value)
-  //     if (Vue.$localStorage.get('gValues') == null) {
-  //       Vue.$localStorage.set('gValues', [])
-  //     }
-  //     var array = Vue.$localStorage.get('gValues')
-  //     array.push(inputNum)
-  //     Vue.$localStorage.set('gValues', array)
-  //     EventBus.$emit('refreshGraph')
-  //     }
-  //   }
-   }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
+}
+h2 {
+  text-align: left;
 }
 ul {
   list-style-type: none;
@@ -170,7 +136,27 @@ a {
   color: #42b983;
 }
 
+#goalMessage, #graph_box{
+  text-align:left;
+}
+
 #graph{
   max-width: 300px;
 }
+
+.v-card {
+  margin-top: 5%;
+  padding:5%;
+}
+
+.scroll {
+  overflow-y: auto;
+}
+
+.text-sm-right{
+  text-align:right;
+  font-size: 16px;
+}
+
 </style>
+
