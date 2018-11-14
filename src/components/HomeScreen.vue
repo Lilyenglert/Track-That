@@ -13,31 +13,25 @@
 
       <!-- vanilla html/css -->
       <div class='box-container'>
-         <!-- <button @click="getLocal">Access trackers</button> -->
-            <div style='display-inline' v-for="tracker in trackers" v-bind:key="tracker.id">
-              <!-- <p>{{tracker.name}} {{tracker.unit}} {{tracker.goal}} {{tracker.collection}}</p> -->
-                <div class='box'>
+            <div class = 'box' v-for="tracker in trackers" v-bind:key="tracker.id">
                   <router-link to="/view" class='box-text'>{{tracker.name}}</router-link>
                 </div>
-            </div>
             <div class='box'>
-              <router-link to="/add" class='box-text'>Create new</router-link>
+              <router-link to="/add" class='box-text'>Create New</router-link>
             </div>  
+      </div> 
       </div>
-      
-    </div>
+    
     <div class='section'>
       <h1>Collections</h1>
-      <!-- <router-link to="/template">Template</router-link> -->
-
-      <div class='box-container'>
-        <div class='box'>
-          <router-link to="/view" class='box-text'>Food</router-link>
+        <div class='box-container'>
+          <div class = 'box' v-for="collection in collections" v-bind:key="collection.id">
+                  <router-link to="/view" class='box-text'>{{collection.name}}</router-link>
+          </div>
+          <div class='box'>
+              <router-link to="/collection" class='box-text'>Create new</router-link>
+            </div>  
         </div>
-        <div class='box'>
-          <router-link to="/collection" class='box-text'>Create new</router-link>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -54,18 +48,22 @@ export default {
         goal: null,
         collection: null
       }], 
+       collections: [{
+        name: null
+      }],
     name: 'HomeScreen'
     }
   },
    mounted() {
-    console.log("in mounted");
     this.getLocal();
   },
   methods:{
   getLocal()
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));
+    this.collections = JSON.parse(localStorage.getItem('collections'));
     console.log(this.trackers);
+    console.log(this.collections);
   }
 }
   
