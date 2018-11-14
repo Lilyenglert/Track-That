@@ -7,31 +7,41 @@
     <div class='section'>
       <div class='section-title'>
         <h1 class='inline-block'>Trackers</h1>
+        <p class='inline-block'>Create new +</p>
         <p class='inline-block right'><i>edit</i></p>
       </div>
 
       <!-- vanilla html/css -->
       <div class='box-container'>
-        <div class='box'>
-          <router-link to="/view" class='box-text'>Coffee Budget</router-link>
-        </div>
-        <div class='box'>
-          <router-link to="/add" class='box-text'>Create new</router-link>
-        </div>
+          <div class='box'>
+            <router-link to="/view" class='box-text'>Coffee Budget</router-link>
+          </div>
+          <div class='box'>
+            <router-link to="/view" class='box-text'>Instagram Time</router-link>
+          </div>
+          <div class='box'>
+            <router-link to="/view" class='box-text'>Squats</router-link>
+          </div>  
+          <div class='box'>
+            <router-link to="/view" class='box-text'>Jumping Jacks</router-link>
+          </div>        
       </div>
       
     </div>
     <div class='section'>
       <h1>Collections</h1>
-      <router-link to="/template">Template</router-link>
+      <!-- <router-link to="/template">Template</router-link> -->
 
       <div class='box-container'>
-        <div class='box'>
-          <router-link to="/view" class='box-text'>Food</router-link>
-        </div>
-        <div class='box'>
-          <router-link to="/add" class='box-text'>Create new</router-link>
-        </div>
+          <div class='box'>
+            <router-link to="/view" class='box-text'>Food Stuff</router-link>
+          </div>
+          <div class='box'>
+            <router-link to="/view" class='box-text'>Social Media</router-link>
+          </div>
+          <div class='box'>
+            <router-link to="/view" class='box-text'>Fitness</router-link>
+          </div>    
       </div>
     </div>
   </div>

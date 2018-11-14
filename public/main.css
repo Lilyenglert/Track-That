@@ -43,6 +43,8 @@ p {
 
 .box-container {
     text-align: center;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .box {
