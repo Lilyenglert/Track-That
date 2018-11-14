@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HomeScreen from './components/HomeScreen.vue'
 import AddTrackerScreen from './components/AddTrackerScreen.vue'
 import ViewTrackerScreen from './components/ViewTrackerScreen.vue'
+import ViewCollectionScreen from './components/ViewCollectionScreen.vue'
 import ScreenTemplate from './components/ScreenTemplate.vue'
 import DataDemoScreen from './components/DataDemoScreen.vue'
 import AddCollectionScreen from './components/AddCollectionScreen.vue'
@@ -28,6 +29,11 @@ export default new Router({
       path: '/view/:id/:tracker',
       name: 'ViewTrackerScreen',
       component: ViewTrackerScreen
+    },
+    {
+      path: '/collectionView/:collection',
+      name: 'ViewCollectionScreen',
+      component: ViewCollectionScreen
     },
     {
       path: '/template',

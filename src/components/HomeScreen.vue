@@ -36,10 +36,11 @@
 
         <div class='box-container'>
           <div class = 'box' v-for="collection in collections" v-bind:key="collection.id">
-                  <router-link to="/collection" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
+                  <router-link :to="collection.path" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
           </div>
-
         </div>
+      <!--<button @click="showModal">Open Popup</button>
+      <CollectionPopup v-show="isPopupVisible" @close="closeModal"/>!-->
     </div>
 
     </div>
@@ -49,7 +50,11 @@
 </template>
 
 <script>
+import CollectionPopup from './CollectionPopup.vue'
 export default {
+  components: {
+    CollectionPopup
+  },
   data(){
     return{
       trackers: [{
@@ -63,13 +68,20 @@ export default {
        collections: [{
         name: null
       }],
-    name: 'HomeScreen'
+    name: 'HomeScreen',
+    isPopupVisible: false
     }
   },
    mounted() {
     this.getLocal();
   },
   methods:{
+    showModal() {
+        this.isPopupVisible = true;
+      },
+      closeModal() {
+        this.isPopupVisible = false;
+      },
   getLocal()
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));
@@ -80,12 +92,8 @@ export default {
 }
   
 }
-
 let colors = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#df5c46'];
 let randIndex = Math.floor(Math.random() * (colors.length + 1));
-
-
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

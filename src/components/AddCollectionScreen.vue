@@ -19,7 +19,8 @@ export default {
   data () {
     return {
       collections: [],
-      newCollectionName: null
+      newCollectionName: null,
+      newCollectionPath: null
     }
   },
   mounted () {
@@ -38,7 +39,8 @@ export default {
         return
       }
       var trackerEntry = {
-        'name': this.newCollectionName
+        'name': this.newCollectionName,
+        'path' : '/collectionView/' + this.newCollectionName + '/',
       }
       if(this.collections)
       this.collections.push(trackerEntry)

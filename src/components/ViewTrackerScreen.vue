@@ -36,7 +36,7 @@
         <v-container>
           <h2>Goals</h2>
           <v-card flat="true">
-           <p id="goalMessage"></p>
+           <p id="goalMessage">Spend under 10 dollars per week</p>
           </v-card>
         </v-container>
         <v-container>
