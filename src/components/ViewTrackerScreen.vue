@@ -35,13 +35,13 @@
 
         <v-container>
           <h2>Goals</h2>
-          <v-card flat="true">
-           <p id="goalMessage">Spend under 10 dollars per week</p>
+          <v-card :flat="true">
+           <p id="goalMessage">{{this.currentTrackerGoal}}</p>
           </v-card>
         </v-container>
         <v-container>
           <h2>Progress</h2>
-            <v-card id="graph_box" flat="true">
+            <v-card id="graph_box" :flat="true">
             <!-- <Chart id="graph"></Chart> -->
             <p>Graph will go here</p>
             </v-card>
@@ -52,7 +52,7 @@
           
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
           <h2>Log</h2>
-          <v-card class="scroll" height= "200px" flat="true">
+          <v-card class="scroll" height= "200px" :flat="true">
 
             <v-list id="example1">
 
@@ -105,14 +105,35 @@ import Storage from 'vue-web-storage'
 import EventBus from '../eventBus.js'
 Vue.use(Storage)
 export default {
-  name: 'ViewTrackerScreen',
-  components: {
-    Chart
-  },
-  mounted(){
-
+  data()
+  {
+    return {
+      name: 'ViewTrackerScreen',
+      trackers:[],
+      currentTracker:null,
+      currentTrackerGoal:null,
+      currentTrackerUnits:null,
+      components: {
+          Chart
+        }
+    }
+  }
+  ,
+  created(){
+    this.getLocal();
+    this.currentTracker = this.$route.params.tracker;
+    for (let index = 0; index < this.trackers.length; index++) {
+      if(this.trackers[index].name == this.currentTracker)
+      {
+        this.currentTrackerGoal = this.trackers[index].goal; 
+        this.currentTrackerUnits = this.trackers[index].unit;
+      }}
   }, 
   methods: {
+    getLocal()
+  {
+    this.trackers = JSON.parse(localStorage.getItem('trackers'));
+  },
     addValue () {
       const inputNum = parseFloat(document.getElementById('gValue').value)
       if (Vue.$localStorage.get('gValues') == null) {

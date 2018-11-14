@@ -47,7 +47,7 @@ export default new Router({
     },
     {
       path: '/entry',
-      name: 'AddTrackerScreen',
+      name: 'AddEntryScreen',
       component: AddEntryScreen
     },
     {
