@@ -1,18 +1,39 @@
 <template>
-  <div>
-    <h1>Hi Liam!</h1>
-    <h2>Notifications</h2>
-    <p>None yet!</p>
-    <h2>Trackers</h2>
-    <router-link to="/view/Coffee">Coffee Budget</router-link>
-    <p></p>
-    <router-link to="/add">Create New +</router-link>
-    <p></p>
-    <router-link to="/data">Data Demo</router-link>
-    <h2>Collections</h2>
-    <router-link to="/collection">Create New +</router-link>
-    <p></p>
-    <router-link to="/template">Template</router-link>
+  <div class='inner'>
+    <div class='section'>
+      <h1>Hi, {Liam!}</h1>
+      <p>It's a beautiful day to achieve your goals.</p>
+    </div>
+    <div class='section'>
+      <div class='section-title'>
+        <h1 class='inline-block'>Trackers</h1>
+        <p class='inline-block right'><i>edit</i></p>
+      </div>
+
+      <!-- vanilla html/css -->
+      <div class='box-container'>
+        <div class='box'>
+          <router-link to="/view" class='box-text'>Coffee Budget</router-link>
+        </div>
+        <div class='box'>
+          <router-link to="/add" class='box-text'>Create new</router-link>
+        </div>
+      </div>
+      
+    </div>
+    <div class='section'>
+      <h1>Collections</h1>
+      <router-link to="/template">Template</router-link>
+
+      <div class='box-container'>
+        <div class='box'>
+          <router-link to="/view" class='box-text'>Food</router-link>
+        </div>
+        <div class='box'>
+          <router-link to="/add" class='box-text'>Create new</router-link>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,6 +42,7 @@ export default {
   name: 'HomeScreen'
 }
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

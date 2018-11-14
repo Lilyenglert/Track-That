@@ -1,0 +1,62 @@
+p {
+    font-size: 18px;
+}
+
+/* overriding vue container class */
+.container {
+    padding: 24px 0;
+}
+
+@media only screen and (max-width: 959px) {
+    .container {
+        padding: 16px 0;
+    }
+}
+
+
+.inner {
+    padding: 5%;
+    text-align: left;
+}
+
+.overflow {
+    overflow: scroll;
+}
+
+.section {
+    padding: 4%;
+    border-bottom: solid lightgray .5px;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.right {
+    float: right;
+}
+
+.grid-no-padding {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.box-container {
+    text-align: center;
+}
+
+.box {
+    height: 100px;
+    width: 100px;
+    display: inline-table;
+    border: solid;
+    vertical-align: middle;
+
+    margin: 5%;
+}
+
+.box-text {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+}
