@@ -1,14 +1,8 @@
-p {
-    font-size: 18px;
-}
+p { font-size: 18px; }
 
-h1 {
-    font-size: 32px;
-}
+h1 { font-size: 32px; }
 
-h2 {
-    font-size: 24px;
-}
+h2 { font-size: 24px; }
 
 /* overriding vue container class */
 .container {
@@ -67,6 +61,14 @@ tracker and collection sections
     padding: 4%;
     border-bottom: solid lightgray .5px;
 }
+
+.section .solid {
+    background-color: #DF5C46;
+    border: none;
+    color: white;
+}
+
+.section.solid h3 { margin: 10px 0; }
 
 .inline-block {
     display: inline-block;

@@ -1,12 +1,19 @@
 <template>
   <div class='inner'>
+
+    <!-- <h1 class='page-title section'>Overview</h1> -->
     
     <div class='section'>
-      <h1 class='greeting'>Hi, Liam!</h1>
+      <h2 class='greeting'>Hi, Liam!</h2>
       <p class='message'>It's a beautiful day to achieve your goals.</p>
-      <div v-for="tracker in trackers" v-bind:key="tracker.id">
-        <p class='message'>{{tracker.goal}}</p>
-      </div>         
+      
+      <div class='solid section'>
+        <h3>Goals</h3>
+        <div v-for="tracker in trackers" v-bind:key="tracker.id">
+          <p class='message'>{{tracker.goal}}</p>
+        </div>  
+      </div>
+             
     </div>
 
     <div class='section'>
@@ -27,7 +34,7 @@
       </div>
     
     <div class='section'>
-      <h1 class='inline-block'>Collections</h1>
+      <h2 class='inline-block'>Collections</h2>
       <v-btn fab dark small color="#DF5C46" class='add-thing'>
           <router-link to="/collection"><v-icon>add</v-icon></router-link>
       </v-btn>
