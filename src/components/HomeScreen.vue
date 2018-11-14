@@ -7,6 +7,7 @@
     <div class='section'>
       <div class='section-title'>
         <h1 class='inline-block'>Trackers</h1>
+        <p class='inline-block'>Create new +</p>
         <p class='inline-block right'><i>edit</i></p>
       </div>
 
@@ -27,7 +28,7 @@
     </div>
     <div class='section'>
       <h1>Collections</h1>
-      <router-link to="/template">Template</router-link>
+      <!-- <router-link to="/template">Template</router-link> -->
 
       <div class='box-container'>
         <div class='box'>
