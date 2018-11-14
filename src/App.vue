@@ -1,7 +1,20 @@
+<<<<<<< HEAD
 
 <template>
   <div id="app">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+=======
+<template>
+  <div id="app">
+    <!-- <v-toolbar dark color="primary">
+      <v-btn icon>
+        <v-icon>arrow_back</v-icon>
+      </v-btn>
+      <v-toolbar-title class="white--text">{page title}</v-toolbar-title>
+      <router-view name="Home">Toolbar</router-view>
+    </v-toolbar> -->
+
+>>>>>>> origin/steph2
     <transition name="out-in">
       <router-view/>
     </transition>
@@ -22,20 +35,12 @@
         transition: all 0.4s;
         opacity: 0;;
     }
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
   }
 </style>

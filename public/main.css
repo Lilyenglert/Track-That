@@ -1,0 +1,124 @@
+p {
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+/* overriding vue container class */
+.container {
+    padding: 24px 0;
+}
+
+@media only screen and (max-width: 959px) {
+    .container {
+        padding: 16px 0;
+    }
+}
+
+/* ###### HOMESCREEN.VUE ###### */
+
+/* content section */
+.inner {
+    padding: 5%;
+    text-align: left;
+}
+
+.top-bar {
+/* maybe fixed? */
+}
+
+.content {
+/* for fixed top */
+}
+
+.page-title {
+    text-align: center;
+}
+
+.greeting {
+    color: #DF5C46;
+}
+
+.message {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* 
+tracker and collection sections
+ */
+.overflow {
+    overflow: scroll;
+}
+
+.section {
+    padding: 4%;
+    border-bottom: solid lightgray .5px;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.right {
+    float: right;
+}
+
+.add-button {
+    padding: 0 10px;
+    color: #DF5C46;
+    /* filter: drop-shadow(1px 1px 3px gray); */
+}
+
+/* overriding vuetify button */
+.v-btn--floating.v-btn--small {
+    padding: 0;
+    margin-bottom: 18px;
+    margin-left: 10px;
+    height: 25px;
+    width: 25px;
+}
+
+/* 
+stuff for boxes on home page 
+*/
+.box-container {
+    text-align: center;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.box {
+    height: 130px;
+    width: 130px;
+    display: inline-table;
+    vertical-align: middle;
+
+    margin: 20px 5%;
+    margin-left: 0;
+    background-color: black;
+    border-radius: 10px;
+    filter: drop-shadow(1px 1px 3px gray);
+}
+
+.box a {
+    color: white;
+    text-decoration: none;
+}
+
+.box-text {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+}
+
+/** CREATE TRACKER **/
+input, textarea, select {
+    border: solid lightgray .5px;
+}
