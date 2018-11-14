@@ -4,11 +4,17 @@
     <div class='section'>
       <h1 class='greeting'>Hi, Liam!</h1>
       <p class='caption'>It's a beautiful day to achieve your goals.</p>
+      <div v-for="tracker in trackers" v-bind:key="tracker.id">
+        <p class='caption'>{{tracker.goal}}</p>
+      </div>         
     </div>
+
     <div class='section'>
       <div class='section-title'>
         <h1 class='inline-block'>Trackers</h1>
-        <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
+        <router-link to="/add">
+          <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
+        </router-link>
         <p class='inline-block right'><i>edit</i></p>
       </div>
 
@@ -16,25 +22,22 @@
       <div class='box-container'>
             <div class = 'box' v-for="tracker in trackers" v-bind:key="tracker.id">
                   <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#5c46df;' >{{tracker.name}}</router-link>
-                </div>
-            <div class='box'>
-              <router-link to="/add" class='box-text'>Create New</router-link>
-            </div>  
+            </div>
       </div> 
       </div>
     
     <div class='section'>
       <h1 class='inline-block'>Collections</h1>
-      <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
+      <router-link to="/collection">
+        <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
+      </router-link>
       <p class='inline-block right'><i>edit</i></p>
 
         <div class='box-container'>
           <div class = 'box' v-for="collection in collections" v-bind:key="collection.id">
                   <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
           </div>
-          <div class='box'>
-              <router-link to="/collection" class='box-text'>Create new</router-link>
-            </div>  
+
         </div>
     </div>
   </div>

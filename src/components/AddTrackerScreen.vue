@@ -26,15 +26,8 @@ export default {
       collections: [{
         name: null
       }],
-      trackers: [{
-        id: null,
-        path: null, 
-        name: null,
-        unit: [],
-        goal: null,
-        collection: null
-      }], 
-      trackerID: [0], 
+      trackers: [], 
+      trackerID: [], 
       path : null,
       newTrackerName: null,
       newTrackerUnit: null,
@@ -81,12 +74,12 @@ export default {
       if(fetchedTrackerID != null)
       {      
         var lastEntry = fetchedTrackerID.length - 1;
-        console.log("last " + lastEntry);
+        //console.log("last " + lastEntry);
          fetchedTrackerIDIncremented = fetchedTrackerID[lastEntry] + 1;
-          console.log('in not null' + fetchedTrackerID);
+          //console.log('in not null' + fetchedTrackerID);
       }else{
         fetchedTrackerIDIncremented = 0;
-       console.log('in null '+ fetchedTrackerIDIncremented);
+      // console.log('in null '+ fetchedTrackerIDIncremented);
       }
       
       
@@ -101,7 +94,13 @@ export default {
       }; 
 
       this.trackerID.push(fetchedTrackerIDIncremented);
-      this.trackers.push(trackerEntry)
+
+      if(trackerEntry.name !=null)
+      {
+        console.log("not null");
+        this.trackers.push(trackerEntry)
+      }
+      
       this.cleanTrackerValues();
       this.save()
     },

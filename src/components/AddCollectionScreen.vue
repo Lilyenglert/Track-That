@@ -18,9 +18,7 @@ export default {
   name: 'AddCollectionScreen',
   data () {
     return {
-      collections: [{
-        name: null
-      }],
+      collections: [],
       newCollectionName: null
     }
   },
