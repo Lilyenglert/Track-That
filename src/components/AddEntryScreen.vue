@@ -1,9 +1,9 @@
 <template>
   <div>
     <h2>Create Entry</h2>
-    <p><input v-model.number="newEntryValue" type="number"> this.TrackerUnit</p>
-    <p>Date: <input v-model="newEntryDate" type="date"></p>
-    <p>Note:<p><textarea v-model="newTrackerGoal"></textarea></p>
+    <p><input v-model.number="newEntryValue" type="number"></p>
+    <p>Date: <input v-model="newEntryDate" type="date">{{currentTrackerUnits}}</p>
+    <p>Note:<p><textarea v-model="entryNote"></textarea></p>
     <button @click="createEntry(trackerName)">Add Entry</button>
     <p><router-link to="/">Back</router-link><p/>
   </div>
@@ -20,10 +20,10 @@ export default {
 
        entries: [
        {
-         name: null,
          date: null, 
          value:null,
-         unit:null}
+         unit:null,
+         message:null}
         ], 
        currentTracker:'',
        currentTrackerName:'',
@@ -53,9 +53,9 @@ export default {
     }
 
     var newEntryInput = {
-      "name": this.currentTrackerName,
-        "date" : new Date,
-        "value": 7,
+      "message": this.entryNote,
+        "date" : this.newEntryDate,
+        "value": this.newEntryValue,
         "unit": this.currentTrackerUnits
     };
   this.entries.push(newEntryInput);
