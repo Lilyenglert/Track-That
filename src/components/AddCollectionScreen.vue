@@ -40,7 +40,7 @@ export default {
       var trackerEntry = {
         'name': this.newCollectionName
       }
-      // this.trackers.push(trackerEntry);
+      if(this.collections)
       this.collections.push(trackerEntry)
       this.newCollectionName = ''
       this.save()

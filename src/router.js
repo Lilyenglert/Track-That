@@ -24,7 +24,7 @@ export default new Router({
       component: AddTrackerScreen
     },
     {
-      path: '/view/:tracker',
+      path: '/view/:id/:tracker',
       name: 'ViewTrackerScreen',
       component: ViewTrackerScreen
     },

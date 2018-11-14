@@ -21,7 +21,7 @@
       <!-- vanilla html/css -->
       <div class='box-container'>
             <div class = 'box' v-for="tracker in trackers" v-bind:key="tracker.id">
-                  <router-link to="/view" class='box-text' style='border-radius:10px;background-color:#5c46df;' >{{tracker.name}}</router-link>
+                  <router-link :to="tracker.path" class='box-text' style='border-radius:10px;background-color:#5c46df;' >{{tracker.name}}</router-link>
             </div>
       </div> 
       </div>
