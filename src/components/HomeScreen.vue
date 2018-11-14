@@ -12,12 +12,16 @@
 
       <!-- vanilla html/css -->
       <div class='box-container'>
-        <div class='box'>
-          <router-link to="/view" class='box-text'>Coffee Budget</router-link>
-        </div>
-        <div class='box'>
-          <router-link to="/add" class='box-text'>Create new</router-link>
-        </div>
+         <!-- <button @click="getLocal">Access trackers</button> -->
+            <div style='display-inline' v-for="tracker in trackers" v-bind:key="tracker.id">
+              <!-- <p>{{tracker.name}} {{tracker.unit}} {{tracker.goal}} {{tracker.collection}}</p> -->
+                <div class='box'>
+                  <router-link to="/view" class='box-text'>{{tracker.name}}</router-link>
+                </div>
+            </div>
+            <div class='box'>
+              <router-link to="/add" class='box-text'>Create new</router-link>
+            </div>  
       </div>
       
     </div>
@@ -30,7 +34,7 @@
           <router-link to="/view" class='box-text'>Food</router-link>
         </div>
         <div class='box'>
-          <router-link to="/add" class='box-text'>Create new</router-link>
+          <router-link to="/collection" class='box-text'>Create new</router-link>
         </div>
       </div>
     </div>
@@ -39,7 +43,31 @@
 
 <script>
 export default {
-  name: 'HomeScreen'
+  data(){
+    return{
+      trackers: [{
+        id: null,
+        path: null, 
+        name: null,
+        unit: [],
+        goal: null,
+        collection: null
+      }], 
+    name: 'HomeScreen'
+    }
+  },
+   mounted() {
+    console.log("in mounted");
+    this.getLocal();
+  },
+  methods:{
+  getLocal()
+  {
+    this.trackers = JSON.parse(localStorage.getItem('trackers'));
+    console.log(this.trackers);
+  }
+}
+  
 }
 </script>
 
