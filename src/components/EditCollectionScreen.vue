@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'EditCollection Screen',
+  name: 'EditCollectionScreen',
   data () {
     return {
       collections: [],
@@ -32,6 +32,10 @@ export default {
     remove (x) {
       this.collections.splice(x, 1)
       this.save()
+    }, 
+    save () {
+      const parsed = JSON.stringify(this.collections)
+      localStorage.setItem('collections', parsed)
     }
   }
 
