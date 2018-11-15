@@ -5,13 +5,17 @@
     </div>
     <div class='content'>
       <div class='section'>
-      <h2 class='greeting'>Hi, Liam!</h2>
-      <!-- STEPH HARDCODED MESSAGE -->
-      <p class='message'>It's a beautiful day to achieve your goals.</p>
-        <div v-for="tracker in trackers" v-bind:key="tracker.id">
-        <p class='message'>{{tracker.goal}}</p>
-      </div>     
-    </div>
+        <h2 class='greeting'>Hi, Liam!</h2>
+        <p class='message'>It's a beautiful day to achieve your goals.</p>
+        
+        <div class='solid'> 
+          <h3>Goals</h3>
+          <div v-for="tracker in trackers" v-bind:key="tracker.id">
+            <p class='message'>{{tracker.goal}}</p>
+          </div> 
+        </div>  
+
+      </div>
     <div class='section'>
       <div class='section-title'>
         <h2 class='inline-block'>Trackers</h2>
@@ -32,13 +36,12 @@
       
     </div>
     <div class='section'>
-      <h2 class='inline-block'>Collections</h2>
+      <h2 class='inline-block'>Collections</h2> 
       <v-btn fab dark small color="#DF5C46" class='add-thing' @click="showModal">
         <v-icon>add</v-icon>
       </v-btn>
       <p class='inline-block right'><i><router-link to="/editCollection/">edit</router-link></i></p>
 
-      <!-- STEPH HARDCODED STUFF -->
        <div class='box-container'>
           <div class = 'box' v-for="collection in this.collections" v-bind:key="collection.id">
                   <router-link :to="collection.path" class='box-text' style='border-radius:7px;background-color:#df5c46'>{{collection.name}}</router-link>

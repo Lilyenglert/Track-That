@@ -1,14 +1,8 @@
-p {
-    font-size: 18px;
-}
+p { font-size: 18px; }
 
-h1 {
-    font-size: 32px;
-}
-
-h2 {
-    font-size: 24px;
-}
+h1 { font-size: 32px; }
+h2 { font-size: 28px; }
+h3 { font-size: 24px; }
 
 /* overriding vue container class */
 .container {
@@ -35,24 +29,31 @@ button .v-btn__content a {
     align-content: right;
  }
 
+ .top-bar {
+    /* text-align: left; */
+ }
+
+ .page-title {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px;
+}
+
+ .back-button {
+     display: inline-block;
+ }
+
 /* ###### HOMESCREEN.VUE ###### */
+
+#home-screen .page-title {
+    display: block;
+}
 
 /* content section */
 .inner {
     padding: 5%;
     text-align: left;
-}
-
-.top-bar {
-/* maybe fixed? */
-}
-
-.content {
-/* for fixed top */
-}
-
-.page-title {
-    text-align: center;
 }
 
 .greeting {
@@ -62,6 +63,11 @@ button .v-btn__content a {
 .message {
     margin: 10px 0;
     font-size: 18px;
+}
+
+.goals {
+    background-color: #DF5C46;
+    color: white;
 }
 
 /* 
@@ -74,6 +80,22 @@ tracker and collection sections
 .section {
     padding: 4%;
     border-bottom: solid lightgray .5px;
+}
+
+.section .solid {
+    background-color: #DF5C46;
+    background-image: url('./img/triangles.png');
+    background-repeat: repeat;
+    background-size: cover;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.section .solid h3 {
+    margin: 10px 0;
+
 }
 
 .inline-block {
