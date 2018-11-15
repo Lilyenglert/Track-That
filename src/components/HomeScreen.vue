@@ -36,8 +36,7 @@
       <v-btn fab dark small color="#DF5C46" class='add-thing' @click="showModal">
         <v-icon>add</v-icon>
       </v-btn>
-      <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
-      <p class='inline-block right'><i>edit</i></p>
+      <p class='inline-block right'><i><router-link to="/editCollection/">edit</router-link></i></p>
 
       <!-- STEPH HARDCODED STUFF -->
        <div class='box-container'>
@@ -45,6 +44,7 @@
                   <router-link :to="collection.path" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
           </div>
         </div>
+      <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
     </div>
 
     </div>

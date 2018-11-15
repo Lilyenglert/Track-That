@@ -43,7 +43,7 @@
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
             <!-- <Chart id="graph"></Chart> -->
-            <p>Graph will go here</p>
+            <p><Chart></Chart></p>
             </v-card>
         </v-container>
 
@@ -83,32 +83,32 @@ import EventBus from '../eventBus.js'
 Vue.use(Storage)
 export default {
   name: 'ViewTrackerScreen',
-  components: {
-    Chart
-  },
-  data () {
+  data()
+  {
     return {
-      currentTracker: '',
-      currentTrackerUnits:[],
-      currentTrackerGoal:'',
-       entries: [
-       {}]
+      trackers:[],
+      entries:[],
+      currentTracker:null,
+      currentTrackerGoal:null,
+      currentTrackerUnits:null,
+      
     }
   },
+  components: {
+    Chart
+  }
+  ,
   created(){
-     this.trackers = JSON.parse(localStorage.getItem('trackers'));
-     
-     this.currentTracker = this.$route.params.tracker;
-     for (let index = 0; index < this.trackers.length; index++) {
+    this.getLocal();
+    this.currentTracker = this.$route.params.tracker;
+    for (let index = 0; index < this.trackers.length; index++) {
       if(this.trackers[index].name == this.currentTracker)
       {
-       
         this.currentTrackerGoal = this.trackers[index].goal; 
         this.currentTrackerUnits = this.trackers[index].unit;
-      }
-    } 
+      }}
   },
-  mounted() {
+  mounted(){
     if (localStorage.getItem('entries')) {
       try {
         this.entries = JSON.parse(localStorage.getItem('entries'))
@@ -117,13 +117,18 @@ export default {
         localStorage.removeItem('entries')
       }
     }
+   //console.log(this.entries)
   },
   methods: {
-    filterEntries: function (currentTrackerID) {
+    filterEntries: function (currentTracker) {
       return this.entries.filter(function (entry) {
-        return entry.trackerID === currentTrackerID
+        return entry.trackerID === currentTracker
       })
     },
+    getLocal()
+  {
+    this.trackers = JSON.parse(localStorage.getItem('trackers'));
+  },
     addValue () {
       const inputNum = parseFloat(document.getElementById('gValue').value)
       if (Vue.$localStorage.get('gValues') == null) {
