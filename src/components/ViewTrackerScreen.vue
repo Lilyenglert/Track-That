@@ -43,7 +43,7 @@
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
             <!-- <Chart id="graph"></Chart> -->
-            <p>Graph will go here</p>
+            <p><Chart></Chart></p>
             </v-card>
         </v-container>
 
@@ -107,19 +107,20 @@ import Storage from 'vue-web-storage'
 import EventBus from '../eventBus.js'
 Vue.use(Storage)
 export default {
+  name: 'ViewTrackerScreen',
   data()
   {
     return {
-      name: 'ViewTrackerScreen',
       trackers:[],
       entries:[],
       currentTracker:null,
       currentTrackerGoal:null,
       currentTrackerUnits:null,
-      components: {
-          Chart
-        }
+      
     }
+  },
+  components: {
+    Chart
   }
   ,
   created(){

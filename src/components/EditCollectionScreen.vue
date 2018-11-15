@@ -28,6 +28,12 @@ export default {
       }
     }
   },
+  methods:{
+    remove (x) {
+      this.collections.splice(x, 1)
+      this.save()
+    }
+  }
 
 }
 </script>
