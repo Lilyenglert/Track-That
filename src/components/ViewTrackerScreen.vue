@@ -35,13 +35,13 @@
 
         <v-container>
           <h2>Goals</h2>
-          <v-card flat="true">
-           <p id="goalMessage">Spend under 10 dollars per week</p>
+          <v-card :flat="true">
+           <p id="goalMessage">{{this.currentTrackerGoal}}</p>
           </v-card>
         </v-container>
         <v-container>
           <h2>Progress</h2>
-            <v-card id="graph_box" flat="true">
+            <v-card id="graph_box" :flat="true">
             <!-- <Chart id="graph"></Chart> -->
             <p>Graph will go here</p>
             </v-card>
@@ -107,17 +107,32 @@ import Storage from 'vue-web-storage'
 import EventBus from '../eventBus.js'
 Vue.use(Storage)
 export default {
-  name: 'ViewTrackerScreen',
-  components: {
-    Chart
-  },
-  data () {
+  data()
+  {
     return {
-       entries: [
-       {}]
+      name: 'ViewTrackerScreen',
+      trackers:[],
+      entries:[],
+      currentTracker:null,
+      currentTrackerGoal:null,
+      currentTrackerUnits:null,
+      components: {
+          Chart
+        }
     }
+  }
+  ,
+  created(){
+    this.getLocal();
+    this.currentTracker = this.$route.params.tracker;
+    for (let index = 0; index < this.trackers.length; index++) {
+      if(this.trackers[index].name == this.currentTracker)
+      {
+        this.currentTrackerGoal = this.trackers[index].goal; 
+        this.currentTrackerUnits = this.trackers[index].unit;
+      }}
   },
-  mounted() {
+  mounted(){
     if (localStorage.getItem('entries')) {
       try {
         this.entries = JSON.parse(localStorage.getItem('entries'))
@@ -125,13 +140,18 @@ export default {
         localStorage.removeItem('entries')
       }
     }
+    console.log(this.entries)
   },
   methods: {
-    filterEntries: function (currentTrackerID) {
+    filterEntries: function (currentTracker) {
       return this.entries.filter(function (entry) {
-        return entry.trackerID === currentTrackerID
+        return entry.trackerID === currentTracker
       })
     },
+    getLocal()
+  {
+    this.trackers = JSON.parse(localStorage.getItem('trackers'));
+  },
     addValue () {
       const inputNum = parseFloat(document.getElementById('gValue').value)
       if (Vue.$localStorage.get('gValues') == null) {
@@ -168,21 +188,27 @@ li {
 a {
   color: #42b983;
 }
+
 #goalMessage, #graph_box{
   text-align:left;
 }
+
 #graph{
   max-width: 300px;
 }
+
 .v-card {
   margin-top: 5%;
   padding:5%;
 }
+
 .scroll {
   overflow-y: auto;
 }
+
 .text-sm-right{
   text-align:right;
   font-size: 16px;
 }
+
 </style>
