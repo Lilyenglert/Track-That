@@ -37,14 +37,6 @@ button .v-btn__content a {
     text-align: left;
 }
 
-.top-bar {
-/* maybe fixed? */
-}
-
-.content {
-/* for fixed top */
-}
-
 .page-title {
     text-align: center;
 }
@@ -56,6 +48,11 @@ button .v-btn__content a {
 .message {
     margin: 10px 0;
     font-size: 18px;
+}
+
+.goals {
+    background-color: #DF5C46;
+    color: white;
 }
 
 /* 
@@ -72,11 +69,17 @@ tracker and collection sections
 
 .section .solid {
     background-color: #DF5C46;
+    background-image: url('./img/triangles.png');
+    background-repeat: repeat;
     border: none;
     color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
-.section.solid h3 { margin: 10px 0; }
+.section .solid h3 {
+    margin: 10px 0;
+}
 
 .inline-block {
     display: inline-block;
