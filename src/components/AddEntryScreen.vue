@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h2>Create Entry</h2>
-    <p><input v-model.number="newEntryValue" type="number"> this.TrackerUnit</p>
-    <p>Date: <input v-model="newEntryDate" type="date"></p>
-    <p>Note:<p><textarea v-model="newTrackerGoal"></textarea></p>
+    <h2>Create Entry for {{ $route.params.tracker }}</h2>
+    <p><input v-model.number="newEntryValue" type="number"></p>
+    <p>Date: <input v-model="newEntryDate" type="date">{{currentTrackerUnits}}</p>
+    <p>Note:<p><textarea v-model="entryNote"></textarea></p>
     <button @click="createEntry(trackerName)">Add Entry</button>
-    <p><router-link to="/">Back</router-link><p/>
+    <p><router-link to="./">Back</router-link><p/>
   </div>
 </template>
 
@@ -17,22 +17,12 @@ export default {
          name:'',
          unit:''}
        ],
-
        entries: [
-       {
-         name: null,
-         date: null, 
-         value:null,
-         unit:null}
+       {}
         ], 
        currentTracker:'',
        currentTrackerName:'',
        currentTrackerUnits:[],
-       entries:[{
-         date:'',
-         amount: [],
-         image:[], 
-       }]
     }
   },
   methods:{
@@ -51,26 +41,23 @@ export default {
         this.currentTrackerUnits = this.trackers[index].unit;
       }
     }
-
     var newEntryInput = {
-      "name": this.currentTrackerName,
-        "date" : new Date,
-        "value": 7,
-        "unit": this.currentTrackerUnits
+        "message": this.entryNote,
+        "date" : this.newEntryDate,
+        "value": this.newEntryValue,
+        "unit": this.currentTrackerUnits,
+        "trackerID": this.$route.params.id
     };
   this.entries.push(newEntryInput);
   console.log("pushed");
-
   const parsed = JSON.stringify(this.entries);
   localStorage.setItem('entries', parsed);
-
   // console.log(this.currentTracker);
   // console.log(this.currentTrackerName);
   // console.log(this.currentTrackerUnits);
   }
   }
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

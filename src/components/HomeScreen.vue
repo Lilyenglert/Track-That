@@ -39,8 +39,8 @@
                   <router-link :to="collection.path" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
           </div>
         </div>
-      <!--<button @click="showModal">Open Popup</button>
-      <CollectionPopup v-show="isPopupVisible" @close="closeModal"/>!-->
+      <button @click="showModal">Open Popup</button>
+      <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
     </div>
 
     </div>
@@ -50,10 +50,10 @@
 </template>
 
 <script>
-import CollectionPopup from './CollectionPopup.vue'
+import AddCollectionPopup from './AddCollectionPopup.vue'
 export default {
   components: {
-    CollectionPopup
+    AddCollectionPopup
   },
   data(){
     return{
@@ -81,13 +81,12 @@ export default {
       },
       closeModal() {
         this.isPopupVisible = false;
+        this.getLocal();
       },
   getLocal()
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));
     this.collections = JSON.parse(localStorage.getItem('collections'));
-    console.log(this.trackers);
-    console.log(this.collections);
   }
 }
   
