@@ -10,6 +10,7 @@ var entryData = [4, 6, 8, 9, 1, 4, 7, 9]
 console.log(entryData)
 export default {
   name: 'Chart',
+  props: ['trackerID'],
   data()
   {
     return {
@@ -43,7 +44,7 @@ export default {
       .attr('transform', 'translate(0,170)')
     svg.append('g').call(leftAxis)
       .attr('transform', 'translate(25,0)')
-    svg.append('path').attr('d', createPath(entryData))
+    svg.append('path').attr('d', createPath(entryData)).attr('id', 'dataPath')
     EventBus.$on('refreshGraph', function () {
 
       svg.selectAll('*').remove()
@@ -60,7 +61,7 @@ export default {
         .attr('transform', 'translate(0,210)')
       svg.append('g').call(leftAxis)
         .attr('transform', 'translate(50,0)')
-      svg.append('path').attr('d', createPath(entryData))
+      svg.append('path').attr('d', createPath(entryData)).attr('id', 'dataPath')
     })
   }
 }
@@ -70,9 +71,14 @@ svg {
   margin: 25px;
 }
 path{
-    fill: none;
-    stroke:black;
-    stroke-width: 3px;
+  fill: none;
+  stroke:black;
+  stroke-width: 2px;
+}
+#dataPath{
+  fill: none;
+  stroke:grey;
+  stroke-width: 1px;
 }
 
 </style>
