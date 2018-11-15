@@ -21,6 +21,14 @@ button .v-btn__content a {
     color: white;
 }
 
+#backButton{
+    align-content: left;
+ }
+ 
+ #editButton{
+    align-content: right;
+ }
+
 /* ###### HOMESCREEN.VUE ###### */
 
 /* content section */

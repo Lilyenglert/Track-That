@@ -1,26 +1,22 @@
 <template>
   <div>
+    <h2>Edit Collections</h2>
     <div v-for="(collection, n) in collections" v-bind:key="collection.n">
       <p>
         <span>{{ collection.name }}</span>
         <button @click="remove(n)">Remove</button>
       </p>
     </div>
-    <h2>Create Collection</h2>
-    <p><input v-model="newCollectionName"></p>
-    <button @click="add">Add Collection</button>
-    <p><router-link to="/">Back</router-link></p>
+    <router-link to="/">Back</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'AddCollectionScreen',
+  name: 'EditCollection Screen',
   data () {
     return {
       collections: [],
-      newCollectionName: null,
-      newCollectionPath: null
     }
   },
   mounted () {
@@ -32,30 +28,13 @@ export default {
       }
     }
   },
-  methods: {
-    add () {
-      // ensure they actually typed something
-      if (!this.newCollectionName) {
-        return
-      }
-      var trackerEntry = {
-        'name': this.newCollectionName,
-        'path' : '/collectionView/' + this.newCollectionName + '/',
-      }
-      if(this.collections)
-      this.collections.push(trackerEntry)
-      this.newCollectionName = ''
-      this.save()
-    },
+  methods:{
     remove (x) {
       this.collections.splice(x, 1)
       this.save()
-    },
-    save () {
-      const parsed = JSON.stringify(this.collections)
-      localStorage.setItem('collections', parsed)
     }
   }
+
 }
 </script>
 
