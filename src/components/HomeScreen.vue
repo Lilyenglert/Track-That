@@ -33,9 +33,10 @@
     </div>
     <div class='section'>
       <h2 class='inline-block'>Collections</h2>
-      <v-btn fab dark small color="#DF5C46" class='add-thing'>
+      <v-btn fab dark small color="#DF5C46" class='add-thing' @click="showModal">
         <v-icon>add</v-icon>
       </v-btn>
+      <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
       <p class='inline-block right'><i>edit</i></p>
 
       <!-- STEPH HARDCODED STUFF -->
@@ -52,11 +53,11 @@
   </div>
 </template>
 
-<<script>
-import CollectionPopup from './CollectionPopup.vue'
+<script>
+import AddCollectionPopup from './AddCollectionPopup.vue'
 export default {
   components: {
-    CollectionPopup
+    AddCollectionPopup
   },
   props:{
     to: Object
@@ -89,13 +90,12 @@ export default {
       },
       closeModal() {
         this.isPopupVisible = false;
+        this.getLocal();
       },
   getLocal()
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));
     this.collections = JSON.parse(localStorage.getItem('collections'));
-    console.log(this.trackers);
-    console.log(this.collections);
   }
 }
   

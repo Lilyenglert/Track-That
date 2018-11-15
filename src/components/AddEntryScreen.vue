@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h2>Create Entry</h2>
-    <p><input v-model.number="newEntryValue" type="number"> this.TrackerUnit</p>
+    <h2>Create Entry for {{ $route.params.tracker }}</h2>
+    <p><input v-model.number="newEntryValue" type="number">{{this.currentTrackerUnits}}</p>
     <p>Date: <input v-model="newEntryDate" type="date"></p>
-    <p>Note:<p><textarea v-model="newTrackerGoal"></textarea></p>
-    <button @click="createEntry(trackerName)">Add Entry</button>
-    <p><router-link to="/">Back</router-link><p/>
+    <p>Note:<p><textarea v-model="entryNote"></textarea></p>
+    <button @click="createEntry">Add Entry</button>
+    <p><router-link to="./">Back</router-link><p/>
   </div>
 </template>
 
@@ -17,60 +17,67 @@ export default {
          name:'',
          unit:''}
        ],
-
        entries: [
-       {
-         name: null,
-         date: null, 
-         value:null,
-         unit:null}
         ], 
+      newEntryValue:null,
+      newEntryDate: null, 
+      entryNote: null,
        currentTracker:'',
        currentTrackerName:'',
        currentTrackerUnits:[],
-       entries:[{
-         date:'',
-         amount: [],
-         image:[], 
-       }]
     }
+  },
+  created()
+  {
+    this.getLocal();
+    this.currentTracker = this.$route.params.tracker;
+    this.instantiateEntry(this.currentTracker);
+    
   },
   methods:{
   getLocal()
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));
   },
-  createEntry(trackerName)
+  instantiateEntry(trackerName)
   {
-    console.log('tracker name ' + trackerName);
-    for (let index = 0; index < this.trackers.length; index++) {
+  for (let index = 0; index < this.trackers.length; index++) {
       if(this.trackers[index].name == trackerName)
       {
-        this.currentTracker = this.trackers[index];
-        this.currentTrackerName = this.trackers[index].name; 
         this.currentTrackerUnits = this.trackers[index].unit;
       }
     }
-
+  },
+  createEntry()
+  {
+    //console.log('tracker name ' + trackerName);
+  
     var newEntryInput = {
-      "name": this.currentTrackerName,
-        "date" : new Date,
-        "value": 7,
-        "unit": this.currentTrackerUnits
+        "message": this.entryNote,
+        "date" : this.newEntryDate,
+        "value": this.newEntryValue,
+        "unit": this.currentTrackerUnits,
+        "trackerID": this.$route.params.id
     };
-  this.entries.push(newEntryInput);
-  console.log("pushed");
+    this.entries.push(newEntryInput);
+    console.log("pushed");
+   this.save();
+   this.cleanEntryValues();
+  },
+  cleanEntryValues()
+    {
+      this.entryNote = ''
+      this.newEntryDate = ''
+      this.newEntryValue = ''
+    },
 
-  const parsed = JSON.stringify(this.entries);
-  localStorage.setItem('entries', parsed);
-
-  // console.log(this.currentTracker);
-  // console.log(this.currentTrackerName);
-  // console.log(this.currentTrackerUnits);
+  save()
+  {
+    const parsed = JSON.stringify(this.entries);
+    localStorage.setItem('entries', parsed);
   }
   }
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

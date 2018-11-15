@@ -24,7 +24,7 @@
          <v-flex xs2>
         </v-flex>
         <v-flex xs6>
-          <a><p class="text-sm-right">Create a new entry</p></a>
+          <a><p class="text-sm-right"><router-link to=entry>Create a New</router-link></p></a>
         </v-flex>
         <v-flex xs2>
           <a><v-icon>add</v-icon></a>
@@ -53,7 +53,9 @@
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
           <h2>Log</h2>
           <v-card class="scroll" height= "200px" :flat="true">
-
+            <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.value">
+              <p>{{ entry.value }}</p>
+            </div>
             <v-list id="example1">
 
               <v-list-tile>
@@ -105,35 +107,48 @@ import Storage from 'vue-web-storage'
 import EventBus from '../eventBus.js'
 Vue.use(Storage)
 export default {
-  data()
-  {
+  name: 'ViewTrackerScreen',
+  components: {
+    Chart
+  },
+  data () {
     return {
-      name: 'ViewTrackerScreen',
-      trackers:[],
-      currentTracker:null,
-      currentTrackerGoal:null,
-      currentTrackerUnits:null,
-      components: {
-          Chart
-        }
+      currentTracker: '',
+      currentTrackerUnits:[],
+      currentTrackerGoal:'',
+       entries: [
+       {}]
     }
-  }
-  ,
+  },
   created(){
-    this.getLocal();
-    this.currentTracker = this.$route.params.tracker;
-    for (let index = 0; index < this.trackers.length; index++) {
+     this.trackers = JSON.parse(localStorage.getItem('trackers'));
+     
+     this.currentTracker = this.$route.params.tracker;
+     for (let index = 0; index < this.trackers.length; index++) {
       if(this.trackers[index].name == this.currentTracker)
       {
+       
         this.currentTrackerGoal = this.trackers[index].goal; 
         this.currentTrackerUnits = this.trackers[index].unit;
-      }}
-  }, 
-  methods: {
-    getLocal()
-  {
-    this.trackers = JSON.parse(localStorage.getItem('trackers'));
+      }
+    } 
   },
+  mounted() {
+    if (localStorage.getItem('entries')) {
+      try {
+        this.entries = JSON.parse(localStorage.getItem('entries'))
+
+      } catch (e) {
+        localStorage.removeItem('entries')
+      }
+    }
+  },
+  methods: {
+    filterEntries: function (currentTrackerID) {
+      return this.entries.filter(function (entry) {
+        return entry.trackerID === currentTrackerID
+      })
+    },
     addValue () {
       const inputNum = parseFloat(document.getElementById('gValue').value)
       if (Vue.$localStorage.get('gValues') == null) {
