@@ -54,42 +54,17 @@
           <h2>Log</h2>
           <v-card class="scroll" height= "200px" :flat="true">
             <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.value">
-              <p>{{ entry.value }}</p>
+                <v-list id="example1">
+              <v-list-tile>
+                <v-list-tile-avatar>{{entry.date}}</v-list-tile-avatar>
+                <v-list-tile-content> 
+                  <v-list-tile-title class="align-left">{{entry.value}}</v-list-tile-title>
+                  <v-list-tile-sub-title class="align-left">{{entry.message}}</v-list-tile-sub-title>
+                </v-list-tile-content>
+                <v-list-tile-action><a><v-icon>add</v-icon></a></v-list-tile-action>
+              </v-list-tile>
+              </v-list>
             </div>
-            <v-list id="example1">
-
-              <v-list-tile>
-                <v-list-tile-avatar>10/11</v-list-tile-avatar>
-                <v-list-tile-content> 
-                  <v-list-tile-title class="align-left">10 Dollars</v-list-tile-title>
-                  <v-list-tile-sub-title class="align-left">Notes will be displayed here</v-list-tile-sub-title>
-                </v-list-tile-content>
-                <v-list-tile-action><a><v-icon>add</v-icon></a></v-list-tile-action>
-              </v-list-tile>
-              </v-list>
-
-            <v-list id="example1">
-              <v-list-tile>
-                <v-list-tile-avatar>10/11</v-list-tile-avatar>
-                <v-list-tile-content> 
-                  <v-list-tile-title class="align-left">10 Dollars</v-list-tile-title>
-                  <v-list-tile-sub-title class="align-left">Notes will be displayed here</v-list-tile-sub-title>
-                </v-list-tile-content>
-                <v-list-tile-action><a><v-icon>add</v-icon></a></v-list-tile-action>
-              </v-list-tile>
-              </v-list>
-
-            <v-list id="example1">
-              <v-list-tile>
-                <v-list-tile-avatar>10/11</v-list-tile-avatar>
-                <v-list-tile-content> 
-                  <v-list-tile-title class="align-left">10 Dollars</v-list-tile-title>
-                  <v-list-tile-sub-title class="align-left">Notes will be displayed here</v-list-tile-sub-title>
-                </v-list-tile-content>
-                <v-list-tile-action><a><v-icon>add</v-icon></a></v-list-tile-action>
-              </v-list-tile>
-              </v-list>
-
           </v-card>
       </v-container>
 
