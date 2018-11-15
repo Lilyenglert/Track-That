@@ -27,11 +27,9 @@
 
       <!-- STEPH HARDCODED STUFF -->
       <div class='box-container'>
-        
-            <div class = 'box' v-for="tracker in trackers" v-bind:key="tracker.id" v-if="tracker">
-                  <router-link :to="tracker.path" class='box-text' style='border-radius:10px;background-color:#5c46df;'>{{tracker.name}}</router-link>
-            </div>
-      
+        <div class = 'box' v-for="tracker in trackers" v-bind:key="tracker.id" v-if="tracker">
+          <router-link :to="tracker.path" class='box-text' style='border-radius:10px;background-color:#5c46df;'>{{tracker.name}}</router-link>
+        </div>
       </div>
       
     </div>
@@ -43,7 +41,7 @@
       <p class='inline-block right'><i><router-link to="/editCollection/">edit</router-link></i></p>
 
        <div class='box-container'>
-          <div class = 'box' v-for="collection in this.collections" v-bind:key="collection.id">
+          <div class='box' v-for="collection in this.collections" v-bind:key="collection.id">
             <router-link :to="collection.path" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
           </div>
         </div>

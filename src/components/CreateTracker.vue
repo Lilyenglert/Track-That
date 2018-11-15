@@ -1,5 +1,5 @@
 <template>
-<div id="app">
+<div id="create-tracker-screen">
   <h2>Tracker</h2>
   <div v-for="(tracker, n) in trackers" v-bind:key="tracker.n">
     <p>

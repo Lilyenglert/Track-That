@@ -1,9 +1,16 @@
 <template>
-  <div>
-    <h2>{{ $route.params.collection }} Collection</h2>
+  <div id='view-collection-screen' class='inner'>
+    <div class='top-bar section'>
+      <v-btn fab dark small color="#DF5C46" class='back-button'>
+          <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
+        </v-btn>
+        <!-- <p><router-link to="/">Back</router-link><p/> -->
+      <h1 class='page-title'>{{ $route.params.collection }} Collection</h1>
+    </div>
+    
     <div class='section'>
       <div class='section-title'>
-        <h1 class='inline-block'>Trackers</h1>
+        <h2 class='inline-block'>Trackers</h2>
         <router-link to="/add">
           <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
         </router-link>
@@ -12,9 +19,9 @@
 
       <!-- vanilla html/css -->
       <div class='box-container'>
-            <div class = 'box' v-for="tracker in filterTrackers($route.params.collection)" v-bind:key="tracker.id">
-              <router-link :to="tracker.path" class='box-text' style='border-radius:10px;background-color:#5c46df;' >{{tracker.name}}</router-link>
-            </div>
+        <div class='box' v-for="tracker in filterTrackers($route.params.collection)"  v-bind:key="tracker.id">
+          <router-link :to="tracker.path" class='box-text' style='border-radius:10px;background-color:#5c46df;' >{{tracker.name}}</router-link>
+        </div>
       </div> 
     </div>
     <router-link to="/">Back</router-link>
