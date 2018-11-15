@@ -8,6 +8,7 @@ import ScreenTemplate from './components/ScreenTemplate.vue'
 import DataDemoScreen from './components/DataDemoScreen.vue'
 import AddCollectionScreen from './components/AddCollectionScreen.vue'
 import AddEntryScreen from './components/AddEntryScreen.vue'
+import EditCollectionScreen from './components/EditCollectionScreen.vue'
 
 Vue.use(Router)
 
@@ -55,6 +56,10 @@ export default new Router({
       name: 'DataDemoScreen',
       component: DataDemoScreen
     },
-    
+    {
+      path: '/editCollection',
+      name: 'EditCollectionScreen',
+      component: EditCollectionScreen
+    },
   ]
 })
