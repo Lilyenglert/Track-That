@@ -24,6 +24,7 @@ export default {
         localStorage.removeItem('entries')
       }
     }
+    
     const svg = d3.select(this.$el)
       .append('svg')
       .attr('id', 'dataChart')

@@ -52,7 +52,7 @@
           
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
           <h2>Log</h2>
-          <v-card class="scroll" height= "200px" flat="true">
+          <v-card class="scroll" height= "200px" :flat="true">
             <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.value">
               <p>{{ entry.value }}</p>
             </div>
@@ -137,6 +137,7 @@ export default {
     if (localStorage.getItem('entries')) {
       try {
         this.entries = JSON.parse(localStorage.getItem('entries'))
+
       } catch (e) {
         localStorage.removeItem('entries')
       }

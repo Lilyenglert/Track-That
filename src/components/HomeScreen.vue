@@ -33,7 +33,7 @@
     </div>
     <div class='section'>
       <h2 class='inline-block'>Collections</h2>
-      <v-btn fab dark small color="#DF5C46" class='add-thing'>
+      <v-btn fab dark small color="#DF5C46" class='add-thing' @click="showModal">
         <v-icon>add</v-icon>
       </v-btn>
       <p class='inline-block right'><i><router-link to="/editCollection/">edit</router-link></i></p>
@@ -44,7 +44,6 @@
                   <router-link :to="collection.path" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
           </div>
         </div>
-      <button @click="showModal">Open Popup</button>
       <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
     </div>
 
@@ -56,7 +55,6 @@
 
 <script>
 import AddCollectionPopup from './AddCollectionPopup.vue'
-
 export default {
   components: {
     AddCollectionPopup

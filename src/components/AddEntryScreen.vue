@@ -1,10 +1,10 @@
 <template>
   <div>
     <h2>Create Entry for {{ $route.params.tracker }}</h2>
-    <p><input v-model.number="newEntryValue" type="number"></p>
-    <p>Date: <input v-model="newEntryDate" type="date">{{currentTrackerUnits}}</p>
+    <p><input v-model.number="newEntryValue" type="number">{{this.currentTrackerUnits}}</p>
+    <p>Date: <input v-model="newEntryDate" type="date"></p>
     <p>Note:<p><textarea v-model="entryNote"></textarea></p>
-    <button @click="createEntry(trackerName)">Add Entry</button>
+    <button @click="createEntry">Add Entry</button>
     <p><router-link to="./">Back</router-link><p/>
   </div>
 </template>
@@ -18,29 +18,40 @@ export default {
          unit:''}
        ],
        entries: [
-       {}
         ], 
+      newEntryValue:null,
+      newEntryDate: null, 
+      entryNote: null,
        currentTracker:'',
        currentTrackerName:'',
        currentTrackerUnits:[],
     }
+  },
+  created()
+  {
+    this.getLocal();
+    this.currentTracker = this.$route.params.tracker;
+    this.instantiateEntry(this.currentTracker);
+    
   },
   methods:{
   getLocal()
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));
   },
-  createEntry(trackerName)
+  instantiateEntry(trackerName)
   {
-    console.log('tracker name ' + trackerName);
-    for (let index = 0; index < this.trackers.length; index++) {
+  for (let index = 0; index < this.trackers.length; index++) {
       if(this.trackers[index].name == trackerName)
       {
-        this.currentTracker = this.trackers[index];
-        this.currentTrackerName = this.trackers[index].name; 
         this.currentTrackerUnits = this.trackers[index].unit;
       }
     }
+  },
+  createEntry()
+  {
+    //console.log('tracker name ' + trackerName);
+  
     var newEntryInput = {
         "message": this.entryNote,
         "date" : this.newEntryDate,
@@ -48,13 +59,22 @@ export default {
         "unit": this.currentTrackerUnits,
         "trackerID": this.$route.params.id
     };
-  this.entries.push(newEntryInput);
-  console.log("pushed");
-  const parsed = JSON.stringify(this.entries);
-  localStorage.setItem('entries', parsed);
-  // console.log(this.currentTracker);
-  // console.log(this.currentTrackerName);
-  // console.log(this.currentTrackerUnits);
+    this.entries.push(newEntryInput);
+    console.log("pushed");
+   this.save();
+   this.cleanEntryValues();
+  },
+  cleanEntryValues()
+    {
+      this.entryNote = ''
+      this.newEntryDate = ''
+      this.newEntryValue = ''
+    },
+
+  save()
+  {
+    const parsed = JSON.stringify(this.entries);
+    localStorage.setItem('entries', parsed);
   }
   }
 }
