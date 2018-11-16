@@ -1,12 +1,19 @@
 <template>
   <div>
     <h2>Edit Collections</h2>
-    <div v-for="(collection, n) in collections" v-bind:key="collection.n">
+
+    <div class='box-container'>
+          <div class = 'box' v-for="(collection, n) in collections" v-bind:key="collection.n">
+                  <div @click="remove(n)" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</div>
+                   <!-- <button class='box-text' @click="remove(n)">Remove</button> -->
+          </div>
+        </div>
+    <!-- <div v-for="(collection, n) in collections" v-bind:key="collection.n">
       <p>
         <span>{{ collection.name }}</span>
         <button @click="remove(n)">Remove</button>
       </p>
-    </div>
+    </div> -->
     <router-link to="/">Back</router-link>
   </div>
 </template>

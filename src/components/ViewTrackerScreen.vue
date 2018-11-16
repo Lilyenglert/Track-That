@@ -58,10 +58,10 @@
               <v-list-tile>
                 <v-list-tile-avatar>{{entry.date}}</v-list-tile-avatar>
                 <v-list-tile-content> 
-                  <v-list-tile-title class="align-left">{{entry.value}}</v-list-tile-title>
+                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit}}</v-list-tile-title>
                   <v-list-tile-sub-title class="align-left">{{entry.message}}</v-list-tile-sub-title>
                 </v-list-tile-content>
-                <v-list-tile-action><a><v-icon>add</v-icon></a></v-list-tile-action>
+                <v-list-tile-action><a><router-link :to="`editEntry/${entry.id}`"><v-icon>edit</v-icon></router-link></a></v-list-tile-action>
               </v-list-tile>
               </v-list>
             </div>
@@ -71,8 +71,6 @@
     </v-container>
     </v-app>
   </div>
-
- 
 </template>
 
 <script>
@@ -91,7 +89,7 @@ export default {
       currentTracker:null,
       currentTrackerGoal:null,
       currentTrackerUnits:null,
-      
+      entryPath: null
     }
   },
   components: {
@@ -107,6 +105,7 @@ export default {
         this.currentTrackerGoal = this.trackers[index].goal; 
         this.currentTrackerUnits = this.trackers[index].unit;
       }}
+
   },
   mounted(){
     if (localStorage.getItem('entries')) {
