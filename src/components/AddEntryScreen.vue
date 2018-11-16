@@ -17,8 +17,7 @@ export default {
          name:'',
          unit:''}
        ],
-       entries: [
-        ], 
+       entries: [], 
       newEntryValue:null,
       newEntryDate: null, 
       entryNote: null,
@@ -34,10 +33,20 @@ export default {
     this.instantiateEntry(this.currentTracker);
     
   },
+  mounted(){
+     if (localStorage.getItem('entries')) {
+      try {
+        this.entries = JSON.parse(localStorage.getItem('entries'))
+      } catch (e) {
+        localStorage.removeItem('entries')
+      }
+    }
+  },
   methods:{
   getLocal()
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));
+   // this.entries = JSON.parse(localStorage.getItem('entries'));
   },
   instantiateEntry(trackerName)
   {

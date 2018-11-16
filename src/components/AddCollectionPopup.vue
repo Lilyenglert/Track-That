@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'CollectionPopup',
+  name: 'AddCollectionPopup',
   data () {
     return {
       collections: [],
