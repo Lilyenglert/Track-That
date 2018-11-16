@@ -1,8 +1,8 @@
 <template>
 <div>
     <v-app>
-
-       <v-toolbar id="titlebar">
+    <!-- toolbar -->
+      <v-toolbar fixed flat id="titlebar">
       <v-flex xs2>
        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
       </v-flex>
@@ -17,20 +17,15 @@
       <v-toolbar-items class="hidden-sm-and-down">
       </v-toolbar-items>
     </v-toolbar>
+    <!-- /toolbar -->
 
-<!-- V-container for catagories -->
-    <v-container class="inner" id="tracker_details">
+    <div class="inner" id="tracker_details">
       <v-layout>
-         <v-flex xs2>
+         
+        <v-flex xs12>
+          <a><p class="link"><router-link to=entry>Create a new entry <v-icon size="18px">add</v-icon></router-link></p></a>
         </v-flex>
-        <v-flex xs6>
-          <a><p class="text-sm-right"><router-link to=entry>Create a New</router-link></p></a>
-        </v-flex>
-        <v-flex xs2>
-          <a><v-icon>add</v-icon></a>
-        </v-flex>
-        <v-flex xs2>
-        </v-flex>
+        
       </v-layout>
 
         <v-container>
@@ -93,7 +88,7 @@
           </v-card>
       </v-container>
 
-    </v-container>
+    </div>
     </v-app>
   </div>
 
@@ -208,9 +203,12 @@ a {
   overflow-y: auto;
 }
 
-.text-sm-right{
-  text-align:right;
+.link{
+  text-align:center;
   font-size: 16px;
 }
 
+.inner{
+  margin-top: 20%;
+}
 </style>
