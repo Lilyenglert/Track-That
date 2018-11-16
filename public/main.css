@@ -54,6 +54,7 @@ button .v-btn__content a {
 .inner {
     padding: 5%;
     text-align: left;
+    background-color: white;
 }
 
 .greeting {
