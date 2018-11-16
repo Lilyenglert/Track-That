@@ -1,20 +1,11 @@
 <template>
   <div>
-<<<<<<< HEAD
-    <h2>Create Entry</h2>
-    <p><input v-model.number="newEntryValue" type="number"></p>
-    <p>Date: <input v-model="newEntryDate" type="date">{{currentTrackerUnits}}</p>
-    <p>Note:<p><textarea v-model="entryNote"></textarea></p>
-    <button @click="createEntry(trackerName)">Add Entry</button>
-    <p><router-link to="/">Back</router-link><p/>
-=======
     <h2>Create Entry for {{ $route.params.tracker }}</h2>
     <p><input v-model.number="newEntryValue" type="number">{{this.currentTrackerUnits}}</p>
     <p>Date: <input v-model="newEntryDate" type="date"></p>
     <p>Note:<p><textarea v-model="entryNote"></textarea></p>
     <button @click="createEntry">Add Entry</button>
     <p><router-link to="./">Back</router-link><p/>
->>>>>>> origin/liamsliamScreenRouter
   </div>
 </template>
 
@@ -26,21 +17,10 @@ export default {
          name:'',
          unit:''}
        ],
-<<<<<<< HEAD
-
-       entries: [
-       {
-         date: null, 
-         value:null,
-         unit:null,
-         message:null}
-        ], 
-=======
        entries: [], 
       newEntryValue:null,
       newEntryDate: null, 
       entryNote: null,
->>>>>>> origin/liamsliamScreenRouter
        currentTracker:'',
        currentTrackerName:'',
        currentTrackerUnits:[],
@@ -82,18 +62,11 @@ export default {
     //console.log('tracker name ' + trackerName);
   
     var newEntryInput = {
-<<<<<<< HEAD
-      "message": this.entryNote,
-        "date" : this.newEntryDate,
-        "value": this.newEntryValue,
-        "unit": this.currentTrackerUnits
-=======
         "message": this.entryNote,
         "date" : this.newEntryDate,
         "value": this.newEntryValue,
         "unit": this.currentTrackerUnits,
         "trackerID": this.$route.params.id
->>>>>>> origin/liamsliamScreenRouter
     };
     this.entries.push(newEntryInput);
     console.log("pushed");
@@ -106,11 +79,13 @@ export default {
       this.newEntryDate = ''
       this.newEntryValue = ''
     },
-
   save()
   {
     const parsed = JSON.stringify(this.entries);
     localStorage.setItem('entries', parsed);
+    //console.log(this.entries[1]);
+    this.entries.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
+    console.log(this.entries);
   }
   }
 }
