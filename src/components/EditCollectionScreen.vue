@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'EditCollection Screen',
+  name: 'EditCollectionScreen',
   data () {
     return {
       collections: [],
