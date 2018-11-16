@@ -121,7 +121,6 @@ export default {
       this.newEntryDate = ''
       this.newEntryValue = ''
     },
-
   save()
   {
     const parsed = JSON.stringify(this.entries);
@@ -130,6 +129,10 @@ export default {
 
       const parsedID = JSON.stringify(this.entryID)
       localStorage.setItem('entryID', parsedID)
+
+       //console.log(this.entries[1]);
+    this.entries.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
+    console.log(this.entries);
   }
   }
 }

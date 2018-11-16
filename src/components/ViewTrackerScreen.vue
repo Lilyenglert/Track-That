@@ -43,7 +43,7 @@
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
             <!-- <Chart id="graph"></Chart> -->
-            <p><Chart></Chart></p>
+            <p><Chart :trackerID=$route.params.id></Chart></p>
             </v-card>
         </v-container>
 
