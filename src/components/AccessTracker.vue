@@ -48,7 +48,7 @@ export default {
       {
         this.currentTracker = this.trackers[index];
         this.currentTrackerName = this.trackers[index].name; 
-        this.currentTrackerUnits = this.trackers[index].unit;
+        this.currentTrackserUnits = this.trackers[index].unit;
       }
     }
 

@@ -36,7 +36,9 @@ export default {
         this.entryData.push({value: this.entries[index].value, date: new Date(this.entries[index].date)})
         this.entryValues.push(this.entries[index].value)
         this.entryDates.push(new Date(this.entries[index].date))
+        this.entryData.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
       }}
+    this.entryData.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
     const svg = d3.select(this.$el)
       .append('svg')
       .attr('id', 'dataChart')
