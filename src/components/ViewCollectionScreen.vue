@@ -1,20 +1,36 @@
 <template>
-  <div id='view-collection-screen' class='inner'>
-    <div class='top-bar section'>
+  <div id='view-collection-screen'>
+    <!-- steph topbar -->
+    <!-- <div class='top-bar section'>
       <v-btn fab dark small color="#DF5C46" class='back-button'>
-          <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
-        </v-btn>
-        <!-- <p><router-link to="/">Back</router-link><p/> -->
+        <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
+      </v-btn>
       <h1 class='page-title'>{{ $route.params.collection }} Collection</h1>
-    </div>
+    </div> -->
+
+    <!-- lily topbar -->
+    <v-toolbar id="titlebar">
+      <v-flex xs2>
+      <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+      </v-flex>
+      <v-flex xs8>
+        <v-toolbar-title class="page-title">{{ $route.params.collection }} Collection</v-toolbar-title>
+      </v-flex>
+
+      <v-flex xs2>
+        <a id="editButton"><i>edit</i></a>
+      </v-flex>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+    </v-toolbar>
     
     <div class='section'>
       <div class='section-title'>
         <h2 class='inline-block'>Trackers</h2>
-        <router-link to="/add">
-          <v-icon class='add-button' style='color:#DF5C46'>add_circle</v-icon>
-        </router-link>
-        <p class='inline-block right'><i>edit</i></p>
+        <v-btn fab dark small color="#DF5C46" class='add-thing'>
+          <router-link to="/add"><v-icon>add</v-icon></router-link>
+        </v-btn>
+        <!-- <p class='inline-block right'><i>edit</i></p> -->
       </div>
 
       <!-- vanilla html/css -->

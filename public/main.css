@@ -29,15 +29,12 @@ button .v-btn__content a {
     align-content: right;
  }
 
- .top-bar {
-    /* text-align: left; */
- }
-
  .page-title {
     text-align: center;
     display: inline-block;
     vertical-align: middle;
     margin: 0 20px;
+    font-size: 5vw;
 }
 
  .back-button {
@@ -79,8 +76,14 @@ tracker and collection sections
 }
 
 .section {
+    /* border-bottom: solid lightgray .5px; */
+    background-color: white;
+    margin: 6% 0;
     padding: 4%;
-    border-bottom: solid lightgray .5px;
+}
+
+.section-top {
+    margin-top: 0;
 }
 
 .section .solid {
@@ -163,7 +166,7 @@ stuff for boxes on home page
 }
 
 input, textarea, select {
-    border: solid lightgray .5px;
+    border-bottom: solid rgb(223, 92, 70) 2px;
 }
 
 .prompt {
@@ -205,6 +208,8 @@ input, textarea, select {
 
 }
 
-/* text input styles */
-
+/* popup */
+.popup {
+    text-align: center;
+}
 
