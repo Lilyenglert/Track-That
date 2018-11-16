@@ -36,7 +36,7 @@
     </div>
     
     <!-- <button @click="add">Add Tracker</button> -->
-    <v-btn block dark color="#DF5C46" @click="add" class='submit-button'>Add Tracker</v-btn>
+    <router-link to="/"><v-btn block dark color="#DF5C46" @click="add" class='submit-button'>Add Tracker</v-btn></router-link>
   </div>
 </template>
 

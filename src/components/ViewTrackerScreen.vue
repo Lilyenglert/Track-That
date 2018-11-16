@@ -33,7 +33,7 @@
         </v-flex>
       </v-layout>
 
-        <v-container>
+        <v-container id="goalsContainer">
           <h2>Goals</h2>
           <v-card :flat="true">
            <p id="goalMessage">{{this.currentTrackerGoal}}</p>
@@ -116,7 +116,12 @@ export default {
         localStorage.removeItem('entries')
       }
     }
-   //console.log(this.entries)
+    if(this.currentTrackerGoal==null){
+      document.getElementById("goalsContainer").style.display = "none"
+    }
+    else{
+      document.getElementById("goalsContainer").style.display = "block"
+    }
   },
   methods: {
     filterEntries: function (currentTracker) {
