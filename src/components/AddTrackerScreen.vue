@@ -1,20 +1,42 @@
 <template>
-  <div>
-    <h2>Create Tracker</h2>
-    <p>What do you want to track?</p>
-    <p>Tracker Name: <input v-model="newTrackerName"></p>
-    <p>What units are we tracking?</p>
-    <p>Tracker Units: <input v-model="newTrackerUnit"></p>
-    <p>Do you have any goals? (Optional)</p>
-    <p><textarea v-model="newTrackerGoal"></textarea></p>
-    <p>Add tracker to collection? (Optional)</p>
-    <p>
-      <select v-model="NewTrackerCollection">
-        <option v-for="collection in collections" v-bind:key="collection.id">{{collection.name}}</option>
-      </select>
-    </p>
-    <button @click="add">Add Tracker</button>
-    <p><router-link to="/">Back</router-link><p/>
+  <div id='add-tracker-screen' class='inner'>
+    <div class='top-bar section'>
+      <v-btn fab dark small color="#DF5C46">
+          
+          <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
+        </v-btn>
+        <!-- <p><router-link to="/">Back</router-link><p/> -->
+      <h1 class='page-title'>Create Tracker</h1>
+    </div>
+    
+    <div class='section'>
+      <h2 class='prompt'>What do you want to track?</h2>
+      <p>Tracker Name: <input v-model="newTrackerName"></p>
+    </div>
+    
+    <div class='section'>
+      <h2 class='prompt'>What units are we tracking?</h2>
+      <p>Tracker Units: <input v-model="newTrackerUnit"></p>
+    </div>
+    
+    <div class='section'>
+      <h2 class='prompt'>Write down any goals you have.</h2>
+      <p class='optional'>(Optional)</p>
+      <textarea v-model="newTrackerGoal"></textarea>
+    </div>
+    
+    <div class='section'>
+      <h2 class='prompt'>Add tracker to collection?</h2>
+      <p class='optional'>(Optional)</p>
+      <p>
+        <select v-model="NewTrackerCollection">
+          <option v-for="collection in collections" v-bind:key="collection.id">{{collection.name}}</option>
+        </select>
+      </p>
+    </div>
+    
+    <!-- <button @click="add">Add Tracker</button> -->
+    <v-btn block dark color="#DF5C46" @click="add" class='submit-button'>Add Tracker</v-btn>
   </div>
 </template>
 
@@ -60,6 +82,7 @@ export default {
   },
   methods: {
     add () {
+      // console.log('clicked');
       // ensure they actually typed something
       if (!this.newTrackerName) {
         return

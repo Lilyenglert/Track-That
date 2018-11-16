@@ -2,6 +2,14 @@ p {
     font-size: 18px;
 }
 
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
 /* overriding vue container class */
 .container {
     padding: 24px 0;
@@ -13,6 +21,20 @@ p {
     }
 }
 
+/* overriding vue link color for link buttons */
+button .v-btn__content a {
+    text-decoration: none;
+    color: white;
+}
+
+#backButton{
+    align-content: left;
+ }
+ 
+ #editButton{
+    align-content: right;
+ }
+
 /* ###### HOMESCREEN.VUE ###### */
 
 /* content section */
@@ -21,11 +43,23 @@ p {
     text-align: left;
 }
 
+.top-bar {
+/* maybe fixed? */
+}
+
+.content {
+/* for fixed top */
+}
+
+.page-title {
+    text-align: center;
+}
+
 .greeting {
     color: #DF5C46;
 }
 
-.caption {
+.message {
     margin: 10px 0;
     font-size: 18px;
 }
@@ -56,6 +90,14 @@ tracker and collection sections
     /* filter: drop-shadow(1px 1px 3px gray); */
 }
 
+/* overriding vuetify button */
+.v-btn--floating.v-btn--small.add-thing {
+    padding: 0;
+    margin-bottom: 18px;
+    margin-left: 10px;
+    height: 30px;
+    width: 30px;
+}
 
 /* 
 stuff for boxes on home page 
@@ -82,6 +124,8 @@ stuff for boxes on home page
 .box a {
     color: white;
     text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .box-text {
@@ -89,3 +133,41 @@ stuff for boxes on home page
     display: table-cell;
     text-align: center;
 }
+
+/** CREATE TRACKER **/
+#add-tracker-screen .section {
+    text-align: center;
+}
+
+input, textarea, select {
+    border: solid lightgray .5px;
+}
+
+.prompt {
+    padding: 10px 0;
+}
+
+.section p {
+    margin: 16px 0;
+}
+
+.section .optional {
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.section textarea {
+    width: 90%;
+}
+
+.section select {
+    width: 50%;
+}
+
+.submit-button {
+    height: 50px;
+}
+
+
+
