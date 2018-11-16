@@ -8,7 +8,7 @@
         <h2 class='greeting'>Hi, Liam!</h2>
         <p class='message'>It's a beautiful day to achieve your goals.</p>
         
-        <div class='solid'> 
+        <div class='solid'>
           <h3>Goals</h3>
           <div v-for="tracker in trackers" v-bind:key="tracker.id">
             <p class='message'>{{tracker.goal}}</p>

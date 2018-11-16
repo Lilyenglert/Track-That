@@ -38,6 +38,7 @@ button .v-btn__content a {
     display: inline-block;
     vertical-align: middle;
     margin: 0 20px;
+    font-size: 5vw;
 }
 
  .back-button {
