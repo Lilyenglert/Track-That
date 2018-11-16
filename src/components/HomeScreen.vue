@@ -11,9 +11,10 @@
       </v-toolbar>
       
       <v-container class="inner">
-        <div class='section section-top'>
+        <div class='section-first'>
           <h2 class='greeting'>Hi, Liam!</h2>
           <p class='message'>It's a beautiful day to achieve your goals.</p>
+
           <div class='solid'>
             <h3>Goals</h3>
             <div v-for="tracker in trackers" v-bind:key="tracker.id">
