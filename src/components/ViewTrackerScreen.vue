@@ -1,28 +1,32 @@
 <template>
-<div>
+<div id='home-screen'>
     <v-app>
     <!-- toolbar -->
       <v-toolbar fixed id="titlebar">
-        <v-flex xs2>
-        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
-        </v-flex>
-        <v-flex xs8>
-          <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
-        </v-flex>
 
-        <v-flex xs2>
-          <a id="editButton"><i>edit</i></a>
-        </v-flex>
-        <v-spacer></v-spacer>
-        <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+          <v-flex xs2>
+          <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+          </v-flex>
+          <v-flex xs8>
+            <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
+          </v-flex>
+
+          <v-flex xs2>
+           <router-link to="edit"> <a id="editButton"><i>edit</i></a></router-link>
+          </v-flex>
+          <v-spacer></v-spacer>
+          <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+
     </v-toolbar>
     <!-- /toolbar -->
 
     <v-container class="inner">
       <v-layout>
+         
         <v-flex xs12>
           <a><p class="link"><router-link to=entry>Create a new entry <v-icon size="18px">add</v-icon></router-link></p></a>
         </v-flex>
+        
       </v-layout>
 
         <div class="section">
@@ -40,6 +44,8 @@
         </div>
 
         <v-container class="section" fluid-grid-list-md>
+          
+          
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
           <h2>Log</h2>
           <v-card class="scroll" height= "200px" :flat="true">
@@ -49,7 +55,12 @@
               <v-list-tile>
                 <v-list-tile-avatar>{{entry.date}}</v-list-tile-avatar>
                 <v-list-tile-content> 
-                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit}}</v-list-tile-title>
+                  <div v-if="entry.unit.length == 2">
+                  <v-list-tile-title class="align-left">{{entry.value[0]}} {{entry.unit[0]}}, {{entry.value[1]}} {{entry.unit[1]}}</v-list-tile-title>
+                  </div>
+                  <div v-else>
+                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit[0]}}</v-list-tile-title>
+                  </div>
                   <v-list-tile-sub-title class="align-left">{{entry.message}}</v-list-tile-sub-title>
                 </v-list-tile-content>
                 <v-list-tile-action><a><router-link :to="`editEntry/${entry.id}`"><v-icon>edit</v-icon></router-link></a></v-list-tile-action>
@@ -80,7 +91,7 @@ export default {
       entries:[],
       currentTracker:null,
       currentTrackerGoal:null,
-      currentTrackerUnits:null,
+      currentTrackerUnits:null, 
       entryPath: null
     }
   },
@@ -166,10 +177,6 @@ a {
 #graph_box{ 
   max-width: 90%;
   padding:0%;
-}
-
-.inner {
-    margin-top: 12%;
 }
 
 .v-card {
