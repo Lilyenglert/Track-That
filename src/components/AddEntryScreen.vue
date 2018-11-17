@@ -22,12 +22,12 @@
 
       <div class='section'>
       <v-btn fab dark small color="#DF5C46">
-      <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
-    </v-btn>
+        <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
+      </v-btn>
      <h2 class='prompt'>Describe your <i>{{ $route.params.tracker }}</i> entry here.</h2>
-     <!-- <div v-for="unit in this.currentTrackerUnits" v-bind:key="unit.id"> -->
- </div>
-    <div class='section'>
+      </div>
+
+   <div class='section'>
       <div class='section'>
        <div v-if="this.currentTrackerUnits.length ==1">
           <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </h4>
@@ -37,15 +37,16 @@
           <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentTrackerUnits[1]}} </h4>
        </div>
        </div>
-    <!-- </div> -->
+
     <div class='section'>
       <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
     </div>
     <div class='section'>
-      <h4>Note:<p><textarea v-model="entryNote"></textarea></h4>
+      <h4>Note:<textarea v-model="entryNote"></textarea></h4>
     </div>
      <div class="section" id="btn_section">
     <router-link to="./"><v-btn large id="small-button" @click="createEntry">Add Entry</v-btn></router-link>
+    </div>
     </div>
      </div>
   </div>
