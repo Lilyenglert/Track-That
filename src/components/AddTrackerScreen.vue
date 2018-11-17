@@ -16,16 +16,13 @@
     <div class='section'>
       <h2 class='prompt'>What units are we tracking?</h2>
       <p>Tracker Units: <input v-model="newTrackerUnit"></p>
+       <v-btn v-show="!isAddUnit" block dark color="#DF5C46" @click="addUnit" >Add Another Unit</v-btn>
       <div v-if="isAddUnit" >
+
       <p>Tracker Units: <input v-model="newTrackerUnit2"></p>
     </div>
     </div>
 
-    
-
-     <v-btn block dark color="#DF5C46" @click="addUnit" >Add Another Unit</v-btn>
-
-    
     <div class='section'>
       <h2 class='prompt'>Write down any goals you have.</h2>
       <p class='optional'>(Optional)</p>
