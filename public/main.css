@@ -48,6 +48,7 @@ button .v-btn__content a {
 
 /* content section */
 .inner {
+    margin-top: 12%;
     padding: 8%;
     text-align: left;
 }
@@ -216,5 +217,3 @@ input, textarea, select {
 .popup {
     text-align: center;
 }
-
-

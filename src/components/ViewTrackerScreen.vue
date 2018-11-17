@@ -1,51 +1,45 @@
 <template>
-<div id='home-screen'>
+<div>
     <v-app>
     <!-- toolbar -->
       <v-toolbar fixed id="titlebar">
+        <v-flex xs2>
+        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+        </v-flex>
+        <v-flex xs8>
+          <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
+        </v-flex>
 
-          <v-flex xs2>
-          <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
-          </v-flex>
-          <v-flex xs8>
-            <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
-          </v-flex>
-
-          <v-flex xs2>
-            <a id="editButton"><i>edit</i></a>
-          </v-flex>
-          <v-spacer></v-spacer>
-          <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
-
+        <v-flex xs2>
+          <a id="editButton"><i>edit</i></a>
+        </v-flex>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
     </v-toolbar>
     <!-- /toolbar -->
 
     <v-container class="inner">
       <v-layout>
-         
         <v-flex xs12>
           <a><p class="link"><router-link to=entry>Create a new entry <v-icon size="18px">add</v-icon></router-link></p></a>
         </v-flex>
-        
       </v-layout>
 
-        <v-container id="goalsContainer">
-          <h2>Goals</h2>
-          <v-card :flat="true">
-           <p id="goalMessage">{{this.currentTrackerGoal}}</p>
+      <v-container id="goalsContainer">
+        <h2>Goals</h2>
+        <v-card :flat="true">
+          <p id="goalMessage">{{this.currentTrackerGoal}}</p>
+        </v-card>
+      </v-container>
+      <v-container>
+        <h2>Progress</h2>
+          <v-card id="graph_box" :flat="true">
+          <!-- <p><Chart :trackerID=$route.params.id></Chart></p> -->
+          <br><br><br><br><br><br><br><br><br><br><br><br>
           </v-card>
-        </v-container>
-        <v-container>
-          <h2>Progress</h2>
-            <v-card id="graph_box" :flat="true">
-            <!-- <p><Chart :trackerID=$route.params.id></Chart></p> -->
-            <br><br><br><br><br><br><br><br><br><br><br><br>
-            </v-card>
-        </v-container>
+      </v-container>
 
         <v-container fluid-grid-list-md>
-          
-          
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
           <h2>Log</h2>
           <v-card class="scroll" height= "200px" :flat="true">
@@ -171,6 +165,10 @@ a {
 /* #graph{
   max-width: 75%;
 } */
+
+.inner {
+    margin-top: 12%;
+}
 
 .v-card {
   margin-top: 5%;
