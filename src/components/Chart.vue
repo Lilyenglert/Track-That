@@ -40,13 +40,6 @@ export default {
       }}
     this.entryData.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
     const svg = d3.select(this.$el)
-      // .append('svg')
-      // .attr('id', 'dataChart')
-      // .attr('width', 350)
-      // .attr('height', 250)
-      // .append('g')
-      // .attr('transform', 'translate(0, 10)')
-
       //steph
       .append("div")
       .classed("svg-container", true) //container class to make it responsive
@@ -116,11 +109,11 @@ path{
 }
 #dataPath{
   fill: none;
-  stroke:grey;
-  stroke-width: 1.5px;
+  stroke:#DF5C46;
+  stroke-width: 2px;
 }
 .axis{
-  font-size: 8px;
+  font-size: 10px;
 }
 
 </style>

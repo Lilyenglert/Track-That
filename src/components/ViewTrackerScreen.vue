@@ -39,7 +39,7 @@
         <div class="section">
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
-            <p><Chart :trackerID=$route.params.id></Chart></p>
+            <Chart :trackerID=$route.params.id></Chart>
             </v-card>
         </div>
 
