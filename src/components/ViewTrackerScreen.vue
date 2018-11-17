@@ -36,7 +36,8 @@
         <div class="section">
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
-            <Chart :trackerID=$route.params.id></Chart>
+            <p><Chart :trackerID=$route.params.id></Chart></p>
+            <p><v-btn id="switchButton" @click='switchUnits()'>Switch Units</v-btn></p>
             </v-card>
         </div>
 
@@ -81,10 +82,9 @@
             </div>
           </v-card>
       </v-container>
-
     </v-container>
-    </v-app>
-  </div>
+  </v-app>
+</div>
 </template>
 
 <script>
@@ -103,10 +103,10 @@ export default {
     return {
       trackers:[],
       entries:[],
-      currentTracker:null,
-      currentTrackerGoal:null,
-      currentTrackerUnits:null, 
-      entryPath: null
+      currentTracker:'',
+      currentTrackerGoal:'',
+      currentTrackerUnits:'', 
+      entryPath: ''
     }
   },
   components: {
@@ -139,9 +139,9 @@ export default {
     else{
       document.getElementById("goalsContainer").style.display = "block"
     }
-
-    window.addEventListener('resize', Chart.render);
-
+    if(this.currentTrackerUnits.length == 1){
+      document.getElementById("switchButton").style.display = "none"
+    }
   },
   methods: {
     filterEntries: function (currentTracker) {
@@ -153,15 +153,8 @@ export default {
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));
   },
-    addValue () {
-      const inputNum = parseFloat(document.getElementById('gValue').value)
-      if (Vue.$localStorage.get('gValues') == null) {
-        Vue.$localStorage.set('gValues', [])
-      }
-      var array = Vue.$localStorage.get('gValues')
-      array.push(inputNum)
-      Vue.$localStorage.set('gValues', array)
-      EventBus.$emit('refreshGraph')
+    switchUnits () {
+      EventBus.$emit('switchUnits', this.$route.params.id)
     }
   },
   filters: {

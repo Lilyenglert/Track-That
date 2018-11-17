@@ -103,7 +103,7 @@ a {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-evenly;
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 
 </style>
