@@ -40,8 +40,6 @@
         </div>
 
         <v-container class="section" fluid-grid-list-md>
-          
-          
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
           <h2>Log</h2>
           <v-card class="scroll" height= "200px" :flat="true">

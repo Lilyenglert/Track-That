@@ -22,26 +22,33 @@
 
       <div class='section'>
       <v-btn fab dark small color="#DF5C46">
-      <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
-    </v-btn>
-      <h2 class='prompt'>Describe your <i>{{ $route.params.tracker }}</i> entry here.</h2>
-      <!-- <p>Tracker Name: <input v-model="newTrackerName"></p> -->
+        <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
+      </v-btn>
+     <h2 class='prompt'>Describe your <i>{{ $route.params.tracker }}</i> entry here.</h2>
       </div>
+
+   <div class='section'>
       <div class='section'>
-        <div class='section'>
-          <h4><input v-model.number="newEntryValue" type="number" required="required"> {{this.currentTrackerUnits}}</h4>
-          </div>
-          <div class='section'>
-          <p><b>Date:</b><input id="date_input" v-model="newEntryDate" type="date" required="required"></p>
-          </div> 
-          <div class='section'>
-          <h4>Note:<textarea v-model="entryNote"></textarea></h4>
-          </div>
-          <div class="section" id="btn_section">
-          <router-link to="./"><v-btn large id="small-button" @click="createEntry">Add Entry</v-btn></router-link>
-          </div>
-      </div>
+       <div v-if="this.currentTrackerUnits.length ==1">
+          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </h4>
+       </div>
+      <div v-else>
+          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </h4>
+          <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentTrackerUnits[1]}} </h4>
+       </div>
+       </div>
+
+    <div class='section'>
+      <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
     </div>
+    <div class='section'>
+      <h4>Note:<textarea v-model="entryNote"></textarea></h4>
+    </div>
+     <div class="section" id="btn_section">
+    <router-link to="./"><v-btn large id="small-button" @click="createEntry">Add Entry</v-btn></router-link>
+    </div>
+    </div>
+     </div>
   </div>
 </template>
 
@@ -55,6 +62,8 @@ export default {
        ],
        entries: [], 
       newEntryValue:null,
+      newEntryValue2:null,
+      newEntries:[],
       newEntryDate: this.getTodaysDate(), 
       entryID: [],
       entryNote: null,
@@ -117,24 +126,26 @@ export default {
   createEntry()
   {
     var fetchedEntryIDIncremented;
-      var fetchedEntryID = JSON.parse(localStorage.getItem('entryID'));
+    var fetchedEntryID = JSON.parse(localStorage.getItem('entryID'));
 
       if(fetchedEntryID != null)
       {      
         var lastEntry = fetchedEntryID.length - 1;
-        //console.log("last " + lastEntry);
          fetchedEntryIDIncremented = fetchedEntryID[lastEntry] + 1;
-          //console.log('in not null' + fetchedTrackerID);
       }else{
         fetchedEntryIDIncremented = 0;
-      // console.log('in null '+ fetchedTrackerIDIncremented);
       }
+    this.newEntries.push(this.newEntryValue);
+    if(this.newEntryValue2 != null)
+    {
+      this.newEntries.push(this.newEntryValue2);
+    }
   
     var newEntryInput = {
       'id' : fetchedEntryIDIncremented, 
         "message": this.entryNote,
         "date" : this.newEntryDate,
-        "value": this.newEntryValue,
+        "value": this.newEntries,
         "unit": this.currentTrackerUnits,
         "trackerID": this.$route.params.id
     };

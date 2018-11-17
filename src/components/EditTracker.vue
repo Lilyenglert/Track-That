@@ -1,11 +1,12 @@
 <template>
   <div id='add-tracker-screen' class='inner'>
     <div class='top-bar section'>
-      <v-btn fab dark small color="#DF5C46" class='back-button'>
-          <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
+      <v-btn fab dark small color="#DF5C46">
+          
+          <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
         </v-btn>
         <!-- <p><router-link to="/">Back</router-link><p/> -->
-      <h1 class='page-title'>Create Tracker</h1>
+      <h1 class='page-title'>Edit Tracker</h1>
     </div>
     
     <div class='section'>
@@ -16,15 +17,7 @@
     <div class='section'>
       <h2 class='prompt'>What units are we tracking?</h2>
       <p>Tracker Units: <input v-model="newTrackerUnit"></p>
-      <div v-if="isAddUnit" >
-      <p>Tracker Units: <input v-model="newTrackerUnit2"></p>
     </div>
-    </div>
-
-    
-
-     <v-btn block dark color="#DF5C46" @click="addUnit" >Add Another Unit</v-btn>
-
     
     <div class='section'>
       <h2 class='prompt'>Write down any goals you have.</h2>
@@ -43,26 +36,23 @@
     </div>
     
     <!-- <button @click="add">Add Tracker</button> -->
-    <router-link to="/"><v-btn block dark color="#DF5C46" @click="add" class='submit-button'>Add Tracker</v-btn></router-link>
+    <router-link to="/"><v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn></router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'AddTrackerScreen',
+  name: 'EditTracker',
   data () {
     return {
       collections: [{
         name: null
       }],
       trackers: [], 
-      isAddUnit: false,
       trackerID: [], 
       path : null,
-      units:[],
       newTrackerName: null,
       newTrackerUnit: null,
-      newTrackerUnit2: null,
       newTrackerGoal: null,
       NewTrackerCollection: null
     }
@@ -91,76 +81,45 @@ export default {
     }
   },
   methods: {
-    add () {
-      // console.log('clicked');
-      // ensure they actually typed something
-      if (!this.newTrackerName) {
-        return
-      }
-      if (!this.newTrackerUnit) {
-        return
-      }
+    edit () {
 
-      var fetchedTrackerIDIncremented;
-      var fetchedTrackerID = JSON.parse(localStorage.getItem('trackerID'));
+        this.getLocal();
+        var newName = this.newTrackerName;
+        if (this.newTrackerName!=null) {this.trackers[this.$route.params.id].name = this.newTrackerName};
+        if (this.newTrackerUnit!=null) {this.trackers[this.$route.params.id].unit = this.newTrackerUnit};
+        if (this.newTrackerGoal!=null) {this.trackers[this.$route.params.id].goal = this.newTrackerGoal};
+        if (this.NewTrackerCollection!=null) {this.trackers[this.$route.params.id].collection = this.NewTrackerCollection};
+        if (this.newTrackerName!=null) {this.trackers[this.$route.params.id].path = '/view/' + this.$route.params.id + '/' + newName + '/'};
+        console.log(this.trackers[this.$route.params.id]);
 
-      if(fetchedTrackerID != null)
-      {      
-        var lastEntry = fetchedTrackerID.length - 1;
-         fetchedTrackerIDIncremented = fetchedTrackerID[lastEntry] + 1;
-      }else{
-        fetchedTrackerIDIncremented = 0;
-      }
-      
-      this.units.push(this.newTrackerUnit);
-      if(this.newTrackerUnit2 != null){
-        this.units.push(this.newTrackerUnit2);
-      }
-    
-      var trackerEntry = {
-        'id' : fetchedTrackerIDIncremented, 
-        'path' : '/view/' + fetchedTrackerIDIncremented + '/' + this.newTrackerName + '/',
-        'name': this.newTrackerName,
-        'unit': this.units,
-        'goal': this.newTrackerGoal,
-        'collection': this.NewTrackerCollection
-      }; 
+        this.cleanTrackerValues();
+        this.save()
+    },
 
-      this.trackerID.push(fetchedTrackerIDIncremented);
-
-      if(trackerEntry.name !=null)
-      {
-        console.log("not null");
-        this.trackers.push(trackerEntry)
-      }
-      
-      this.cleanTrackerValues();
-      this.save()
+    getLocal()
+    {
+        this.trackers = JSON.parse(localStorage.getItem('trackers'));
+        // this.entries = JSON.parse(localStorage.getItem('entries'));
     },
     remove (x) {
       this.trackers.splice(x, 1)
       this.save()
     },
-    save() {
+    save () {
       const parsed = JSON.stringify(this.trackers)
       localStorage.setItem('trackers', parsed)
 
       const parsedID = JSON.stringify(this.trackerID)
       localStorage.setItem('trackerID', parsedID)
+
+
     }, 
     cleanTrackerValues()
     {
       this.newTrackerName = ''
       this.newTrackerUnit = ''
-      this.newTrackerUnit2 = ''
-      this.unit = []
       this.newTrackerGoal = ''
       this.newTrackerCollection = ''
-    },
-
-    addUnit()
-    {
-      this.isAddUnit = true;
     }
   }
 }
