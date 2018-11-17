@@ -18,7 +18,7 @@
         <v-btn fab dark small color="#DF5C46" class='add-thing'>
           <router-link to="/add"><v-icon>add</v-icon></router-link>
         </v-btn>
-        <p class='inline-block right'><i>edit</i></p>
+        <!-- <p class='inline-block right'><i>edit</i></p> -->
       </div>
 
       <!-- STEPH HARDCODED STUFF -->
@@ -36,7 +36,7 @@
       <v-btn fab dark small color="#DF5C46" class='add-thing' @click="showModal">
         <v-icon>add</v-icon>
       </v-btn>
-      <p class='inline-block right'><i><router-link to="/editCollection/">edit</router-link></i></p>
+      <p class='inline-block right'><i><router-link to="/editCollection/"><v-icon>edit</v-icon></router-link></i></p>
 
       <!-- STEPH HARDCODED STUFF -->
        <div class='box-container'>

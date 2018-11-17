@@ -58,7 +58,12 @@
               <v-list-tile>
                 <v-list-tile-avatar>{{entry.date}}</v-list-tile-avatar>
                 <v-list-tile-content> 
-                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit}}</v-list-tile-title>
+                  <div v-if="entry.unit.length == 2">
+                  <v-list-tile-title class="align-left">{{entry.value[0]}} {{entry.unit[0]}}, {{entry.value[1]}} {{entry.unit[1]}}</v-list-tile-title>
+                  </div>
+                  <div v-else>
+                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit[0]}}</v-list-tile-title>
+                  </div>
                   <v-list-tile-sub-title class="align-left">{{entry.message}}</v-list-tile-sub-title>
                 </v-list-tile-content>
                 <v-list-tile-action><a><router-link :to="`editEntry/${entry.id}`"><v-icon>edit</v-icon></router-link></a></v-list-tile-action>
@@ -88,7 +93,7 @@ export default {
       entries:[],
       currentTracker:null,
       currentTrackerGoal:null,
-      currentTrackerUnits:null,
+      currentTrackerUnits:null, 
       entryPath: null
     }
   },

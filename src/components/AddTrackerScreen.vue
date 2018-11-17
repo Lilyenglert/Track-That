@@ -17,7 +17,15 @@
     <div class='section'>
       <h2 class='prompt'>What units are we tracking?</h2>
       <p>Tracker Units: <input v-model="newTrackerUnit"></p>
+      <div v-if="isAddUnit" >
+      <p>Tracker Units: <input v-model="newTrackerUnit2"></p>
     </div>
+    </div>
+
+    
+
+     <v-btn block dark color="#DF5C46" @click="addUnit" >Add Another Unit</v-btn>
+
     
     <div class='section'>
       <h2 class='prompt'>Write down any goals you have.</h2>
@@ -49,10 +57,13 @@ export default {
         name: null
       }],
       trackers: [], 
+      isAddUnit: false,
       trackerID: [], 
       path : null,
+      units:[],
       newTrackerName: null,
       newTrackerUnit: null,
+      newTrackerUnit2: null,
       newTrackerGoal: null,
       NewTrackerCollection: null
     }
@@ -97,21 +108,21 @@ export default {
       if(fetchedTrackerID != null)
       {      
         var lastEntry = fetchedTrackerID.length - 1;
-        //console.log("last " + lastEntry);
          fetchedTrackerIDIncremented = fetchedTrackerID[lastEntry] + 1;
-          //console.log('in not null' + fetchedTrackerID);
       }else{
         fetchedTrackerIDIncremented = 0;
-      // console.log('in null '+ fetchedTrackerIDIncremented);
       }
       
-      
+      this.units.push(this.newTrackerUnit);
+      if(this.newTrackerUnit2 != null){
+        this.units.push(this.newTrackerUnit2);
+      }
     
       var trackerEntry = {
         'id' : fetchedTrackerIDIncremented, 
         'path' : '/view/' + fetchedTrackerIDIncremented + '/' + this.newTrackerName + '/',
         'name': this.newTrackerName,
-        'unit': this.newTrackerUnit,
+        'unit': this.units,
         'goal': this.newTrackerGoal,
         'collection': this.NewTrackerCollection
       }; 
@@ -137,15 +148,20 @@ export default {
 
       const parsedID = JSON.stringify(this.trackerID)
       localStorage.setItem('trackerID', parsedID)
-
-
     }, 
     cleanTrackerValues()
     {
       this.newTrackerName = ''
       this.newTrackerUnit = ''
+      this.newTrackerUnit2 = ''
+      this.unit = []
       this.newTrackerGoal = ''
       this.newTrackerCollection = ''
+    },
+
+    addUnit()
+    {
+      this.isAddUnit = true;
     }
   }
 }

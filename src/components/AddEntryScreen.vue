@@ -4,7 +4,15 @@
       <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
     </v-btn>
     <h2>Create Entry for {{ $route.params.tracker }}</h2>
-    <p><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits}}</p>
+     <!-- <div v-for="unit in this.currentTrackerUnits" v-bind:key="unit.id"> -->
+       <div v-if="this.currentTrackerUnits.length ==1">
+          <p><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}}</p>
+       </div>
+      <div v-else>
+          <p><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}}</p>
+          <p><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentTrackerUnits[1]}}</p>
+       </div>
+    <!-- </div> -->
     <p>Date: <input v-model="newEntryDate" type="date" required="required" ></p>
     <p>Note:<p><textarea v-model="entryNote"></textarea></p>
     <router-link to="./"><button @click="createEntry">Add Entry</button></router-link>
@@ -21,6 +29,8 @@ export default {
        ],
        entries: [], 
       newEntryValue:null,
+      newEntryValue2:null,
+      newEntries:[],
       newEntryDate: this.getTodaysDate(), 
       entryID: [],
       entryNote: null,
@@ -83,24 +93,26 @@ export default {
   createEntry()
   {
     var fetchedEntryIDIncremented;
-      var fetchedEntryID = JSON.parse(localStorage.getItem('entryID'));
+    var fetchedEntryID = JSON.parse(localStorage.getItem('entryID'));
 
       if(fetchedEntryID != null)
       {      
         var lastEntry = fetchedEntryID.length - 1;
-        //console.log("last " + lastEntry);
          fetchedEntryIDIncremented = fetchedEntryID[lastEntry] + 1;
-          //console.log('in not null' + fetchedTrackerID);
       }else{
         fetchedEntryIDIncremented = 0;
-      // console.log('in null '+ fetchedTrackerIDIncremented);
       }
+    this.newEntries.push(this.newEntryValue);
+    if(this.newEntryValue2 != null)
+    {
+      this.newEntries.push(this.newEntryValue2);
+    }
   
     var newEntryInput = {
       'id' : fetchedEntryIDIncremented, 
         "message": this.entryNote,
         "date" : this.newEntryDate,
-        "value": this.newEntryValue,
+        "value": this.newEntries,
         "unit": this.currentTrackerUnits,
         "trackerID": this.$route.params.id
     };
