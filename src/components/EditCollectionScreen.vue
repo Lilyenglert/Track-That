@@ -28,11 +28,14 @@
         <!-- <p class='inline-block right'><i>edit</i></p> -->
       </div>
 
-      <!-- vanilla html/css -->
+      <!-- GRID WITH COLLECTIONS DELETE AND RENAME BUTTONS -->
       <div id="grid">
         <div class = 'box' v-for="(collection, n) in collections" v-bind:key="collection.n">
-                  <div @click="remove(collection, n)" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</div>
-                   <!-- <button class='box-text' @click="remove(n)">Remove</button> -->
+          <div class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</div>
+       
+        <button flat class='rename_button' id='small-button'>Rename</button>
+
+          <button flat class='delete_button' id='small-button' @click="remove(collection,n)">Remove</button>
         </div>
       </div> 
      
@@ -105,4 +108,35 @@ a {
   grid-template-columns: auto auto;
   justify-content: space-evenly;
 }
+
+.box {
+    height: 120px;
+    width: 120px;
+    /* max-width: 130px; */
+    display: table-column;
+    vertical-align: middle;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 4%;
+    margin-left: 4%;
+    border-radius: 3px;
+    filter: drop-shadow(1px 1px 2px gray);
+}
+
+.box a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 4vw;
+    padding: 5px;
+    text-transform: capitalize;
+}
+
+#small-button.delete_button{
+  padding: 5px;
+  margin: 15px;
+
+}
+
+
 </style>
