@@ -40,7 +40,7 @@ export default {
       }}
     this.entryData.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
     const svg = d3.select(this.$el)
-      //original
+      // original
       // .append('svg')
       // .attr('id', 'dataChart')
       // .attr('width', 350)
@@ -48,7 +48,7 @@ export default {
       // .append('g')
       // .attr('transform', 'translate(0, 10)')
 
-      //steph
+      // steph
       .append("div")
       .classed("svg-container", true) //container class to make it responsive
       .append("svg")

@@ -21,7 +21,7 @@
     <v-container class="inner">
         <div class='section-title'>
           <v-btn color="#DF5C46" class='add-thing'>
-            New entry
+            <router-link to=entry>New entry</router-link>
             <v-icon right size="18px">add</v-icon>
           </v-btn>
         </div>
@@ -200,7 +200,7 @@ a {
 }
 
 #graph_box{ 
-  max-width: 90%;
+  /* max-width: 90%; */
   padding:0%;
 }
 

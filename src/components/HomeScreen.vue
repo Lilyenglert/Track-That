@@ -27,7 +27,6 @@
             <v-btn fab dark small color="#DF5C46" class='add-thing'>
               <router-link to="/add"><v-icon>add</v-icon></router-link>
             </v-btn>
-            <!-- <p class='inline-block right'><i>edit</i></p> -->
           </div>
         </div>
         <div class='box-container'>
@@ -41,6 +40,7 @@
           <v-btn fab dark small color="#DF5C46" class='add-thing' @click="showModal">
             <v-icon>add</v-icon>
           </v-btn>
+          
           <p class='inline-block right'><i><router-link to="/editCollection/">edit</router-link></i></p>
         </div>
         <div class='box-container'>
