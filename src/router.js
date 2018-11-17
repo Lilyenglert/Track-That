@@ -10,6 +10,7 @@ import AddCollectionScreen from './components/AddCollectionScreen.vue'
 import AddEntryScreen from './components/AddEntryScreen.vue'
 import EditCollectionScreen from './components/EditCollectionScreen.vue'
 import EditEntryScreen from './components/EditEntryScreen.vue'
+import EditTracker from './components/EditTracker.vue'
 
 Vue.use(Router)
 
@@ -66,6 +67,11 @@ export default new Router({
       path: '/view/:id/:tracker/editEntry/:entryid',
       name: 'EditEntryScreen',
       component: EditEntryScreen
+    },
+    {
+      path: '/view/:id/:tracker/edit',
+      name: 'EditTracker',
+      component: EditTracker
     }
   ]
 })

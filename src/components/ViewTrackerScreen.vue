@@ -12,7 +12,7 @@
           </v-flex>
 
           <v-flex xs2>
-            <a id="editButton"><i>edit</i></a>
+           <router-link to="edit"> <a id="editButton"><i>edit</i></a></router-link>
           </v-flex>
           <v-spacer></v-spacer>
           <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
@@ -41,6 +41,7 @@
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
             <p><Chart :trackerID=$route.params.id></Chart></p>
+            <p><v-btn @click='switchUnits()'>Switch Units</v-btn></p>
             </v-card>
         </div>
 
@@ -56,7 +57,12 @@
               <v-list-tile>
                 <v-list-tile-avatar>{{entry.date}}</v-list-tile-avatar>
                 <v-list-tile-content> 
-                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit}}</v-list-tile-title>
+                  <div v-if="entry.unit.length == 2">
+                  <v-list-tile-title class="align-left">{{entry.value[0]}} {{entry.unit[0]}}, {{entry.value[1]}} {{entry.unit[1]}}</v-list-tile-title>
+                  </div>
+                  <div v-else>
+                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit[0]}}</v-list-tile-title>
+                  </div>
                   <v-list-tile-sub-title class="align-left">{{entry.message}}</v-list-tile-sub-title>
                 </v-list-tile-content>
                 <v-list-tile-action><a><router-link :to="`editEntry/${entry.id}`"><v-icon>edit</v-icon></router-link></a></v-list-tile-action>
@@ -87,7 +93,7 @@ export default {
       entries:[],
       currentTracker:null,
       currentTrackerGoal:null,
-      currentTrackerUnits:null,
+      currentTrackerUnits:null, 
       entryPath: null
     }
   },
@@ -132,15 +138,8 @@ export default {
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));
   },
-    addValue () {
-      const inputNum = parseFloat(document.getElementById('gValue').value)
-      if (Vue.$localStorage.get('gValues') == null) {
-        Vue.$localStorage.set('gValues', [])
-      }
-      var array = Vue.$localStorage.get('gValues')
-      array.push(inputNum)
-      Vue.$localStorage.set('gValues', array)
-      EventBus.$emit('refreshGraph')
+    switchUnits () {
+      EventBus.$emit('switchUnits', this.$route.params.id)
     }
   }
 }

@@ -71,8 +71,9 @@ tracker and collection sections
 .section {
     /* border-bottom: solid lightgray .5px; */
     background-color: white;
-    margin: 6% 0;
+    margin-top: 6%;
     padding: 4%;
+    padding-bottom: 0%;
 }
 
 .section-top {
@@ -130,16 +131,15 @@ stuff for boxes on home page
 }
 
 .box {
-    height: 130px;
-    width: 130px;
+    height: 120px;
+    width: 120px;
     max-width: 130px;
     display: inline-table;
     vertical-align: middle;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-right: 8%;
-    margin-left: 0;
-    /* background-color: gray; */
+    margin-right: 4%;
+    margin-left: 4%;
     border-radius: 3px;
     filter: drop-shadow(1px 1px 2px gray);
 }

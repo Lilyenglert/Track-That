@@ -59,7 +59,7 @@ export default {
       this.isPopupVisible = false;
       this.remove(this.selectedCollection, this.selectedKey)
       this.selectedCollection = null;
-      thus.selectedKey = null;
+      this.selectedKey = null;
     },
     remove (collection, x) {
       this.collections.splice(x, 1)
