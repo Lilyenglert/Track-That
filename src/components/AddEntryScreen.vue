@@ -1,11 +1,36 @@
 <template>
   <div>
-    <h2>Create Entry for {{ $route.params.tracker }}</h2>
-    <p><input v-model.number="newEntryValue" type="number">{{this.currentTrackerUnits}}</p>
-    <p>Date: <input v-model="newEntryDate" type="date"></p>
-    <p>Note:<p><textarea v-model="entryNote"></textarea></p>
-    <button @click="createEntry">Add Entry</button>
-    <p><router-link to="./">Back</router-link><p/>
+    <!-- toolbar -->
+      <v-toolbar fixed flat id="titlebar">
+      <v-flex xs2>
+       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+      </v-flex>
+       <v-flex xs8>
+      <v-toolbar-title class="page-title">Create Entry for {{ $route.params.tracker }}</v-toolbar-title>
+      </v-flex>
+
+       <v-flex xs2>
+      <a id="editButton"><i>edit</i></a>
+      </v-flex>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+      </v-toolbar-items>
+    </v-toolbar>
+    <!-- /toolbar -->
+
+    <div id="add-entry-div" class="inner">
+
+      <div class='section'>
+      <h2 class='prompt'>What did you do?</h2>
+      <p>Tracker Name: <input v-model="newTrackerName"></p>
+      </div>
+
+      <p><input v-model.number="newEntryValue" type="number">{{this.currentTrackerUnits}}</p>
+      <p>Date: <input v-model="newEntryDate" type="date"></p>
+      <p>Note:<p><textarea v-model="entryNote"></textarea></p>
+      <button @click="createEntry">Add Entry</button>
+      <p><router-link to="./">Back</router-link><p/>
+    </div>
   </div>
 </template>
 
@@ -79,11 +104,13 @@ export default {
       this.newEntryDate = ''
       this.newEntryValue = ''
     },
-
   save()
   {
     const parsed = JSON.stringify(this.entries);
     localStorage.setItem('entries', parsed);
+    //console.log(this.entries[1]);
+    this.entries.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
+    console.log(this.entries);
   }
   }
 }
@@ -104,5 +131,11 @@ li {
 }
 a {
   color: #42b983;
+}
+
+ /* for toolbar */
+
+.inner{
+  margin-top: 10%;
 }
 </style>

@@ -1,34 +1,32 @@
 <template>
-<div>
+<div id='home-screen'>
     <v-app>
-    <v-toolbar id="titlebar">
-      <v-flex xs2>
-       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
-      </v-flex>
-      <v-flex xs8>
-        <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
-      </v-flex>
+    <!-- toolbar -->
+      <v-toolbar fixed id="titlebar">
 
-      <v-flex xs2>
-        <a id="editButton"><i>edit</i></a>
-      </v-flex>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+          <v-flex xs2>
+          <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+          </v-flex>
+          <v-flex xs8>
+            <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
+          </v-flex>
+
+          <v-flex xs2>
+            <a id="editButton"><i>edit</i></a>
+          </v-flex>
+          <v-spacer></v-spacer>
+          <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+
     </v-toolbar>
+    <!-- /toolbar -->
 
-<!-- V-container for catagories -->
-    <v-container class="inner" id="tracker_details">
+    <v-container class="inner">
       <v-layout>
-         <v-flex xs2>
+         
+        <v-flex xs12>
+          <a><p class="link"><router-link to=entry>Create a new entry <v-icon size="18px">add</v-icon></router-link></p></a>
         </v-flex>
-        <v-flex xs6>
-          <a><p class="text-sm-right"><router-link to=entry>Create a New</router-link></p></a>
-        </v-flex>
-        <v-flex xs2>
-          <a><v-icon>add</v-icon></a>
-        </v-flex>
-        <v-flex xs2>
-        </v-flex>
+        
       </v-layout>
 
         <v-container id="goalsContainer">
@@ -40,8 +38,8 @@
         <v-container>
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
-            <!-- <Chart id="graph"></Chart> -->
-            <p><Chart :trackerID=$route.params.id></Chart></p>
+            <!-- <p><Chart :trackerID=$route.params.id></Chart></p> -->
+            <br><br><br><br><br><br><br><br><br><br><br><br>
             </v-card>
         </v-container>
 
@@ -147,9 +145,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
@@ -173,9 +168,9 @@ a {
   text-align:left;
 }
 
-#graph{
-  max-width: 300px;
-}
+/* #graph{
+  max-width: 75%;
+} */
 
 .v-card {
   margin-top: 5%;
@@ -186,8 +181,8 @@ a {
   overflow-y: auto;
 }
 
-.text-sm-right{
-  text-align:right;
+.link{
+  text-align:center;
   font-size: 16px;
 }
 
