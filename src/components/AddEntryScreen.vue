@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id='add-entry'>
     <!-- toolbar -->
       <v-toolbar fixed flat id="titlebar">
       <v-flex xs2>

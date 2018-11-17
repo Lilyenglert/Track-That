@@ -1,5 +1,5 @@
 <template>
-<div id='home-screen'>
+<div id='view-tracker'>
     <v-app>
     <!-- toolbar -->
       <v-toolbar fixed id="titlebar">
