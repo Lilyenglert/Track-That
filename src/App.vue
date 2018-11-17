@@ -1,14 +1,6 @@
 // single file componenet.
 <template>
   <div id="app">
-    <!-- <v-toolbar dark color="primary">
-      <v-btn icon>
-        <v-icon>arrow_back</v-icon>
-      </v-btn>
-      <v-toolbar-title class="white--text">{page title}</v-toolbar-title>
-      <router-view name="Home">Toolbar</router-view>
-    </v-toolbar> -->
-
     <transition name="out-in">
       <router-view/>
     </transition>

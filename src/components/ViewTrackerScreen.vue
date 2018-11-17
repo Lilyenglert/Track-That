@@ -1,58 +1,55 @@
 <template>
-<div>
+<div id='home-screen'>
     <v-app>
+    <!-- toolbar -->
+      <v-toolbar fixed id="titlebar">
 
-       <v-toolbar id="titlebar">
-      <v-flex xs2>
-       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
-      </v-flex>
-       <v-flex xs8>
-      <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
-      </v-flex>
+          <v-flex xs2>
+          <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+          </v-flex>
+          <v-flex xs8>
+            <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
+          </v-flex>
 
-       <v-flex xs2>
-      <a id="editButton"><i>edit</i></a>
-      </v-flex>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-      </v-toolbar-items>
+          <v-flex xs2>
+            <a id="editButton"><i>edit</i></a>
+          </v-flex>
+          <v-spacer></v-spacer>
+          <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+
     </v-toolbar>
+    <!-- /toolbar -->
 
-<!-- V-container for catagories -->
-    <v-container class="inner" id="tracker_details">
+    <v-container class="inner">
       <v-layout>
-         <v-flex xs2>
+         
+        <v-flex xs12>
+          <a><p class="link"><router-link to=entry>Create a new entry <v-icon size="18px">add</v-icon></router-link></p></a>
         </v-flex>
-        <v-flex xs6>
-          <a><p class="text-sm-right"><router-link to=entry>Create a New</router-link></p></a>
-        </v-flex>
-        <v-flex xs2>
-          <a><v-icon>add</v-icon></a>
-        </v-flex>
-        <v-flex xs2>
-        </v-flex>
+        
       </v-layout>
 
-        <v-container id="goalsContainer">
+        <div class="section">
           <h2>Goals</h2>
           <v-card :flat="true">
            <p id="goalMessage">{{this.currentTrackerGoal}}</p>
           </v-card>
-        </v-container>
-        <v-container>
+        </div>
+
+        <div class="section">
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
-            <!-- <Chart id="graph"></Chart> -->
             <p><Chart :trackerID=$route.params.id></Chart></p>
             </v-card>
-        </v-container>
+        </div>
 
-        <v-container fluid-grid-list-md>
+        <v-container class="section" fluid-grid-list-md>
           
           
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
           <h2>Log</h2>
           <v-card class="scroll" height= "200px" :flat="true">
+            <div id="entryList">
             <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.value">
                 <v-list id="example1">
               <v-list-tile>
@@ -69,6 +66,7 @@
                 <v-list-tile-action><a><router-link :to="`editEntry/${entry.id}`"><v-icon>edit</v-icon></router-link></a></v-list-tile-action>
               </v-list-tile>
               </v-list>
+            </div>
             </div>
           </v-card>
       </v-container>
@@ -153,9 +151,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
@@ -179,8 +174,9 @@ a {
   text-align:left;
 }
 
-#graph{
-  max-width: 300px;
+#graph_box{ 
+  max-width: 90%;
+  padding:0%;
 }
 
 .v-card {
@@ -188,12 +184,16 @@ a {
   padding:5%;
 }
 
+#graph_box{
+  padding: 0%;
+}
+
 .scroll {
   overflow-y: auto;
 }
 
-.text-sm-right{
-  text-align:right;
+.link{
+  text-align:center;
   font-size: 16px;
 }
 

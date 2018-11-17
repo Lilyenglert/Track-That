@@ -1,21 +1,53 @@
 <template>
   <div>
-    <v-btn fab dark small color="#DF5C46">
+    <!-- toolbar -->
+      <v-toolbar fixed flat id="titlebar">
+      <v-flex xs2>
+       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+      </v-flex>
+       <v-flex xs8>
+      <v-toolbar-title class="page-title">New Entry</v-toolbar-title>
+      </v-flex>
+
+       <v-flex xs2>
+      <a id="editButton"><i>edit</i></a>
+      </v-flex>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+      </v-toolbar-items>
+    </v-toolbar>
+    <!-- /toolbar -->
+
+    <div id="add-entry-div" class="inner">
+
+      <div class='section'>
+      <v-btn fab dark small color="#DF5C46">
       <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
     </v-btn>
-    <h2>Create Entry for {{ $route.params.tracker }}</h2>
+     <h2 class='prompt'>Describe your <i>{{ $route.params.tracker }}</i> entry here.</h2>
      <!-- <div v-for="unit in this.currentTrackerUnits" v-bind:key="unit.id"> -->
+ </div>
+    <div class='section'>
+      <div class='section'>
        <div v-if="this.currentTrackerUnits.length ==1">
-          <p><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}}</p>
+          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </h4>
        </div>
       <div v-else>
-          <p><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}}</p>
-          <p><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentTrackerUnits[1]}}</p>
+          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </h4>
+          <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentTrackerUnits[1]}} </h4>
+       </div>
        </div>
     <!-- </div> -->
-    <p>Date: <input v-model="newEntryDate" type="date" required="required" ></p>
-    <p>Note:<p><textarea v-model="entryNote"></textarea></p>
-    <router-link to="./"><button @click="createEntry">Add Entry</button></router-link>
+    <div class='section'>
+      <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
+    </div>
+    <div class='section'>
+      <h4>Note:<p><textarea v-model="entryNote"></textarea></h4>
+    </div>
+     <div class="section" id="btn_section">
+    <router-link to="./"><v-btn large id="small-button" @click="createEntry">Add Entry</v-btn></router-link>
+    </div>
+     </div>
   </div>
 </template>
 
@@ -166,4 +198,41 @@ li {
 a {
   color: #42b983;
 }
+
+ /* for toolbar */
+
+
+div .section{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+div .input_section{
+  text-align: left;
+  align-content: left;
+  display: inline;
+
+}
+
+.input_section{
+  width: 100%;
+  height: 10%;
+  margin-left:10%;
+  margin-bottom: 4%;
+}
+
+.section #small-button{
+  padding: 10px 10px 10px 10px;
+  
+} 
+.section #btn_section{
+  align-content: center;
+  text-align: center;
+}
+
+#date_input{
+  align-content: center;
+  text-align: center;
+}
+
 </style>
