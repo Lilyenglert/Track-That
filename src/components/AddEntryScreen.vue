@@ -21,21 +21,24 @@
     <div id="add-entry-div" class="inner">
 
       <div class='section'>
+      <v-btn fab dark small color="#DF5C46">
+      <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
+    </v-btn>
       <h2 class='prompt'>Describe your <i>{{ $route.params.tracker }}</i> entry here.</h2>
       <!-- <p>Tracker Name: <input v-model="newTrackerName"></p> -->
       </div>
       <div class='section'>
         <div class='section'>
-          <h4><input v-model.number="newEntryValue" type="number"> {{this.currentTrackerUnits}}</h4>
+          <h4><input v-model.number="newEntryValue" type="number" required="required"> {{this.currentTrackerUnits}}</h4>
           </div>
           <div class='section'>
-          <p><b>Date:</b><input id="date_input" v-model="newEntryDate" type="date"></p>
+          <p><b>Date:</b><input id="date_input" v-model="newEntryDate" type="date" required="required"></p>
           </div> 
           <div class='section'>
           <h4>Note:<textarea v-model="entryNote"></textarea></h4>
           </div>
           <div class="section" id="btn_section">
-          <v-btn large id="small-button" @click="createEntry">Add Entry</v-btn>
+          <router-link to="./"><v-btn large id="small-button" @click="createEntry">Add Entry</v-btn></router-link>
           </div>
       </div>
     </div>
@@ -52,7 +55,8 @@ export default {
        ],
        entries: [], 
       newEntryValue:null,
-      newEntryDate: null, 
+      newEntryDate: this.getTodaysDate(), 
+      entryID: [],
       entryNote: null,
        currentTracker:'',
        currentTrackerName:'',
@@ -74,6 +78,13 @@ export default {
         localStorage.removeItem('entries')
       }
     }
+    if (localStorage.getItem('entryID')) {
+      try {
+        this.entryID = JSON.parse(localStorage.getItem('entryID'))
+      } catch (e) {
+        localStorage.removeItem('entryID')
+      }
+    }
   },
   methods:{
   getLocal()
@@ -90,11 +101,37 @@ export default {
       }
     }
   },
+  getTodaysDate(){        
+            var yearToday = new Date().getFullYear();
+            var monthToday = new Date().getMonth() + 1;
+            if( monthToday < 10){
+                monthToday = "0" + monthToday;
+            }
+            var dayToday = new Date().getDate();
+            if( dayToday < 10){
+                dayToday = "0" + dayToday;
+            }
+            //console.log(yearToday + monthToday + dayToday);
+            return "" + yearToday + "-" + monthToday + "-" + dayToday;
+        },
   createEntry()
   {
-    //console.log('tracker name ' + trackerName);
+    var fetchedEntryIDIncremented;
+      var fetchedEntryID = JSON.parse(localStorage.getItem('entryID'));
+
+      if(fetchedEntryID != null)
+      {      
+        var lastEntry = fetchedEntryID.length - 1;
+        //console.log("last " + lastEntry);
+         fetchedEntryIDIncremented = fetchedEntryID[lastEntry] + 1;
+          //console.log('in not null' + fetchedTrackerID);
+      }else{
+        fetchedEntryIDIncremented = 0;
+      // console.log('in null '+ fetchedTrackerIDIncremented);
+      }
   
     var newEntryInput = {
+      'id' : fetchedEntryIDIncremented, 
         "message": this.entryNote,
         "date" : this.newEntryDate,
         "value": this.newEntryValue,
@@ -102,9 +139,15 @@ export default {
         "trackerID": this.$route.params.id
     };
     this.entries.push(newEntryInput);
+
+    this.entryID.push(fetchedEntryIDIncremented);
+
+    
     console.log("pushed");
    this.save();
    this.cleanEntryValues();
+
+   
   },
   cleanEntryValues()
     {
@@ -116,7 +159,12 @@ export default {
   {
     const parsed = JSON.stringify(this.entries);
     localStorage.setItem('entries', parsed);
-    //console.log(this.entries[1]);
+
+
+      const parsedID = JSON.stringify(this.entryID)
+      localStorage.setItem('entryID', parsedID)
+
+       //console.log(this.entries[1]);
     this.entries.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
     console.log(this.entries);
   }

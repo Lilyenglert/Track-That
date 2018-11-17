@@ -49,17 +49,19 @@
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
           <h2>Log</h2>
           <v-card class="scroll" height= "200px" :flat="true">
+            <div id="entryList">
             <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.value">
                 <v-list id="example1">
               <v-list-tile>
                 <v-list-tile-avatar>{{entry.date}}</v-list-tile-avatar>
                 <v-list-tile-content> 
-                  <v-list-tile-title class="align-left">{{entry.value}}</v-list-tile-title>
+                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit}}</v-list-tile-title>
                   <v-list-tile-sub-title class="align-left">{{entry.message}}</v-list-tile-sub-title>
                 </v-list-tile-content>
-                <v-list-tile-action><a><v-icon>add</v-icon></a></v-list-tile-action>
+                <v-list-tile-action><a><router-link :to="`editEntry/${entry.id}`"><v-icon>edit</v-icon></router-link></a></v-list-tile-action>
               </v-list-tile>
               </v-list>
+            </div>
             </div>
           </v-card>
       </v-container>
@@ -67,8 +69,6 @@
     </v-container>
     </v-app>
   </div>
-
- 
 </template>
 
 <script>
@@ -87,7 +87,7 @@ export default {
       currentTracker:null,
       currentTrackerGoal:null,
       currentTrackerUnits:null,
-      
+      entryPath: null
     }
   },
   components: {
@@ -103,6 +103,7 @@ export default {
         this.currentTrackerGoal = this.trackers[index].goal; 
         this.currentTrackerUnits = this.trackers[index].unit;
       }}
+
   },
   mounted(){
     if (localStorage.getItem('entries')) {
@@ -176,6 +177,10 @@ a {
 .v-card {
   margin-top: 5%;
   padding:5%;
+}
+
+#graph_box{
+  padding: 0%;
 }
 
 .scroll {

@@ -130,7 +130,7 @@ export default {
       this.trackers.splice(x, 1)
       this.save()
     },
-    save () {
+    save() {
       const parsed = JSON.stringify(this.trackers)
       localStorage.setItem('trackers', parsed)
 
