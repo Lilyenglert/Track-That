@@ -132,16 +132,16 @@ stuff for boxes on home page
     text-align: center;
     overflow: auto;
     white-space: nowrap;
+    align-content: left;
 }
 
 .box {
     height: 130px;
     width: 130px;
+    max-width: 130px;
     display: inline-table;
     vertical-align: middle;
-
     margin: 20px 5%;
-    margin-left: 0;
     /* background-color: gray; */
     border-radius: 3px;
     filter: drop-shadow(1px 1px 2px gray);
@@ -152,12 +152,17 @@ stuff for boxes on home page
     text-decoration: none;
     font-weight: bold;
     font-size: 18px;
+    padding: 5px;
 }
 
 .box-text {
     vertical-align: middle;
     display: table-cell;
     text-align: center;
+}
+
+.box-container, .box-text{
+    line-break: auto;
 }
 
 /** CREATE TRACKER **/
@@ -211,5 +216,13 @@ input, textarea, select {
 /* popup */
 .popup {
     text-align: center;
+}
+
+
+/* Nav styles */
+v-toolbar, #titlebar{
+    /* position: fixed; */
+    background-color: white;
+
 }
 

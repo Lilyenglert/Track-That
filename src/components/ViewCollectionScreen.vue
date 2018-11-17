@@ -9,7 +9,7 @@
     </div> -->
 
     <!-- lily topbar -->
-    <v-toolbar id="titlebar">
+    <v-toolbar flat id="titlebar">
       <v-flex xs2>
       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
       </v-flex>
@@ -34,7 +34,7 @@
       </div>
 
       <!-- vanilla html/css -->
-      <div class='box-container'>
+      <div id="grid">
         <div class='box' v-for="tracker in filterTrackers($route.params.collection)"  v-bind:key="tracker.id">
           <router-link :to="tracker.path" class='box-text' style='border-radius:10px;background-color:#5c46df;' >{{tracker.name}}</router-link>
         </div>
@@ -103,4 +103,13 @@ li {
 a {
   color: #42b983;
 }
+
+#grid{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-evenly;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 </style>
