@@ -39,8 +39,7 @@
         <div class="section">
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
-            <!-- <p><Chart :trackerID=$route.params.id></Chart></p> -->
-            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <p><Chart :trackerID=$route.params.id></Chart></p>
             </v-card>
         </div>
 
@@ -169,9 +168,10 @@ a {
   text-align:left;
 }
 
-/* #graph{
-  max-width: 75%;
-} */
+#graph_box{ 
+  max-width: 90%;
+  padding:0%;
+}
 
 .v-card {
   margin-top: 5%;
