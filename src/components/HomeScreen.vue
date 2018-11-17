@@ -4,9 +4,9 @@
       <!-- <div class='top-bar section'>
         <h1 class='page-title'>Overview</h1>
       </div> -->
-      <v-toolbar id="titlebar">
+      <v-toolbar fixed id="titlebar">
         <v-flex xs12>
-          <v-toolbar-title class="page-title"> Home </v-toolbar-title>
+          <v-toolbar-title class="page-title"> Overview </v-toolbar-title>
         </v-flex>
       </v-toolbar>
       

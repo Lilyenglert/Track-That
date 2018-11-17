@@ -1,24 +1,26 @@
 <template>
-<div>
+<div id='home-screen'>
     <v-app>
     <!-- toolbar -->
-      <v-toolbar fixed flat id="titlebar">
-      <v-flex xs2>
-       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
-      </v-flex>
-      <v-flex xs8>
-        <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
-      </v-flex>
+      <v-toolbar fixed id="titlebar">
 
-      <v-flex xs2>
-        <a id="editButton"><i>edit</i></a>
-      </v-flex>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+          <v-flex xs2>
+          <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+          </v-flex>
+          <v-flex xs8>
+            <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
+          </v-flex>
+
+          <v-flex xs2>
+            <a id="editButton"><i>edit</i></a>
+          </v-flex>
+          <v-spacer></v-spacer>
+          <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+
     </v-toolbar>
     <!-- /toolbar -->
 
-    <div class="inner" id="tracker_details">
+    <v-container class="inner">
       <v-layout>
          
         <v-flex xs12>
@@ -36,8 +38,8 @@
         <v-container>
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
-            <!-- <Chart id="graph"></Chart> -->
-            <p><Chart :trackerID=$route.params.id></Chart></p>
+            <!-- <p><Chart :trackerID=$route.params.id></Chart></p> -->
+            <br><br><br><br><br><br><br><br><br><br><br><br>
             </v-card>
         </v-container>
 
@@ -62,7 +64,7 @@
           </v-card>
       </v-container>
 
-    </div>
+    </v-container>
     </v-app>
   </div>
 
@@ -166,9 +168,9 @@ a {
   text-align:left;
 }
 
-#graph{
-  max-width: 300px;
-}
+/* #graph{
+  max-width: 75%;
+} */
 
 .v-card {
   margin-top: 5%;
@@ -184,7 +186,4 @@ a {
   font-size: 16px;
 }
 
-.inner{
-  margin-top: 10%;
-}
 </style>

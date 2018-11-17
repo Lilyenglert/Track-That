@@ -1,4 +1,4 @@
-p { font-size: 18px; }
+p { font-size: 16px; }
 
 h1 { font-size: 32px; }
 h2 { font-size: 28px; }
@@ -29,14 +29,6 @@ button .v-btn__content a {
     align-content: right;
  }
 
- .page-title {
-    text-align: center;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 20px;
-    font-size: 5vw;
-}
-
  .back-button {
      display: inline-block;
  }
@@ -52,6 +44,7 @@ button .v-btn__content a {
     padding: 5%;
     text-align: left;
     background-color: white;
+    padding-top: 20%;
 }
 
 .greeting {
@@ -95,6 +88,7 @@ tracker and collection sections
     color: white;
     padding: 10px 20px;
     border-radius: 10px;
+    margin-top: 20px;
 }
 
 .section .solid h3 {
@@ -151,8 +145,9 @@ stuff for boxes on home page
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 4vw;
     padding: 5px;
+    text-transform: capitalize;
 }
 
 .box-text {
@@ -179,7 +174,7 @@ input, textarea, select {
 }
 
 .section p {
-    margin: 16px 0;
+    margin: 5px 0px;
 }
 
 .section .optional {
@@ -220,9 +215,31 @@ input, textarea, select {
 
 
 /* Nav styles */
+
+.page-title {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px;
+    text-transform: uppercase;
+    font-size: 4vw;
+}
+
 v-toolbar, #titlebar{
     /* position: fixed; */
     background-color: white;
-
+    opacity: .95;
+    /* padding-right: 0; */
 }
+
+/* override padding on nav */
+
+div, .v-toolbar_content, #titlebar{
+    padding:0;
+    max-width: 100%;
+}
+
+.v-toolbar__content, .v-toolbar_content #titlebar{
+    padding: none!important;
+ }
 

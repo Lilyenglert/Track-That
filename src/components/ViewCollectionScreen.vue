@@ -1,5 +1,5 @@
 <template>
-  <div id='view-collection-screen'>
+  <div id='home-screen'>
     <!-- steph topbar -->
     <!-- <div class='top-bar section'>
       <v-btn fab dark small color="#DF5C46" class='back-button'>
@@ -9,7 +9,7 @@
     </div> -->
 
     <!-- lily topbar -->
-    <v-toolbar flat id="titlebar">
+    <v-toolbar flat fixed id="titlebar">
       <v-flex xs2>
       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
       </v-flex>
@@ -40,7 +40,6 @@
         </div>
       </div> 
     </div>
-    <router-link to="/">Back</router-link>
   </div>
 </template>
 
