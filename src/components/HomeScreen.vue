@@ -30,12 +30,12 @@
             </v-btn>
             <!-- <p class='inline-block right'><i>edit</i></p> -->
           </div>
-          <div class='box-container'>
+        </div>
+        <div class='box-container'>
             <div class='box' v-for="tracker in trackers" v-bind:key="tracker.id" v-if="tracker">
               <router-link :to="tracker.path" class='box-text' style='border-radius:7px;background-color:#5c46df;'>{{tracker.name}}</router-link>
             </div>
           </div>
-        </div>
 
         <div class='section'>
           <h2 class='inline-block'>Collections</h2> 
@@ -43,12 +43,12 @@
             <v-icon>add</v-icon>
           </v-btn>
           <p class='inline-block right'><i><router-link to="/editCollection/">edit</router-link></i></p>
-          <div class='box-container'>
+        </div>
+        <div class='box-container'>
             <div class = 'box' v-for="collection in this.collections" v-bind:key="collection.id">
               <router-link :to="collection.path" class='box-text' style='border-radius:7px;background-color:#df5c46'>{{collection.name}}</router-link>
               </div>
           </div>
-        </div>
 
           <GetNamePopup v-show="nameCheck" @closeName="closeName"/>
           <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
