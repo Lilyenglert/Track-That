@@ -15,7 +15,7 @@ h3 { font-size: 24px; }
 }
 
 /* overriding vue link color for link buttons */
-button .v-btn__content a {
+button .v-btn__content a, .v-list__tile__action a {
     text-decoration: none;
     color: white;
 }
