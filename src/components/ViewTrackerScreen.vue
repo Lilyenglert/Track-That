@@ -36,8 +36,8 @@
         <div class="section">
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
-            <p><Chart :trackerID=$route.params.id></Chart></p>
-            <p><v-btn id="switchButton" @click='switchUnits()'>Switch Units</v-btn></p>
+              <Chart :trackerID=$route.params.id></Chart>
+              <v-btn id="switchButton" @click='switchUnits()' color="#DF5C46">Switch Units</v-btn>
             </v-card>
         </div>
 
@@ -195,6 +195,7 @@ a {
 #graph_box{ 
   /* max-width: 90%; */
   padding:0%;
+  text-align: center;
 }
 
 .v-card {
