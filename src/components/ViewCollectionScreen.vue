@@ -24,6 +24,8 @@
       <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
     </v-toolbar>
     
+    <v-container class="inner">
+
     <div class='section'>
       <div class='section-title'>
         <h2 class='inline-block'>Trackers</h2>
@@ -40,6 +42,7 @@
         </div>
       </div> 
     </div>
+    </v-container>
   </div>
 </template>
 
@@ -107,8 +110,7 @@ a {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-evenly;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
 }
 
 </style>

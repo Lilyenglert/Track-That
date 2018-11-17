@@ -29,21 +29,22 @@
         
       </v-layout>
 
-        <v-container id="goalsContainer">
+        <div class="section">
           <h2>Goals</h2>
           <v-card :flat="true">
            <p id="goalMessage">{{this.currentTrackerGoal}}</p>
           </v-card>
-        </v-container>
-        <v-container>
+        </div>
+
+        <div class="section">
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
             <!-- <p><Chart :trackerID=$route.params.id></Chart></p> -->
             <br><br><br><br><br><br><br><br><br><br><br><br>
             </v-card>
-        </v-container>
+        </div>
 
-        <v-container fluid-grid-list-md>
+        <v-container class="section" fluid-grid-list-md>
           
           
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->

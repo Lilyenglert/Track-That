@@ -123,7 +123,7 @@ tracker and collection sections
 stuff for boxes on home page 
 */
 .box-container {
-    text-align: center;
+    text-align: left;
     overflow: auto;
     white-space: nowrap;
     align-content: left;
@@ -135,7 +135,10 @@ stuff for boxes on home page
     max-width: 130px;
     display: inline-table;
     vertical-align: middle;
-    margin: 20px 5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 8%;
+    margin-left: 0;
     /* background-color: gray; */
     border-radius: 3px;
     filter: drop-shadow(1px 1px 2px gray);
@@ -221,7 +224,7 @@ input, textarea, select {
     display: inline-block;
     vertical-align: middle;
     margin: 0 20px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 4vw;
 }
 
@@ -239,7 +242,4 @@ div, .v-toolbar_content, #titlebar{
     max-width: 100%;
 }
 
-.v-toolbar__content, .v-toolbar_content #titlebar{
-    padding: none!important;
- }
 

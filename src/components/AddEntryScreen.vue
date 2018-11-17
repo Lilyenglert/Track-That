@@ -6,7 +6,7 @@
        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
       </v-flex>
        <v-flex xs8>
-      <v-toolbar-title class="page-title">Create Entry for {{ $route.params.tracker }}</v-toolbar-title>
+      <v-toolbar-title class="page-title">New Entry</v-toolbar-title>
       </v-flex>
 
        <v-flex xs2>
@@ -21,15 +21,23 @@
     <div id="add-entry-div" class="inner">
 
       <div class='section'>
-      <h2 class='prompt'>What did you do?</h2>
-      <p>Tracker Name: <input v-model="newTrackerName"></p>
+      <h2 class='prompt'>Describe your <i>{{ $route.params.tracker }}</i> entry here.</h2>
+      <!-- <p>Tracker Name: <input v-model="newTrackerName"></p> -->
       </div>
-
-      <p><input v-model.number="newEntryValue" type="number">{{this.currentTrackerUnits}}</p>
-      <p>Date: <input v-model="newEntryDate" type="date"></p>
-      <p>Note:<p><textarea v-model="entryNote"></textarea></p>
-      <button @click="createEntry">Add Entry</button>
-      <p><router-link to="./">Back</router-link><p/>
+      <div class='section'>
+        <div class='section'>
+          <h4><input v-model.number="newEntryValue" type="number"> {{this.currentTrackerUnits}}</h4>
+          </div>
+          <div class='section'>
+          <p><b>Date:</b><input id="date_input" v-model="newEntryDate" type="date"></p>
+          </div> 
+          <div class='section'>
+          <h4>Note:<textarea v-model="entryNote"></textarea></h4>
+          </div>
+          <div class="section" id="btn_section">
+          <v-btn large id="small-button" @click="createEntry">Add Entry</v-btn>
+          </div>
+      </div>
     </div>
   </div>
 </template>
@@ -135,7 +143,38 @@ a {
 
  /* for toolbar */
 
-.inner{
-  margin-top: 10%;
+
+div .section{
+  margin-top: 0;
+  margin-bottom: 0;
 }
+
+div .input_section{
+  text-align: left;
+  align-content: left;
+  display: inline;
+
+}
+
+.input_section{
+  width: 100%;
+  height: 10%;
+  margin-left:10%;
+  margin-bottom: 4%;
+}
+
+.section #small-button{
+  padding: 10px 10px 10px 10px;
+  
+} 
+.section #btn_section{
+  align-content: center;
+  text-align: center;
+}
+
+#date_input{
+  align-content: center;
+  text-align: center;
+}
+
 </style>
