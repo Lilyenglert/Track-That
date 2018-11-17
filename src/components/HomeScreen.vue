@@ -1,69 +1,88 @@
 <template>
-  <div id='home-screen' class='inner'>
-    <div class='top-bar section'>
-      <h1 class='page-title'>Overview</h1>
-    </div>
-    <div class='content'>
-      <div class='section'>
-      <h2 class='greeting'>Hi, Liam!</h2>
-      <!-- STEPH HARDCODED MESSAGE -->
-      <p class='message'>It's a beautiful day to achieve your goals.</p>
-        <div v-for="tracker in trackers" v-bind:key="tracker.id">
-        <p class='message'>{{tracker.goal}}</p>
-      </div>     
-    </div>
-    <div class='section'>
-      <div class='section-title'>
-        <h2 class='inline-block'>Trackers</h2>
-        <v-btn fab dark small color="#DF5C46" class='add-thing'>
-          <router-link to="/add"><v-icon>add</v-icon></router-link>
-        </v-btn>
-        <p class='inline-block right'><i>edit</i></p>
-      </div>
-
-      <!-- STEPH HARDCODED STUFF -->
-      <div class='box-container'>
-        
-            <div class = 'box' v-for="tracker in trackers" v-bind:key="tracker.id" v-if="tracker">
-                  <router-link :to="tracker.path" class='box-text' style='border-radius:10px;background-color:#5c46df;'>{{tracker.name}}</router-link>
-            </div>
+  <div id='home-screen'>
+    <v-app>
+      <!-- <div class='top-bar section'>
+        <h1 class='page-title'>Overview</h1>
+      </div> -->
+      <v-toolbar fixed id="titlebar">
+        <v-flex xs12>
+          <v-toolbar-title class="page-title"> Overview </v-toolbar-title>
+        </v-flex>
+      </v-toolbar>
       
-      </div>
-      
-    </div>
-    <div class='section'>
-      <h2 class='inline-block'>Collections</h2>
-      <v-btn fab dark small color="#DF5C46" class='add-thing' @click="showModal">
-        <v-icon>add</v-icon>
-      </v-btn>
-      <p class='inline-block right'><i><router-link to="/editCollection/">edit</router-link></i></p>
-
-      <!-- STEPH HARDCODED STUFF -->
-       <div class='box-container'>
-          <div class = 'box' v-for="collection in this.collections" v-bind:key="collection.id">
-                  <router-link :to="collection.path" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</router-link>
+      <v-container class="inner">
+        <div class='section section-top'>
+          <h2 class='greeting'>Hi, {{username}}!</h2>
+          <p class='message'>It's a beautiful day to achieve your goals.</p>
+          <div class='solid'>
+            <h3>Goals</h3>
+            <div v-for="tracker in trackers" v-bind:key="tracker.id">
+              <p class='message'>{{tracker.goal}}</p>
+            </div> 
           </div>
         </div>
-      <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
-    </div>
 
-    </div>
-    
-    
+        <div class='section'>
+          <div class='section-title'>
+            <h2 class='inline-block'>Trackers</h2>
+            <v-btn fab dark small color="#DF5C46" class='add-thing'>
+              <router-link to="/add"><v-icon>add</v-icon></router-link>
+            </v-btn>
+            <!-- <p class='inline-block right'><i>edit</i></p> -->
+          </div>
+
+          <div class='box-container'>
+            <div class='box' v-for="tracker in trackers" v-bind:key="tracker.id" v-if="tracker">
+              <router-link :to="tracker.path" class='box-text' style='border-radius:7px;background-color:#5c46df;'>{{tracker.name}}</router-link>
+            </div>
+          </div>
+        </div>
+
+        <div class='section'>
+          <h2 class='inline-block'>Collections</h2> 
+          <v-btn fab dark small color="#DF5C46" class='add-thing' @click="showModal">
+            <v-icon>add</v-icon>
+          </v-btn>
+          <p class='inline-block right'><i><router-link to="/editCollection/">edit</router-link></i></p>
+        </div>
+
+          <GetNamePopup v-show="nameCheck" @closeName="closeName"/>
+          <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
+
+          <div class='box-container'>
+            <div class = 'box' v-for="collection in this.collections" v-bind:key="collection.id">
+              <router-link :to="collection.path" class='box-text' style='border-radius:7px;background-color:#df5c46'>{{collection.name}}</router-link>
+              </div>
+          </div>
+
+          <GetNamePopup v-show="nameCheck" @closeName="closeName"/>
+
+          <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
+          
+      </v-container>
+      <!-- <div class='content'>
+        
+
+      </div> -->
+      
+    </v-app>
   </div>
 </template>
 
 <script>
 import AddCollectionPopup from './AddCollectionPopup.vue'
+import GetNamePopup from './GetNamePopup.vue'
 export default {
   components: {
-    AddCollectionPopup
+    AddCollectionPopup,
+    GetNamePopup
   },
   props:{
     to: Object
   },
   data(){
     return{
+      username:'',
       trackers: [{
         id: '',
         path: '', 
@@ -77,12 +96,16 @@ export default {
         path:''
       }],
     name: 'HomeScreen',
-    isPopupVisible: false
+    isPopupVisible: false,
+    nameCheck: false
     }
   },
    mounted() {
     this.getLocal();
-    
+    if(this.username == null){
+      this.username = 'User';
+      this.nameCheck = true;
+    }
   },
   methods:{
     showModal() {
@@ -92,10 +115,15 @@ export default {
         this.isPopupVisible = false;
         this.getLocal();
       },
+      closeName(){
+        this.nameCheck = false;
+        this.username = localStorage.getItem('userName');
+      },
   getLocal()
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));
     this.collections = JSON.parse(localStorage.getItem('collections'));
+    this.username = localStorage.getItem('userName');
   }
 }
   
@@ -118,5 +146,9 @@ li {
 }
 a {
   color: #42b983;
+}
+
+#small-button{
+  border: none;
 }
 </style>

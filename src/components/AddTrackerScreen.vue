@@ -1,8 +1,7 @@
 <template>
   <div id='add-tracker-screen' class='inner'>
     <div class='top-bar section'>
-      <v-btn fab dark small color="#DF5C46">
-          
+      <v-btn fab dark small color="#DF5C46" class='back-button'>
           <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
         </v-btn>
         <!-- <p><router-link to="/">Back</router-link><p/> -->
@@ -131,7 +130,7 @@ export default {
       this.trackers.splice(x, 1)
       this.save()
     },
-    save () {
+    save() {
       const parsed = JSON.stringify(this.trackers)
       localStorage.setItem('trackers', parsed)
 

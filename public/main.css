@@ -1,14 +1,8 @@
-p {
-    font-size: 18px;
-}
+p { font-size: 16px; }
 
-h1 {
-    font-size: 32px;
-}
-
-h2 {
-    font-size: 24px;
-}
+h1 { font-size: 32px; }
+h2 { font-size: 28px; }
+h3 { font-size: 24px; }
 
 /* overriding vue container class */
 .container {
@@ -35,24 +29,22 @@ button .v-btn__content a {
     align-content: right;
  }
 
+ .back-button {
+     display: inline-block;
+ }
+
 /* ###### HOMESCREEN.VUE ###### */
+
+#home-screen .page-title {
+    display: block;
+}
 
 /* content section */
 .inner {
     padding: 5%;
     text-align: left;
-}
-
-.top-bar {
-/* maybe fixed? */
-}
-
-.content {
-/* for fixed top */
-}
-
-.page-title {
-    text-align: center;
+    background-color: white;
+    padding-top: 20%;
 }
 
 .greeting {
@@ -64,6 +56,11 @@ button .v-btn__content a {
     font-size: 18px;
 }
 
+.goals {
+    background-color: #DF5C46;
+    color: white;
+}
+
 /* 
 tracker and collection sections
  */
@@ -72,8 +69,31 @@ tracker and collection sections
 }
 
 .section {
+    /* border-bottom: solid lightgray .5px; */
+    background-color: white;
+    margin: 6% 0;
     padding: 4%;
-    border-bottom: solid lightgray .5px;
+}
+
+.section-top {
+    margin-top: 0;
+}
+
+.section .solid {
+    background-color: #DF5C46;
+    background-image: url('./img/triangles.png');
+    background-repeat: repeat;
+    background-size: cover;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.section .solid h3 {
+    margin: 10px 0;
+
 }
 
 .inline-block {
@@ -103,29 +123,34 @@ tracker and collection sections
 stuff for boxes on home page 
 */
 .box-container {
-    text-align: center;
+    text-align: left;
     overflow: auto;
     white-space: nowrap;
+    align-content: left;
 }
 
 .box {
     height: 130px;
     width: 130px;
+    max-width: 130px;
     display: inline-table;
     vertical-align: middle;
-
-    margin: 20px 5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 8%;
     margin-left: 0;
-    background-color: black;
-    border-radius: 10px;
-    filter: drop-shadow(1px 1px 3px gray);
+    /* background-color: gray; */
+    border-radius: 3px;
+    filter: drop-shadow(1px 1px 2px gray);
 }
 
 .box a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 4vw;
+    padding: 5px;
+    text-transform: capitalize;
 }
 
 .box-text {
@@ -134,13 +159,17 @@ stuff for boxes on home page
     text-align: center;
 }
 
+.box-container, .box-text{
+    line-break: auto;
+}
+
 /** CREATE TRACKER **/
 #add-tracker-screen .section {
     text-align: center;
 }
 
 input, textarea, select {
-    border: solid lightgray .5px;
+    border-bottom: solid rgb(223, 92, 70) 2px;
 }
 
 .prompt {
@@ -148,7 +177,7 @@ input, textarea, select {
 }
 
 .section p {
-    margin: 16px 0;
+    margin: 5px 0px;
 }
 
 .section .optional {
@@ -169,5 +198,48 @@ input, textarea, select {
     height: 50px;
 }
 
+
+/* Button Styles */
+#small-button{
+    /* padding:1px; */
+    font-size: 12px;
+    border: 1px solid;
+    border-color: rgba(212, 212, 212, 0.925);
+    color: #DF5C46;
+    background-color: white;
+    box-shadow: 0px 0px 0px;
+
+}
+
+/* popup */
+.popup {
+    text-align: center;
+}
+
+
+/* Nav styles */
+
+.page-title {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px;
+    text-transform: capitalize;
+    font-size: 4vw;
+}
+
+v-toolbar, #titlebar{
+    /* position: fixed; */
+    background-color: white;
+    opacity: .95;
+    /* padding-right: 0; */
+}
+
+/* override padding on nav */
+
+div, .v-toolbar_content, #titlebar{
+    padding:0;
+    max-width: 100%;
+}
 
 

@@ -1,11 +1,47 @@
 <template>
   <div>
-    <h2>Create Entry for {{ $route.params.tracker }}</h2>
-    <p><input v-model.number="newEntryValue" type="number">{{this.currentTrackerUnits}}</p>
-    <p>Date: <input v-model="newEntryDate" type="date"></p>
-    <p>Note:<p><textarea v-model="entryNote"></textarea></p>
-    <button @click="createEntry">Add Entry</button>
-    <p><router-link to="./">Back</router-link><p/>
+    <!-- toolbar -->
+      <v-toolbar fixed flat id="titlebar">
+      <v-flex xs2>
+       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+      </v-flex>
+       <v-flex xs8>
+      <v-toolbar-title class="page-title">New Entry</v-toolbar-title>
+      </v-flex>
+
+       <v-flex xs2>
+      <a id="editButton"><i>edit</i></a>
+      </v-flex>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+      </v-toolbar-items>
+    </v-toolbar>
+    <!-- /toolbar -->
+
+    <div id="add-entry-div" class="inner">
+
+      <div class='section'>
+      <v-btn fab dark small color="#DF5C46">
+      <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
+    </v-btn>
+      <h2 class='prompt'>Describe your <i>{{ $route.params.tracker }}</i> entry here.</h2>
+      <!-- <p>Tracker Name: <input v-model="newTrackerName"></p> -->
+      </div>
+      <div class='section'>
+        <div class='section'>
+          <h4><input v-model.number="newEntryValue" type="number" required="required"> {{this.currentTrackerUnits}}</h4>
+          </div>
+          <div class='section'>
+          <p><b>Date:</b><input id="date_input" v-model="newEntryDate" type="date" required="required"></p>
+          </div> 
+          <div class='section'>
+          <h4>Note:<textarea v-model="entryNote"></textarea></h4>
+          </div>
+          <div class="section" id="btn_section">
+          <router-link to="./"><v-btn large id="small-button" @click="createEntry">Add Entry</v-btn></router-link>
+          </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,7 +55,8 @@ export default {
        ],
        entries: [], 
       newEntryValue:null,
-      newEntryDate: null, 
+      newEntryDate: this.getTodaysDate(), 
+      entryID: [],
       entryNote: null,
        currentTracker:'',
        currentTrackerName:'',
@@ -41,6 +78,13 @@ export default {
         localStorage.removeItem('entries')
       }
     }
+    if (localStorage.getItem('entryID')) {
+      try {
+        this.entryID = JSON.parse(localStorage.getItem('entryID'))
+      } catch (e) {
+        localStorage.removeItem('entryID')
+      }
+    }
   },
   methods:{
   getLocal()
@@ -57,11 +101,37 @@ export default {
       }
     }
   },
+  getTodaysDate(){        
+            var yearToday = new Date().getFullYear();
+            var monthToday = new Date().getMonth() + 1;
+            if( monthToday < 10){
+                monthToday = "0" + monthToday;
+            }
+            var dayToday = new Date().getDate();
+            if( dayToday < 10){
+                dayToday = "0" + dayToday;
+            }
+            //console.log(yearToday + monthToday + dayToday);
+            return "" + yearToday + "-" + monthToday + "-" + dayToday;
+        },
   createEntry()
   {
-    //console.log('tracker name ' + trackerName);
+    var fetchedEntryIDIncremented;
+      var fetchedEntryID = JSON.parse(localStorage.getItem('entryID'));
+
+      if(fetchedEntryID != null)
+      {      
+        var lastEntry = fetchedEntryID.length - 1;
+        //console.log("last " + lastEntry);
+         fetchedEntryIDIncremented = fetchedEntryID[lastEntry] + 1;
+          //console.log('in not null' + fetchedTrackerID);
+      }else{
+        fetchedEntryIDIncremented = 0;
+      // console.log('in null '+ fetchedTrackerIDIncremented);
+      }
   
     var newEntryInput = {
+      'id' : fetchedEntryIDIncremented, 
         "message": this.entryNote,
         "date" : this.newEntryDate,
         "value": this.newEntryValue,
@@ -69,9 +139,15 @@ export default {
         "trackerID": this.$route.params.id
     };
     this.entries.push(newEntryInput);
+
+    this.entryID.push(fetchedEntryIDIncremented);
+
+    
     console.log("pushed");
    this.save();
    this.cleanEntryValues();
+
+   
   },
   cleanEntryValues()
     {
@@ -83,7 +159,12 @@ export default {
   {
     const parsed = JSON.stringify(this.entries);
     localStorage.setItem('entries', parsed);
-    //console.log(this.entries[1]);
+
+
+      const parsedID = JSON.stringify(this.entryID)
+      localStorage.setItem('entryID', parsedID)
+
+       //console.log(this.entries[1]);
     this.entries.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
     console.log(this.entries);
   }
@@ -107,4 +188,41 @@ li {
 a {
   color: #42b983;
 }
+
+ /* for toolbar */
+
+
+div .section{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+div .input_section{
+  text-align: left;
+  align-content: left;
+  display: inline;
+
+}
+
+.input_section{
+  width: 100%;
+  height: 10%;
+  margin-left:10%;
+  margin-bottom: 4%;
+}
+
+.section #small-button{
+  padding: 10px 10px 10px 10px;
+  
+} 
+.section #btn_section{
+  align-content: center;
+  text-align: center;
+}
+
+#date_input{
+  align-content: center;
+  text-align: center;
+}
+
 </style>
