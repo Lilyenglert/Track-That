@@ -3,31 +3,28 @@
     <v-app>
     <!-- toolbar -->
       <v-toolbar fixed id="titlebar">
+        <v-flex xs2>
+        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+        </v-flex>
+        <v-flex xs8>
+          <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
+        </v-flex>
 
-          <v-flex xs2>
-          <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
-          </v-flex>
-          <v-flex xs8>
-            <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
-          </v-flex>
-
-          <v-flex xs2>
-           <router-link to="edit"> <a id="editButton"><i>edit</i></a></router-link>
-          </v-flex>
-          <v-spacer></v-spacer>
-          <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
-
-    </v-toolbar>
+        <v-flex xs2>
+          <router-link to="edit"> <a id="editButton"><i>edit</i></a></router-link>
+        </v-flex>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+      </v-toolbar>
     <!-- /toolbar -->
 
     <v-container class="inner">
-      <v-layout>
-         
-        <v-flex xs12>
-          <a><p class="link"><router-link to=entry>Create a new entry <v-icon size="18px">add</v-icon></router-link></p></a>
-        </v-flex>
-        
-      </v-layout>
+        <div class='section-title'>
+          <v-btn color="#DF5C46" class='add-thing'>
+            New entry
+            <v-icon right size="18px">add</v-icon>
+          </v-btn>
+        </div>
 
         <div class="section">
           <h2>Goals</h2>
@@ -218,6 +215,10 @@ a {
 
 .scroll {
   overflow-y: auto;
+}
+
+.section-title {
+  text-align: center;
 }
 
 .link{
