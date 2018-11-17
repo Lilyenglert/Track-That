@@ -1,20 +1,43 @@
 <template>
-  <div>
-    <h2>Edit Collections</h2>
+<div id='home-screen'>
 
-    <div class='box-container'>
-          <div class = 'box' v-for="(collection, n) in collections" v-bind:key="collection.n">
+    <!-- lily topbar -->
+    <v-toolbar fixed id="titlebar">
+      <v-flex xs2>
+      <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+      </v-flex>
+      <v-flex xs8>
+        <v-toolbar-title class="page-title">{{ $route.params.collection }} Edit Collections</v-toolbar-title>
+      </v-flex>
+
+      <v-flex xs2>
+        <a id="editButton"><i>edit</i></a>
+      </v-flex>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+    </v-toolbar>
+    
+    <v-container class="inner">
+
+    <div class='section'>
+      <div class='section-title'>
+        <h2 class='inline-block'>Your Collections</h2>
+        <v-btn fab dark small color="#DF5C46" class='add-thing'>
+          <router-link to="/add"><v-icon>add</v-icon></router-link>
+        </v-btn>
+        <!-- <p class='inline-block right'><i>edit</i></p> -->
+      </div>
+
+      <!-- vanilla html/css -->
+      <div id="grid">
+        <div class = 'box' v-for="(collection, n) in collections" v-bind:key="collection.n">
                   <div @click="remove(collection, n)" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</div>
                    <!-- <button class='box-text' @click="remove(n)">Remove</button> -->
-          </div>
         </div>
-    <!-- <div v-for="(collection, n) in collections" v-bind:key="collection.n">
-      <p>
-        <span>{{ collection.name }}</span>
-        <button @click="remove(n)">Remove</button>
-      </p>
-    </div> -->
-    <router-link to="/">Back</router-link>
+      </div> 
+     
+    </div>
+    </v-container>
   </div>
 </template>
 
@@ -75,5 +98,11 @@ li {
 }
 a {
   color: #42b983;
+}
+
+#grid{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-evenly;
 }
 </style>
