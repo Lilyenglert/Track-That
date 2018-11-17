@@ -28,12 +28,13 @@
         </v-flex>
         
       </v-layout>
-
+        <div id="goalsContainer">
         <div class="section">
           <h2>Goals</h2>
           <v-card :flat="true">
            <p id="goalMessage">{{this.currentTrackerGoal}}</p>
           </v-card>
+        </div>
         </div>
 
         <div class="section">

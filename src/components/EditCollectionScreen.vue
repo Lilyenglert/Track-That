@@ -4,7 +4,7 @@
 
     <div class='box-container'>
           <div class = 'box' v-for="(collection, n) in collections" v-bind:key="collection.n">
-                  <div @click="remove(collection, n)" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</div>
+                  <div @click="warning(collection, n)" class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</div>
                    <!-- <button class='box-text' @click="remove(n)">Remove</button> -->
           </div>
         </div>
@@ -15,16 +15,24 @@
       </p>
     </div> -->
     <router-link to="/">Back</router-link>
+    <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="runRemove"/>
   </div>
 </template>
 
 <script>
+import DeleteWarningPopup from './DeleteWarningPopup.vue'
 export default {
   name: 'EditCollectionScreen',
+  components:{
+    DeleteWarningPopup
+  },
   data () {
     return {
       collections: [],
-      trackers:[]
+      trackers:[],
+      isPopupVisible: false,
+      selectedCollection: null,
+      selectedKey: null,
     }
   },
   mounted () {
@@ -39,6 +47,20 @@ export default {
     }
   },
   methods:{
+    warning(collection,x){
+      this.isPopupVisible = true;
+      this.selectedCollection = collection;
+      this.selectedKey = x;
+    },
+    closeWarning() {
+      this.isPopupVisible = false;
+    },
+    runRemove() {
+      this.isPopupVisible = false;
+      this.remove(this.selectedCollection, this.selectedKey)
+      this.selectedCollection = null;
+      thus.selectedKey = null;
+    },
     remove (collection, x) {
       this.collections.splice(x, 1)
       for (let index = 0; index < this.trackers.length; index++) {
