@@ -244,4 +244,13 @@ div, .v-toolbar_content, #titlebar{
     max-width: 100%;
 }
 
+/** VIEW TRACKER **/
+.tracker-log-entry {
+    border-bottom: solid .5px lightgray;
+    margin-bottom: 10px;
+}
 
+.tracker-log-date {
+    width: 20%;
+    margin-right: 30px;
+}

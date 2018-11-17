@@ -44,29 +44,43 @@
         </div>
 
         <v-container class="section" fluid-grid-list-md>
-          
-          
-          <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
+          <!-- All entry items repeated here -->
           <h2>Log</h2>
-          <v-card class="scroll" height= "200px" :flat="true">
+          <v-card class="scroll" :flat="true">
             <div id="entryList">
-            <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.value">
-                <v-list id="example1">
-              <v-list-tile>
-                <v-list-tile-avatar>{{entry.date}}</v-list-tile-avatar>
-                <v-list-tile-content> 
-                  <div v-if="entry.unit.length == 2">
-                  <v-list-tile-title class="align-left">{{entry.value[0]}} {{entry.unit[0]}}, {{entry.value[1]}} {{entry.unit[1]}}</v-list-tile-title>
-                  </div>
-                  <div v-else>
-                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit[0]}}</v-list-tile-title>
-                  </div>
-                  <v-list-tile-sub-title class="align-left">{{entry.message}}</v-list-tile-sub-title>
-                </v-list-tile-content>
-                <v-list-tile-action><a><router-link :to="`editEntry/${entry.id}`"><v-icon>edit</v-icon></router-link></a></v-list-tile-action>
-              </v-list-tile>
-              </v-list>
-            </div>
+              <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.value">
+                <v-list class="tracker-log-entry">
+                  <v-list-tile>
+                    <span class='tracker-log-date'>
+                      {{entry.date | formatDate}}
+                    </span>
+                  
+                  <v-list-tile-content> 
+                    <div v-if="entry.unit.length == 2">
+                      <v-list-tile-title class="align-left">
+                        {{entry.value[0]}} {{entry.unit[0]}}, {{entry.value[1]}} {{entry.unit[1]}}
+                      </v-list-tile-title>
+                    </div>
+                    <div v-else>
+                      <v-list-tile-title class="align-left">
+                        {{entry.value}} {{entry.unit[0]}}
+                      </v-list-tile-title>
+                    </div>
+                    <v-list-tile-sub-title class="align-left">
+                      {{entry.message}}
+                    </v-list-tile-sub-title>
+                  </v-list-tile-content>
+
+                  <!-- edit entry button -->
+                  <v-btn fab dark small color="#DF5C46" class='add-thing'>
+                    <router-link :to="`editEntry/${entry.id}`">
+                      <v-icon>edit</v-icon>
+                    </router-link>
+                  </v-btn>
+
+                </v-list-tile>
+                </v-list>
+              </div>
             </div>
           </v-card>
       </v-container>
@@ -81,6 +95,8 @@ import Chart from './Chart.vue'
 import Vue from 'vue'
 import Storage from 'vue-web-storage'
 import EventBus from '../eventBus.js'
+import moment from 'moment'
+
 Vue.use(Storage)
 export default {
   name: 'ViewTrackerScreen',
@@ -146,6 +162,13 @@ export default {
       Vue.$localStorage.set('gValues', array)
       EventBus.$emit('refreshGraph')
     }
+  },
+  filters: {
+    formatDate: function (value) {
+      if (value) {
+        return moment(String(value)).format('llll').slice(0, -15);
+      }
+    }
   }
 }
 </script>
@@ -169,6 +192,7 @@ li {
 a {
   color: #42b983;
 }
+
 
 #goalMessage, #graph_box{
   text-align:left;
