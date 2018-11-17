@@ -18,11 +18,12 @@ export default {
       entryData:[],
       entryValues:[],
       entryDates:[],
-      unitSelector: 0,
+      unitSelector: '',
     }
   },
   mounted () {
     var usedDates = []
+    this.unitSelector = 0
     if (localStorage.getItem('entries')) {
       try {
         this.entries = JSON.parse(localStorage.getItem('entries'))
@@ -35,7 +36,7 @@ export default {
      for (let index = 0; index < this.entries.length; index++) {
       if(this.entries[index].trackerID == this.trackerID)
       {
-        if(usedDates.includes(this.entries[index].date) == false){
+        if(usedDates.includes(this.entries[index].date) == false && this.entries[index].value[this.unitSelector] != null){
           usedDates.push(this.entries[index].date)
           this.entryData.push({value: this.entries[index].value[this.unitSelector], date: new Date(this.entries[index].date)})
           this.entryValues.push(this.entries[index].value[this.unitSelector])
@@ -90,7 +91,7 @@ export default {
       this.entryData = []
       this.entryDates = []
       usedDates = []
-      if (this.unitSelector == 0){
+      if (this.unitSelector == 0 || this.unitSelector == null){
         this.unitSelector = 1;
       }
       else{
@@ -99,7 +100,7 @@ export default {
       for (let index = 0; index < this.entries.length; index++) {
       if(this.entries[index].trackerID == this.trackerID)
       {
-        if(usedDates.includes(this.entries[index].date) == false){
+        if(usedDates.includes(this.entries[index].date) == false && this.entries[index].value[this.unitSelector] != null){
           
           usedDates.push(this.entries[index].date)
           this.entryData.push({value: this.entries[index].value[this.unitSelector], date: new Date(this.entries[index].date)})
@@ -137,6 +138,9 @@ export default {
       svg.append('text').attr("x", 180).attr("y", 145).text("entries to see your progress!").style("text-anchor", "middle")
     }
     })
+  },
+  beforeDestroy(){
+    EventBus.$off('switchUnits')
   }
 }
 </script>

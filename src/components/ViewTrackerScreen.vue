@@ -41,7 +41,7 @@
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
             <p><Chart :trackerID=$route.params.id></Chart></p>
-            <p><v-btn @click='switchUnits()'>Switch Units</v-btn></p>
+            <p><v-btn id="switchButton" @click='switchUnits()'>Switch Units</v-btn></p>
             </v-card>
         </div>
 
@@ -91,10 +91,10 @@ export default {
     return {
       trackers:[],
       entries:[],
-      currentTracker:null,
-      currentTrackerGoal:null,
-      currentTrackerUnits:null, 
-      entryPath: null
+      currentTracker:'',
+      currentTrackerGoal:'',
+      currentTrackerUnits:'', 
+      entryPath: ''
     }
   },
   components: {
@@ -127,6 +127,9 @@ export default {
     else{
       document.getElementById("goalsContainer").style.display = "block"
     }
+    if(this.currentTrackerUnits.length == 1){
+      document.getElementById("switchButton").style.display = "none"
+    }
   },
   methods: {
     filterEntries: function (currentTracker) {
@@ -141,6 +144,9 @@ export default {
     switchUnits () {
       EventBus.$emit('switchUnits', this.$route.params.id)
     }
+  },
+  beforeDestroy(){
+    
   }
 }
 </script>
