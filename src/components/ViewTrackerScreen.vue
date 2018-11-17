@@ -98,6 +98,7 @@ import EventBus from '../eventBus.js'
 import moment from 'moment'
 
 Vue.use(Storage)
+
 export default {
   name: 'ViewTrackerScreen',
   data()
@@ -141,6 +142,9 @@ export default {
     else{
       document.getElementById("goalsContainer").style.display = "block"
     }
+
+    window.addEventListener('resize', Chart.render);
+
   },
   methods: {
     filterEntries: function (currentTracker) {

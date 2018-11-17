@@ -1,5 +1,5 @@
 <template>
-    <div></div>
+    <div id="container" class="svg-container"></div>
 </template>
 <script>
 import * as d3 from 'd3'
@@ -40,12 +40,23 @@ export default {
       }}
     this.entryData.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
     const svg = d3.select(this.$el)
-      .append('svg')
-      .attr('id', 'dataChart')
-      .attr('width', 350)
-      .attr('height', 250)
-      .append('g')
-      .attr('transform', 'translate(0, 10)')
+      // .append('svg')
+      // .attr('id', 'dataChart')
+      // .attr('width', 350)
+      // .attr('height', 250)
+      // .append('g')
+      // .attr('transform', 'translate(0, 10)')
+
+      //steph
+      .append("div")
+      .classed("svg-container", true) //container class to make it responsive
+      .append("svg")
+      //responsive SVG needs these 2 attributes and no width and height attr
+      .attr("preserveAspectRatio", "xMinYMin meet")
+      .attr("viewBox", "0 -10 375 250")
+      //class to make it responsive
+      .classed("svg-content-responsive", true); 
+  
     if(this.entryData.length >= 2){
     var x = d3.scaleTime().domain([new Date(Math.min.apply(null,this.entryDates)), new Date(Math.max.apply(null,this.entryDates))]).range([35, 340])
     var y = d3.scaleLinear().domain([d3.min(this.entryValues), d3.max(this.entryValues)]).range([210, 0]).nice()
@@ -56,7 +67,7 @@ export default {
     var bottomAxis = d3.axisBottom(x).ticks(5)
     var leftAxis = d3.axisLeft(y).ticks(5)
     svg.append('text').attr("x", -75).attr("y", 10).text(this.trackers[this.trackerID].unit).style("text-anchor", "middle").attr('transform', 'rotate(270)').style("font-size", "10pt")
-    svg.append('text').attr("x", 180).attr("y", 240).text("Date").style("text-anchor", "middle").style("font-size", "10pt")
+    svg.append('text').attr("x", 180).attr("y", 240).text("Date").style("text-anchor", "middle").style("font-size", "10pt").style('font-family', 'Roboto')
     svg.append('g').call(bottomAxis)
       .attr("class", "axis")
       .attr('transform', 'translate(0,210)')
@@ -92,6 +103,7 @@ export default {
     })
   }
 }
+
 </script>
 <style>
 svg {
