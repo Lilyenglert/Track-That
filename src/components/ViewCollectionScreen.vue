@@ -1,29 +1,25 @@
 <template>
-  <div id='home-screen'>
-    <!-- steph topbar -->
-    <!-- <div class='top-bar section'>
-      <v-btn fab dark small color="#DF5C46" class='back-button'>
-        <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
-      </v-btn>
-      <h1 class='page-title'>{{ $route.params.collection }} Collection</h1>
-    </div> -->
+  <div>
 
-    <!-- lily topbar -->
-    <v-toolbar flat fixed id="titlebar">
-      <v-flex xs2>
-      <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
-      </v-flex>
-      <v-flex xs8>
-        <v-toolbar-title class="page-title">{{ $route.params.collection }} Collection</v-toolbar-title>
-      </v-flex>
+    <!-- toolbar -->
+      <v-toolbar fixed id="titlebar">
+        <v-flex xs2>
+        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+        </v-flex>
+        <v-flex xs8>
+          <v-toolbar-title class="page-title">{{ $route.params.collection }} Collection</v-toolbar-title>
+        </v-flex>
 
-      <v-flex xs2>
-        <a id="editButton"><i>edit</i></a>
-      </v-flex>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+        <v-flex xs2>
+          <a id="editButton"><i>edit</i></a>
+        </v-flex>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
     </v-toolbar>
+    <!-- /toolbar -->
     
+    <v-container class="inner">
+
     <div class='section'>
       <div class='section-title'>
         <h2 class='inline-block'>Trackers</h2>
@@ -40,6 +36,7 @@
         </div>
       </div> 
     </div>
+    </v-container>
   </div>
 </template>
 
@@ -107,8 +104,7 @@ a {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-evenly;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
 }
 
 </style>

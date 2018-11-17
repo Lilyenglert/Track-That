@@ -118,7 +118,7 @@ tracker and collection sections
 stuff for boxes on home page 
 */
 .box-container {
-    text-align: center;
+    text-align: left;
     overflow: auto;
     white-space: nowrap;
 }
@@ -217,3 +217,31 @@ input, textarea, select {
 .popup {
     text-align: center;
 }
+
+
+/* Nav styles */
+
+.page-title {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px;
+    text-transform: capitalize;
+    font-size: 4vw;
+}
+
+v-toolbar, #titlebar{
+    /* position: fixed; */
+    background-color: white;
+    opacity: .95;
+    /* padding-right: 0; */
+}
+
+/* override padding on nav */
+
+div, .v-toolbar_content, #titlebar{
+    padding:0;
+    max-width: 100%;
+}
+
+

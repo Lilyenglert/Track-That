@@ -25,35 +25,39 @@
         </v-flex>
       </v-layout>
 
-      <v-container id="goalsContainer">
-        <h2>Goals</h2>
-        <v-card :flat="true">
-          <p id="goalMessage">{{this.currentTrackerGoal}}</p>
-        </v-card>
-      </v-container>
-      <v-container>
-        <h2>Progress</h2>
-          <v-card id="graph_box" :flat="true">
-          <!-- <p><Chart :trackerID=$route.params.id></Chart></p> -->
-          <br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="section">
+          <h2>Goals</h2>
+          <v-card :flat="true">
+           <p id="goalMessage">{{this.currentTrackerGoal}}</p>
           </v-card>
-      </v-container>
+        </div>
 
-        <v-container fluid-grid-list-md>
+        <div class="section">
+          <h2>Progress</h2>
+            <v-card id="graph_box" :flat="true">
+            <p><Chart :trackerID=$route.params.id></Chart></p>
+            </v-card>
+        </div>
+
+        <v-container class="section" fluid-grid-list-md>
+          
+          
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
           <h2>Log</h2>
           <v-card class="scroll" height= "200px" :flat="true">
+            <div id="entryList">
             <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.value">
                 <v-list id="example1">
               <v-list-tile>
                 <v-list-tile-avatar>{{entry.date}}</v-list-tile-avatar>
                 <v-list-tile-content> 
-                  <v-list-tile-title class="align-left">{{entry.value}}</v-list-tile-title>
+                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit}}</v-list-tile-title>
                   <v-list-tile-sub-title class="align-left">{{entry.message}}</v-list-tile-sub-title>
                 </v-list-tile-content>
-                <v-list-tile-action><a><v-icon>add</v-icon></a></v-list-tile-action>
+                <v-list-tile-action><a><router-link :to="`editEntry/${entry.id}`"><v-icon>edit</v-icon></router-link></a></v-list-tile-action>
               </v-list-tile>
               </v-list>
+            </div>
             </div>
           </v-card>
       </v-container>
@@ -61,8 +65,6 @@
     </v-container>
     </v-app>
   </div>
-
- 
 </template>
 
 <script>
@@ -81,7 +83,7 @@ export default {
       currentTracker:null,
       currentTrackerGoal:null,
       currentTrackerUnits:null,
-      
+      entryPath: null
     }
   },
   components: {
@@ -97,6 +99,7 @@ export default {
         this.currentTrackerGoal = this.trackers[index].goal; 
         this.currentTrackerUnits = this.trackers[index].unit;
       }}
+
   },
   mounted(){
     if (localStorage.getItem('entries')) {
@@ -162,9 +165,10 @@ a {
   text-align:left;
 }
 
-/* #graph{
-  max-width: 75%;
-} */
+#graph_box{ 
+  max-width: 90%;
+  padding:0%;
+}
 
 .inner {
     margin-top: 12%;
@@ -173,6 +177,10 @@ a {
 .v-card {
   margin-top: 5%;
   padding:5%;
+}
+
+#graph_box{
+  padding: 0%;
 }
 
 .scroll {
