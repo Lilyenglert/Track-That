@@ -139,7 +139,10 @@ export default {
       if(this.newTrackerUnit2 != null){
         this.units.push(this.newTrackerUnit2);
       }
-    
+
+       this.newTrackerName = this.newTrackerName.replace(/\//g, '-');
+
+
       var trackerEntry = {
         'id' : fetchedTrackerIDIncremented, 
         'path' : '/view/' + fetchedTrackerIDIncremented + '/' + this.newTrackerName + '/',
@@ -156,6 +159,12 @@ export default {
         console.log("not null");
         this.trackers.push(trackerEntry)
       }
+      this.trackers.sort(function(a, b){
+        var first = a.name.toLowerCase(); var second = b.name.toLowerCase();
+        if(first < second) { return -1; }
+        if(first > second) { return 1; }
+        return 0;
+      })
       
       this.cleanTrackerValues();
       this.save()

@@ -144,7 +144,7 @@ export default {
     }
   
     var newEntryInput = {
-      'id' : fetchedEntryIDIncremented, 
+        'id' : fetchedEntryIDIncremented, 
         "message": this.entryNote,
         "date" : this.newEntryDate,
         "value": this.newEntries,
@@ -152,6 +152,8 @@ export default {
         "trackerID": this.$route.params.id
     };
     this.entries.push(newEntryInput);
+
+    this.entries.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()})
 
     this.entryID.push(fetchedEntryIDIncremented);
 
@@ -178,10 +180,9 @@ export default {
     localStorage.setItem('entries', parsed);
 
 
-      const parsedID = JSON.stringify(this.entryID)
-      localStorage.setItem('entryID', parsedID)
+    const parsedID = JSON.stringify(this.entryID)
+    localStorage.setItem('entryID', parsedID)
 
-       //console.log(this.entries[1]);
     this.entries.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
     console.log(this.entries);
   }
