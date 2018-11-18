@@ -46,7 +46,7 @@
             <v-icon>add</v-icon>
           </v-btn>
           
-          <p class='inline-block right'><i><router-link to="/editCollection/">edit</router-link></i></p>
+          <p class='inline-block right edit'><b><router-link to="/editCollection/">Edit</router-link></b></p>
         </div>
         <div class='box-container'>
             <div class = 'box' v-for="collection in this.collections" v-bind:key="collection.id">
@@ -155,5 +155,26 @@ a {
 
 #small-button{
   border: none;
+}
+
+/* OVERRIDE INNER FOR FULL SCROLL */
+
+.inner{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.section{
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.section-title{
+  margin-top: 10%;
+}
+
+.box-container{
+  padding-left: 8%;
+  overscroll-behavior: contain;
 }
 </style>
