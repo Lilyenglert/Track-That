@@ -80,7 +80,6 @@ export default {
     var x = d3.scaleTime().domain([new Date(Math.min.apply(null,this.entryDates)), new Date(Math.max.apply(null,this.entryDates))]).range([35, 340])
     var y = d3.scaleLinear().domain([0.95 * d3.min(this.entryValues), 1.05 * d3.max(this.entryValues)]).range([210, 0]).nice()
     var dateDifference = (new Date(Math.max.apply(null,this.entryDates)).getTime() - new Date(Math.min.apply(null,this.entryDates)).getTime())/(1000 * 3600 * 24)
-    console.log(dateDifference)
     var createPath = d3.line()
       .x(function (d) { return x(d.date) })
       .y(function (d) { return y(d.value) })
@@ -161,11 +160,16 @@ export default {
       if(this.entryData.length >= 2){
     var x = d3.scaleTime().domain([new Date(Math.min.apply(null,this.entryDates)), new Date(Math.max.apply(null,this.entryDates))]).range([35, 340])
     var y = d3.scaleLinear().domain([0.95 * d3.min(this.entryValues), 1.05 * d3.max(this.entryValues)]).range([210, 0]).nice()
-
+    var dateDifference = (new Date(Math.max.apply(null,this.entryDates)).getTime() - new Date(Math.min.apply(null,this.entryDates)).getTime())/(1000 * 3600 * 24)
     var createPath = d3.line()
       .x(function (d) { return x(d.date) })
       .y(function (d) { return y(d.value) })
-    var bottomAxis = d3.axisBottom(x).ticks(5)
+    if(dateDifference <= 20){
+      bottomAxis = d3.axisBottom(x).ticks(3)
+    }
+    else{
+      bottomAxis = d3.axisBottom(x).ticks(5)
+    }
     var leftAxis = d3.axisLeft(y).ticks(5)
     svg.append('text').attr("x", -85).attr("y", 10).text(this.currentTracker.unit[this.unitSelector]).style("text-anchor", "middle").attr('transform', 'rotate(270)').style("font-size", "10pt")
     svg.append('text').attr("x", 180).attr("y", 240).text("Date").style("text-anchor", "middle").style("font-size", "10pt")

@@ -29,7 +29,7 @@
           <h2 class='prompt'>What do you want to track?</h2>
           <p>Tracker Name: <input v-model="newTrackerName" :maxlength="15"></p>
         </div>
-        
+        <div v-show='containsSpecChars'><p>Tracker name should only contain numbers and/or letters.</p></div>
         <div class='section'>
       <h2 class='prompt'>What units are we tracking?</h2>
       <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15"></p>
@@ -60,7 +60,7 @@
         </div>
         
         <v-btn block dark color="#DF5C46" @click="add" class='submit-button'>
-          <router-link to="/">Add Tracker</router-link>
+          Add Tracker
         </v-btn>
       </v-container>
     </v-app>
@@ -85,7 +85,7 @@ export default {
       newTrackerUnit: null,
       newTrackerUnit2: null,
       newTrackerGoal: null,
-      containsSpecChars: null,
+      containsSpecChars: false,
       NewTrackerCollection: null
     }
   },
@@ -145,7 +145,6 @@ export default {
         if(!isAlphanumeric(this.newTrackerName))
         {
           this.containsSpecChars = true;
-          alert('bad!');
         }
         else{
           
@@ -180,6 +179,7 @@ export default {
       
       this.cleanTrackerValues();
       this.save()
+      this.$router.push('/')
         }
     },
     remove (x) {
