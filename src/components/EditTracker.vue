@@ -1,50 +1,53 @@
 <template>
-  <div id='edit-tracker-screen'>
-    <v-app>
-      <!-- toolbar -->
-      <v-toolbar fixed id="titlebar">
-        <v-flex xs2>
-        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
-        </v-flex>
-        <v-flex xs8>
-          <v-toolbar-title class="page-title">Edit {{ $route.params.tracker }} Tracker</v-toolbar-title>
-        </v-flex>
-      </v-toolbar>
-     <!-- /toolbar -->
-    
-      <v-container class='inner'>
-        <div class='section'>
-          <h2 class='prompt'>What do you want to track?</h2>
-          <p>Tracker Name: <input v-model="newTrackerName"></p>
-        </div>
-        
-        <div class='section'>
-          <h2 class='prompt'>What units are we tracking?</h2>
-          <p>Tracker Units: <input v-model="newTrackerUnit"></p>
-        </div>
-        
-        <div class='section'>
-          <h2 class='prompt'>Write down any goals you have.</h2>
-          <p class='optional'>(Optional)</p>
-          <textarea v-model="newTrackerGoal"></textarea>
-        </div>
-        
-        <div class='section'>
-          <h2 class='prompt'>Add tracker to collection?</h2>
-          <p class='optional'>(Optional)</p>
-          <p>
-            <select v-model="NewTrackerCollection">
-              <option v-for="collection in collections" v-bind:key="collection.id">{{collection.name}}</option>
-            </select>
-          </p>
-        </div>
-        
-        <v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>
-          <router-link to="/">Confirm Changes</router-link>
+  <div id='add-tracker-screen' class='inner'>
+    <div class='top-bar section'>
+      <v-btn fab dark small color="#DF5C46">
+          
+          <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
         </v-btn>
-      </v-container>
+        <!-- <p><router-link to="/">Back</router-link><p/> -->
+      <h1 class='page-title'>Edit Tracker</h1>
+    </div>
+    
+    <div class='section'>
+      <h2 class='prompt'>What do you want to track?</h2>
+      <p>Tracker Name: <input v-model="newTrackerName"></p>
+    </div>
+    
+    <div class='section'>
+      <h2 class='prompt'>What units are we tracking?</h2>
+      <!-- <div v-for="tracker in filterTrackers($route.params.id)" v-bind:key="tracker.id"> -->
+          <div v-if="this.currentTracker[0].unit.length == 2">
+            <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
+            <p>Tracker Units: <input v-model="newTrackerUnit2"></p>
+           </div>
       
-    </v-app>
+          <div v-else>
+            <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
+          </div>
+
+      <!-- </div> -->
+    </div>
+    
+    <div class='section'>
+      <h2 class='prompt'>Write down any goals you have.</h2>
+      <p class='optional'>(Optional)</p>
+      <textarea v-model="newTrackerGoal"></textarea>
+    </div>
+    
+    <div class='section'>
+      <h2 class='prompt'>Add tracker to collection?</h2>
+      <p class='optional'>(Optional)</p>
+      <p>
+        <select v-model="NewTrackerCollection">
+          <option v-for="collection in collections" v-bind:key="collection.id">{{collection.name}}</option>
+        </select>
+      </p>
+    </div>
+    
+    <!-- <button @click="add">Add Tracker</button> -->
+    <router-link to="./"><v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn></router-link>
+    <router-link to="/"><v-btn block dark color="#DF5C46" @click="remove" class='submit-button'>Remove Tracker</v-btn></router-link>
   </div>
 </template>
 
@@ -56,16 +59,25 @@ export default {
       collections: [{
         name: null
       }],
+      entries:[],
       trackers: [], 
       trackerID: [], 
       path : null,
+      currentTracker:[],
+      entryUnit1:null, 
+      entryUnit2:null,
       newTrackerName: null,
-      newTrackerUnit: null,
+      newTrackerUnit1: null,
+      newTrackerUnit2: null,
       newTrackerGoal: null,
       NewTrackerCollection: null
     }
   },
+
+  
   mounted () {
+console.log("id + " + this.$route.params.id);
+    //this.getLocal();
     if (localStorage.getItem('collections')) {
       try {
         this.collections = JSON.parse(localStorage.getItem('collections'))
@@ -87,32 +99,98 @@ export default {
         localStorage.removeItem('trackerID')
       }
     }
+    if (localStorage.getItem('entries')) {
+      try {
+        this.entries = JSON.parse(localStorage.getItem('entries'))
+      } catch (e) {
+        localStorage.removeItem('entries')
+      }
+    }
+  for(var i =0; i < this.trackers.length; i++)
+  {
+    if(this.trackers[i].id == this.$route.params.id)
+    {
+      this.currentTracker.push(this.trackers[i]);
+      this.newTrackerName = this.trackers[i].name;
+      this.newTrackerGoal = this.trackers[i].goal;
+      this.NewTrackerCollection = this.trackers[i].collection;
+ 
+    if(this.trackers[i].unit.length == 2)
+    {
+      this.newTrackerUnit1 = this.trackers[i].unit[0];
+      this.newTrackerUnit2 = this.trackers[i].unit[1];
+    }else{
+      this.newTrackerUnit1 = this.trackers[i].unit[0];
+    }
+      }
+  }
+  
+ //   console.log(this.$route.params);
   },
   methods: {
     edit () {
 
-        this.getLocal();
         var newName = this.newTrackerName;
-        if (this.newTrackerName!=null) {this.trackers[this.$route.params.id].name = this.newTrackerName};
-        if (this.newTrackerUnit!=null) {this.trackers[this.$route.params.id].unit = this.newTrackerUnit};
-        if (this.newTrackerGoal!=null) {this.trackers[this.$route.params.id].goal = this.newTrackerGoal};
-        if (this.NewTrackerCollection!=null) {this.trackers[this.$route.params.id].collection = this.NewTrackerCollection};
-        if (this.newTrackerName!=null) {this.trackers[this.$route.params.id].path = '/view/' + this.$route.params.id + '/' + newName + '/'};
-        console.log(this.trackers[this.$route.params.id]);
+    for(var i =0; i < this.trackers.length; i++)
+        {
+          if(this.trackers[i].id == this.$route.params.id)
+          {
+            if (this.newTrackerName!=null) {this.trackers[i].name = this.newTrackerName};
+            if (this.newTrackerGoal!=null) {this.trackers[i].goal = this.newTrackerGoal};
+            if (this.NewTrackerCollection!=null) {this.trackers[i].collection = this.NewTrackerCollection};
+            if (this.newTrackerName!=null) {this.trackers[i].path = '/view/' + this.$route.params.id + '/' + newName + '/'};
 
+            if(this.trackers[i].unit.length == 2)
+            {
+              for(var j = 0; j < this.entries.length; j++)
+              {
+                if(this.entries[j].trackerID == this.$route.params.id)
+                { 
+                  this.entries[j].unit[0] = this.newTrackerUnit1;
+                  this.entries[j].unit[1] = this.newTrackerUnit2;
+                }
+          }
+          if (this.newTrackerUnit1!=null) {this.trackers[i].unit[0] = this.newTrackerUnit1};
+          if (this.newTrackerUnit2!=null) {this.trackers[i].unit[1] = this.newTrackerUnit2};
+        }else{
+          if(this.newTrackerUnit1!=null) {this.trackers[i].unit[0] = this.newTrackerUnit1};
+
+           for(var j = 0; j < this.entries.length; j++)
+          {
+            if(this.entries[j].trackerID == this.$route.params.id)
+            {
+              this.entries[j].unit[0] = this.newTrackerUnit1;
+            }
+          }
+        }
+      }    
+      }
+       
         this.cleanTrackerValues();
         this.save()
-    },
+    }, 
+ 
 
+    
     getLocal()
     {
-        this.trackers = JSON.parse(localStorage.getItem('trackers'));
-        // this.entries = JSON.parse(localStorage.getItem('entries'));
+      this.trackers = JSON.parse(localStorage.getItem('trackers'));
+       this.entries = JSON.parse(localStorage.getItem('entries'));
     },
-    remove (x) {
-      this.trackers.splice(x, 1)
-      this.save()
+
+    remove()
+    {
+      for (var i = 0; i < this.trackers.length; i++)
+      {
+          if(this.trackers[i].id == this.$route.params.id)
+          {
+            this.trackers.splice(i, 1);
+          }
+      }
+       this.save ();
     },
+  
+
     save () {
       const parsed = JSON.stringify(this.trackers)
       localStorage.setItem('trackers', parsed)
@@ -120,12 +198,14 @@ export default {
       const parsedID = JSON.stringify(this.trackerID)
       localStorage.setItem('trackerID', parsedID)
 
+      localStorage.setItem('entries', JSON.stringify(this.entries));
 
     }, 
     cleanTrackerValues()
     {
       this.newTrackerName = ''
-      this.newTrackerUnit = ''
+      this.newTrackerUnit1 = ''
+      this.newTrackerUnit2 = ''
       this.newTrackerGoal = ''
       this.newTrackerCollection = ''
     }
