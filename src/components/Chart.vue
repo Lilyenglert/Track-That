@@ -17,6 +17,7 @@ export default {
       trackers:[],
       entryData:[],
       entryValues:[],
+      currentTracker: null,
       entryDates:[],
       unitSelector: '',
     }
@@ -31,6 +32,13 @@ export default {
       } catch (e) {
         localStorage.removeItem('entries')
         localStorage.removeItem('trackers')
+      }
+    }
+    for(var i = 0; i<this.trackers.length; i++)
+    {
+      if(this.trackers[i].id == this.trackerID)
+      {
+        this.currentTracker = this.trackers[i];
       }
     }
      for (let index = 0; index < this.entries.length; index++) {
@@ -73,7 +81,7 @@ export default {
       .y(function (d) { return y(d.value) })
     var bottomAxis = d3.axisBottom(x).ticks(5)
     var leftAxis = d3.axisLeft(y).ticks(5)
-    svg.append('text').attr("x", -85).attr("y", 10).text(this.trackers[this.trackerID].unit[this.unitSelector]).style("text-anchor", "middle").attr('transform', 'rotate(270)').style("font-size", "10pt")
+    svg.append('text').attr("x", -85).attr("y", 10).text(this.currentTracker.unit[this.unitSelector]).style("text-anchor", "middle").attr('transform', 'rotate(270)').style("font-size", "10pt")
     svg.append('text').attr("x", 180).attr("y", 240).text("Date").style("text-anchor", "middle").style("font-size", "10pt").style('font-family', 'Roboto')
     svg.append('g').call(bottomAxis)
       .attr("class", "axis")
@@ -90,6 +98,8 @@ export default {
 
     EventBus.$on('switchUnits', function (ID) {
       this.trackerID = ID;
+
+    
       if (localStorage.getItem('entries')) {
       try {
         this.entries = JSON.parse(localStorage.getItem('entries'))
@@ -97,6 +107,14 @@ export default {
       } catch (e) {
         localStorage.removeItem('entries')
         localStorage.removeItem('trackers')
+      }
+    }
+
+     for(var i = 0; i<this.trackers.length; i++)
+    {
+      if(this.trackers[i].id == this.trackerID)
+      {
+        this.currentTracker = this.trackers[i];
       }
     }
       this.entryValues=[]
@@ -135,7 +153,7 @@ export default {
       .y(function (d) { return y(d.value) })
     var bottomAxis = d3.axisBottom(x).ticks(5)
     var leftAxis = d3.axisLeft(y).ticks(5)
-    svg.append('text').attr("x", -85).attr("y", 10).text(this.trackers[this.trackerID].unit[this.unitSelector]).style("text-anchor", "middle").attr('transform', 'rotate(270)').style("font-size", "10pt")
+    svg.append('text').attr("x", -85).attr("y", 10).text(this.currentTracker.unit[this.unitSelector]).style("text-anchor", "middle").attr('transform', 'rotate(270)').style("font-size", "10pt")
     svg.append('text').attr("x", 180).attr("y", 240).text("Date").style("text-anchor", "middle").style("font-size", "10pt")
     svg.append('g').call(bottomAxis)
       .attr("class", "axis")
