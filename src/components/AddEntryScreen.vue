@@ -165,8 +165,8 @@ export default {
   cleanEntryValues()
     {
       this.entryNote = ''
-      this.newEntryDate = ''
       this.newEntryValue = ''
+      this.newEntries = []
     },
   save()
   {

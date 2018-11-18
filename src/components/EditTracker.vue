@@ -17,7 +17,7 @@
     <div class='section'>
       <h2 class='prompt'>What units are we tracking?</h2>
       <!-- <div v-for="tracker in filterTrackers($route.params.id)" v-bind:key="tracker.id"> -->
-          <div v-if="this.currentTracker[0].unit.length == 2">
+          <div v-if="this.twoUnits">
             <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
             <p>Tracker Units: <input v-model="newTrackerUnit2"></p>
            </div>
@@ -46,7 +46,7 @@
     </div>
     
     <!-- <button @click="add">Add Tracker</button> -->
-    <router-link to="./"><v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn></router-link>
+    <router-link to="/"><v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn></router-link>
     <router-link to="/"><v-btn block dark color="#DF5C46" @click="remove" class='submit-button'>Remove Tracker</v-btn></router-link>
   </div>
 </template>
@@ -65,6 +65,7 @@ export default {
       path : null,
       currentTracker:[],
       entryUnit1:null, 
+      twoUnits:null,
       entryUnit2:null,
       newTrackerName: null,
       newTrackerUnit1: null,
@@ -117,9 +118,11 @@ console.log("id + " + this.$route.params.id);
  
     if(this.trackers[i].unit.length == 2)
     {
+      this.twoUnits = true;
       this.newTrackerUnit1 = this.trackers[i].unit[0];
       this.newTrackerUnit2 = this.trackers[i].unit[1];
     }else{
+      this.twoUnits = false;
       this.newTrackerUnit1 = this.trackers[i].unit[0];
     }
       }
