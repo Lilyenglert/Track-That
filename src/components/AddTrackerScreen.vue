@@ -4,7 +4,9 @@
       <!-- toolbar -->
       <v-toolbar fixed id="titlebar">
         <v-flex xs2>
-        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+          <v-btn flat icon class='add-thing'>
+            <v-icon color="#DF5C46" @click="$router.go(-1)">arrow_back</v-icon>
+          </v-btn>
         </v-flex>
         <v-flex xs8>
           <v-toolbar-title class="page-title">Add Tracker</v-toolbar-title>
@@ -33,7 +35,7 @@
       <v-btn block dark color="#DF5C46" @click="removeUnit" >One unit please!</v-btn>
       </div>
       <div v-if="isOneUnit">
-      <v-btn block dark color="#DF5C46" @click="addUnit" >Add Another Unit</v-btn>
+      <v-btn dark color="#DF5C46" @click="addUnit" >Add Another Unit</v-btn>
       </div>
     </div>
         

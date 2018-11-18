@@ -4,14 +4,17 @@
     <!-- toolbar -->
       <v-toolbar fixed id="titlebar">
         <v-flex xs2>
-        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+          <v-btn flat icon class='add-thing'>
+            <router-link to="/"><v-icon color="#DF5C46">arrow_back</v-icon></router-link>
+          </v-btn>
         </v-flex>
         <v-flex xs8>
           <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
         </v-flex>
 
         <v-flex xs2>
-          <router-link to="edit"> <a id="editButton"><i>edit</i></a></router-link>
+          <b class='edit'><router-link to="edit">Edit</router-link></b>
+          <!-- <router-link to="edit"> <a id="editButton"><i>edit</i></a></router-link> -->
         </v-flex>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
