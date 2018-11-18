@@ -5,8 +5,8 @@
       <h2>Create Collection</h2>
       <p><input v-model="newCollectionName"></p>
       <div id="save-back">
-      <v-btn id="small-button" @click="add">Save</v-btn>
-      <v-btn id="small-button" @click="close">Close</v-btn>
+      <v-btn color='#DF5C46' class="small-button" @click="add">Save</v-btn>
+      <v-btn class='close-button' @click="close">Close</v-btn>
       </div>
     </div>
   </div>
@@ -111,6 +111,10 @@ h2{
 #save-back{
   display: inline;
   text-align: center;
+}
+
+.close-button .v-btn__content {
+  color: black;
 }
 
 </style>

@@ -2,9 +2,9 @@
   <transition name="popup">
   <div class="popup-backdrop">
     <div class="popup">
-      <h2>What's Your Name?</h2>
+      <h2>What's your name?</h2>
       <p><input v-model="userName"></p>
-      <button @click="add">Enter</button>
+      <v-btn color='#DF5C46' @click="add">Welcome!</v-btn>
     </div>
   </div>
   </transition>

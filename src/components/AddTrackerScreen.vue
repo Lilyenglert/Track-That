@@ -1,19 +1,38 @@
 <template>
-  <div id='add-tracker-screen' class='inner'>
-    <div class='top-bar section'>
-      <v-btn fab dark small color="#DF5C46" class='back-button'>
-          <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
-        </v-btn>
-        <!-- <p><router-link to="/">Back</router-link><p/> -->
-      <h1 class='page-title'>Create Tracker</h1>
-    </div>
-    
-    <div class='section'>
-      <h2 class='prompt'>What do you want to track?</h2>
-      <p>Tracker Name: <input v-model="newTrackerName" :maxlength="15"></p>
-    </div>
-    
-    <div class='section'>
+  <div id='add-tracker'>
+    <v-app>
+      <!-- toolbar -->
+      <v-toolbar fixed id="titlebar">
+        <v-flex xs2>
+        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+        </v-flex>
+        <v-flex xs8>
+          <v-toolbar-title class="page-title">Add Tracker</v-toolbar-title>
+        </v-flex>
+
+        <v-flex xs2>
+          <a id="editButton"><i>edit</i></a>
+        </v-flex>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+      </v-toolbar>
+      <!-- /toolbar -->
+      
+      <v-container class="inner">
+        <!-- <div class='top-bar section'>
+          <v-btn fab dark small color="#DF5C46" class='back-button'>
+              <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
+            </v-btn>
+            <p><router-link to="/">Back</router-link><p/>
+          <h1 class='page-title'>Create Tracker</h1>
+        </div> -->
+        
+        <div class='section'>
+          <h2 class='prompt'>What do you want to track?</h2>
+          <p>Tracker Name: <input v-model="newTrackerName"></p>
+        </div>
+        
+        <div class='section'>
       <h2 class='prompt'>What units are we tracking?</h2>
       <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15"></p>
       <div v-if="isAddUnit" >
@@ -24,28 +43,29 @@
       <v-btn block dark color="#DF5C46" @click="addUnit" >Add Another Unit</v-btn>
       </div>
     </div>
-
-    
-     
-    
-    <div class='section'>
-      <h2 class='prompt'>Write down any goals you have.</h2>
-      <p class='optional'>(Optional)</p>
-      <textarea v-model="newTrackerGoal" :maxlength="140"></textarea>
-    </div>
-    
-    <div class='section'>
-      <h2 class='prompt'>Add tracker to collection?</h2>
-      <p class='optional'>(Optional)</p>
-      <p>
-        <select v-model="NewTrackerCollection">
-          <option v-for="collection in collections" v-bind:key="collection.id">{{collection.name}}</option>
-        </select>
-      </p>
-    </div>
-    
-    <!-- <button @click="add">Add Tracker</button> -->
-    <router-link to="/"><v-btn block dark color="#DF5C46" @click="add" class='submit-button'>Add Tracker</v-btn></router-link>
+        
+        
+        <div class='section'>
+          <h2 class='prompt'>Write down any goals you have.</h2>
+          <p class='optional'>(Optional)</p>
+          <textarea v-model="newTrackerGoal"></textarea>
+        </div>
+        
+        <div class='section'>
+          <h2 class='prompt'>Add tracker to collection?</h2>
+          <p class='optional'>(Optional)</p>
+          <p>
+            <select v-model="NewTrackerCollection">
+              <option v-for="collection in collections" v-bind:key="collection.id">{{collection.name}}</option>
+            </select>
+          </p>
+        </div>
+        
+        <v-btn block dark color="#DF5C46" @click="add" class='submit-button'>
+          <router-link to="/">Add Tracker</router-link>
+        </v-btn>
+      </v-container>
+    </v-app>
   </div>
 </template>
 
@@ -191,4 +211,9 @@ li {
 a {
   color: #42b983;
 }
+
+#add-tracker .inner {
+  text-align: center;
+}
+
 </style>

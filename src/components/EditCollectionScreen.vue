@@ -1,7 +1,6 @@
 <template>
-<div id='home-screen'>
+<div id='edit-collection'>
 
-    <!-- lily topbar -->
     <v-toolbar fixed id="titlebar">
       <v-flex xs2>
       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
@@ -9,12 +8,6 @@
       <v-flex xs8>
         <v-toolbar-title class="page-title">{{ $route.params.collection }} Edit Collections</v-toolbar-title>
       </v-flex>
-
-      <v-flex xs2>
-        <a id="editButton"><i>edit</i></a>
-      </v-flex>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
     </v-toolbar>
     
     <v-container class="inner">
@@ -22,10 +15,6 @@
     <div class='section'>
       <div class='section-title'>
         <h2 class='inline-block'>Your Collections</h2>
-        <v-btn fab dark small color="#DF5C46" class='add-thing'>
-          <router-link to="/add"><v-icon>add</v-icon></router-link>
-        </v-btn>
-        <!-- <p class='inline-block right'><i>edit</i></p> -->
       </div>
 
       <!-- GRID WITH COLLECTIONS DELETE AND RENAME BUTTONS -->

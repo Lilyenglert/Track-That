@@ -1,5 +1,4 @@
-p { font-size: 16px; }
-
+p { font-size: 18px; }
 h1 { font-size: 32px; }
 h2 { font-size: 28px; }
 h3 { font-size: 24px; }
@@ -16,7 +15,7 @@ h3 { font-size: 24px; }
 }
 
 /* overriding vue link color for link buttons */
-button .v-btn__content a {
+button .v-btn__content a, .v-list__tile__action a, button .v-btn__content {
     text-decoration: none;
     color: white;
 }
@@ -28,6 +27,14 @@ button .v-btn__content a {
  #editButton{
     align-content: right;
  }
+
+ .page-title {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px;
+    font-size: 5vw;
+}
 
  .back-button {
      display: inline-block;
@@ -41,10 +48,9 @@ button .v-btn__content a {
 
 /* content section */
 .inner {
-    padding: 5%;
+    margin-top: 30px;
+    padding: 8%;
     text-align: left;
-    background-color: white;
-    padding-top: 20%;
 }
 
 .greeting {
@@ -68,19 +74,8 @@ tracker and collection sections
     overflow: scroll;
 }
 
-.section {
-    /* border-bottom: solid lightgray .5px; */
-    background-color: white;
-    margin-top: 6%;
-    padding: 4%;
-    padding-bottom: 0%;
-}
 
-.section-top {
-    margin-top: 0;
-}
-
-.section .solid {
+.solid {
     background-color: #DF5C46;
     background-image: url('./img/triangles.png');
     background-repeat: repeat;
@@ -89,10 +84,9 @@ tracker and collection sections
     color: white;
     padding: 10px 20px;
     border-radius: 10px;
-    margin-top: 20px;
 }
 
-.section .solid h3 {
+.solid h3 {
     margin: 10px 0;
 
 }
@@ -127,19 +121,17 @@ stuff for boxes on home page
     text-align: left;
     overflow: auto;
     white-space: nowrap;
-    align-content: left;
 }
 
 .box {
-    height: 120px;
-    width: 120px;
-    max-width: 130px;
+    height: 130px;
+    width: 130px;
     display: inline-table;
     vertical-align: middle;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 4%;
-    margin-left: 4%;
+
+    margin: 20px 5%;
+    margin-left: 0;
+    /* background-color: gray; */
     border-radius: 3px;
     filter: drop-shadow(1px 1px 2px gray);
 }
@@ -148,19 +140,13 @@ stuff for boxes on home page
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 4vw;
-    padding: 5px;
-    text-transform: capitalize;
+    font-size: 18px;
 }
 
 .box-text {
     vertical-align: middle;
     display: table-cell;
     text-align: center;
-}
-
-.box-container, .box-text{
-    line-break: auto;
 }
 
 /** CREATE TRACKER **/
@@ -176,8 +162,24 @@ input, textarea, select {
     padding: 10px 0;
 }
 
+.section {
+    /* border-bottom: solid lightgray .5px; */
+    /* background-color: white; */
+    margin-top: 6%;
+    /* padding: 4%; */
+}
+
+.section-first {
+    margin-top: 0;
+}
+
+.section-body {
+    background-color: white;
+    padding: 4%;
+}
+
 .section p {
-    margin: 5px 0px;
+    margin: 10px 0;
 }
 
 .section .optional {
@@ -200,11 +202,11 @@ input, textarea, select {
 
 
 /* Button Styles */
-#small-button{
+.v-btn.small-button{
     /* padding:1px; */
-    font-size: 12px;
+    /* font-size: 12px; */
     border: 1px solid;
-    border-color: rgba(212, 212, 212, 0.925);
+    /* border-color: rgba(212, 212, 212, 0.925); */
     color: #DF5C46;
     background-color: white;
     box-shadow: 0px 0px 0px;
@@ -242,4 +244,30 @@ div, .v-toolbar_content, #titlebar{
     max-width: 100%;
 }
 
+/** VIEW TRACKER **/
+.tracker-log-entry {
+    border-bottom: solid .5px lightgray;
+    margin-bottom: 10px;
+}
 
+.tracker-log-date {
+    width: 20%;
+    margin-right: 30px;
+}
+
+/** CHART **/
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    /* padding-bottom: 100%; aspect ratio */
+    vertical-align: top;
+    /* overflow: hidden; */
+}
+.svg-content-responsive {
+    display: inline-block;
+    /* position: absolute; */
+    top: 10px;
+    left: 0;
+}

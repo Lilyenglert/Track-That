@@ -1,7 +1,6 @@
 <template>
-  <div id='home-screen'>
-
-    <!-- lily topbar -->
+  <div id='view-collection'>
+    <!-- toolbar -->
     <v-toolbar fixed id="titlebar">
       <v-flex xs2>
       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
@@ -16,6 +15,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
     </v-toolbar>
+    <!-- /toolbar -->
     
     <v-container class="inner">
 
