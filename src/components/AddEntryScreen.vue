@@ -77,6 +77,7 @@ export default {
     this.getLocal();
     this.currentTracker = this.$route.params.tracker;
     this.instantiateEntry(this.currentTracker);
+    console.log(this.currentTrackerUnits);
     
   },
   mounted(){

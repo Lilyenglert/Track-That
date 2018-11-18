@@ -16,13 +16,17 @@
     
     <div class='section'>
       <h2 class='prompt'>What units are we tracking?</h2>
-      <div v-if="this.trackers[this.$route.params.id].unit.length == 2">
-        <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
-        <p>Tracker Units: <input v-model="newTrackerUnit2"></p>
-      </div>
-      <div v-else>
-        <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
-      </div>
+      <!-- <div v-for="tracker in filterTrackers($route.params.id)" v-bind:key="tracker.id"> -->
+          <div v-if="this.currentTracker[0].unit.length == 2">
+            <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
+            <p>Tracker Units: <input v-model="newTrackerUnit2"></p>
+           </div>
+      
+          <div v-else>
+            <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
+          </div>
+
+      <!-- </div> -->
     </div>
     
     <div class='section'>
@@ -59,6 +63,7 @@ export default {
       trackers: [], 
       trackerID: [], 
       path : null,
+      currentTracker:[],
       entryUnit1:null, 
       entryUnit2:null,
       newTrackerName: null,
@@ -68,9 +73,11 @@ export default {
       NewTrackerCollection: null
     }
   },
-  mounted () {
 
-    this.getLocal();
+  
+  mounted () {
+console.log("id + " + this.$route.params.id);
+    //this.getLocal();
     if (localStorage.getItem('collections')) {
       try {
         this.collections = JSON.parse(localStorage.getItem('collections'))
@@ -99,68 +106,91 @@ export default {
         localStorage.removeItem('entries')
       }
     }
-
-    this.newTrackerName = this.trackers[this.$route.params.id].name;
-    if(this.trackers[this.$route.params.id].unit.length == 2)
+  for(var i =0; i < this.trackers.length; i++)
+  {
+    if(this.trackers[i].id == this.$route.params.id)
     {
-      this.newTrackerUnit1 = this.trackers[this.$route.params.id].unit[0];
-      this.newTrackerUnit2 = this.trackers[this.$route.params.id].unit[1];
+      this.currentTracker.push(this.trackers[i]);
+      this.newTrackerName = this.trackers[i].name;
+      this.newTrackerGoal = this.trackers[i].goal;
+      this.NewTrackerCollection = this.trackers[i].collection;
+ 
+    if(this.trackers[i].unit.length == 2)
+    {
+      this.newTrackerUnit1 = this.trackers[i].unit[0];
+      this.newTrackerUnit2 = this.trackers[i].unit[1];
     }else{
-      this.newTrackerUnit1 = this.trackers[this.$route.params.id].unit;
+      this.newTrackerUnit1 = this.trackers[i].unit[0];
     }
-   
-   this.newTrackerGoal = this.trackers[this.$route.params.id].goal;
-   this.NewTrackerCollection = this.trackers[this.$route.params.id].collection;
-    console.log(this.$route.params);
+      }
+  }
+  
+ //   console.log(this.$route.params);
   },
   methods: {
     edit () {
 
         var newName = this.newTrackerName;
-        console.log('in edit ' + this.entries[0].unit[0]);
-        if (this.newTrackerName!=null) {this.trackers[this.$route.params.id].name = this.newTrackerName};
-        if(this.trackers[this.$route.params.id].unit.length == 2)
+    for(var i =0; i < this.trackers.length; i++)
         {
-
-          for(var i = 0; i < this.entries.length; i++)
+          if(this.trackers[i].id == this.$route.params.id)
           {
-            if(this.entries[i].trackerID == this.$route.params.id)
+            if (this.newTrackerName!=null) {this.trackers[i].name = this.newTrackerName};
+            if (this.newTrackerGoal!=null) {this.trackers[i].goal = this.newTrackerGoal};
+            if (this.NewTrackerCollection!=null) {this.trackers[i].collection = this.NewTrackerCollection};
+            if (this.newTrackerName!=null) {this.trackers[i].path = '/view/' + this.$route.params.id + '/' + newName + '/'};
+
+            if(this.trackers[i].unit.length == 2)
             {
-              this.entries[i].unit[0] = this.newTrackerUnit1;
-              this.entries[i].unit[1] = this.newTrackerUnit2;
-            }
+              for(var j = 0; j < this.entries.length; j++)
+              {
+                if(this.entries[j].trackerID == this.$route.params.id)
+                { 
+                  this.entries[j].unit[0] = this.newTrackerUnit1;
+                  this.entries[j].unit[1] = this.newTrackerUnit2;
+                }
           }
-          if (this.newTrackerUnit1!=null) {this.trackers[this.$route.params.id].unit[0] = this.newTrackerUnit1};
-          if (this.newTrackerUnit2!=null) {this.trackers[this.$route.params.id].unit[1] = this.newTrackerUnit2};
+          if (this.newTrackerUnit1!=null) {this.trackers[i].unit[0] = this.newTrackerUnit1};
+          if (this.newTrackerUnit2!=null) {this.trackers[i].unit[1] = this.newTrackerUnit2};
         }else{
-          if(this.newTrackerUnit1!=null) {this.trackers[this.$route.params.id].unit = this.newTrackerUnit1};
+          if(this.newTrackerUnit1!=null) {this.trackers[i].unit[0] = this.newTrackerUnit1};
 
-           for(var i = 0; i < this.entries.length; i++)
+           for(var j = 0; j < this.entries.length; j++)
           {
-            if(this.entries[i].trackerID == this.$route.params.id)
+            if(this.entries[j].trackerID == this.$route.params.id)
             {
-              this.entries[i].unit = this.newTrackerUnit1;
+              this.entries[j].unit[0] = this.newTrackerUnit1;
             }
           }
         }
-        if (this.newTrackerGoal!=null) {this.trackers[this.$route.params.id].goal = this.newTrackerGoal};
-        if (this.NewTrackerCollection!=null) {this.trackers[this.$route.params.id].collection = this.NewTrackerCollection};
-        if (this.newTrackerName!=null) {this.trackers[this.$route.params.id].path = '/view/' + this.$route.params.id + '/' + newName + '/'};
-        //this.pushValues();
+      }    
+      }
+       
         this.cleanTrackerValues();
         this.save()
     }, 
+ 
+
     
     getLocal()
     {
-        this.trackers = JSON.parse(localStorage.getItem('trackers'));
+      this.trackers = JSON.parse(localStorage.getItem('trackers'));
        this.entries = JSON.parse(localStorage.getItem('entries'));
     },
-  
-    remove (x) {
-      this.trackers.splice(x, 1)
-      this.save()
+
+    remove()
+    {
+      for (var i = 0; i < this.trackers.length; i++)
+      {
+          if(this.trackers[i].id == this.$route.params.id)
+          {
+            this.trackers.splice(i, 1);
+          }
+      }
+       this.save ();
     },
+  
+
     save () {
       const parsed = JSON.stringify(this.trackers)
       localStorage.setItem('trackers', parsed)

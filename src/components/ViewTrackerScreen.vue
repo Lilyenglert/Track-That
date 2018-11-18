@@ -59,7 +59,7 @@
                   <v-list-tile-title class="align-left">{{entry.value[0]}} {{entry.unit[0]}}, {{entry.value[1]}} {{entry.unit[1]}}</v-list-tile-title>
                   </div>
                   <div v-else>
-                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit[0]}}</v-list-tile-title>
+                  <v-list-tile-title class="align-left">{{entry.value[0]}} {{entry.unit[0]}}</v-list-tile-title>
                   </div>
                   <v-list-tile-sub-title class="align-left">{{entry.message}}</v-list-tile-sub-title>
                 </v-list-tile-content>
