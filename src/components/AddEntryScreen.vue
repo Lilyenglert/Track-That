@@ -166,6 +166,10 @@ export default {
     {
       this.entryNote = ''
       this.newEntryValue = ''
+      if(this.newEntries.length == 2)
+      [
+        this.newEntryValue2 = ''
+      ]
       this.newEntries = []
     },
   save()
