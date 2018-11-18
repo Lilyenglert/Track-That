@@ -5,8 +5,6 @@ import AddTrackerScreen from './components/AddTrackerScreen.vue'
 import ViewTrackerScreen from './components/ViewTrackerScreen.vue'
 import ViewCollectionScreen from './components/ViewCollectionScreen.vue'
 import ScreenTemplate from './components/ScreenTemplate.vue'
-import DataDemoScreen from './components/DataDemoScreen.vue'
-import AddCollectionScreen from './components/AddCollectionScreen.vue'
 import AddEntryScreen from './components/AddEntryScreen.vue'
 import EditCollectionScreen from './components/EditCollectionScreen.vue'
 import EditEntryScreen from './components/EditEntryScreen.vue'
@@ -44,19 +42,9 @@ export default new Router({
       component: ScreenTemplate
     },
     {
-      path: '/collection',
-      name: 'AddCollectionScreen',
-      component: AddCollectionScreen
-    },
-    {
       path: '/view/:id/:tracker/entry',
       name: 'AddEntryScreen',
       component: AddEntryScreen
-    },
-    {
-      path: '/data',
-      name: 'DataDemoScreen',
-      component: DataDemoScreen
     },
     {
       path: '/editCollection',
