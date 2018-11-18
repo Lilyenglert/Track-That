@@ -41,13 +41,13 @@
       <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
     </div>
     <div class='section'>
-      <h4>Note:<textarea v-model="entryNote"></textarea></h4>
+      <h4>Note:<textarea v-model="entryNote" :maxlength="140"></textarea></h4>
     </div>
      <div class="section" id="btn_section">
        <!-- <button @click="test">Test</button> -->
     <router-link to="../"><v-btn large id="small-button" @click="editEntry">Confirm Changes</v-btn></router-link>
-    <router-link to="../"><v-btn large id="small-button" @click="remove">Remove Entry</v-btn></router-link>
-
+    <v-btn large id="small-button" @click="warning">Remove Entry</v-btn>
+    <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
     </div>
     </div>
      </div>
@@ -55,8 +55,12 @@
 </template>
 
 <script>
+import DeleteWarningPopup from './DeleteWarningPopup.vue'
 export default {
   name: 'EditEntryScreen',
+   components:{
+    DeleteWarningPopup,
+  },
   data () {
     return {
        trackers:[{
@@ -74,6 +78,7 @@ export default {
        currentTracker:'',
        currentTrackerName:'',
        currentTrackerUnits:[],
+      isPopupVisible: false
     }
   },
   created(){
@@ -133,6 +138,12 @@ export default {
       }
       this.save();
     },
+    warning() {
+      this.isPopupVisible = true;
+    },
+    closeWarning() {
+      this.isPopupVisible = false;
+    },
 
     remove()
     {
@@ -144,6 +155,7 @@ export default {
           }
       }
        this.save ();
+       this.$router.go(-1)
     },
      save () {
     

@@ -39,7 +39,7 @@
             <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
           </div>
           <div class='section'>
-            <h4>Note:<textarea v-model="entryNote"></textarea></h4>
+            <h4>Note:<textarea v-model="entryNote" :maxlength="140"></textarea></h4>
           </div>
           <div class="section" id="btn_section">
           
