@@ -10,9 +10,7 @@
           <v-toolbar-title class="page-title">Add Tracker</v-toolbar-title>
         </v-flex>
 
-        <v-flex xs2>
-          <a id="editButton"><i>edit</i></a>
-        </v-flex>
+       
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
       </v-toolbar>
@@ -87,6 +85,7 @@ export default {
       newTrackerUnit: null,
       newTrackerUnit2: null,
       newTrackerGoal: null,
+      containsSpecChars: null,
       NewTrackerCollection: null
     }
   },
@@ -140,7 +139,20 @@ export default {
         this.units.push(this.newTrackerUnit2);
       }
 
+      var isAlphanumeric = require('is-alphanumeric');
+
+      var exp  = '/^[a-z0-9]+$/i';
+        if(!isAlphanumeric(this.newTrackerName))
+        {
+          this.containsSpecChars = true;
+          alert('bad!');
+        }
+        else{
+          
+        this.containsSpecChars = false;
        this.newTrackerName = this.newTrackerName.replace(/\//g, '-');
+       this.newTrackerName = encodeURI(this.newTrackerName);
+       this.NewTrackerCollection = encodeURI(this.NewTrackerCollection);
 
 
       var trackerEntry = {
@@ -168,6 +180,7 @@ export default {
       
       this.cleanTrackerValues();
       this.save()
+        }
     },
     remove (x) {
       this.trackers.splice(x, 1)

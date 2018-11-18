@@ -28,12 +28,12 @@
 
    <div class='section'>
       <div class='section'>
-       <div v-if="this.currentEntry.unit.length ==1">
-          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
+       <div v-if="this.currentEntryUnits.length ==1">
+          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntryUnits[0]}} </h4>
        </div>
       <div v-else>
-          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
-          <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentEntry.unit[1]}} </h4>
+          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntryUnits[0]}} </h4>
+          <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentEntryUnits[1]}} </h4>
        </div>
        </div>
 
@@ -72,7 +72,8 @@ export default {
       newEntryValue2:null,
       newEntries:[],
       currentEntry:null,
-      //newEntryDate: this.getTodaysDate(), 
+      currentEntryUnits:[],
+      newEntryDate: null, 
       entryID: [],
       entryNote: null,
        currentTracker:'',
@@ -106,6 +107,8 @@ export default {
       {
         this.currentEntry = this.entries[i];
         this.newEntryDate = this.currentEntry.date;
+        
+        this.currentEntryUnits = this.currentEntry.unit;
         if(this.currentEntry.unit.length == 2)
         {
           this.newEntryValue = this.currentEntry.value[0];
