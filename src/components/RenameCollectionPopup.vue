@@ -2,11 +2,11 @@
   <transition name="popup">
   <div class="popup-backdrop">
     <div class="popup">
-      <h2>Create Collection</h2>
-      <p><input v-model="newCollectionName"></p>
+      <h2>What do you want this collection's name to be?</h2>
+      <p><input v-model="newCollectionName" :maxlength="15"></p>
       <div id="save-back">
-      <v-btn color='#DF5C46' class="small-button" @click="add">Save</v-btn>
-      <v-btn class='close-button' @click="close">Close</v-btn>
+      <v-btn id="small-button" @click="rename">Rename</v-btn>
+      <v-btn id="small-button" @click="close">Close</v-btn>
       </div>
     </div>
   </div>
@@ -15,12 +15,10 @@
 
 <script>
 export default {
-  name: 'AddCollectionPopup',
+  name: 'RenameCollectionPopup',
   data () {
     return {
-      collections: [],
       newCollectionName: null,
-      newCollectionPath: null
     }
   },
   mounted () {
@@ -33,31 +31,15 @@ export default {
     }
   },
   methods: {
-    add () {
-      // ensure they actually typed something
-      if (!this.newCollectionName) {
-        return
+    rename () {
+      for (let index = 0; index < this.collections.length; index++) {
+        if(this.collections[index].name == this.newCollectionName){
+          return
+        }
       }
-      var trackerEntry = {
-        'name': this.newCollectionName,
-        'path' : '/collectionView/' + this.newCollectionName + '/',
-      }
-      if(this.collections)
-      this.collections.push(trackerEntry)
-      this.newCollectionName = ''
-      this.save()
-      this.$emit('close');
+      this.$emit('rename', this.newCollectionName);
     },
-    remove (x) {
-      this.collections.splice(x, 1)
-      this.save()
-    },
-    save () {
-      const parsed = JSON.stringify(this.collections)
-      localStorage.setItem('collections', parsed)
-      this.$emit('close');
-    },
-    close() {
+    close () {
       this.$emit('close');
     }
   }
@@ -111,10 +93,6 @@ h2{
 #save-back{
   display: inline;
   text-align: center;
-}
-
-.close-button .v-btn__content {
-  color: black;
 }
 
 </style>

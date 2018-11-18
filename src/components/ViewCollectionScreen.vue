@@ -1,20 +1,19 @@
 <template>
-  <div>
-
+  <div id='view-collection'>
     <!-- toolbar -->
-      <v-toolbar fixed id="titlebar">
-        <v-flex xs2>
-        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
-        </v-flex>
-        <v-flex xs8>
-          <v-toolbar-title class="page-title">{{ $route.params.collection }} Collection</v-toolbar-title>
-        </v-flex>
+    <v-toolbar fixed id="titlebar">
+      <v-flex xs2>
+      <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+      </v-flex>
+      <v-flex xs8>
+        <v-toolbar-title class="page-title">{{ $route.params.collection }} Collection</v-toolbar-title>
+      </v-flex>
 
-        <v-flex xs2>
-          <a id="editButton"><i>edit</i></a>
-        </v-flex>
-        <v-spacer></v-spacer>
-        <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+      <v-flex xs2>
+        <a id="editButton"><i>edit</i></a>
+      </v-flex>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
     </v-toolbar>
     <!-- /toolbar -->
     
@@ -104,7 +103,7 @@ a {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-evenly;
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 
 </style>
