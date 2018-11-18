@@ -67,6 +67,11 @@ button .v-btn__content a, .v-list__tile__action a, button .v-btn__content {
     color: white;
 }
 
+.edit a {
+    color: #DF5C46;
+    text-decoration: none;
+}
+
 /* 
 tracker and collection sections
  */
