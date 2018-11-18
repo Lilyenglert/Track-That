@@ -10,7 +10,7 @@
       </v-flex>
 
       <v-flex xs2>
-        <a id="editButton"><i>edit</i></a>
+        <!-- <a id="editButton"><i>edit</i></a> -->
       </v-flex>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
@@ -21,21 +21,22 @@
 
     <div class='section'>
       <div class='section-title'>
-        <h2 class='inline-block'>Trackers</h2>
-        <v-btn fab dark small color="#DF5C46" class='add-thing'>
-          <router-link to="/add"><v-icon>add</v-icon></router-link>
-        </v-btn>
-        <!-- <p class='inline-block right'><i>edit</i></p> -->
+        <h2 class='inline-block'>Trackers in this collection.</h2>
+      
       </div>
 
       <!-- vanilla html/css -->
       <div id="grid">
         <div class='box' v-for="tracker in filterTrackers($route.params.collection)"  v-bind:key="tracker.id">
-          <router-link :to="tracker.path" class='box-text' style='border-radius:10px;background-color:#5c46df;' >{{tracker.name}}</router-link>
+          <router-link :to="tracker.path" class='box-text' style='border-radius:7px;background-color:#5c46df;' >{{tracker.name}}</router-link>
         </div>
       </div> 
     </div>
     </v-container>
+    
+    <v-btn large color="#DF5C46" id='small-button'>
+          <router-link to="/add">Add a new tracker</router-link>
+        </v-btn>
   </div>
 </template>
 
@@ -104,6 +105,10 @@ a {
   grid-template-columns: auto auto;
   justify-content: space-evenly;
   /* padding-left: 10px; */
+}
+
+.section-title{
+  margin-top: 10%;
 }
 
 </style>
