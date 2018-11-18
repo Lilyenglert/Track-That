@@ -159,6 +159,12 @@ export default {
         console.log("not null");
         this.trackers.push(trackerEntry)
       }
+      this.trackers.sort(function(a, b){
+        var first = a.name.toLowerCase(); var second = b.name.toLowerCase();
+        if(first < second) { return -1; }
+        if(first > second) { return 1; }
+        return 0;
+      })
       
       this.cleanTrackerValues();
       this.save()

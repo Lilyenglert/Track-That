@@ -46,6 +46,12 @@ export default {
       }
       if(this.collections)
       this.collections.push(trackerEntry)
+      this.collections.sort(function(a, b){
+        var first = a.name.toLowerCase(); var second = b.name.toLowerCase();
+        if(first < second) { return -1; }
+        if(first > second) { return 1; }
+        return 0;
+      })
       this.newCollectionName = ''
       this.save()
       this.$emit('close');
