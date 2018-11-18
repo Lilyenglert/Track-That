@@ -7,7 +7,7 @@
       </p>
     </div>
     <h2>Create Collection</h2>
-    <p><input v-model="newCollectionName"></p>
+    <p><input v-model="newCollectionName" :maxlength="15"></p>
     <button @click="add">Add Collection</button>
     <p><router-link to="/">Back</router-link></p>
   </div>

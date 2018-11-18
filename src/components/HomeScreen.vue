@@ -1,12 +1,10 @@
 <template>
   <div id='home-screen'>
     <v-app>
-      <!-- <div class='top-bar section'>
-        <h1 class='page-title'>Overview</h1>
-      </div> -->
+
       <v-toolbar fixed id="titlebar">
         <v-flex xs12>
-          <v-toolbar-title class="page-title"> Overview </v-toolbar-title>
+          <v-toolbar-title class="page-title"> Home </v-toolbar-title>
         </v-flex>
       </v-toolbar>
       
@@ -14,6 +12,7 @@
         <div class='section section-top'>
           <h2 class='greeting'>Hi, {{username}}!</h2>
           <p class='message'>It's a beautiful day to achieve your goals.</p>
+
           <div class='solid'>
             <h3>Goals</h3>
             <div v-for="tracker in trackers" v-bind:key="tracker.id">
@@ -28,7 +27,6 @@
             <v-btn fab dark small color="#DF5C46" class='add-thing'>
               <router-link to="/add"><v-icon>add</v-icon></router-link>
             </v-btn>
-            <!-- <p class='inline-block right'><i>edit</i></p> -->
           </div>
         </div>
         <div class='box-container'>
@@ -42,6 +40,7 @@
           <v-btn fab dark small color="#DF5C46" class='add-thing' @click="showModal">
             <v-icon>add</v-icon>
           </v-btn>
+          
           <p class='inline-block right'><i><router-link to="/editCollection/">edit</router-link></i></p>
         </div>
         <div class='box-container'>

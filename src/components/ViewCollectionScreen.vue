@@ -1,15 +1,7 @@
 <template>
-  <div id='home-screen'>
-    <!-- steph topbar -->
-    <!-- <div class='top-bar section'>
-      <v-btn fab dark small color="#DF5C46" class='back-button'>
-        <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
-      </v-btn>
-      <h1 class='page-title'>{{ $route.params.collection }} Collection</h1>
-    </div> -->
-
-    <!-- lily topbar -->
-    <v-toolbar flat fixed id="titlebar">
+  <div id='view-collection'>
+    <!-- toolbar -->
+    <v-toolbar fixed id="titlebar">
       <v-flex xs2>
       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
       </v-flex>
@@ -23,6 +15,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
     </v-toolbar>
+    <!-- /toolbar -->
     
     <v-container class="inner">
 
@@ -110,7 +103,7 @@ a {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-evenly;
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 
 </style>

@@ -1,54 +1,55 @@
 <template>
-  <div>
-    <!-- toolbar -->
+  <div id='add-entry'>
+    <v-app>
+      <!-- toolbar -->
       <v-toolbar fixed flat id="titlebar">
-      <v-flex xs2>
-       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
-      </v-flex>
-       <v-flex xs8>
-      <v-toolbar-title class="page-title">New Entry</v-toolbar-title>
-      </v-flex>
+        <v-flex xs2>
+          <router-link to="./"><a id="backButton"><i>back</i></a></router-link>
+        </v-flex>
+        <v-flex xs8>
+          <v-toolbar-title class="page-title">New Entry</v-toolbar-title>
+        </v-flex>
 
-       <v-flex xs2>
-      <a id="editButton"><i>edit</i></a>
-      </v-flex>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-      </v-toolbar-items>
-    </v-toolbar>
-    <!-- /toolbar -->
+        <v-flex xs2>
+          <a id="editButton"><i>edit</i></a>
+        </v-flex>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down">
+        </v-toolbar-items>
+      </v-toolbar>
+      <!-- /toolbar -->
 
-    <div id="add-entry-div" class="inner">
+      <div id="add-entry-div" class="inner">
+        <div class='section'>
+          <h2 class='prompt'>Describe your <i>{{ $route.params.tracker }}</i> entry here.</h2>
+        </div>
 
-      <div class='section'>
-      <v-btn fab dark small color="#DF5C46">
-        <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
-      </v-btn>
-     <h2 class='prompt'>Describe your <i>{{ $route.params.tracker }}</i> entry here.</h2>
+        <div class='section'>
+            <div class='section'>
+            <div v-if="this.currentTrackerUnits.length ==1">
+                <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </h4>
+            </div>
+            <div v-else>
+                <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </h4>
+                <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentTrackerUnits[1]}} </h4>
+            </div>
+            </div>
+
+          <div class='section'>
+            <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
+          </div>
+          <div class='section'>
+            <h4>Note:<textarea v-model="entryNote"></textarea></h4>
+          </div>
+          <div class="section" id="btn_section">
+          
+          <v-btn block large id="small-button" @click="createEntry" color='#DF5C46'>
+            <router-link to="./">Add Entry</router-link>
+          </v-btn>
+          </div>
+        </div>
       </div>
-
-   <div class='section'>
-      <div class='section'>
-       <div v-if="this.currentTrackerUnits.length ==1">
-          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </h4>
-       </div>
-      <div v-else>
-          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </h4>
-          <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentTrackerUnits[1]}} </h4>
-       </div>
-       </div>
-
-    <div class='section'>
-      <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
-    </div>
-    <div class='section'>
-      <h4>Note:<textarea v-model="entryNote"></textarea></h4>
-    </div>
-     <div class="section" id="btn_section">
-    <router-link to="./"><v-btn large id="small-button" @click="createEntry">Add Entry</v-btn></router-link>
-    </div>
-    </div>
-     </div>
+    </v-app>
   </div>
 </template>
 
@@ -77,6 +78,7 @@ export default {
     this.getLocal();
     this.currentTracker = this.$route.params.tracker;
     this.instantiateEntry(this.currentTracker);
+    console.log(this.currentTrackerUnits);
     
   },
   mounted(){
@@ -163,8 +165,12 @@ export default {
   cleanEntryValues()
     {
       this.entryNote = ''
-      this.newEntryDate = ''
       this.newEntryValue = ''
+      if(this.newEntries.length == 2)
+      [
+        this.newEntryValue2 = ''
+      ]
+      this.newEntries = []
     },
   save()
   {

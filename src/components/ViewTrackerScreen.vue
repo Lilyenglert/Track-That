@@ -1,79 +1,96 @@
 <template>
-<div id='home-screen'>
+<div id='view-tracker'>
     <v-app>
     <!-- toolbar -->
       <v-toolbar fixed id="titlebar">
+        <v-flex xs2>
+        <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+        </v-flex>
+        <v-flex xs8>
+          <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
+        </v-flex>
 
-          <v-flex xs2>
-          <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
-          </v-flex>
-          <v-flex xs8>
-            <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
-          </v-flex>
-
-          <v-flex xs2>
-           <router-link to="edit"> <a id="editButton"><i>edit</i></a></router-link>
-          </v-flex>
-          <v-spacer></v-spacer>
-          <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
-
-    </v-toolbar>
+        <v-flex xs2>
+          <router-link to="edit"> <a id="editButton"><i>edit</i></a></router-link>
+        </v-flex>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+      </v-toolbar>
     <!-- /toolbar -->
 
     <v-container class="inner">
-      <v-layout>
-         
-        <v-flex xs12>
-          <a><p class="link"><router-link to=entry>Create a new entry <v-icon size="18px">add</v-icon></router-link></p></a>
-        </v-flex>
-        
-      </v-layout>
-
+        <div class='section-title'>
+          <v-btn color="#DF5C46" class='add-thing'>
+            <router-link to=entry>New entry</router-link>
+            <v-icon right size="18px">add</v-icon>
+          </v-btn>
+        </div>
+        <div id="goalsContainer">
         <div class="section">
           <h2>Goals</h2>
           <v-card :flat="true">
            <p id="goalMessage">{{this.currentTrackerGoal}}</p>
           </v-card>
         </div>
+        </div>
 
         <div class="section">
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
-            <p><Chart :trackerID=$route.params.id></Chart></p>
+              <Chart :trackerID=$route.params.id></Chart>
+              <v-btn id="switchButton" @click='switchUnits()' color="#DF5C46">Switch Units</v-btn>
             </v-card>
         </div>
 
         <v-container class="section" fluid-grid-list-md>
-          
-          
-          <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
+          <!-- All entry items repeated here -->
           <h2>Log</h2>
           <v-card class="scroll" height= "200px" :flat="true">
+            <div v-if="logsPresent">
             <div id="entryList">
-            <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.value">
-                <v-list id="example1">
-              <v-list-tile>
-                <v-list-tile-avatar>{{entry.date}}</v-list-tile-avatar>
-                <v-list-tile-content> 
-                  <div v-if="entry.unit.length == 2">
-                  <v-list-tile-title class="align-left">{{entry.value[0]}} {{entry.unit[0]}}, {{entry.value[1]}} {{entry.unit[1]}}</v-list-tile-title>
-                  </div>
-                  <div v-else>
-                  <v-list-tile-title class="align-left">{{entry.value}} {{entry.unit[0]}}</v-list-tile-title>
-                  </div>
-                  <v-list-tile-sub-title class="align-left">{{entry.message}}</v-list-tile-sub-title>
-                </v-list-tile-content>
-                <v-list-tile-action><a><router-link :to="`editEntry/${entry.id}`"><v-icon>edit</v-icon></router-link></a></v-list-tile-action>
-              </v-list-tile>
-              </v-list>
+              <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.id">
+                <v-list class="tracker-log-entry">
+                  <v-list-tile>
+                    <span class='tracker-log-date'>
+                      {{entry.date | formatDate}}
+                    </span>
+                  
+                  <v-list-tile-content> 
+                    <div v-if="entry.unit.length == 2">
+                      <v-list-tile-title class="align-left">
+                        {{entry.value[0]}} {{entry.unit[0]}}, {{entry.value[1]}} {{entry.unit[1]}}
+                      </v-list-tile-title>
+                    </div>
+                    <div v-else>
+                      <v-list-tile-title class="align-left">
+                        {{entry.value[0]}} {{entry.unit[0]}}
+                      </v-list-tile-title>
+                    </div>
+                    <v-list-tile-sub-title class="align-left">
+                      {{entry.message}}
+                    </v-list-tile-sub-title>
+                  </v-list-tile-content>
+
+                  <!-- edit entry button -->
+                  <v-btn fab dark small color="#DF5C46" class='add-thing'>
+                    <router-link :to="`editEntry/${entry.id}`">
+                      <v-icon>edit</v-icon>
+                    </router-link>
+                  </v-btn>
+
+                </v-list-tile>
+                </v-list>
+              </div>
             </div>
+            </div>
+            <div v-else>
+              <p>Nothing here!</p>
             </div>
           </v-card>
       </v-container>
-
     </v-container>
-    </v-app>
-  </div>
+  </v-app>
+</div>
 </template>
 
 <script>
@@ -81,7 +98,10 @@ import Chart from './Chart.vue'
 import Vue from 'vue'
 import Storage from 'vue-web-storage'
 import EventBus from '../eventBus.js'
+import moment from 'moment'
+
 Vue.use(Storage)
+
 export default {
   name: 'ViewTrackerScreen',
   data()
@@ -89,10 +109,11 @@ export default {
     return {
       trackers:[],
       entries:[],
-      currentTracker:null,
-      currentTrackerGoal:null,
-      currentTrackerUnits:null, 
-      entryPath: null
+      currentTracker:'',
+      currentTrackerGoal:'',
+      currentTrackerUnits:'', 
+      entryPath: '',
+      logsPresent: false
     }
   },
   components: {
@@ -125,6 +146,15 @@ export default {
     else{
       document.getElementById("goalsContainer").style.display = "block"
     }
+    if(this.currentTrackerUnits.length <= 1){
+      document.getElementById("switchButton").style.display = "none"
+    }
+    for (let index = 0; index < this.entries.length; index++) {
+      if(this.entries[index].trackerID == this.$route.params.id){
+        this.logsPresent = true
+      }
+    }
+    
   },
   methods: {
     filterEntries: function (currentTracker) {
@@ -136,15 +166,15 @@ export default {
   {
     this.trackers = JSON.parse(localStorage.getItem('trackers'));
   },
-    addValue () {
-      const inputNum = parseFloat(document.getElementById('gValue').value)
-      if (Vue.$localStorage.get('gValues') == null) {
-        Vue.$localStorage.set('gValues', [])
+    switchUnits () {
+      EventBus.$emit('switchUnits', this.$route.params.id)
+    }
+  },
+  filters: {
+    formatDate: function (value) {
+      if (value) {
+        return moment(String(value)).format('llll').slice(0, -15);
       }
-      var array = Vue.$localStorage.get('gValues')
-      array.push(inputNum)
-      Vue.$localStorage.set('gValues', array)
-      EventBus.$emit('refreshGraph')
     }
   }
 }
@@ -170,13 +200,15 @@ a {
   color: #42b983;
 }
 
+
 #goalMessage, #graph_box{
   text-align:left;
 }
 
 #graph_box{ 
-  max-width: 90%;
+  /* max-width: 90%; */
   padding:0%;
+  text-align: center;
 }
 
 .v-card {
@@ -190,6 +222,10 @@ a {
 
 .scroll {
   overflow-y: auto;
+}
+
+.section-title {
+  text-align: center;
 }
 
 .link{

@@ -1,9 +1,10 @@
+
 <template>
   <div>
     <!-- toolbar -->
       <v-toolbar fixed flat id="titlebar">
       <v-flex xs2>
-       <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+       <router-link to="../"><a id="backButton"><i>back</i></a></router-link>
       </v-flex>
        <v-flex xs8>
       <v-toolbar-title class="page-title">Edit Entry</v-toolbar-title>
@@ -21,20 +22,18 @@
     <div id="add-entry-div" class="inner">
 
       <div class='section'>
-      <v-btn fab dark small color="#DF5C46">
-        <router-link to="./"><v-icon>arrow_back</v-icon></router-link>
-      </v-btn>
+      
      <h2 class='prompt'>Edit your <i>{{ $route.params.tracker }}</i> entry here.</h2>
       </div>
 
    <div class='section'>
       <div class='section'>
-       <div v-if="this.entries[this.$route.params.entryid].unit.length ==1">
-          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.entries[this.$route.params.entryid].unit}} </h4>
+       <div v-if="this.currentEntry.unit.length ==1">
+          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
        </div>
       <div v-else>
-          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{tthis.entries[this.$route.params.entryid].unit[0]}} </h4>
-          <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.entries[this.$route.params.entryid].unit[1]}} </h4>
+          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
+          <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentEntry.unit[1]}} </h4>
        </div>
        </div>
 
@@ -45,8 +44,10 @@
       <h4>Note:<textarea v-model="entryNote"></textarea></h4>
     </div>
      <div class="section" id="btn_section">
-       <button @click="test">Test</button>
+       <!-- <button @click="test">Test</button> -->
     <router-link to="../"><v-btn large id="small-button" @click="editEntry">Confirm Changes</v-btn></router-link>
+    <router-link to="../"><v-btn large id="small-button" @click="remove">Remove Entry</v-btn></router-link>
+
     </div>
     </div>
      </div>
@@ -66,6 +67,7 @@ export default {
       newEntryValue:null,
       newEntryValue2:null,
       newEntries:[],
+      currentEntry:null,
       //newEntryDate: this.getTodaysDate(), 
       entryID: [],
       entryNote: null,
@@ -92,19 +94,63 @@ export default {
         localStorage.removeItem('entryID')
       }
     }
+
+    for(var i = 0; i < this.entries.length; i++)
+    {
+      if(this.entries[i].id == this.$route.params.entryid)
+      {
+        this.currentEntry = this.entries[i];
+        this.newEntryDate = this.currentEntry.date;
+        if(this.currentEntry.unit.length == 2)
+        {
+          this.newEntryValue = this.currentEntry.value[0];
+          this.newEntryValue2 = this.currentEntry.value[1];
+        }   
+        else{
+          this.newEntryValue = this.currentEntry.value[0];
+        }
+      }
+    }
+
   },
   methods:{
     editEntry() {
-      var currentUnits = this.entries[this.$route.params.entryid].unit;
-      var currentEntry = this.entries[this.$route.params.entryid];
-      //if (currentUnits.length==1) {currentEntry.value = this.newEntryValue}
-      //else {}
-      //currentEntry.date = this.newEntryDate;
-      console.log(this.entries[this.$route.params.entryid]);
-      console.log(currentEntry);
-    }
-  }
 
+    for(var i = 0; i < this.entries.length; i++)
+      {
+      if(this.entries[i].id == this.$route.params.entryid)
+      {
+        if(this.currentEntry.unit.length == 1)
+        {
+          if (this.newEntryValue!=null) {this.entries[i].value[0] = this.newEntryValue};
+        }
+        else{
+          if (this.newEntryValue!=null) {this.entries[i].value[0] = this.newEntryValue};
+          if (this.newEntryValue2!=null) {this.entries[i].value[1] = this.newEntryValue2};
+        }
+        if (this.newEntryDate!=null) {this.entries[i].date = this.newEntryDate};
+      }
+      }
+      this.save();
+    },
+
+    remove()
+    {
+      for (var i = 0; i < this.entries.length; i++)
+      {
+          if(this.entries[i].id == this.$route.params.entryid)
+          {
+            this.entries.splice(i, 1);
+          }
+      }
+       this.save ();
+    },
+     save () {
+    
+      localStorage.setItem('entries', JSON.stringify(this.entries));
+
+    },
+  }
 }
 </script>
 
