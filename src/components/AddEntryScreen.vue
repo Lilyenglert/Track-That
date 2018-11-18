@@ -78,7 +78,7 @@ export default {
     this.getLocal();
     this.currentTracker = this.$route.params.tracker;
     this.instantiateEntry(this.currentTracker);
-    console.log(this.currentTrackerUnits);
+    //(this.currentTrackerUnits);
     
   },
   mounted(){
@@ -127,6 +127,11 @@ export default {
         },
   createEntry()
   {
+    if (this.newEntryValue==null) {return};
+    if (this.currentTrackerUnits.length == 2) {
+        if (this.newEntryValue2==null) {return}
+      };
+
     var fetchedEntryIDIncremented;
     var fetchedEntryID = JSON.parse(localStorage.getItem('entryID'));
 
@@ -158,7 +163,6 @@ export default {
     this.entryID.push(fetchedEntryIDIncremented);
 
     
-    console.log("pushed");
    this.save();
    this.cleanEntryValues();
 
