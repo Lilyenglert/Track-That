@@ -18,13 +18,15 @@
       <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15"></p>
       <div v-if="isAddUnit" >
       <p>Tracker Units: <input v-model="newTrackerUnit2" :maxlength="15"></p>
-    </div>
+      <v-btn block dark color="#DF5C46" @click="removeUnit" >One unit please!</v-btn>
+      </div>
+      <div v-if="isOneUnit">
+      <v-btn block dark color="#DF5C46" @click="addUnit" >Add Another Unit</v-btn>
+      </div>
     </div>
 
     
-
-     <v-btn block dark color="#DF5C46" @click="addUnit" >Add Another Unit</v-btn>
-
+     
     
     <div class='section'>
       <h2 class='prompt'>Write down any goals you have.</h2>
@@ -57,6 +59,7 @@ export default {
       }],
       trackers: [], 
       isAddUnit: false,
+      isOneUnit: true,
       trackerID: [], 
       path : null,
       units:[],
@@ -161,6 +164,12 @@ export default {
     addUnit()
     {
       this.isAddUnit = true;
+      this.isOneUnit = false;
+    },
+    removeUnit()
+    {
+      this.isAddUnit = false;
+      this.isOneUnit = true;
     }
   }
 }

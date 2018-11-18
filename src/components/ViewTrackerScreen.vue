@@ -51,6 +51,7 @@
           <!-- All entry items repeated here, TODO: HOW TO HANDLE MULTIPLE UNITS -->
           <h2>Log</h2>
           <v-card class="scroll" height= "200px" :flat="true">
+            <div v-if="logsPresent">
             <div id="entryList">
             <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.value">
                 <v-list id="example1">
@@ -69,6 +70,10 @@
               </v-list-tile>
               </v-list>
             </div>
+            </div>
+            </div>
+            <div v-else>
+              <p>Nothing here!</p>
             </div>
           </v-card>
       </v-container>
@@ -94,7 +99,8 @@ export default {
       currentTracker:'',
       currentTrackerGoal:'',
       currentTrackerUnits:'', 
-      entryPath: ''
+      entryPath: '',
+      logsPresent: false
     }
   },
   components: {
@@ -130,6 +136,12 @@ export default {
     if(this.currentTrackerUnits.length == 1){
       document.getElementById("switchButton").style.display = "none"
     }
+    for (let index = 0; index < this.entries.length; index++) {
+      if(this.entries[index].trackerID == this.$route.params.id){
+        this.logsPresent = true
+      }
+    }
+    
   },
   methods: {
     filterEntries: function (currentTracker) {
@@ -144,9 +156,6 @@ export default {
     switchUnits () {
       EventBus.$emit('switchUnits', this.$route.params.id)
     }
-  },
-  beforeDestroy(){
-    
   }
 }
 </script>
