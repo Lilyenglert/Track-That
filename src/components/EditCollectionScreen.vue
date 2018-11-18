@@ -26,8 +26,8 @@
             <div class='box-text' style='border-radius:7px;background-color:#5c46df;'><a>{{collection.name}}</a></div>
           </div>
           <div id='buttons-box'>
-            <v-btn large color="#DF5C46" class='rename_button' id='small-button' @click="renamePopup(collection, n)">Rename</v-btn>
-            <v-btn large color="#DF5C46" class='delete_button' id='small-button' @click="warning(collection, n)">Delete</v-btn>
+            <v-btn small color="#DF5C46" class='rename_button' id='small-button' @click="renamePopup(collection, n)">Rename</v-btn>
+            <v-btn small color="#DF5C46" class='delete_button' id='small-button' @click="warning(collection, n)">Delete</v-btn>
           </div>
         </div>
       </div> 
@@ -165,15 +165,18 @@ a {
 
 .box{
   padding-left: 6px;
+  margin-top: 30px;
+  margin-bottom: 5px;
 }
 
 .rename_button #small-button{
   float: center;
-
+  margin-bottom: 0;
 }
 
 .delete_button #small-button{
   float: center;
+  margin-bottom: 0;
 }
 
 </style>
