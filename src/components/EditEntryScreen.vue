@@ -20,13 +20,10 @@
     <!-- /toolbar -->
 
     <div id="add-entry-div" class="inner">
-
       <div class='section'>
-      
-     <h2 class='prompt'>Edit your <i>{{ $route.params.tracker }}</i> entry here.</h2>
+        <h2 class='prompt'>Edit your <i>{{ $route.params.tracker }}</i> entry here.</h2>
       </div>
 
-   <div class='section'>
       <div class='section'>
        <div v-if="this.currentEntryUnits.length ==1">
           <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntryUnits[0]}} </h4>
@@ -49,8 +46,7 @@
     <v-btn large id="small-button" @click="warning">Remove Entry</v-btn>
     <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
     </div>
-    </div>
-     </div>
+    
   </div>
 </template>
 

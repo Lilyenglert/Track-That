@@ -72,9 +72,9 @@
                   </v-list-tile-content>
 
                   <!-- edit entry button -->
-                  <v-btn fab dark small color="#DF5C46" class='add-thing'>
+                  <v-btn fab icon dark small color="#DF5C46" class='add-thing'>
                     <router-link :to="`editEntry/${entry.id}`">
-                      <v-icon>edit</v-icon>
+                      <a><v-icon>edit</v-icon></a>
                     </router-link>
                   </v-btn>
 
@@ -87,6 +87,7 @@
               <p>Nothing here!</p>
             </div>
           </v-card>
+          
       </v-container>
     </v-container>
   </v-app>
@@ -229,6 +230,7 @@ a {
 
 .scroll {
   overflow-y: auto;
+  max-height: 350px;
 }
 
 .section-title {
@@ -238,6 +240,10 @@ a {
 .link{
   text-align:center;
   font-size: 16px;
+}
+
+.inner{
+  margin-top: 50px;
 }
 
 </style>
