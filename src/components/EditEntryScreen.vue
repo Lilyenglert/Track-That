@@ -28,12 +28,12 @@
 
    <div class='section'>
       <div class='section'>
-       <div v-if="this.currentEntry.unit.length ==1">
-          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
+       <div v-if="this.currentEntryUnits.length ==1">
+          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntryUnits[0]}} </h4>
        </div>
       <div v-else>
-          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
-          <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentEntry.unit[1]}} </h4>
+          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntryUnits[0]}} </h4>
+          <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentEntryUnits[1]}} </h4>
        </div>
        </div>
 
@@ -41,13 +41,13 @@
       <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
     </div>
     <div class='section'>
-      <h4>Note:<textarea v-model="entryNote"></textarea></h4>
+      <h4>Note:<textarea v-model="entryNote" :maxlength="140"></textarea></h4>
     </div>
      <div class="section" id="btn_section">
        <!-- <button @click="test">Test</button> -->
     <router-link to="../"><v-btn large id="small-button" @click="editEntry">Confirm Changes</v-btn></router-link>
-    <router-link to="../"><v-btn large id="small-button" @click="remove">Remove Entry</v-btn></router-link>
-
+    <v-btn large id="small-button" @click="warning">Remove Entry</v-btn>
+    <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
     </div>
     </div>
      </div>
@@ -55,8 +55,12 @@
 </template>
 
 <script>
+import DeleteWarningPopup from './DeleteWarningPopup.vue'
 export default {
   name: 'EditEntryScreen',
+   components:{
+    DeleteWarningPopup,
+  },
   data () {
     return {
        trackers:[{
@@ -68,12 +72,14 @@ export default {
       newEntryValue2:null,
       newEntries:[],
       currentEntry:null,
-      //newEntryDate: this.getTodaysDate(), 
+      currentEntryUnits:[],
+      newEntryDate: null, 
       entryID: [],
       entryNote: null,
        currentTracker:'',
        currentTrackerName:'',
        currentTrackerUnits:[],
+      isPopupVisible: false
     }
   },
   created(){
@@ -101,6 +107,8 @@ export default {
       {
         this.currentEntry = this.entries[i];
         this.newEntryDate = this.currentEntry.date;
+        
+        this.currentEntryUnits = this.currentEntry.unit;
         if(this.currentEntry.unit.length == 2)
         {
           this.newEntryValue = this.currentEntry.value[0];
@@ -133,6 +141,12 @@ export default {
       }
       this.save();
     },
+    warning() {
+      this.isPopupVisible = true;
+    },
+    closeWarning() {
+      this.isPopupVisible = false;
+    },
 
     remove()
     {
@@ -144,6 +158,7 @@ export default {
           }
       }
        this.save ();
+       this.$router.go(-1)
     },
      save () {
     
