@@ -3,7 +3,7 @@
   <div class="popup-backdrop">
     <div class="popup">
       <h2>Create Collection</h2>
-      <p><input v-model="newCollectionName"></p>
+      <p><input v-model="newCollectionName" :maxlength="15"></p>
       <div id="save-back">
       <v-btn color='#DF5C46' class="small-button" @click="add">Save</v-btn>
       <v-btn class='close-button' @click="close">Close</v-btn>

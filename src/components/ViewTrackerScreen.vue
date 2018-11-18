@@ -48,7 +48,7 @@
           <v-card class="scroll" height= "200px" :flat="true">
             <div v-if="logsPresent">
             <div id="entryList">
-              <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.value">
+              <div v-for="entry in filterEntries($route.params.id)" v-bind:key="entry.id">
                 <v-list class="tracker-log-entry">
                   <v-list-tile>
                     <span class='tracker-log-date'>
