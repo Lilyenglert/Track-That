@@ -88,7 +88,8 @@ tracker and collection sections
     border: none;
     color: white;
     padding: 10px 20px;
-    border-radius: 10px;
+    border-radius: 7px;
+    margin-top: 10px;
 }
 
 .solid h3 {
@@ -107,7 +108,7 @@ tracker and collection sections
 .add-button {
     padding: 0 10px;
     color: #DF5C46;
-    /* filter: drop-shadow(1px 1px 3px gray); */
+    filter: drop-shadow(1px 1px 3px gray);
 }
 
 /* overriding vuetify button */
@@ -133,7 +134,6 @@ stuff for boxes on home page
     width: 130px;
     display: inline-table;
     vertical-align: middle;
-
     margin: 20px 5%;
     margin-left: 0;
     /* background-color: gray; */
@@ -215,7 +215,6 @@ input, textarea, select {
     color: #DF5C46;
     background-color: white;
     box-shadow: 0px 0px 0px;
-
 }
 
 /* popup */

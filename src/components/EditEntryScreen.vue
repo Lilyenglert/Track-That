@@ -20,37 +20,36 @@
     <!-- /toolbar -->
 
     <div id="add-entry-div" class="inner">
-
       <div class='section'>
-      
-     <h2 class='prompt'>Edit your <i>{{ $route.params.tracker }}</i> entry here.</h2>
+        <h2 class='prompt'>Edit your <i>{{ $route.params.tracker }}</i> entry here.</h2>
       </div>
 
-   <div class='section'>
       <div class='section'>
-       <div v-if="this.currentEntry.unit.length ==1">
-          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
-       </div>
-      <div v-else>
-          <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
-          <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentEntry.unit[1]}} </h4>
-       </div>
-       </div>
+        <div class='section'>
+        <div v-if="this.currentEntry.unit.length ==1">
+            <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
+        </div>
+        <div v-else>
+            <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
+            <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentEntry.unit[1]}} </h4>
+        </div>
+        </div>
 
-    <div class='section'>
-      <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
-    </div>
-    <div class='section'>
-      <h4>Note:<textarea v-model="entryNote"></textarea></h4>
-    </div>
-     <div class="section" id="btn_section">
-       <!-- <button @click="test">Test</button> -->
-    <router-link to="../"><v-btn large id="small-button" @click="editEntry">Confirm Changes</v-btn></router-link>
-    <router-link to="../"><v-btn large id="small-button" @click="remove">Remove Entry</v-btn></router-link>
+        <div class='section'>
+          <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
+        </div>
+        <div class='section'>
+          <h4>Note:<textarea v-model="entryNote"></textarea></h4>
+        </div>
+        <div class="section" id="btn_section">
+          <!-- <button @click="test">Test</button> -->
+          <router-link to="../"><v-btn large @click="editEntry">Confirm Changes</v-btn></router-link>
+          <router-link to="../"><v-btn large @click="remove">Remove Entry</v-btn></router-link>
 
+        </div>
+      </div>
     </div>
-    </div>
-     </div>
+    
   </div>
 </template>
 

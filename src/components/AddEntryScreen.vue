@@ -11,7 +11,7 @@
         </v-flex>
 
         <v-flex xs2>
-          <a id="editButton"><i>edit</i></a>
+          
         </v-flex>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
