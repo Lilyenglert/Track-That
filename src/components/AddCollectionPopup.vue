@@ -39,6 +39,8 @@ export default {
         return
       }
        this.newCollectionName = this.newCollectionName.replace(/\//g, '-');
+       this.newCollectionName = encodeURI(this.newCollectionName);
+
       var trackerEntry = {
         'name': this.newCollectionName,
         'path' : '/collectionView/' + this.newCollectionName + '/',
