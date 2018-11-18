@@ -153,6 +153,8 @@ export default {
     };
     this.entries.push(newEntryInput);
 
+    this.entries.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()})
+
     this.entryID.push(fetchedEntryIDIncremented);
 
     
