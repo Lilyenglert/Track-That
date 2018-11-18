@@ -38,22 +38,12 @@ export default {
       if (!this.newCollectionName) {
         return
       }
-       this.newCollectionName = this.newCollectionName.replace(/\//g, '-');
-       this.newCollectionName = encodeURI(this.newCollectionName);
-
       var trackerEntry = {
         'name': this.newCollectionName,
         'path' : '/collectionView/' + this.newCollectionName + '/',
-
       }
       if(this.collections)
       this.collections.push(trackerEntry)
-      this.collections.sort(function(a, b){
-        var first = a.name.toLowerCase(); var second = b.name.toLowerCase();
-        if(first < second) { return -1; }
-        if(first > second) { return 1; }
-        return 0;
-      })
       this.newCollectionName = ''
       this.save()
       this.$emit('close');
@@ -76,8 +66,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-
-
 h2{
   margin-bottom: 5px;
 }
@@ -92,7 +80,6 @@ h2{
     justify-content: center;
     align-items: center;
   }
-
   .popup {
     align-content: center;
     border-radius: 4px;
@@ -103,28 +90,22 @@ h2{
     display: flex;
     flex-direction: column;
   }
-
   .popup-enter {
   opacity: 0;
 }
-
 .popup-leave-active {
   opacity: 0;
 }
-
 .popup-enter .popup-container,
 .popup-leave-active .popup-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-
 #save-back{
   display: inline;
   text-align: center;
 }
-
 .close-button .v-btn__content {
   color: black;
 }
-
 </style>
