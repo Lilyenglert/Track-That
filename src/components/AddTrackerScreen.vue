@@ -11,7 +11,7 @@
         </v-flex>
 
         <v-flex xs2>
-          <a id="editButton"><i>edit</i></a>
+          
         </v-flex>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
@@ -19,13 +19,6 @@
       <!-- /toolbar -->
       
       <v-container class="inner">
-        <!-- <div class='top-bar section'>
-          <v-btn fab dark small color="#DF5C46" class='back-button'>
-              <router-link to="/"><v-icon>arrow_back</v-icon></router-link>
-            </v-btn>
-            <p><router-link to="/">Back</router-link><p/>
-          <h1 class='page-title'>Create Tracker</h1>
-        </div> -->
         
         <div class='section'>
           <h2 class='prompt'>What do you want to track?</h2>

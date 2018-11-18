@@ -2,6 +2,12 @@
   <div>
     <h2>Edit Entry</h2>
     <p><router-link to="../">Back</router-link></p>
+
+
+
+
+
+    
   </div>
 </template>
 

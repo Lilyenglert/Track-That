@@ -8,6 +8,8 @@
       <v-flex xs8>
         <v-toolbar-title class="page-title">{{ $route.params.collection }} Edit Collections</v-toolbar-title>
       </v-flex>
+      <v-flex xs2>
+      </v-flex>
     </v-toolbar>
     
     <v-container class="inner">
@@ -19,17 +21,20 @@
 
       <!-- GRID WITH COLLECTIONS DELETE AND RENAME BUTTONS -->
       <div id="grid">
-        <div class = 'box' v-for="(collection, n) in collections" v-bind:key="collection.n">
-          <div class='box-text' style='border-radius:10px;background-color:#df5c46'>{{collection.name}}</div>
-       
-        <button flat class='rename_button' id='small-button' @click="renamePopup(collection, n)">Rename</button>
-
-          <button flat class='delete_button' id='small-button' @click="warning(collection, n)">Remove</button>
+        <div id="grid-box" v-for="(collection, n) in collections" v-bind:key="collection.n">
+          <div class ='box'>
+            <div class='box-text' style='border-radius:7px;background-color:#5c46df;'><a>{{collection.name}}</a></div>
+          </div>
+          <div id='buttons-box'>
+            <v-btn large color="#DF5C46" class='rename_button' id='small-button' @click="renamePopup(collection, n)">Rename</v-btn>
+            <v-btn large color="#DF5C46" class='delete_button' id='small-button' @click="warning(collection, n)">Delete</v-btn>
+          </div>
         </div>
       </div> 
      
     </div>
     </v-container>
+
     <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="runRemove"/>
     <RenameCollectionPopup v-show="renamePopupVisible" @close="closeRename" @rename="runRename"/>
   </div>
@@ -145,34 +150,30 @@ a {
   justify-content: space-evenly;
 }
 
-.box {
-    height: 120px;
-    width: 120px;
-    /* max-width: 130px; */
-    display: table-column;
-    vertical-align: middle;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 4%;
-    margin-left: 4%;
-    border-radius: 3px;
-    filter: drop-shadow(1px 1px 2px gray);
+.section-title{
+  margin-top: 10%;
 }
 
-.box a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 4vw;
-    padding: 5px;
-    text-transform: capitalize;
+#grid-box{
+  align-content: center;
+  text-align: center;
 }
 
-#small-button.delete_button{
-  padding: 5px;
-  margin: 15px;
+#buttons-box{
+  display: inline;
+}
+
+.box{
+  padding-left: 6px;
+}
+
+.rename_button #small-button{
+  float: center;
 
 }
 
+.delete_button #small-button{
+  float: center;
+}
 
 </style>

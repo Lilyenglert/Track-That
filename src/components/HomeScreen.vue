@@ -16,7 +16,7 @@
           <div class='solid'>
             <h3>Goals</h3>
             <div v-for="tracker in trackers" v-bind:key="tracker.id">
-              <p class='message'>{{tracker.goal}}</p>
+              <p class='message'><i>{{tracker.goal}}</i></p>
             </div> 
           </div>
         </div>
@@ -142,5 +142,25 @@ a {
 
 #small-button{
   border: none;
+}
+
+/* OVERRIDE INNER FOR FULL SCROLL */
+
+.inner{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.section{
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.section-title{
+  margin-top: 10%;
+}
+
+.box-container{
+  padding-left: 8%;
 }
 </style>

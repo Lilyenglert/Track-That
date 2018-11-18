@@ -70,7 +70,7 @@
                   </v-list-tile-content>
 
                   <!-- edit entry button -->
-                  <v-btn fab dark small color="#DF5C46" class='add-thing'>
+                  <v-btn fab icon dark small color="#DF5C46" class='add-thing'>
                     <router-link :to="`editEntry/${entry.id}`">
                       <v-icon>edit</v-icon>
                     </router-link>
