@@ -46,6 +46,8 @@
      <div class="section" id="btn_section">
        <!-- <button @click="test">Test</button> -->
     <router-link to="../"><v-btn large id="small-button" @click="editEntry">Confirm Changes</v-btn></router-link>
+    <router-link to="../"><v-btn large id="small-button" @click="remove">Remove Entry</v-btn></router-link>
+
     </div>
     </div>
      </div>
@@ -130,6 +132,18 @@ export default {
       }
       }
       this.save();
+    },
+
+    remove()
+    {
+      for (var i = 0; i < this.entries.length; i++)
+      {
+          if(this.entries[i].id == this.$route.params.entryid)
+          {
+            this.entries.splice(i, 1);
+          }
+      }
+       this.save ();
     },
      save () {
     
