@@ -22,12 +22,16 @@
       <!-- GRID WITH COLLECTIONS DELETE AND RENAME BUTTONS -->
       <div id="grid">
         <div id="grid-box" v-for="(collection, n) in collections" v-bind:key="collection.n">
+          <div class ='box' id='overlay_box'>
+            <div class='box-text' id='icon-text-box' style='border-radius:7px;background-color:rgb(255,255,255,0.1);'><a></a>
+             <v-btn icon small color="#DF5C46" class='delete_button' id='small-button' @click="warning(collection, n)"><v-icon>close</v-icon></v-btn>
+            </div>
+          </div>
           <div class ='box'>
             <div class='box-text' style='border-radius:7px;background-color:#5c46df;'><a>{{collection.name}}</a></div>
           </div>
           <div id='buttons-box'>
             <v-btn small color="#DF5C46" class='rename_button' id='small-button' @click="renamePopup(collection, n)">Rename</v-btn>
-            <v-btn small color="#DF5C46" class='delete_button' id='small-button' @click="warning(collection, n)">Delete</v-btn>
           </div>
         </div>
       </div> 
@@ -169,14 +173,36 @@ a {
   margin-bottom: 5px;
 }
 
+.box-text{
+   z-index: 0; 
+}
+
 .rename_button #small-button{
   float: center;
   margin-bottom: 0;
 }
 
 .delete_button #small-button{
-  float: center;
+  float: right;
   margin-bottom: 0;
+  z-index: 11;
+  opacity: .8;
+  margin: 10px;
+  font-size: 5px;
+
+}
+
+
+#overlay_box{
+  z-index: 10;
+  position: absolute;
+}
+
+#icon-text-box.box-text{
+  display: table-cell;
+  vertical-align: top;
+  text-align: right;
+  padding: 0;
 }
 
 </style>
