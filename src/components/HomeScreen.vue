@@ -162,5 +162,6 @@ a {
 
 .box-container{
   padding-left: 8%;
+  overscroll-behavior: contain;
 }
 </style>

@@ -33,6 +33,7 @@
       </div> 
     </div>
     </v-container>
+    
     <v-btn large color="#DF5C46" id='small-button'>
           <router-link to="/add">Add a new tracker</router-link>
         </v-btn>
