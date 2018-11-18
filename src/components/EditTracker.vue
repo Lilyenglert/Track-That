@@ -47,13 +47,18 @@
     
     <!-- <button @click="add">Add Tracker</button> -->
     <router-link to="/"><v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn></router-link>
-    <router-link to="/"><v-btn block dark color="#DF5C46" @click="remove" class='submit-button'>Remove Tracker</v-btn></router-link>
+    <v-btn block dark color="#DF5C46" @click="warning" class='submit-button'>Remove Tracker</v-btn>
+    <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
   </div>
 </template>
 
 <script>
+import DeleteWarningPopup from './DeleteWarningPopup.vue'
 export default {
   name: 'EditTracker',
+  components:{
+    DeleteWarningPopup,
+  },
   data () {
     return {
       collections: [{
@@ -71,7 +76,8 @@ export default {
       newTrackerUnit1: null,
       newTrackerUnit2: null,
       newTrackerGoal: null,
-      NewTrackerCollection: null
+      NewTrackerCollection: null,
+      isPopupVisible: false
     }
   },
 
@@ -172,8 +178,12 @@ console.log("id + " + this.$route.params.id);
         this.cleanTrackerValues();
         this.save()
     }, 
- 
-
+    warning() {
+      this.isPopupVisible = true;
+    },
+    closeWarning() {
+      this.isPopupVisible = false;
+    },
     
     getLocal()
     {
@@ -183,6 +193,7 @@ console.log("id + " + this.$route.params.id);
 
     remove()
     {
+      this.isPopupVisible = false;
       for (var i = 0; i < this.trackers.length; i++)
       {
           if(this.trackers[i].id == this.$route.params.id)
@@ -191,6 +202,7 @@ console.log("id + " + this.$route.params.id);
           }
       }
        this.save ();
+       this.$router.push('/')
     },
   
 
