@@ -139,7 +139,10 @@ export default {
       if(this.newTrackerUnit2 != null){
         this.units.push(this.newTrackerUnit2);
       }
-    
+
+       this.newTrackerName = this.newTrackerName.replace(/\//g, '-');
+
+
       var trackerEntry = {
         'id' : fetchedTrackerIDIncremented, 
         'path' : '/view/' + fetchedTrackerIDIncremented + '/' + this.newTrackerName + '/',

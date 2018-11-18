@@ -38,9 +38,11 @@ export default {
       if (!this.newCollectionName) {
         return
       }
+       this.newCollectionName = this.newCollectionName.replace(/\//g, '-');
       var trackerEntry = {
         'name': this.newCollectionName,
         'path' : '/collectionView/' + this.newCollectionName + '/',
+
       }
       if(this.collections)
       this.collections.push(trackerEntry)
