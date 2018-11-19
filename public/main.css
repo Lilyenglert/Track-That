@@ -14,10 +14,48 @@ h3 { font-size: 24px; }
     }
 }
 
-/* overriding vue link color for link buttons */
-button .v-btn__content a, .v-list__tile__action a, button .v-btn__content {
+/**** BUTTONS ****/
+/* overriding vuetify button */
+.v-btn--floating.v-btn--small.add-thing {
+    padding: 0;
+    margin-bottom: 18px;
+    margin-left: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+/* Button Styles */
+.v-btn.small-button{
+    /* padding:1px; */
+    /* font-size: 12px; */
+    border: 1px solid;
+    /* border-color: rgba(212, 212, 212, 0.925); */
+    color: #DF5C46;
+    background-color: white;
+    box-shadow: 0px 0px 0px;
+}
+
+.edit {
+    color: #DF5C46;
+    margin: 5px;
+    padding: 5px;
+    min-width: auto;
+}
+
+.colored-button, .colored-button a, .colored-button .v-btn__content {
     text-decoration: none;
+    /* background-color: #DF5C46; */
     color: white;
+}
+
+.no-under {
+    text-decoration: none;
+}
+
+.add-button {
+    padding: 0 10px;
+    color: #DF5C46;
+    filter: drop-shadow(1px 1px 3px gray);
 }
 
 #backButton{
@@ -27,6 +65,13 @@ button .v-btn__content a, .v-list__tile__action a, button .v-btn__content {
  #editButton{
     align-content: right;
  }
+
+ .submit-button {
+    height: 50px;
+    margin: 20px 0;
+}
+
+/**********************/
 
  .page-title {
     text-align: center;
@@ -71,18 +116,12 @@ button .v-btn__content a, .v-list__tile__action a, button .v-btn__content {
     color: white;
 }
 
-.edit a {
-    color: #DF5C46;
-    text-decoration: none;
-}
-
 /* 
 tracker and collection sections
  */
 .overflow {
     overflow: scroll;
 }
-
 
 .solid {
     background-color: #DF5C46;
@@ -109,20 +148,6 @@ tracker and collection sections
     float: right;
 }
 
-.add-button {
-    padding: 0 10px;
-    color: #DF5C46;
-    filter: drop-shadow(1px 1px 3px gray);
-}
-
-/* overriding vuetify button */
-.v-btn--floating.v-btn--small.add-thing {
-    padding: 0;
-    margin-bottom: 18px;
-    margin-left: 10px;
-    height: 30px;
-    width: 30px;
-}
 
 /* 
 stuff for boxes on home page 
@@ -168,6 +193,7 @@ input, textarea, select {
     border-bottom: solid rgb(223, 92, 70) 2px;
     padding-left: 5px;
     font-weight: 500;
+    font-size: 18px;
 }
 
 .prompt {
@@ -206,23 +232,6 @@ input, textarea, select {
 
 .section select {
     width: 50%;
-}
-
-.submit-button {
-    height: 50px;
-    margin: 20px 0;
-}
-
-
-/* Button Styles */
-.v-btn.small-button{
-    /* padding:1px; */
-    /* font-size: 12px; */
-    border: 1px solid;
-    /* border-color: rgba(212, 212, 212, 0.925); */
-    color: #DF5C46;
-    background-color: white;
-    box-shadow: 0px 0px 0px;
 }
 
 /* popup */

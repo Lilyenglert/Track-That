@@ -6,7 +6,7 @@
       <p><input v-model="newCollectionName" :maxlength="15"></p>
       <div v-show='containsSpecChars'><p>Collection name should only contain numbers and/or letters.</p></div>
       <div id="save-back">
-      <v-btn color='#DF5C46' class="small-button" @click="add">Save</v-btn>
+      <v-btn color='#DF5C46' class="small-button colored-button" @click="add">Save</v-btn>
       <v-btn class='close-button' @click="close">Close</v-btn>
       </div>
     </div>

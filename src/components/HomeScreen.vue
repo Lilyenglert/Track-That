@@ -29,9 +29,11 @@
         <div class='section'>
           <div class='section-title'>
             <h2 class='inline-block'>Trackers</h2>
-            <v-btn fab dark small color="#DF5C46" class='add-thing'>
-              <router-link to="/add"><v-icon>add</v-icon></router-link>
-            </v-btn>
+              <router-link to="/add" class='colored-button'>
+                <v-btn fab dark small color="#DF5C46" class='add-thing'>
+                  <v-icon>add</v-icon>
+                </v-btn>
+              </router-link>
           </div>
         </div>
         <div class='box-container'>
@@ -46,10 +48,12 @@
             <v-icon>add</v-icon>
           </v-btn>
           
-          <p class='inline-block right edit'><b><router-link to="/editCollection/">Edit</router-link></b></p>
+          <router-link to="/editCollection/">
+            <v-btn flat color='#DF5C46' class='inline-block right edit'>Edit</v-btn>
+          </router-link>
         </div>
         <div class='box-container'>
-            <div class = 'box' v-for="collection in this.collections" v-bind:key="collection.id">
+            <div class='box' v-for="collection in this.collections" v-bind:key="collection.id">
               <router-link :to="collection.path" class='box-text' style='border-radius:7px;background-color:#df5c46'>{{collection.name}}</router-link>
               </div>
           </div>
@@ -58,9 +62,6 @@
           <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
           
       </v-container>
-      <!-- <div class='content'>
-        
-      </div> -->
       
     </v-app>
   </div>

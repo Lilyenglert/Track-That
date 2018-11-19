@@ -4,9 +4,11 @@
       <!-- toolbar -->
       <v-toolbar fixed id="titlebar">
         <v-flex xs2>
-          <v-btn flat icon class='add-thing' @click="$router.go(-1)">
-            <v-icon color="#DF5C46">arrow_back</v-icon>
-          </v-btn>
+          <router-link to="./" class='no-under'>
+            <v-btn flat icon class='add-thing'>
+              <v-icon color="#DF5C46">arrow_back</v-icon>
+            </v-btn>
+          </router-link>
         </v-flex>
         <v-flex xs8>
           <v-toolbar-title class="page-title">Edit {{ $route.params.tracker }} Tracker</v-toolbar-title>
@@ -15,8 +17,6 @@
       <!-- /toolbar -->
 
       <v-container class="inner">
-        <!-- <p><router-link to="/">Back</router-link><p/> -->
-        <h1 class='page-title'>Edit Tracker</h1>
     
         <div class='section'>
           <h2 class='prompt'>What do you want to track?</h2>
@@ -53,11 +53,14 @@
           <p class='optional'>(Optional)</p>
         </div>
     
-      <!-- <button @click="add">Add Tracker</button> -->
-      <router-link to="/"><v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn></router-link>
-      <v-btn block @click="warning" class='submit-button'>
-          <router-link to="/" class='black-text'>Delete Tracker</router-link>
-      </v-btn>
+      <router-link to="/" class='no-under'>
+        <v-btn block dark color="#DF5C46" @click="edit" class='submit-button colored-button'>Confirm Changes</v-btn>
+      </router-link>
+      <router-link to="/" class='black-text no-under'>
+        <v-btn block @click="warning" class='submit-button'>
+            Delete Tracker
+        </v-btn>
+      </router-link>
       <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
     </v-container>
 

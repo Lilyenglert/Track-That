@@ -3,9 +3,11 @@
     <v-app>
       <v-toolbar fixed id="titlebar">
         <v-flex xs2>
-          <v-btn flat icon class='add-thing'>
-            <router-link to="/"><v-icon color="#DF5C46">arrow_back</v-icon></router-link>
-          </v-btn>
+          <router-link to="./" class='no-under'>
+            <v-btn flat icon class='add-thing'>
+              <v-icon color="#DF5C46">arrow_back</v-icon>
+            </v-btn>
+          </router-link>
         </v-flex>
         <v-flex xs8>
           <v-toolbar-title class="page-title">New Entry</v-toolbar-title>
@@ -20,7 +22,7 @@
         <div class='section'>
             <div class='section'>
             <div v-if="this.currentTrackerUnits.length ==1">
-                <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </h4>
+                <p><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </p>
             </div>
             <div v-else>
                 <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentTrackerUnits[0]}} </h4>
@@ -29,16 +31,16 @@
             </div>
 
           <div class='section'>
-            <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
+            <p>Date:<input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
           </div>
           <div class='section'>
-            <h4>Note:<textarea v-model="entryNote" :maxlength="140"></textarea></h4>
+            <p>Note:<textarea v-model="entryNote" :maxlength="140"></textarea></p>
           </div>
           <div class="section" id="btn_section">
           
-          <v-btn block large id="small-button" @click="createEntry" color='#DF5C46'>
-            <router-link to="./">Add Entry</router-link>
-          </v-btn>
+          <router-link to="./" class='no-under'>
+            <v-btn block large id="small-button" @click="createEntry" color='#DF5C46' class='colored-button'>Add Entry</v-btn>
+          </router-link>
           </div>
         </div>
       </div>

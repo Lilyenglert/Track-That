@@ -50,9 +50,11 @@
           </p>
         </div>
         
-        <v-btn block dark color="#DF5C46" @click="add" class='submit-button'>
-          <router-link to="/">Add Tracker</router-link>
-        </v-btn>
+        <router-link to="/" class='colored-button'>
+          <v-btn block dark color="#DF5C46" @click="add" class='submit-button'>
+            Add Tracker
+          </v-btn>
+        </router-link>
       </v-container>
     </v-app>
   </div>

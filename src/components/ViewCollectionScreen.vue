@@ -3,9 +3,11 @@
     <!-- toolbar -->
     <v-toolbar fixed id="titlebar">
       <v-flex xs2>
-        <v-btn flat icon class='add-thing'>
-          <router-link to="/"><v-icon color="#DF5C46">arrow_back</v-icon></router-link>
-        </v-btn>
+        <router-link to="/" class='no-under'>
+          <v-btn flat icon class='add-thing'>
+            <v-icon color="#DF5C46">arrow_back</v-icon>
+          </v-btn>
+        </router-link>
       </v-flex>
       <v-flex xs8>
         <v-toolbar-title class="page-title">{{ $route.params.collection }} Collection</v-toolbar-title>
@@ -29,9 +31,9 @@
     </div>
     </v-container>
     
-    <v-btn large color="#DF5C46" id='small-button'>
-          <router-link to="/add">Add a new tracker</router-link>
-        </v-btn>
+    <router-link to="/add" class='no-under'>
+      <v-btn large color="#DF5C46" id='small-button' class='colored-button'>Add a new tracker</v-btn>
+    </router-link>
   </div>
 </template>
 
