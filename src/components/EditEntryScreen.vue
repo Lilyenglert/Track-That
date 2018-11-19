@@ -46,7 +46,7 @@
     <v-btn large id="small-button" @click="warning">Remove Entry</v-btn>
     <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
     </div>
-    
+    </div>
   </div>
   </div>
 </template>
