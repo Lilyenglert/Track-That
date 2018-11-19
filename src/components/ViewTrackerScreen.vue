@@ -41,7 +41,7 @@
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
               <Chart :trackerID=$route.params.id></Chart>
-              <v-btn  id="switchButton" @click='switchUnits()' color="#DF5C46" class='colored-button'>Switch Units</v-btn>
+              <v-btn id="switchButton" @click='switchUnits()' color="#DF5C46" class='colored-button'>Switch Units</v-btn>
             </v-card>
         </div>
 

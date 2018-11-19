@@ -53,15 +53,11 @@
           <p class='optional'>(Optional)</p>
         </div>
     
-      <router-link to="/" class='no-under'>
-        <v-btn block dark color="#DF5C46" @click="edit" class='submit-button colored-button'>Confirm Changes</v-btn>
-      </router-link>
-      <router-link to="/" class='black-text no-under'>
-        <v-btn block @click="warning" class='submit-button'>
-            Delete Tracker
-        </v-btn>
-      </router-link>
-      <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
+    <router-link to="/" class='no-under'><v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn></router-link>
+    <v-btn block @click="warning" class='submit-button'>
+        <div class='black-text'>Delete Tracker</div>
+    </v-btn>
+    <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
     </v-container>
 
     </v-app>
