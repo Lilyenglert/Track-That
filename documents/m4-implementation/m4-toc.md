@@ -1,6 +1,15 @@
 # Milestone 4 - Implementation
 
 ## Table of Contents
+[1. Design Process Images](#design)
+
+[2. Design Changes](#design-changes)
+
+[3. Work Distribution](#work-distribution)
+
+[4. Code Iteration Screenshots](#code-iteration-screenshots)
+
+[5. Styleguide](#style-guide)
 
 ### Design
 
@@ -28,7 +37,7 @@ Sketching out objects and components in the planning phase:
 
 
 
-#### Design Changes
+### Design Changes
 
 ## Home Screen
 Because of the horizontal scroll used for viewing trackers, we found that the original plan to have a “create tracker box” at the end of the scroll list, was not accessible for the user as they would need to scroll. We added a button next to Collections and Trackers and 
@@ -53,10 +62,7 @@ We changed our original plan to have a separate view-entry and edit-entry page f
 We added a warning pop-up for each time the user tries to delete a tracker, entry, or collection as a precaution. This was not in the original design.
 
 
-
-
-
-#### Work Distribution: 
+### Work Distribution 
 
 ## Sarah 
 * Handling and structuring local storage 
@@ -96,9 +102,9 @@ We added a warning pop-up for each time the user tries to delete a tracker, entr
 
 
 
-#### Code iterations
+### Code Iteration Screenshots
 ![website homepage A](img/site-homepage-A.png)
 ![website homepage A](img/site-homepage-B.png)
 
-#### Styleguide
+#### Style Guide
 ![website homepage A](img/styleguide.png)
