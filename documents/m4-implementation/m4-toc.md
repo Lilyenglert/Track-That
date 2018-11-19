@@ -36,6 +36,10 @@ Because of the horizontal scroll used for viewing trackers, we found that the or
 ## Add Entry
 Our wireframes included entry-adding functionality on the main tracker page under the header “quick entry”. During development, we implemented this but found that it crowded the ViewTrackerScreen page, making it more difficult for the user to identify past data. 
 
+### Sketch for new "Add Entry"
+
+![new entry sketch](img/new-entry-sketch.jpg)
+
 ## All Edit Pages 
 Our original wireframes did not include details about the editing of collections, trackers, or entries, though we described these as a requirement. For consistency, we decided to use the same styling and layout that we did for the View Pages of each element.
 
