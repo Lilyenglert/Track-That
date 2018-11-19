@@ -54,36 +54,36 @@ We added a warning pop-up for each time the user tries to delete a tracker, entr
 
 #### Work Distribution: 
 
-##Sarah 
-*Handling and structuring local storage 
-*Adding, editing and removing Trackers
-*Adding, editing and removing Entries
-*Populating Home Screen
+## Sarah 
+* Handling and structuring local storage 
+* Adding, editing and removing Trackers
+* Adding, editing and removing Entries
+* Populating Home Screen
 
 ##Liam
-*Structuring navigation
-*Username entry
-*Warning and renaming popups
-*Displaying entries on line graph
-*Adding and renaming Collections
+* Structuring navigation
+* Username entry
+* Warning and renaming popups
+* Displaying entries on line graph
+* Adding and renaming Collections
 
-##Richi
-*Creating entries
-*Editing trackers
-*Editing entries
-*Sorting and displaying entry logs by date
-*Sorting tracker list and collection list 
+## Richi
+* Creating entries
+* Editing trackers
+* Editing entries
+* Sorting and displaying entry logs by date
+* Sorting tracker list and collection list 
 
-##Stephanie
-*Style guide / Medium Fidelities
-*Homepage formatting
-*Random colors
+## Stephanie
+* Style guide / Medium Fidelities
+* Homepage formatting
+* Random colors
 
-##Lily 
-*View/Edit tracker pages structure and styling
-*Collection / Edit collection formatting
-*Tracker log
-*General styling 
+## Lily 
+* View/Edit tracker pages structure and styling
+* Collection / Edit collection formatting
+* Tracker log
+* General styling 
 
 
 
