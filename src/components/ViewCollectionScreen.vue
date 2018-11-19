@@ -24,8 +24,8 @@
 
       <!-- vanilla html/css -->
       <div id="grid">
-        <div class='box' v-for="tracker in filterTrackers($route.params.collection)"  v-bind:key="tracker.id">
-          <router-link :to="tracker.path" class='box-text' style='border-radius:7px;background-color:#5c46df;' >{{tracker.name}}</router-link>
+        <div class='box' v-for="tracker in filterTrackers($route.params.collection)" v-bind:key="tracker.id">
+          <router-link :to="tracker.path" v-bind:style="{'background-color': tracker.color, 'border-radius': '7px'}" class='box-text' >{{tracker.name}}</router-link>
         </div>
       </div> 
     </div>

@@ -38,7 +38,7 @@
         </div>
         <div class='box-container'>
             <div class='box' v-for="tracker in trackers" v-bind:key="tracker.id" v-if="tracker">
-              <router-link :to="tracker.path" class='box-text' style='border-radius:7px;background-color:#5c46df;'>{{tracker.name}}</router-link>
+              <router-link :to="tracker.path" v-bind:style="{'background-color': tracker.color, 'border-radius': '7px'}" class='box-text'>{{tracker.name}}</router-link>
             </div>
           </div>
 
@@ -54,7 +54,7 @@
         </div>
         <div class='box-container'>
             <div class='box' v-for="collection in this.collections" v-bind:key="collection.id">
-              <router-link :to="collection.path" class='box-text' style='border-radius:7px;background-color:#df5c46'>{{collection.name}}</router-link>
+              <router-link :to="collection.path" v-bind:style="{'background-color': collection.color, 'border-radius': '7px'}" class='box-text'>{{collection.name}}</router-link>
               </div>
           </div>
 
@@ -134,8 +134,7 @@ export default {
 }
   
 }
-let colors = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#df5c46'];
-let randIndex = Math.floor(Math.random() * (colors.length + 1));
+
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

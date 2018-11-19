@@ -182,6 +182,7 @@ stuff for boxes on home page
     display: table-cell;
     text-align: center;
     text-transform: capitalize;
+    color: white;
 }
 
 /** CREATE TRACKER **/

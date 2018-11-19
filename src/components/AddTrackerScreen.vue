@@ -61,7 +61,9 @@
 </template>
 
 <script>
+
 export default {
+  
   name: 'AddTrackerScreen',
   data () {
     return {
@@ -78,7 +80,7 @@ export default {
       newTrackerUnit: null,
       newTrackerUnit2: null,
       newTrackerGoal: null,
-      NewTrackerCollection: null
+      NewTrackerCollection: null,
     }
   },
   mounted () {
@@ -106,7 +108,12 @@ export default {
   },
   methods: {
     add () {
-      // console.log('clicked');
+      let colorList = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8'];
+      let randIndex = Math.floor(Math.random() * (colorList.length));
+      let randomColor = colorList[randIndex];
+      console.log(randIndex);
+      console.log(randomColor);
+
       // ensure they actually typed something
       if (!this.newTrackerName) {
         return
@@ -128,14 +135,15 @@ export default {
       if(this.newTrackerUnit2 != null){
         this.units.push(this.newTrackerUnit2);
       }
-    
+
       var trackerEntry = {
         'id' : fetchedTrackerIDIncremented, 
         'path' : '/view/' + fetchedTrackerIDIncremented + '/' + this.newTrackerName + '/',
         'name': this.newTrackerName,
         'unit': this.units,
         'goal': this.newTrackerGoal,
-        'collection': this.NewTrackerCollection
+        'collection': this.NewTrackerCollection,
+        'color' : randomColor
       }; 
       this.trackerID.push(fetchedTrackerIDIncremented);
       if(trackerEntry.name !=null)
@@ -165,6 +173,7 @@ export default {
       this.unit = []
       this.newTrackerGoal = ''
       this.newTrackerCollection = ''
+      this.newColor = 'gray'
     },
     addUnit()
     {
