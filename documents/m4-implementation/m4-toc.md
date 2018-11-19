@@ -1,23 +1,35 @@
-Table of Contents
+# Milestone 4 - Implementation
+
+## Table of Contents
+
+### Design
+
+#### Original wireframes:
+
+![wireframes](../m3-design/images/wireframes-med.png)
 
 
-Milestone 4 - Implementation
+#### Planning for Implementation
+
+Sketching out objects and components in the planning phase:
+![pseudocoding 1](img/code-planning-1.jpg)
+![pseudocoding 2](img/code-planning-2.jpg)
 
 
-Design
+#### High Fidelities
 
-Original wireframes:
+**Home Page**
+![hifi home A](img/hi-fi-dashboard-A.png)
+![hifi home B](img/hi-fi-dashboard-B.png)
 
-![wireframes](img/wireframes1)
-
-
-
-Planning for Implementation
-
-Objects and components planning can be found here.
+**Create Tracker**
+![hifi create tracker 1](img/hifi-create-tracker-1.png)
+![hifi create tracker 2](img/hifi-create-tracker-2.png)
 
 
+#### Code iterations
+![website homepage A](img/site-homepage-A.png)
+![website homepage A](img/site-homepage-B.png)
 
-High Fidelities 
-
-Our folder with high fidelities can be found here.
+#### Styleguide
+![website homepage A](img/styleguide.png)
