@@ -108,7 +108,7 @@ export default {
   },
   methods: {
     add () {
-      let colorList = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8'];
+      let colorList = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#df5c46'];
       let randIndex = Math.floor(Math.random() * (colorList.length));
       let randomColor = colorList[randIndex];
       console.log(randIndex);
