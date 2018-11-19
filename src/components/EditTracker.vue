@@ -39,27 +39,28 @@
     
         <div class='section'>
           <h2 class='prompt'>Write down any goals you have.</h2>
-          <p class='optional'>(Optional)</p>
           <textarea v-model="newTrackerGoal"></textarea>
+          <p class='optional'>(Optional)</p>
         </div>
       
         <div class='section'>
           <h2 class='prompt'>Add tracker to collection?</h2>
-          <p class='optional'>(Optional)</p>
           <p>
             <select v-model="NewTrackerCollection">
               <option v-for="collection in collections" v-bind:key="collection.id">{{collection.name}}</option>
             </select>
           </p>
+          <p class='optional'>(Optional)</p>
         </div>
     
-        <!-- <button @click="add">Add Tracker</button> -->
-        <router-link to="/">
-          <v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn>
-        </router-link>
-        <v-btn block dark color="#DF5C46" @click="warning" class='submit-button'>Remove Tracker</v-btn>
-        <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
-      </v-container>
+      <!-- <button @click="add">Add Tracker</button> -->
+      <router-link to="/"><v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn></router-link>
+      <v-btn block @click="warning" class='submit-button'>
+          <router-link to="/" class='black-text'>Delete Tracker</router-link>
+      </v-btn>
+      <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
+    </v-container>
+
     </v-app>
   </div>
 </template>
@@ -261,7 +262,16 @@ a {
   text-align: center;
 }
 
+
 .black-text {
   color: black;
 }
+
+.section{
+  text-align: left;
+  margin-bottom: 10%;
+}
+
+/* .prompt{
+} */
 </style>

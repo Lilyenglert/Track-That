@@ -4,6 +4,7 @@
     <div class="popup">
       <h2>Create Collection</h2>
       <p><input v-model="newCollectionName" :maxlength="15"></p>
+      <div v-show='containsSpecChars'><p>Collection name should only contain numbers and/or letters.</p></div>
       <div id="save-back">
       <v-btn color='#DF5C46' class="small-button" @click="add">Save</v-btn>
       <v-btn class='close-button' @click="close">Close</v-btn>
@@ -20,7 +21,8 @@ export default {
     return {
       collections: [],
       newCollectionName: null,
-      newCollectionPath: null
+      newCollectionPath: null,
+      containsSpecChars:false
     }
   },
   mounted () {
@@ -38,25 +40,26 @@ export default {
       if (!this.newCollectionName) {
         return
       }
-       this.newCollectionName = this.newCollectionName.replace(/\//g, '-');
-       this.newCollectionName = encodeURI(this.newCollectionName);
 
+      var isAlphanumeric = require('is-alphanumeric');
+      var exp  = '/^[a-z0-9]+$/i';
+        if(!isAlphanumeric(this.newCollectionName))
+        {
+          this.containsSpecChars = true;
+        }
+        else{
+          
+        this.containsSpecChars = false;
       var trackerEntry = {
         'name': this.newCollectionName,
         'path' : '/collectionView/' + this.newCollectionName + '/',
-
       }
       if(this.collections)
       this.collections.push(trackerEntry)
-      this.collections.sort(function(a, b){
-        var first = a.name.toLowerCase(); var second = b.name.toLowerCase();
-        if(first < second) { return -1; }
-        if(first > second) { return 1; }
-        return 0;
-      })
       this.newCollectionName = ''
       this.save()
       this.$emit('close');
+        }
     },
     remove (x) {
       this.collections.splice(x, 1)
@@ -76,8 +79,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-
-
 h2{
   margin-bottom: 5px;
 }
@@ -92,7 +93,6 @@ h2{
     justify-content: center;
     align-items: center;
   }
-
   .popup {
     align-content: center;
     border-radius: 4px;
@@ -103,28 +103,22 @@ h2{
     display: flex;
     flex-direction: column;
   }
-
   .popup-enter {
   opacity: 0;
 }
-
 .popup-leave-active {
   opacity: 0;
 }
-
 .popup-enter .popup-container,
 .popup-leave-active .popup-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-
 #save-back{
   display: inline;
   text-align: center;
 }
-
 .close-button .v-btn__content {
   color: black;
 }
-
 </style>

@@ -14,9 +14,16 @@
         <v-flex xs8>
           <v-toolbar-title class="page-title">Edit Entry</v-toolbar-title>
         </v-flex>
-      </v-toolbar>
-      <!-- /toolbar -->
+      <v-flex xs2>
+      </v-flex>
 
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+      </v-toolbar-items>
+    </v-toolbar>
+      
+
+      
       <div id="add-entry-div" class="inner">
         <div class='section'>
           <h2 class='prompt'>Edit your <i>{{ $route.params.tracker }}</i> entry here.</h2>
@@ -40,16 +47,17 @@
             <h4>Note:<textarea v-model="entryNote" :maxlength="140"></textarea></h4>
           </div>
           <div class="section" id="btn_section">
-            <!-- <button @click="test">Test</button> -->
-            <router-link to="../">
-              <v-btn large id="small-button" @click="editEntry">Confirm Changes</v-btn>
-            </router-link>
-            <v-btn large id="small-button" @click="warning">Remove Entry</v-btn>
+            <v-btn large @click="editEntry" color='#DF5C46'>
+              <router-link to="../">Confirm Edits</router-link>
+            </v-btn>
+            <v-btn large @click="warning">
+              <router-link to="../" class='black-text'>Delete Entry</router-link>
+            </v-btn>
             <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
           </div>
         </div>
       </div>
-    </v-app>
+      </v-app>
   </div>
 </template>
 

@@ -76,15 +76,17 @@ export default {
       //class to make it responsive
       .classed("svg-content-responsive", true); 
   
-    if (this.entryData.length >= 2) {
+    if(this.entryData.length >= 2){
     var x = d3.scaleTime()
       .domain([new Date(Math.min.apply(null,this.entryDates)), new Date(Math.max.apply(null,this.entryDates))])
       .range([35, 340])
     
     var y = d3.scaleLinear()
-      .domain([0.95 * d3.min(this.entryValues), 1.05 * d3.max(this.entryValues)]).range([210, 0]).nice()
+      .domain([0.95 * d3.min(this.entryValues), 1.05 * d3.max(this.entryValues)]).range([210, 0])
+      .nice()
     
-    var dateDifference = (new Date(Math.max.apply(null,this.entryDates)).getTime() - new Date(Math.min.apply(null,this.entryDates)).getTime())/(1000 * 3600 * 24)
+    var dateDifference = (new Date(Math.max.apply(null,this.entryDates)).getTime() - new Date(Math.min.apply(null,this.entryDates))
+      .getTime())/(1000 * 3600 * 24)
     
     var createPath = d3.line()
       .x(function (d) { return x(d.date) })
