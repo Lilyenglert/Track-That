@@ -10,8 +10,6 @@
         </v-flex>
         <v-flex xs8>
           <v-toolbar-title class="page-title">Add Tracker</v-toolbar-title>
-       
-          
         </v-flex>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>

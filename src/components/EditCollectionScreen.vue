@@ -24,7 +24,7 @@
         <div id="grid-box" v-for="(collection, n) in collections" v-bind:key="collection.n">
           <div class ='box' id='overlay_box'>
             <div class='box-text' id='icon-text-box' style='border-radius:7px;background-color:rgb(255,255,255,0.1);'><a></a>
-             <v-btn icon small color="#DF5C46" class='delete_button' id='small-button' @click="warning(collection, n)"><v-icon>close</v-icon></v-btn>
+             <v-btn flat icon class='delete_button' id='add-thing' @click="warning(collection, n)"><v-icon>close</v-icon></v-btn>
             </div>
           </div>
           <div class ='box'>
@@ -203,6 +203,10 @@ a {
   vertical-align: top;
   text-align: right;
   padding: 0;
+}
+
+#add-thing{
+  margin: 0;
 }
 
 </style>
