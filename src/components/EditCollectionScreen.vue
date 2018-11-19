@@ -208,4 +208,8 @@ a {
   padding: 0;
 }
 
+#add-thing{
+  margin: 0;
+}
+
 </style>
