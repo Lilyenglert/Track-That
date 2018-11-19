@@ -131,6 +131,7 @@ export default {
     if (this.currentTrackerUnits.length == 2) {
         if (this.newEntryValue2==null) {return}
       };
+    if (this.newEntryDate == "") {return};
 
     var fetchedEntryIDIncremented;
     var fetchedEntryID = JSON.parse(localStorage.getItem('entryID'));

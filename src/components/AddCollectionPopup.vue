@@ -4,6 +4,7 @@
     <div class="popup">
       <h2>Create Collection</h2>
       <p><input v-model="newCollectionName" :maxlength="15"></p>
+      <div v-show='containsSpecChars'><p>Collection name should only contain numbers and/or letters.</p></div>
       <div id="save-back">
       <v-btn color='#DF5C46' class="small-button" @click="add">Save</v-btn>
       <v-btn class='close-button' @click="close">Close</v-btn>
@@ -20,7 +21,8 @@ export default {
     return {
       collections: [],
       newCollectionName: null,
-      newCollectionPath: null
+      newCollectionPath: null,
+      containsSpecChars:false
     }
   },
   mounted () {
@@ -38,6 +40,16 @@ export default {
       if (!this.newCollectionName) {
         return
       }
+
+      var isAlphanumeric = require('is-alphanumeric');
+      var exp  = '/^[a-z0-9]+$/i';
+        if(!isAlphanumeric(this.newCollectionName))
+        {
+          this.containsSpecChars = true;
+        }
+        else{
+          
+        this.containsSpecChars = false;
       var trackerEntry = {
         'name': this.newCollectionName,
         'path' : '/collectionView/' + this.newCollectionName + '/',
@@ -47,6 +59,7 @@ export default {
       this.newCollectionName = ''
       this.save()
       this.$emit('close');
+        }
     },
     remove (x) {
       this.collections.splice(x, 1)

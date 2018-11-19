@@ -91,19 +91,40 @@ export default {
       bottomAxis = d3.axisBottom(x).ticks(5)
     }
     var leftAxis = d3.axisLeft(y).ticks(5)
-    svg.append('text').attr("x", -85).attr("y", 10).text(this.currentTracker.unit[this.unitSelector]).style("text-anchor", "middle").attr('transform', 'rotate(270)').style("font-size", "10pt")
-    svg.append('text').attr("x", 180).attr("y", 240).text("Date").style("text-anchor", "middle").style("font-size", "10pt").style('font-family', 'Roboto')
+    svg.append('text')
+      .attr("x", -105).attr("y", 10)
+      .text(this.currentTracker.unit[this.unitSelector])
+      .style("text-anchor", "middle")
+      .attr('transform', 'rotate(270)')
+      .style("font-size", "10pt")
+
+    svg.append('text')
+      .attr("x", 180).attr("y", 240)
+      .text("Date").style("text-anchor", "middle")
+      .style("font-size", "10pt")
+      .style('font-family', 'Roboto')
+
     svg.append('g').call(bottomAxis)
       .attr("class", "axis")
       .attr('transform', 'translate(0,210)')
+
     svg.append('g').call(leftAxis)
       .attr("class", "axis")
       .attr('transform', 'translate(35,0)')
-    svg.append('path').attr('d', createPath(this.entryData)).attr('id', 'dataPath')
+    
+    svg.append('path')
+      .attr('d', createPath(this.entryData))
+      .attr('id', 'dataPath')
     }
     else{
-      svg.append('text').attr("x", 180).attr("y", 125).text("Please add at least two").style("text-anchor", "middle")
-      svg.append('text').attr("x", 180).attr("y", 145).text("entries to see your progress!").style("text-anchor", "middle")
+      svg.append('text')
+        .attr("x", 180).attr("y", 125)
+        .text("Please add at least two")
+        .style("text-anchor", "middle")
+      svg.append('text')
+        .attr("x", 180).attr("y", 145)
+        .text("entries to see your progress!")
+        .style("text-anchor", "middle")
     }
 
     EventBus.$on('switchUnits', function (ID) {

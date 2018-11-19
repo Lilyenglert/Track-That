@@ -40,6 +40,10 @@ button .v-btn__content a, .v-list__tile__action a, button .v-btn__content {
      display: inline-block;
  }
 
+ .centered {
+     text-align: center;
+ }
+
 /* ###### HOMESCREEN.VUE ###### */
 
 #home-screen .page-title {
@@ -152,6 +156,7 @@ stuff for boxes on home page
     vertical-align: middle;
     display: table-cell;
     text-align: center;
+    text-transform: capitalize;
 }
 
 /** CREATE TRACKER **/
@@ -161,6 +166,8 @@ stuff for boxes on home page
 
 input, textarea, select {
     border-bottom: solid rgb(223, 92, 70) 2px;
+    padding-left: 5px;
+    font-weight: 500;
 }
 
 .prompt {
@@ -203,6 +210,7 @@ input, textarea, select {
 
 .submit-button {
     height: 50px;
+    margin: 20px 0;
 }
 
 
