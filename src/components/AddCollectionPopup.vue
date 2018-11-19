@@ -1,5 +1,5 @@
 <template>
-  <transition name="popup">
+  <transition name="popup-fade">
   <div class="popup-backdrop">
     <div class="popup">
       <h2>Create Collection</h2>
@@ -103,16 +103,15 @@ h2{
     display: flex;
     flex-direction: column;
   }
-  .popup-enter {
+  
+.popup-fade-enter,
+.popup-fade-leave-active {
   opacity: 0;
 }
-.popup-leave-active {
-  opacity: 0;
-}
-.popup-enter .popup-container,
-.popup-leave-active .popup-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+
+.popup-fade-enter-active,
+.popup-fade-leave-active {
+  transition: opacity .5s ease
 }
 #save-back{
   display: inline;

@@ -77,7 +77,7 @@ export default {
       .classed("svg-content-responsive", true); 
   
     if(this.entryData.length >= 2){
-    var x = d3.scaleTime().domain([new Date(Math.min.apply(null,this.entryDates)), new Date(Math.max.apply(null,this.entryDates))]).range([35, 340])
+    var x = d3.scaleTime().domain([new Date(Math.min.apply(null,this.entryDates)), new Date(Math.max.apply(null,this.entryDates))]).range([60, 340])
     var y = d3.scaleLinear().domain([0.95 * d3.min(this.entryValues), 1.05 * d3.max(this.entryValues)]).range([210, 0]).nice()
     var dateDifference = (new Date(Math.max.apply(null,this.entryDates)).getTime() - new Date(Math.min.apply(null,this.entryDates)).getTime())/(1000 * 3600 * 24)
     var createPath = d3.line()
@@ -110,7 +110,7 @@ export default {
 
     svg.append('g').call(leftAxis)
       .attr("class", "axis")
-      .attr('transform', 'translate(35,0)')
+      .attr('transform', 'translate(60,0)')
     
     svg.append('path')
       .attr('d', createPath(this.entryData))
@@ -179,7 +179,7 @@ export default {
       svg.append('g')
         .attr('transform', 'translate(0, 10)')
       if(this.entryData.length >= 2){
-    var x = d3.scaleTime().domain([new Date(Math.min.apply(null,this.entryDates)), new Date(Math.max.apply(null,this.entryDates))]).range([35, 340])
+    var x = d3.scaleTime().domain([new Date(Math.min.apply(null,this.entryDates)), new Date(Math.max.apply(null,this.entryDates))]).range([60, 340])
     var y = d3.scaleLinear().domain([0.95 * d3.min(this.entryValues), 1.05 * d3.max(this.entryValues)]).range([210, 0]).nice()
     var dateDifference = (new Date(Math.max.apply(null,this.entryDates)).getTime() - new Date(Math.min.apply(null,this.entryDates)).getTime())/(1000 * 3600 * 24)
     var createPath = d3.line()
@@ -199,7 +199,7 @@ export default {
       .attr('transform', 'translate(0,210)')
     svg.append('g').call(leftAxis)
       .attr("class", "axis")
-      .attr('transform', 'translate(35,0)')
+      .attr('transform', 'translate(60,0)')
     svg.append('path').attr('d', createPath(this.entryData)).attr('id', 'dataPath')
     }
     else{

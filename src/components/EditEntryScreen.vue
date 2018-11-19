@@ -5,7 +5,7 @@
       <!-- toolbar -->
       <v-toolbar fixed flat id="titlebar">
         <v-flex xs2>
-        <v-btn flat icon class='add-thing' @click="$router.go(-1)">
+        <v-btn flat icon class='add-thing'>
           <router-link to="../">
             <v-icon color="#DF5C46">arrow_back</v-icon>
           </router-link>
