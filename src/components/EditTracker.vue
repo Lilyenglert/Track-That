@@ -54,7 +54,7 @@
     <!-- <button @click="add">Add Tracker</button> -->
     <router-link to="/"><v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn></router-link>
     <v-btn block @click="warning" class='submit-button'>
-        <router-link to="/" class='black-text'>Delete Tracker</router-link>
+        <div class='black-text'>Delete Tracker</div>
     </v-btn>
     <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
     </v-container>

@@ -63,6 +63,7 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 12;
   }
 
   .popup {
