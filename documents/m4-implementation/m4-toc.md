@@ -40,7 +40,7 @@ Sketching out objects and components in the planning phase:
 ### Design Changes
 
 ## Home Screen
-Because of the horizontal scroll used for viewing trackers, we found that the original plan to have a “create tracker box” at the end of the scroll list, was not accessible for the user as they would need to scroll. We added a button next to Collections and Trackers and 
+Because of the horizontal scroll used for viewing trackers, we found that the original plan to have a “create tracker box” at the end of the scroll list, was not accessible for the user as they would need to scroll. Instead we added an easy to see plus button next to Collections and Trackers to indicate where to create new trackers.
 
 ## Add Entry
 Our wireframes included entry-adding functionality on the main tracker page under the header “quick entry”. During development, we implemented this but found that it crowded the ViewTrackerScreen page, making it more difficult for the user to identify past data. 
