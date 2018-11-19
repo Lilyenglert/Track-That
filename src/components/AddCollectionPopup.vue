@@ -3,7 +3,7 @@
   <div class="popup-backdrop">
     <div class="popup">
       <h2>Create Collection</h2>
-      <p><input v-model="newCollectionName"></p>
+      <p><input v-model="newCollectionName" :maxlength="15"></p>
       <div id="save-back">
       <v-btn color='#DF5C46' class="small-button" @click="add">Save</v-btn>
       <v-btn class='close-button' @click="close">Close</v-btn>
@@ -38,12 +38,22 @@ export default {
       if (!this.newCollectionName) {
         return
       }
+       this.newCollectionName = this.newCollectionName.replace(/\//g, '-');
+       this.newCollectionName = encodeURI(this.newCollectionName);
+
       var trackerEntry = {
         'name': this.newCollectionName,
         'path' : '/collectionView/' + this.newCollectionName + '/',
+
       }
       if(this.collections)
       this.collections.push(trackerEntry)
+      this.collections.sort(function(a, b){
+        var first = a.name.toLowerCase(); var second = b.name.toLowerCase();
+        if(first < second) { return -1; }
+        if(first > second) { return 1; }
+        return 0;
+      })
       this.newCollectionName = ''
       this.save()
       this.$emit('close');

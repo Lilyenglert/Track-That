@@ -15,32 +15,34 @@
       <!-- /toolbar -->
 
       <v-container class="inner">
+        <!-- <p><router-link to="/">Back</router-link><p/> -->
+        <h1 class='page-title'>Edit Tracker</h1>
+    
         <div class='section'>
           <h2 class='prompt'>What do you want to track?</h2>
           <p>Tracker Name: <input v-model="newTrackerName"></p>
         </div>
-        
+    
         <div class='section'>
           <h2 class='prompt'>What units are we tracking?</h2>
           <!-- <div v-for="tracker in filterTrackers($route.params.id)" v-bind:key="tracker.id"> -->
-              <div v-if="this.twoUnits">
-                <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
-                <p>Tracker Units: <input v-model="newTrackerUnit2"></p>
-              </div>
+            <div v-if="this.twoUnits">
+              <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
+              <p>Tracker Units: <input v-model="newTrackerUnit2"></p>
+            </div>
           
-              <div v-else>
-                <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
-              </div>
-
+            <div v-else>
+              <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
+            </div>
           <!-- </div> -->
         </div>
-        
+    
         <div class='section'>
           <h2 class='prompt'>Write down any goals you have.</h2>
           <p class='optional'>(Optional)</p>
           <textarea v-model="newTrackerGoal"></textarea>
         </div>
-        
+      
         <div class='section'>
           <h2 class='prompt'>Add tracker to collection?</h2>
           <p class='optional'>(Optional)</p>
@@ -50,22 +52,25 @@
             </select>
           </p>
         </div>
-        
+    
         <!-- <button @click="add">Add Tracker</button> -->
-        <v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>
-          <router-link to="/">Confirm Edits</router-link>
-        </v-btn>
-        <v-btn block @click="remove" class='submit-button'>
-          <router-link to="/" class='black-text'>Delete Tracker</router-link>
-        </v-btn>
+        <router-link to="/">
+          <v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn>
+        </router-link>
+        <v-btn block dark color="#DF5C46" @click="warning" class='submit-button'>Remove Tracker</v-btn>
+        <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
       </v-container>
     </v-app>
   </div>
 </template>
 
 <script>
+import DeleteWarningPopup from './DeleteWarningPopup.vue'
 export default {
   name: 'EditTracker',
+  components:{
+    DeleteWarningPopup,
+  },
   data () {
     return {
       collections: [{
@@ -83,7 +88,8 @@ export default {
       newTrackerUnit1: null,
       newTrackerUnit2: null,
       newTrackerGoal: null,
-      NewTrackerCollection: null
+      NewTrackerCollection: null,
+      isPopupVisible: false
     }
   },
 
@@ -184,8 +190,12 @@ console.log("id + " + this.$route.params.id);
         this.cleanTrackerValues();
         this.save()
     }, 
- 
-
+    warning() {
+      this.isPopupVisible = true;
+    },
+    closeWarning() {
+      this.isPopupVisible = false;
+    },
     
     getLocal()
     {
@@ -195,6 +205,7 @@ console.log("id + " + this.$route.params.id);
 
     remove()
     {
+      this.isPopupVisible = false;
       for (var i = 0; i < this.trackers.length; i++)
       {
           if(this.trackers[i].id == this.$route.params.id)
@@ -203,6 +214,7 @@ console.log("id + " + this.$route.params.id);
           }
       }
        this.save ();
+       this.$router.push('/')
     },
   
 

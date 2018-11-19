@@ -39,7 +39,7 @@
             <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
           </div>
           <div class='section'>
-            <h4>Note:<textarea v-model="entryNote"></textarea></h4>
+            <h4>Note:<textarea v-model="entryNote" :maxlength="140"></textarea></h4>
           </div>
           <div class="section" id="btn_section">
           
@@ -144,7 +144,7 @@ export default {
     }
   
     var newEntryInput = {
-      'id' : fetchedEntryIDIncremented, 
+        'id' : fetchedEntryIDIncremented, 
         "message": this.entryNote,
         "date" : this.newEntryDate,
         "value": this.newEntries,
@@ -152,6 +152,8 @@ export default {
         "trackerID": this.$route.params.id
     };
     this.entries.push(newEntryInput);
+
+    this.entries.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()})
 
     this.entryID.push(fetchedEntryIDIncremented);
 
@@ -178,10 +180,9 @@ export default {
     localStorage.setItem('entries', parsed);
 
 
-      const parsedID = JSON.stringify(this.entryID)
-      localStorage.setItem('entryID', parsedID)
+    const parsedID = JSON.stringify(this.entryID)
+    localStorage.setItem('entryID', parsedID)
 
-       //console.log(this.entries[1]);
     this.entries.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
     console.log(this.entries);
   }

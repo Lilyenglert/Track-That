@@ -15,9 +15,14 @@
 
           <div class='solid'>
             <h3>Goals</h3>
-            <div v-for="tracker in trackers" v-bind:key="tracker.id">
-              <p class='message'><i>{{tracker.goal}}</i></p>
-            </div> 
+            <div v-if="goalsPresent">
+              <div v-for="tracker in trackers" v-bind:key="tracker.id">
+                <p class='message'>{{tracker.goal}}</p>
+              </div>
+            </div>
+            <div v-else>
+              <p> None yet!</p>
+            </div>
           </div>
         </div>
 
@@ -89,7 +94,9 @@ export default {
       }],
     name: 'HomeScreen',
     isPopupVisible: false,
-    nameCheck: false
+    nameCheck: false,
+    goalsPresent: false
+
     }
   },
    mounted() {
@@ -97,6 +104,11 @@ export default {
     if(this.username == null){
       this.username = 'User';
       this.nameCheck = true;
+    }
+    for(var i = 0; i<this.trackers.length; i++){
+      if(this.trackers[i].goal != null){
+        this.goalsPresent = true
+      }
     }
   },
   methods:{
@@ -117,6 +129,7 @@ export default {
     this.collections = JSON.parse(localStorage.getItem('collections'));
     this.username = localStorage.getItem('userName');
   }
+  
 }
   
 }

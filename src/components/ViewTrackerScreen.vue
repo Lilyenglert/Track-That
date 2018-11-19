@@ -40,7 +40,7 @@
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
               <Chart :trackerID=$route.params.id></Chart>
-              <v-btn id="switchButton" @click='switchUnits()' color="#DF5C46">Switch Units</v-btn>
+              <v-btn  id="switchButton" @click='switchUnits()' color="#DF5C46">Switch Units</v-btn>
             </v-card>
         </div>
 
@@ -113,9 +113,12 @@ export default {
       trackers:[],
       entries:[],
       currentTracker:'',
+      isTwoEntries:null,
       currentTrackerGoal:'',
       currentTrackerUnits:'', 
+      uniqueDates:[],
       entryPath: '',
+      tempEntries:[],
       logsPresent: false
     }
   },
@@ -149,15 +152,19 @@ export default {
     else{
       document.getElementById("goalsContainer").style.display = "block"
     }
-    if(this.currentTrackerUnits.length <= 1){
-      document.getElementById("switchButton").style.display = "none"
-    }
+
     for (let index = 0; index < this.entries.length; index++) {
       if(this.entries[index].trackerID == this.$route.params.id){
+        this.tempEntries.push(this.entries[index].date);
         this.logsPresent = true
       }
     }
-    
+    this.uniqueDates = this.tempEntries.filter(function onlyUnique(value, index, self) { 
+      return self.indexOf(value) === index;
+    })
+    if(this.currentTrackerUnits.length <= 1 || this.uniqueDates.length <=2){
+      document.getElementById("switchButton").style.display = "none"
+    }
   },
   methods: {
     filterEntries: function (currentTracker) {
