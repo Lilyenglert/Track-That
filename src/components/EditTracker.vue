@@ -4,9 +4,11 @@
       <!-- toolbar -->
       <v-toolbar fixed id="titlebar">
         <v-flex xs2>
-          <v-btn flat icon class='add-thing' @click="$router.go(-1)">
-            <v-icon color="#DF5C46">arrow_back</v-icon>
-          </v-btn>
+          <router-link to="./" class='no-under'>
+            <v-btn flat icon class='add-thing'>
+              <v-icon color="#DF5C46">arrow_back</v-icon>
+            </v-btn>
+          </router-link>
         </v-flex>
         <v-flex xs8>
           <v-toolbar-title class="page-title">Edit {{ $route.params.tracker }} Tracker</v-toolbar-title>
@@ -15,32 +17,32 @@
       <!-- /toolbar -->
 
       <v-container class="inner">
+    
         <div class='section'>
           <h2 class='prompt'>What do you want to track?</h2>
           <p>Tracker Name: <input v-model="newTrackerName"></p>
         </div>
-        
+    
         <div class='section'>
           <h2 class='prompt'>What units are we tracking?</h2>
           <!-- <div v-for="tracker in filterTrackers($route.params.id)" v-bind:key="tracker.id"> -->
-              <div v-if="this.twoUnits">
-                <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
-                <p>Tracker Units: <input v-model="newTrackerUnit2"></p>
-              </div>
+            <div v-if="this.twoUnits">
+              <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
+              <p>Tracker Units: <input v-model="newTrackerUnit2"></p>
+            </div>
           
-              <div v-else>
-                <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
-              </div>
-
+            <div v-else>
+              <p>Tracker Units: <input v-model="newTrackerUnit1"></p>
+            </div>
           <!-- </div> -->
         </div>
-        
+    
         <div class='section'>
           <h2 class='prompt'>Write down any goals you have.</h2>
           <textarea v-model="newTrackerGoal"></textarea>
           <p class='optional'>(Optional)</p>
         </div>
-        
+      
         <div class='section'>
           <h2 class='prompt'>Add tracker to collection?</h2>
           <p>
@@ -51,10 +53,9 @@
           <p class='optional'>(Optional)</p>
         </div>
     
-    <!-- <button @click="add">Add Tracker</button> -->
-    <router-link to="/"><v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn></router-link>
+    <router-link to="/" class='no-under'><v-btn block dark color="#DF5C46" @click="edit" class='submit-button'>Confirm Changes</v-btn></router-link>
     <v-btn block @click="warning" class='submit-button'>
-        <router-link to="/" class='black-text'>Delete Tracker</router-link>
+        <div class='black-text'>Delete Tracker</div>
     </v-btn>
     <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
     </v-container>

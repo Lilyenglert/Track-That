@@ -2,28 +2,21 @@
 <template>
   <div id='edit-entry'>
     <v-app>
-      <!-- toolbar -->
-      <v-toolbar fixed flat id="titlebar">
-        <v-flex xs2>
-        <v-btn flat icon class='add-thing' @click="$router.go(-1)">
-          <router-link to="../">
-            <v-icon color="#DF5C46">arrow_back</v-icon>
-          </router-link>
-          </v-btn>
-        </v-flex>
-        <v-flex xs8>
-          <v-toolbar-title class="page-title">Edit Entry</v-toolbar-title>
-        </v-flex>
+    <!-- toolbar -->
+    <v-toolbar fixed id="titlebar">
       <v-flex xs2>
+        <router-link to="../" class='no-under'>
+          <v-btn flat icon class='add-thing'>
+            <v-icon color="#DF5C46">arrow_back</v-icon>
+          </v-btn>
+        </router-link>
       </v-flex>
-
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-      </v-toolbar-items>
+      <v-flex xs8>
+        <v-toolbar-title class="page-title">Edit Entry</v-toolbar-title>
+      </v-flex>
     </v-toolbar>
-      
-
-      
+    <!-- /toolbar -->
+    
       <div id="add-entry-div" class="inner">
         <div class='section'>
           <h2 class='prompt'>Edit your <i>{{ $route.params.tracker }}</i> entry here.</h2>
@@ -31,28 +24,28 @@
 
         <div class='section'>
           <div class='section'>
-            <div v-if="this.currentEntry.unit.length ==1">
-              <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
-            </div>
-            <div v-else>
-              <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntry.unit[0]}} </h4>
-              <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentEntry.unit[1]}} </h4>
-            </div>
+          <div v-if="this.currentEntryUnits.length ==1">
+              <p><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntryUnits[0]}} </p>
+          </div>
+          <div v-else>
+              <h4><input v-model.number="newEntryValue" type="number" required="required" >{{this.currentEntryUnits[0]}} </h4>
+              <h4><input v-model.number="newEntryValue2" type="number" required="required" >{{this.currentEntryUnits[1]}} </h4>
+          </div>
           </div>
 
           <div class='section'>
-            <p><b>Date:</b><input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
+            <p>Date:<input v-model="newEntryDate" type="date" id="date_input" required="required" ></p>
           </div>
           <div class='section'>
-            <h4>Note:<textarea v-model="entryNote" :maxlength="140"></textarea></h4>
+            <p>Note:<textarea v-model="entryNote" :maxlength="140"></textarea></p>
           </div>
           <div class="section" id="btn_section">
-            <v-btn large @click="editEntry" color='#DF5C46'>
-              <router-link to="../">Confirm Edits</router-link>
-            </v-btn>
-            <v-btn large @click="warning">
-              <router-link to="../" class='black-text'>Delete Entry</router-link>
-            </v-btn>
+            <router-link to="../" class='colored-button'>
+              <v-btn large @click="editEntry" color='#DF5C46'>Confirm Edits</v-btn>
+            </router-link>
+            <router-link to="../" class='black-text no-under'>
+              <v-btn large @click="warning">Delete Entry</v-btn>
+            </router-link>
             <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
           </div>
         </div>

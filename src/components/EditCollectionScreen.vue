@@ -1,14 +1,15 @@
 <template>
 <div id='edit-collection'>
-
     <v-toolbar fixed id="titlebar">
       <v-flex xs2>
-      <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+        <router-link to="/" class='no-under'>
+          <v-btn flat icon class='add-thing'>
+            <v-icon color="#DF5C46">arrow_back</v-icon>
+          </v-btn>
+        </router-link>
       </v-flex>
       <v-flex xs8>
-        <v-toolbar-title class="page-title">{{ $route.params.collection }} Edit Collections</v-toolbar-title>
-      </v-flex>
-      <v-flex xs2>
+        <v-toolbar-title class="page-title">Edit Collections</v-toolbar-title>
       </v-flex>
     </v-toolbar>
     
@@ -23,15 +24,17 @@
       <div id="grid">
         <div id="grid-box" v-for="(collection, n) in collections" v-bind:key="collection.n">
           <div class ='box' id='overlay_box'>
-            <div class='box-text' id='icon-text-box' style='border-radius:7px;background-color:rgb(255,255,255,0.1);'><a></a>
-             <v-btn flat icon class='delete_button' id='add-thing' @click="warning(collection, n)"><v-icon>close</v-icon></v-btn>
+            <div class='box-text' id='icon-text-box'><a></a>
+             <v-btn icon small color="#DF5C46" class='delete_button colored-button' id='small-button' @click="warning(collection, n)">
+               <v-icon>close</v-icon>
+              </v-btn>
             </div>
           </div>
           <div class ='box'>
-            <div class='box-text' style='border-radius:7px;background-color:#5c46df;'><a>{{collection.name}}</a></div>
+            <div class='box-text' v-bind:style="{'background-color': collection.color, 'border-radius': '7px'}"><a>{{collection.name}}</a></div>
           </div>
           <div id='buttons-box'>
-            <v-btn small color="#DF5C46" class='rename_button' id='small-button' @click="renamePopup(collection, n)">Rename</v-btn>
+            <v-btn small color="#DF5C46" class='rename_button colored-button' id='small-button' @click="renamePopup(collection, n)">Rename</v-btn>
           </div>
         </div>
       </div> 

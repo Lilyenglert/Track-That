@@ -1,10 +1,10 @@
 <template>
-  <transition name="popup">
+  <transition name="popup-fade">
   <div class="popup-backdrop">
     <div class="popup">
       <h2>What's your name?</h2>
       <p><input v-model="userName"></p>
-      <v-btn color='#DF5C46' @click="add">Welcome!</v-btn>
+      <v-btn color='#DF5C46' @click="add" class='colored-button'>Welcome!</v-btn>
     </div>
   </div>
   </transition>
@@ -52,18 +52,14 @@ export default {
     flex-direction: column;
   }
 
-  .popup-enter {
+  .popup-fade-enter,
+.popup-fade-leave-active {
   opacity: 0;
 }
 
-.popup-leave-active {
-  opacity: 0;
-}
-
-.popup-enter .popup-container,
-.popup-leave-active .popup-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+.popup-fade-enter-active,
+.popup-fade-leave-active {
+  transition: opacity .5s ease
 }
 </style>
 

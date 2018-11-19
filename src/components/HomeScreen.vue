@@ -16,9 +16,9 @@
           <div class='solid'>
             <h3>Goals</h3>
             <div v-if="goalsPresent">
-            <div v-for="tracker in trackers" v-bind:key="tracker.id">
-              <p class='message'>{{tracker.goal}}</p>
-            </div>
+              <div v-for="tracker in trackers" v-bind:key="tracker.id">
+                <p class='message'>{{tracker.goal}}</p>
+              </div>
             </div>
             <div v-else>
               <p> None yet!</p>
@@ -29,14 +29,16 @@
         <div class='section'>
           <div class='section-title'>
             <h2 class='inline-block'>Trackers</h2>
-            <v-btn fab dark small color="#DF5C46" class='add-thing'>
-              <router-link to="/add"><v-icon>add</v-icon></router-link>
-            </v-btn>
+              <router-link to="/add" class='colored-button'>
+                <v-btn fab dark small color="#DF5C46" class='add-thing'>
+                  <v-icon>add</v-icon>
+                </v-btn>
+              </router-link>
           </div>
         </div>
         <div class='box-container'>
             <div class='box' v-for="tracker in trackers" v-bind:key="tracker.id" v-if="tracker">
-              <router-link :to="tracker.path" class='box-text' style='border-radius:7px;background-color:#5c46df;'>{{tracker.name}}</router-link>
+              <router-link :to="tracker.path" v-bind:style="{'background-color': tracker.color, 'border-radius': '7px'}" class='box-text'>{{tracker.name}}</router-link>
             </div>
           </div>
 
@@ -46,11 +48,13 @@
             <v-icon>add</v-icon>
           </v-btn>
           
-          <p class='inline-block right edit'><b><router-link to="/editCollection/">Edit</router-link></b></p>
+          <router-link to="/editCollection/">
+            <v-btn flat color='#DF5C46' class='inline-block right edit'>Edit</v-btn>
+          </router-link>
         </div>
         <div class='box-container'>
-            <div class = 'box' v-for="collection in this.collections" v-bind:key="collection.id">
-              <router-link :to="collection.path" class='box-text' style='border-radius:7px;background-color:#df5c46'>{{collection.name}}</router-link>
+            <div class='box' v-for="collection in this.collections" v-bind:key="collection.id">
+              <router-link :to="collection.path" v-bind:style="{'background-color': collection.color, 'border-radius': '7px'}" class='box-text'>{{collection.name}}</router-link>
               </div>
           </div>
 
@@ -58,9 +62,6 @@
           <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
           
       </v-container>
-      <!-- <div class='content'>
-        
-      </div> -->
       
     </v-app>
   </div>
@@ -133,8 +134,7 @@ export default {
 }
   
 }
-let colors = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#df5c46'];
-let randIndex = Math.floor(Math.random() * (colors.length + 1));
+
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

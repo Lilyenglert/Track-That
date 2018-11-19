@@ -4,28 +4,29 @@
     <!-- toolbar -->
       <v-toolbar fixed id="titlebar">
         <v-flex xs2>
-          <v-btn flat icon class='add-thing'>
-            <router-link to="/"><v-icon color="#DF5C46">arrow_back</v-icon></router-link>
-          </v-btn>
+          <router-link to="/" class='no-under'>
+            <v-btn flat icon class='add-thing'>
+              <v-icon color="#DF5C46">arrow_back</v-icon>
+            </v-btn>
+          </router-link>
         </v-flex>
         <v-flex xs8>
           <v-toolbar-title class="page-title">{{ $route.params.tracker }} Tracker</v-toolbar-title>
         </v-flex>
 
-        <v-flex xs2>
-          <b class='edit'><router-link to="edit">Edit</router-link></b>
-        </v-flex>
-        <v-spacer></v-spacer>
-        <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
+        <router-link to="edit" color="#DF5C46" class='no-under'>
+          <v-btn flat color='#DF5C46' class='inline-block right edit'>Edit</v-btn>
+        </router-link>
       </v-toolbar>
     <!-- /toolbar -->
 
     <v-container class="inner">
         <div class='section-title'>
-          <v-btn color="#DF5C46" class='add-thing'>
-            <router-link to=entry>New entry</router-link>
-            <v-icon right size="18px">add</v-icon>
-          </v-btn>
+          <router-link to=entry class='colored-button'>
+            <v-btn color="#DF5C46" class='add-thing'>New entry
+              <v-icon right size="18px">add</v-icon>
+            </v-btn>
+          </router-link>
         </div>
         <div id="goalsContainer">
         <div class="section">
@@ -40,7 +41,7 @@
           <h2>Progress</h2>
             <v-card id="graph_box" :flat="true">
               <Chart :trackerID=$route.params.id></Chart>
-              <v-btn  id="switchButton" @click='switchUnits()' color="#DF5C46">Switch Units</v-btn>
+              <v-btn id="switchButton" @click='switchUnits()' color="#DF5C46" class='colored-button'>Switch Units</v-btn>
             </v-card>
         </div>
 
@@ -74,11 +75,11 @@
                   </v-list-tile-content>
 
                   <!-- edit entry button -->
-                  <v-btn fab icon dark small color="#DF5C46" class='add-thing'>
-                    <router-link :to="`editEntry/${entry.id}`">
-                      <a><v-icon>edit</v-icon></a>
-                    </router-link>
-                  </v-btn>
+                  <router-link :to="`editEntry/${entry.id}`" class='colored-button'>
+                    <v-btn fab icon dark small color="#DF5C46" class='add-thing'>
+                        <v-icon>edit</v-icon>
+                    </v-btn>
+                  </router-link>
 
                 </v-list-tile>
                 </v-list>
