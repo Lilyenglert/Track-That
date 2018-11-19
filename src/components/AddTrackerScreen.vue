@@ -10,6 +10,7 @@
         </v-flex>
         <v-flex xs8>
           <v-toolbar-title class="page-title">Add Tracker</v-toolbar-title>
+        </v-flex>
       </v-toolbar>
       <!-- /toolbar -->
       
@@ -20,17 +21,17 @@
           <p>Tracker Name: <input v-model="newTrackerName"></p>
         </div>
         
-      <div class='section'>
-        <h2 class='prompt'>What units are we tracking?</h2>
-        <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15"></p>
-        <div v-if="isAddUnit" >
-          <p>Tracker Units: <input v-model="newTrackerUnit2" :maxlength="15"></p>
-          <v-btn block dark color="#DF5C46" style="margin-top:7%;text-align:center;" @click="removeUnit" >One unit please!</v-btn>
+        <div class='section'>
+          <h2 class='prompt'>What units are we tracking?</h2>
+          <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15"></p>
+          <div v-if="isAddUnit" >
+            <p>Tracker Units: <input v-model="newTrackerUnit2" :maxlength="15"></p>
+            <v-btn block dark color="#DF5C46" style="margin-top:7%;text-align:center;" @click="removeUnit" >One unit please!</v-btn>
+          </div>
+          <div v-if="isOneUnit" class='centered'>
+            <v-btn dark color="#DF5C46" style="margin-top:7%;text-align:center" @click="addUnit">Add Another Unit</v-btn>
+          </div>
         </div>
-        <div v-if="isOneUnit">
-          <v-btn block dark color="#DF5C46" style="margin-top:7%;text-align:center" @click="addUnit" >Add Another Unit</v-btn>
-        </div>
-      </div>
         
         
         <div class='section'>

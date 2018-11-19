@@ -1,14 +1,13 @@
 <template>
 <div id='edit-collection'>
-
     <v-toolbar fixed id="titlebar">
       <v-flex xs2>
-      <router-link to="/"><a id="backButton"><i>back</i></a></router-link>
+        <v-btn flat icon class='add-thing'>
+          <router-link to="/"><v-icon color="#DF5C46">arrow_back</v-icon></router-link>
+        </v-btn>
       </v-flex>
       <v-flex xs8>
-        <v-toolbar-title class="page-title">{{ $route.params.collection }} Edit Collections</v-toolbar-title>
-      </v-flex>
-      <v-flex xs2>
+        <v-toolbar-title class="page-title">Edit Collections</v-toolbar-title>
       </v-flex>
     </v-toolbar>
     
