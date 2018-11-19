@@ -4,7 +4,7 @@
     <div class="popup">
       <h2>Are you sure you want to delete this?  This can't be undone.</h2>
       <div id="save-back">
-      <v-btn id="small-button" @click="yes">Yes, delete it.</v-btn>
+      <v-btn color='#DF5C46' id="small-button" @click="yes" class='colored-button'>Yes, delete it.</v-btn>
       <v-btn id="small-button" @click="no">No, keep it.</v-btn>
       </div>
     </div>

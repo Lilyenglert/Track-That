@@ -6,8 +6,8 @@
       <p><input v-model="newCollectionName" :maxlength="15"></p>
       <div v-show='containsSpecChars'><p>Collection name should only contain numbers and/or letters.</p></div>
       <div id="save-back">
-      <v-btn color='#DF5C46' class="small-button" @click="add">Save</v-btn>
       <v-btn class='close-button' @click="close">Close</v-btn>
+      <v-btn color='#DF5C46' class="small-button colored-button" @click="add">Save</v-btn>
       </div>
     </div>
   </div>
@@ -36,29 +36,38 @@ export default {
   },
   methods: {
     add () {
+      let colorList = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8'];
+      let randIndex = Math.floor(Math.random() * (colorList.length + 1));
+      let randomColor = colorList[randIndex];
+      console.log(randomColor);
+      
       // ensure they actually typed something
       if (!this.newCollectionName) {
         return
       }
 
-      var isAlphanumeric = require('is-alphanumeric');
-      var exp  = '/^[a-z0-9]+$/i';
-        if(!isAlphanumeric(this.newCollectionName))
+      // var isAlphanumeric = require('is-alphanumeric');
+      // var exp  = '/^[\w\-\s]+$/';
+      // steph regex
+      var patt = new RegExp('^[A-Za-z0-9- ]+$');
+      console.log(patt);
+      var result = patt.test(this.newCollectionName);
+        if(!result)
         {
           this.containsSpecChars = true;
         }
-        else{
-          
-        this.containsSpecChars = false;
-      var trackerEntry = {
-        'name': this.newCollectionName,
-        'path' : '/collectionView/' + this.newCollectionName + '/',
-      }
-      if(this.collections)
-      this.collections.push(trackerEntry)
-      this.newCollectionName = ''
-      this.save()
-      this.$emit('close');
+        else {
+          this.containsSpecChars = false;
+          var trackerEntry = {
+            'name': this.newCollectionName,
+            'path' : '/collectionView/' + this.newCollectionName + '/',
+            'color' : randomColor,
+          }
+          if(this.collections)
+          this.collections.push(trackerEntry)
+          this.newCollectionName = ''
+          this.save()
+          this.$emit('close');
         }
     },
     remove (x) {

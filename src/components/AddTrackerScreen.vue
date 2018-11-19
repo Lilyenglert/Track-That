@@ -10,11 +10,7 @@
         </v-flex>
         <v-flex xs8>
           <v-toolbar-title class="page-title">Add Tracker</v-toolbar-title>
-       
-          
         </v-flex>
-        <v-spacer></v-spacer>
-        <v-toolbar-items class="hidden-sm-and-down"></v-toolbar-items>
       </v-toolbar>
       <!-- /toolbar -->
       
@@ -25,17 +21,17 @@
           <p>Tracker Name: <input v-model="newTrackerName"></p>
         </div>
         
-      <div class='section'>
-        <h2 class='prompt'>What units are we tracking?</h2>
-        <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15"></p>
-        <div v-if="isAddUnit" >
-          <p>Tracker Units: <input v-model="newTrackerUnit2" :maxlength="15"></p>
-          <v-btn block dark color="#DF5C46" style="margin-top:7%;text-align:center;" @click="removeUnit" >One unit please!</v-btn>
+        <div class='section'>
+          <h2 class='prompt'>What units are we tracking?</h2>
+          <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15"></p>
+          <div v-if="isAddUnit" >
+            <p>Tracker Units: <input v-model="newTrackerUnit2" :maxlength="15"></p>
+            <v-btn block dark color="#DF5C46" style="margin-top:7%;text-align:center;" @click="removeUnit" >One unit please!</v-btn>
+          </div>
+          <div v-if="isOneUnit" class='centered'>
+            <v-btn dark color="#DF5C46" style="margin-top:7%;text-align:center" @click="addUnit">Add Another Unit</v-btn>
+          </div>
         </div>
-        <div v-if="isOneUnit">
-          <v-btn block dark color="#DF5C46" style="margin-top:7%;text-align:center" @click="addUnit" >Add Another Unit</v-btn>
-        </div>
-      </div>
         
         
         <div class='section'>
@@ -54,16 +50,20 @@
           </p>
         </div>
         
-        <v-btn block dark color="#DF5C46" @click="add" class='submit-button'>
-          <router-link to="/">Add Tracker</router-link>
-        </v-btn>
+        <router-link to="/" class='colored-button'>
+          <v-btn block dark color="#DF5C46" @click="add" class='submit-button'>
+            Add Tracker
+          </v-btn>
+        </router-link>
       </v-container>
     </v-app>
   </div>
 </template>
 
 <script>
+
 export default {
+  
   name: 'AddTrackerScreen',
   data () {
     return {
@@ -80,7 +80,7 @@ export default {
       newTrackerUnit: null,
       newTrackerUnit2: null,
       newTrackerGoal: null,
-      NewTrackerCollection: null
+      NewTrackerCollection: null,
     }
   },
   mounted () {
@@ -108,7 +108,12 @@ export default {
   },
   methods: {
     add () {
-      // console.log('clicked');
+      let colorList = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8'];
+      let randIndex = Math.floor(Math.random() * (colorList.length));
+      let randomColor = colorList[randIndex];
+      console.log(randIndex);
+      console.log(randomColor);
+
       // ensure they actually typed something
       if (!this.newTrackerName) {
         return
@@ -130,14 +135,15 @@ export default {
       if(this.newTrackerUnit2 != null){
         this.units.push(this.newTrackerUnit2);
       }
-    
+
       var trackerEntry = {
         'id' : fetchedTrackerIDIncremented, 
         'path' : '/view/' + fetchedTrackerIDIncremented + '/' + this.newTrackerName + '/',
         'name': this.newTrackerName,
         'unit': this.units,
         'goal': this.newTrackerGoal,
-        'collection': this.NewTrackerCollection
+        'collection': this.NewTrackerCollection,
+        'color' : randomColor
       }; 
       this.trackerID.push(fetchedTrackerIDIncremented);
       if(trackerEntry.name !=null)
@@ -167,6 +173,7 @@ export default {
       this.unit = []
       this.newTrackerGoal = ''
       this.newTrackerCollection = ''
+      this.newColor = 'gray'
     },
     addUnit()
     {

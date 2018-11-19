@@ -83,11 +83,13 @@ export default {
     var createPath = d3.line()
       .x(function (d) { return x(d.date) })
       .y(function (d) { return y(d.value) })
+    
     var bottomAxis = null
-    if(dateDifference <= 20){
+    
+    if (dateDifference <= 20) {
       bottomAxis = d3.axisBottom(x).ticks(3)
     }
-    else{
+    else {
       bottomAxis = d3.axisBottom(x).ticks(5)
     }
     var leftAxis = d3.axisLeft(y).ticks(5)

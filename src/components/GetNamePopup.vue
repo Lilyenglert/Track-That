@@ -4,7 +4,7 @@
     <div class="popup">
       <h2>What's your name?</h2>
       <p><input v-model="userName"></p>
-      <v-btn color='#DF5C46' @click="add">Welcome!</v-btn>
+      <v-btn color='#DF5C46' @click="add" class='colored-button'>Welcome!</v-btn>
     </div>
   </div>
   </transition>
