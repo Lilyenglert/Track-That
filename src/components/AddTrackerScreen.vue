@@ -17,15 +17,15 @@
       <v-container class="inner">
         
         <div class='section'>
-          <h2 class='prompt'>What do you want to track?<span class="ast">*</span></h2>
-          <p>Tracker Name: <input v-model="newTrackerName"></p>
+          <h2 class='prompt'>What do you want to track?<span class='required'>*</span></h2>
+          <p>Tracker Name: <input v-model="newTrackerName" placeholder="i.e., Lifting"></p>
         </div>
         
         <div class='section'>
-          <h2 class='prompt'>What units are we tracking?<span class="ast">*</span></h2>
-          <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15"></p>
+          <h2 class='prompt'>What units are we tracking?<span class='required'>*</span></h2>
+          <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15" placeholder="i.e., lbs"></p>
           <div v-if="isAddUnit" >
-            <p>Tracker Units: <input v-model="newTrackerUnit2" :maxlength="15"></p>
+            <p>Tracker Units: <input v-model="newTrackerUnit2" :maxlength="15" placeholder="i.e., reps"></p>
             <v-btn block dark color="#DF5C46" style="margin-top:7%;text-align:center;" @click="removeUnit" >One unit please!</v-btn>
           </div>
           <div v-if="isOneUnit" class='centered'>
@@ -37,12 +37,18 @@
         <div class='section'>
           <h2 class='prompt'>Write down any goals you have.</h2>
           <p class='optional'>(Optional)</p>
-          <textarea v-model="newTrackerGoal"></textarea>
+          <textarea v-model="newTrackerGoal" placeholder="i.e., Lift 100lbs by February"></textarea>
         </div>
         
         <div class='section'>
           <h2 class='prompt'>Add tracker to collection?</h2>
           <p class='optional'>(Optional)</p>
+          <span>
+            <v-btn fab dark small color="#DF5C46" class='add-thing' @click="showModal">
+              <v-icon>add</v-icon>
+            </v-btn>
+          </span>
+          <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
           <p>
             <select v-model="NewTrackerCollection">
               <option v-for="collection in collections" v-bind:key="collection.id">{{collection.name}}</option>
@@ -50,20 +56,21 @@
           </p>
         </div>
         
-        <router-link to="/" class='colored-button'>
           <v-btn block dark color="#DF5C46" @click="add" class='submit-button'>
             Add Tracker
           </v-btn>
-        </router-link>
       </v-container>
     </v-app>
   </div>
 </template>
 
 <script>
+import AddCollectionPopup from './AddCollectionPopup.vue'
 
 export default {
-  
+  components: {
+    AddCollectionPopup
+  },
   name: 'AddTrackerScreen',
   data () {
     return {
@@ -81,6 +88,7 @@ export default {
       newTrackerUnit2: null,
       newTrackerGoal: null,
       NewTrackerCollection: null,
+      isPopupVisible: false,
     }
   },
   mounted () {
@@ -108,11 +116,11 @@ export default {
   },
   methods: {
     add () {
-      let colorList = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#df5c46'];
+      let colorList = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#dfa946'];
       let randIndex = Math.floor(Math.random() * (colorList.length));
       let randomColor = colorList[randIndex];
-      console.log(randIndex);
-      console.log(randomColor);
+      // console.log(randIndex);
+      // console.log(randomColor);
 
       // ensure they actually typed something
       if (!this.newTrackerName) {
@@ -148,12 +156,13 @@ export default {
       this.trackerID.push(fetchedTrackerIDIncremented);
       if(trackerEntry.name !=null)
       {
-        console.log("not null");
+        // console.log("not null");
         this.trackers.push(trackerEntry)
       }
       
       this.cleanTrackerValues();
       this.save()
+      this.$router.push('/')
     },
     remove (x) {
       this.trackers.splice(x, 1)
@@ -184,6 +193,18 @@ export default {
     {
       this.isAddUnit = false;
       this.isOneUnit = true;
+    },
+    showModal() {
+        this.isPopupVisible = true;
+    },
+    closeModal() {
+      this.isPopupVisible = false;
+      this.getLocal();
+    },
+    getLocal() {
+      this.trackers = JSON.parse(localStorage.getItem('trackers'));
+      this.collections = JSON.parse(localStorage.getItem('collections'));
+      this.username = localStorage.getItem('userName');
     }
   }
 }
