@@ -151,6 +151,8 @@ tracker and collection sections
     padding: 10px 20px;
     border-radius: 7px;
     margin-top: 10px;
+    max-height: 225px;
+    overflow-y: scroll;
 }
 
 .solid h3 {
