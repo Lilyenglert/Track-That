@@ -22,6 +22,11 @@ export default new Router({
       component: HomeScreen
     },
     {
+      path: '/index.html',
+      name: 'Home',
+      component: HomeScreen
+    },
+    {
       path: '/add',
       name: 'AddTrackerScreen',
       component: AddTrackerScreen
