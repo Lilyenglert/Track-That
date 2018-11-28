@@ -3,7 +3,7 @@
   <div class="popup-backdrop">
     <div class="popup">
       <h2>Create Collection</h2>
-      <p><input v-model="newCollectionName" :maxlength="15"></p>
+      <p><input v-model="newCollectionName" :maxlength="15" placeholder="i.e., Fitness"></p>
       <div v-show='containsSpecChars'><p>Collection name should only contain numbers and/or letters.</p></div>
       <div id="save-back">
       <v-btn class='close-button' @click="close">Close</v-btn>

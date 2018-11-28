@@ -17,15 +17,15 @@
       <v-container class="inner">
         
         <div class='section'>
-          <h2 class='prompt'>What do you want to track?</h2>
-          <p>Tracker Name: <input v-model="newTrackerName"></p>
+          <h2 class='prompt'>What do you want to track?<span class='required'>*</span></h2>
+          <p>Tracker Name: <input v-model="newTrackerName" placeholder="i.e., Lifting"></p>
         </div>
         
         <div class='section'>
-          <h2 class='prompt'>What units are we tracking?</h2>
-          <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15"></p>
+          <h2 class='prompt'>What units are we tracking?<span class='required'>*</span></h2>
+          <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15" placeholder="i.e., lbs"></p>
           <div v-if="isAddUnit" >
-            <p>Tracker Units: <input v-model="newTrackerUnit2" :maxlength="15"></p>
+            <p>Tracker Units: <input v-model="newTrackerUnit2" :maxlength="15" placeholder="i.e., reps"></p>
             <v-btn block dark color="#DF5C46" style="margin-top:7%;text-align:center;" @click="removeUnit" >One unit please!</v-btn>
           </div>
           <div v-if="isOneUnit" class='centered'>
@@ -37,7 +37,7 @@
         <div class='section'>
           <h2 class='prompt'>Write down any goals you have.</h2>
           <p class='optional'>(Optional)</p>
-          <textarea v-model="newTrackerGoal"></textarea>
+          <textarea v-model="newTrackerGoal" placeholder="i.e., Lift 100lbs by February"></textarea>
         </div>
         
         <div class='section'>
@@ -108,7 +108,7 @@ export default {
   },
   methods: {
     add () {
-      let colorList = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#df5c46'];
+      let colorList = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#dfa946'];
       let randIndex = Math.floor(Math.random() * (colorList.length));
       let randomColor = colorList[randIndex];
       console.log(randIndex);
