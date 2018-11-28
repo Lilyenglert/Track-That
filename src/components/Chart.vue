@@ -121,11 +121,11 @@ export default {
     else{
       svg.append('text')
         .attr("x", 180).attr("y", 125)
-        .text("Please add at least two")
+        .text("Please add at least two entries on")
         .style("text-anchor", "middle")
       svg.append('text')
         .attr("x", 180).attr("y", 145)
-        .text("entries to see your progress!")
+        .text("different dates to see your progress!")
         .style("text-anchor", "middle")
     }
 
@@ -205,8 +205,8 @@ export default {
     svg.append('path').attr('d', createPath(this.entryData)).attr('id', 'dataPath')
     }
     else{
-      svg.append('text').attr("x", 180).attr("y", 125).text("Please add at least two").style("text-anchor", "middle")
-      svg.append('text').attr("x", 180).attr("y", 145).text("entries to see your progress!").style("text-anchor", "middle")
+      svg.append('text').attr("x", 180).attr("y", 125).text("Please add at least two entries on").style("text-anchor", "middle")
+      svg.append('text').attr("x", 180).attr("y", 145).text("different dates to see your progress!").style("text-anchor", "middle")
     }
     })
   },

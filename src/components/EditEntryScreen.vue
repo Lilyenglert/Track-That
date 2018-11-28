@@ -43,9 +43,7 @@
             <router-link to="../" class='colored-button'>
               <v-btn large @click="editEntry" color='#DF5C46'>Confirm Edits</v-btn>
             </router-link>
-            <router-link to="../" class='black-text no-under'>
-              <v-btn large @click="warning">Delete Entry</v-btn>
-            </router-link>
+              <v-btn class='black-text no-under' large @click="warning">Delete Entry</v-btn>
             <DeleteWarningPopup v-show="isPopupVisible" @close="closeWarning" @delete="remove"/>
           </div>
         </div>

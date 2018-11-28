@@ -50,11 +50,9 @@
           </p>
         </div>
         
-        <router-link to="/" class='colored-button'>
           <v-btn block dark color="#DF5C46" @click="add" class='submit-button'>
             Add Tracker
           </v-btn>
-        </router-link>
       </v-container>
     </v-app>
   </div>
@@ -154,6 +152,7 @@ export default {
       
       this.cleanTrackerValues();
       this.save()
+      this.$router.push('/')
     },
     remove (x) {
       this.trackers.splice(x, 1)
