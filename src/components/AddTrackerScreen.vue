@@ -43,6 +43,12 @@
         <div class='section'>
           <h2 class='prompt'>Add tracker to collection?</h2>
           <p class='optional'>(Optional)</p>
+          <span>
+            <v-btn fab dark small color="#DF5C46" class='add-thing' @click="showModal">
+              <v-icon>add</v-icon>
+            </v-btn>
+          </span>
+          <AddCollectionPopup v-show="isPopupVisible" @close="closeModal"/>
           <p>
             <select v-model="NewTrackerCollection">
               <option v-for="collection in collections" v-bind:key="collection.id">{{collection.name}}</option>
@@ -61,9 +67,12 @@
 </template>
 
 <script>
+import AddCollectionPopup from './AddCollectionPopup.vue'
 
 export default {
-  
+  components: {
+    AddCollectionPopup
+  },
   name: 'AddTrackerScreen',
   data () {
     return {
@@ -81,6 +90,7 @@ export default {
       newTrackerUnit2: null,
       newTrackerGoal: null,
       NewTrackerCollection: null,
+      isPopupVisible: false,
     }
   },
   mounted () {
@@ -111,8 +121,8 @@ export default {
       let colorList = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#dfa946'];
       let randIndex = Math.floor(Math.random() * (colorList.length));
       let randomColor = colorList[randIndex];
-      console.log(randIndex);
-      console.log(randomColor);
+      // console.log(randIndex);
+      // console.log(randomColor);
 
       // ensure they actually typed something
       if (!this.newTrackerName) {
@@ -148,7 +158,7 @@ export default {
       this.trackerID.push(fetchedTrackerIDIncremented);
       if(trackerEntry.name !=null)
       {
-        console.log("not null");
+        // console.log("not null");
         this.trackers.push(trackerEntry)
       }
       
@@ -184,6 +194,18 @@ export default {
     {
       this.isAddUnit = false;
       this.isOneUnit = true;
+    },
+    showModal() {
+        this.isPopupVisible = true;
+    },
+    closeModal() {
+      this.isPopupVisible = false;
+      this.getLocal();
+    },
+    getLocal() {
+      this.trackers = JSON.parse(localStorage.getItem('trackers'));
+      this.collections = JSON.parse(localStorage.getItem('collections'));
+      this.username = localStorage.getItem('userName');
     }
   }
 }

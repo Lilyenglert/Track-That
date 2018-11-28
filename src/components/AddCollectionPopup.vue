@@ -39,7 +39,7 @@ export default {
       let colorList = ['#5c46df', '#46df5c', '#df467d', '#467ddf', '#46dfa8', '#df5c46'];
       let randIndex = Math.floor(Math.random() * (colorList.length));
       let randomColor = colorList[randIndex];
-      console.log(randomColor);
+      // console.log(randomColor);
       
       // ensure they actually typed something
       if (!this.newCollectionName) {
@@ -50,7 +50,7 @@ export default {
       // var exp  = '/^[\w\-\s]+$/';
       // steph regex
       var patt = new RegExp('^[A-Za-z0-9- ]+$');
-      console.log(patt);
+      // console.log(patt);
       var result = patt.test(this.newCollectionName);
         if(!result)
         {
