@@ -1,6 +1,6 @@
 p { font-size: 18px; }
-h1 { font-size: 32px; }
-h2 { font-size: 28px; }
+h1 { font-size: 30px; }
+h2 { font-size: 26px; }
 h3 { font-size: 24px; }
 
 /* overriding vue container class */
@@ -291,4 +291,12 @@ div, .v-toolbar_content, #titlebar{
     /* position: absolute; */
     top: 10px;
     left: 0;
+}
+
+.ast{
+    font-size: 18px;
+} 
+
+.subhead{
+    font-size: 16px;
 }

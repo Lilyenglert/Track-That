@@ -17,12 +17,12 @@
       <v-container class="inner">
         
         <div class='section'>
-          <h2 class='prompt'>What do you want to track?</h2>
+          <h2 class='prompt'>What do you want to track?<span class="ast">*</span></h2>
           <p>Tracker Name: <input v-model="newTrackerName"></p>
         </div>
         
         <div class='section'>
-          <h2 class='prompt'>What units are we tracking?</h2>
+          <h2 class='prompt'>What units are we tracking?<span class="ast">*</span></h2>
           <p>Tracker Units: <input v-model="newTrackerUnit" :maxlength="15"></p>
           <div v-if="isAddUnit" >
             <p>Tracker Units: <input v-model="newTrackerUnit2" :maxlength="15"></p>
