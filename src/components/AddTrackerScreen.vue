@@ -199,12 +199,7 @@ export default {
     },
     closeModal() {
       this.isPopupVisible = false;
-      this.getLocal();
-    },
-    getLocal() {
-      this.trackers = JSON.parse(localStorage.getItem('trackers'));
       this.collections = JSON.parse(localStorage.getItem('collections'));
-      this.username = localStorage.getItem('userName');
     }
   }
 }

@@ -3,6 +3,7 @@
   <div class="popup-backdrop">
     <div class="popup">
       <h2>Are you sure you want to delete this?  This can't be undone.</h2>
+       <span class='subhead'>Trackers in this collection will not be affected.</span>
       <div id="save-back">
       <v-btn color='#DF5C46' id="small-button" @click="yes" class='colored-button'>Yes, delete it.</v-btn>
       <v-btn id="small-button" @click="no">No, keep it.</v-btn>
