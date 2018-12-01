@@ -4,7 +4,7 @@
 
       <v-toolbar fixed id="titlebar">
         <v-flex xs12>
-          <v-toolbar-title class="page-title"> Home </v-toolbar-title>
+          <v-toolbar-title class="page-title"> Track That</v-toolbar-title>
         </v-flex>
       </v-toolbar>
       
