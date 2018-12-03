@@ -1,4 +1,4 @@
-# Milestone 4 - Implementation
+# Milestone 4 - Deployment
 
 ## Table of Contents
 [1. User Testing](#user-testing)
