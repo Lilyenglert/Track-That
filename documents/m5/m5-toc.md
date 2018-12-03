@@ -1,4 +1,4 @@
-# Milestone 4 - Deployment
+# Milestone 5 - Deployment
 
 ## Table of Contents
 [1. User Testing](#user-testing)
@@ -13,8 +13,7 @@
 ### User Testing
 
 We conducted 5 rounds of user testing with people from all of our target audiences. 
-Our user testing protocol is linked here: 
-https://docs.google.com/document/d/1YQ6xekJa4dEWInNQciaFO-H3uSenwT4ED93a8VOKLv8/edit
+Our user testing protocol is linked here: md5/testing-q.md
 
 We tested 3 people from our Fitness user group, 1 person from our finance user group, 
 and 1 person from our social media user group. 
