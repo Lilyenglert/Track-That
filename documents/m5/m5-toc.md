@@ -14,7 +14,7 @@
 
 We conducted 5 rounds of user testing with people from all of our target audiences. 
 Our user testing protocol is linked here: 
-[Testing Protocol](m5testing-questions.md)
+[Testing Protocol](testing-questions.md)
 
 We tested 3 people from our Fitness user group, 1 person from our finance user group, 
 and 1 person from our social media user group. 
