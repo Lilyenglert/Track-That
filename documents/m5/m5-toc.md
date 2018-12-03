@@ -69,28 +69,29 @@ We added wording on the 'delete collection popup' to clarify trackers would not 
 * Contributed to debrief changes
 * Designed Logo
 * Wrote up user testing protocol 
-* Formatted presentation
+* Presentation preparation
 
 #### Lily 
 * Conducted User testing 
 * Wrote up user testing protocol 
-* Formatted presentation
+* Presentation preparation
 
 #### Liam
 * Conducted User testing 
 * Wrote up user testing protocol 
 * Contributed to debrief changes
 * Physically deployed app 
-* Formatted presentation
+* Presentation preparation
 
 #### Richi
 * Conducted User testing 
 * Contributed to debrief changes
+* Presentation preparation
 
 #### Sarah
 * Conducted User testing 
 * Contributed to debrief changes
-* Formatted presentation
+* Presentation preparation
 * Put together write-up
 
 
