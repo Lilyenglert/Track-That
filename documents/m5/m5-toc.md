@@ -21,11 +21,11 @@ and 1 person from our social media user group.
 
 ### User Testing Notes: 
 
-![user test 1](img/lily-test.png)
-![user test 2](img/steph-test.png)
-![user test 3](img/sarah-test.png)
-![user test 4](img/liam-test.png)
-![user test 5](img/richi-test.png)
+![user test 1](img/lily-test.jpg)
+![user test 2](img/steph-test.jpg)
+![user test 3](img/sarah-test.jpg)
+![user test 4](img/liam-test.jpg)
+![user test 5](img/richi-test.jpg)
 
 ### Debrief
 
